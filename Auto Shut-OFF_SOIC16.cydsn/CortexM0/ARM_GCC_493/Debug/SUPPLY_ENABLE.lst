@@ -1,0 +1,930 @@
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"SUPPLY_ENABLE.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SUPPLY_ENABLE_Write,"ax",%progbits
+  18              		.align	2
+  19              		.global	SUPPLY_ENABLE_Write
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	SUPPLY_ENABLE_Write, %function
+  23              	SUPPLY_ENABLE_Write:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\SUPPLY_ENABLE.c"
+   1:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * File Name: SUPPLY_ENABLE.c  
+   3:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Version 2.10
+   4:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+   5:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Description:
+   6:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+   8:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Note:
+   9:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  10:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  17:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** #include "SUPPLY_ENABLE.h"
+  19:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  20:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** #define SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     do { \
+  22:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****         SUPPLY_ENABLE_PC =   (SUPPLY_ENABLE_PC & \
+  23:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****                                 (uint32)(~(uint32)(SUPPLY_ENABLE_DRIVE_MODE_IND_MASK << (SUPPLY_ENA
+  24:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****                                 (uint32)((uint32)(mode) << (SUPPLY_ENABLE_DRIVE_MODE_BITS * (shift)
+  25:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     } while (0)
+  26:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  27:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  28:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
+  29:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_Write
+  30:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
+  31:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  32:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Assign a new value to the digital port's data output register.  
+  34:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  35:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Parameters:  
+  36:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  37:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  38:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Return: 
+  39:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  None 
+  40:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  
+  41:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** void SUPPLY_ENABLE_Write(uint8 value) 
+  43:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  44:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     uint8 drVal = (uint8)(SUPPLY_ENABLE_DR & (uint8)(~SUPPLY_ENABLE_MASK));
+  29              		.loc 1 44 0
+  30 0000 0449     		ldr	r1, .L2
+  31 0002 0A68     		ldr	r2, [r1]
+  32 0004 EF23     		mov	r3, #239
+  33 0006 1A40     		and	r2, r3
+  34              	.LVL1:
+  45:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     drVal = (drVal | ((uint8)(value << SUPPLY_ENABLE_SHIFT) & SUPPLY_ENABLE_MASK));
+  35              		.loc 1 45 0
+  36 0008 0001     		lsl	r0, r0, #4
+  37              	.LVL2:
+  38 000a DF3B     		sub	r3, r3, #223
+  39 000c 1840     		and	r0, r3
+  40 000e 1043     		orr	r0, r2
+  41              	.LVL3:
+  46:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     SUPPLY_ENABLE_DR = (uint32)drVal;
+  42              		.loc 1 46 0
+  43 0010 0860     		str	r0, [r1]
+  47:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** }
+  44              		.loc 1 47 0
+  45              		@ sp needed
+  46 0012 7047     		bx	lr
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0014 00000440 		.word	1074003968
+  51              		.cfi_endproc
+  52              	.LFE0:
+  53              		.size	SUPPLY_ENABLE_Write, .-SUPPLY_ENABLE_Write
+  54              		.section	.text.SUPPLY_ENABLE_SetDriveMode,"ax",%progbits
+  55              		.align	2
+  56              		.global	SUPPLY_ENABLE_SetDriveMode
+  57              		.code	16
+  58              		.thumb_func
+  59              		.type	SUPPLY_ENABLE_SetDriveMode, %function
+  60              	SUPPLY_ENABLE_SetDriveMode:
+  61              	.LFB1:
+  48:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  49:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  50:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_SetDriveMode
+  52:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 3
+
+
+  54:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
+  55:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Change the drive mode on the pins of the port.
+  56:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * 
+  57:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Parameters:  
+  58:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  mode:  Change the pins to one of the following drive modes.
+  59:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  60:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_STRONG     Strong Drive 
+  61:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_OD_HI      Open Drain, Drives High 
+  62:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_OD_LO      Open Drain, Drives Low 
+  63:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_RES_UP     Resistive Pull Up 
+  64:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_RES_DWN    Resistive Pull Down 
+  65:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_RES_UPDWN  Resistive Pull Up/Down 
+  66:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_DIG_HIZ    High Impedance Digital 
+  67:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  SUPPLY_ENABLE_DM_ALG_HIZ    High Impedance Analog 
+  68:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  69:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Return: 
+  70:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  None
+  71:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  72:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *******************************************************************************/
+  73:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** void SUPPLY_ENABLE_SetDriveMode(uint8 mode) 
+  74:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** {
+  62              		.loc 1 74 0
+  63              		.cfi_startproc
+  64              	.LVL4:
+  75:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 	SetP4PinDriveMode(SUPPLY_ENABLE__0__SHIFT, mode);
+  65              		.loc 1 75 0
+  66 0000 034A     		ldr	r2, .L5
+  67 0002 1168     		ldr	r1, [r2]
+  68 0004 034B     		ldr	r3, .L5+4
+  69 0006 0B40     		and	r3, r1
+  70 0008 0003     		lsl	r0, r0, #12
+  71              	.LVL5:
+  72 000a 1843     		orr	r0, r3
+  73 000c 1060     		str	r0, [r2]
+  76:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** }
+  74              		.loc 1 76 0
+  75              		@ sp needed
+  76 000e 7047     		bx	lr
+  77              	.L6:
+  78              		.align	2
+  79              	.L5:
+  80 0010 08000440 		.word	1074003976
+  81 0014 FF8FFFFF 		.word	-28673
+  82              		.cfi_endproc
+  83              	.LFE1:
+  84              		.size	SUPPLY_ENABLE_SetDriveMode, .-SUPPLY_ENABLE_SetDriveMode
+  85              		.section	.text.SUPPLY_ENABLE_Read,"ax",%progbits
+  86              		.align	2
+  87              		.global	SUPPLY_ENABLE_Read
+  88              		.code	16
+  89              		.thumb_func
+  90              		.type	SUPPLY_ENABLE_Read, %function
+  91              	SUPPLY_ENABLE_Read:
+  92              	.LFB2:
+  77:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  78:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+  79:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 4
+
+
+  80:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_Read
+  81:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
+  82:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  83:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
+  84:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  85:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  form.
+  86:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  87:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Parameters:  
+  88:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  None 
+  89:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+  90:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Return: 
+  91:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Returns the current value of the Digital Port as a right justified number
+  92:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  
+  93:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Note:
+  94:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Macro SUPPLY_ENABLE_ReadPS calls this function. 
+  95:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  
+  96:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *******************************************************************************/
+  97:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** uint8 SUPPLY_ENABLE_Read(void) 
+  98:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** {
+  93              		.loc 1 98 0
+  94              		.cfi_startproc
+  99:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     return (uint8)((SUPPLY_ENABLE_PS & SUPPLY_ENABLE_MASK) >> SUPPLY_ENABLE_SHIFT);
+  95              		.loc 1 99 0
+  96 0000 024B     		ldr	r3, .L8
+  97 0002 1868     		ldr	r0, [r3]
+  98 0004 C006     		lsl	r0, r0, #27
+  99 0006 C00F     		lsr	r0, r0, #31
+ 100:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** }
+ 100              		.loc 1 100 0
+ 101              		@ sp needed
+ 102 0008 7047     		bx	lr
+ 103              	.L9:
+ 104 000a C046     		.align	2
+ 105              	.L8:
+ 106 000c 04000440 		.word	1074003972
+ 107              		.cfi_endproc
+ 108              	.LFE2:
+ 109              		.size	SUPPLY_ENABLE_Read, .-SUPPLY_ENABLE_Read
+ 110              		.section	.text.SUPPLY_ENABLE_ReadDataReg,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	SUPPLY_ENABLE_ReadDataReg
+ 113              		.code	16
+ 114              		.thumb_func
+ 115              		.type	SUPPLY_ENABLE_ReadDataReg, %function
+ 116              	SUPPLY_ENABLE_ReadDataReg:
+ 117              	.LFB3:
+ 101:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+ 102:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+ 103:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
+ 104:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_ReadDataReg
+ 105:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
+ 106:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+ 107:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
+ 108:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Read the current value assigned to a Digital Port's data output register
+ 109:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+ 110:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Parameters:  
+ 111:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  None 
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 5
+
+
+ 112:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
+ 113:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Return: 
+ 114:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 115:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  
+ 116:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *******************************************************************************/
+ 117:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** uint8 SUPPLY_ENABLE_ReadDataReg(void) 
+ 118:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** {
+ 118              		.loc 1 118 0
+ 119              		.cfi_startproc
+ 119:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     return (uint8)((SUPPLY_ENABLE_DR & SUPPLY_ENABLE_MASK) >> SUPPLY_ENABLE_SHIFT);
+ 120              		.loc 1 119 0
+ 121 0000 024B     		ldr	r3, .L11
+ 122 0002 1868     		ldr	r0, [r3]
+ 123 0004 C006     		lsl	r0, r0, #27
+ 124 0006 C00F     		lsr	r0, r0, #31
+ 120:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** }
+ 125              		.loc 1 120 0
+ 126              		@ sp needed
+ 127 0008 7047     		bx	lr
+ 128              	.L12:
+ 129 000a C046     		.align	2
+ 130              	.L11:
+ 131 000c 00000440 		.word	1074003968
+ 132              		.cfi_endproc
+ 133              	.LFE3:
+ 134              		.size	SUPPLY_ENABLE_ReadDataReg, .-SUPPLY_ENABLE_ReadDataReg
+ 135              		.section	.text.SUPPLY_ENABLE_ClearInterrupt,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	SUPPLY_ENABLE_ClearInterrupt
+ 138              		.code	16
+ 139              		.thumb_func
+ 140              		.type	SUPPLY_ENABLE_ClearInterrupt, %function
+ 141              	SUPPLY_ENABLE_ClearInterrupt:
+ 142              	.LFB4:
+ 121:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+ 122:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+ 123:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /* If Interrupts Are Enabled for this Pins component */ 
+ 124:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** #if defined(SUPPLY_ENABLE_INTSTAT) 
+ 125:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
+ 126:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     /*******************************************************************************
+ 127:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     * Function Name: SUPPLY_ENABLE_ClearInterrupt
+ 128:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     ********************************************************************************
+ 129:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *
+ 130:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     * Summary:
+ 131:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *  Clears any active interrupts attached to port and returns the value of the 
+ 132:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *  interrupt status register.
+ 133:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *
+ 134:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     * Parameters:  
+ 135:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *  None 
+ 136:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *
+ 137:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     * Return: 
+ 138:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *  Returns the value of the interrupt status register
+ 139:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *  
+ 140:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     *******************************************************************************/
+ 141:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     uint8 SUPPLY_ENABLE_ClearInterrupt(void) 
+ 142:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     {
+ 143              		.loc 1 142 0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 6
+
+
+ 144              		.cfi_startproc
+ 143:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 		uint8 maskedStatus = (uint8)(SUPPLY_ENABLE_INTSTAT & SUPPLY_ENABLE_MASK);
+ 145              		.loc 1 143 0
+ 146 0000 034A     		ldr	r2, .L14
+ 147 0002 1068     		ldr	r0, [r2]
+ 148 0004 1023     		mov	r3, #16
+ 149 0006 1840     		and	r0, r3
+ 150              	.LVL6:
+ 144:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 		SUPPLY_ENABLE_INTSTAT = maskedStatus;
+ 151              		.loc 1 144 0
+ 152 0008 1060     		str	r0, [r2]
+ 145:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****         return maskedStatus >> SUPPLY_ENABLE_SHIFT;
+ 153              		.loc 1 145 0
+ 154 000a 0009     		lsr	r0, r0, #4
+ 155              	.LVL7:
+ 156 000c C0B2     		uxtb	r0, r0
+ 146:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     }
+ 157              		.loc 1 146 0
+ 158              		@ sp needed
+ 159 000e 7047     		bx	lr
+ 160              	.L15:
+ 161              		.align	2
+ 162              	.L14:
+ 163 0010 10000440 		.word	1074003984
+ 164              		.cfi_endproc
+ 165              	.LFE4:
+ 166              		.size	SUPPLY_ENABLE_ClearInterrupt, .-SUPPLY_ENABLE_ClearInterrupt
+ 167              		.text
+ 168              	.Letext0:
+ 169              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 170              		.section	.debug_info,"",%progbits
+ 171              	.Ldebug_info0:
+ 172 0000 4E010000 		.4byte	0x14e
+ 173 0004 0400     		.2byte	0x4
+ 174 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 175 000a 04       		.byte	0x4
+ 176 000b 01       		.uleb128 0x1
+ 177 000c 9E010000 		.4byte	.LASF24
+ 178 0010 01       		.byte	0x1
+ 179 0011 45020000 		.4byte	.LASF25
+ 180 0015 48000000 		.4byte	.LASF26
+ 181 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 182 001d 00000000 		.4byte	0
+ 183 0021 00000000 		.4byte	.Ldebug_line0
+ 184 0025 02       		.uleb128 0x2
+ 185 0026 01       		.byte	0x1
+ 186 0027 06       		.byte	0x6
+ 187 0028 6E020000 		.4byte	.LASF0
+ 188 002c 02       		.uleb128 0x2
+ 189 002d 01       		.byte	0x1
+ 190 002e 08       		.byte	0x8
+ 191 002f 34000000 		.4byte	.LASF1
+ 192 0033 02       		.uleb128 0x2
+ 193 0034 02       		.byte	0x2
+ 194 0035 05       		.byte	0x5
+ 195 0036 2C020000 		.4byte	.LASF2
+ 196 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 7
+
+
+ 197 003b 02       		.byte	0x2
+ 198 003c 07       		.byte	0x7
+ 199 003d CB000000 		.4byte	.LASF3
+ 200 0041 02       		.uleb128 0x2
+ 201 0042 04       		.byte	0x4
+ 202 0043 05       		.byte	0x5
+ 203 0044 3C020000 		.4byte	.LASF4
+ 204 0048 02       		.uleb128 0x2
+ 205 0049 04       		.byte	0x4
+ 206 004a 07       		.byte	0x7
+ 207 004b F2000000 		.4byte	.LASF5
+ 208 004f 02       		.uleb128 0x2
+ 209 0050 08       		.byte	0x8
+ 210 0051 05       		.byte	0x5
+ 211 0052 64010000 		.4byte	.LASF6
+ 212 0056 02       		.uleb128 0x2
+ 213 0057 08       		.byte	0x8
+ 214 0058 07       		.byte	0x7
+ 215 0059 35010000 		.4byte	.LASF7
+ 216 005d 03       		.uleb128 0x3
+ 217 005e 04       		.byte	0x4
+ 218 005f 05       		.byte	0x5
+ 219 0060 696E7400 		.ascii	"int\000"
+ 220 0064 02       		.uleb128 0x2
+ 221 0065 04       		.byte	0x4
+ 222 0066 07       		.byte	0x7
+ 223 0067 0B010000 		.4byte	.LASF8
+ 224 006b 04       		.uleb128 0x4
+ 225 006c 36020000 		.4byte	.LASF9
+ 226 0070 02       		.byte	0x2
+ 227 0071 9801     		.2byte	0x198
+ 228 0073 2C000000 		.4byte	0x2c
+ 229 0077 04       		.uleb128 0x4
+ 230 0078 04010000 		.4byte	.LASF10
+ 231 007c 02       		.byte	0x2
+ 232 007d 9A01     		.2byte	0x19a
+ 233 007f 48000000 		.4byte	0x48
+ 234 0083 02       		.uleb128 0x2
+ 235 0084 04       		.byte	0x4
+ 236 0085 04       		.byte	0x4
+ 237 0086 13000000 		.4byte	.LASF11
+ 238 008a 02       		.uleb128 0x2
+ 239 008b 08       		.byte	0x8
+ 240 008c 04       		.byte	0x4
+ 241 008d 0C000000 		.4byte	.LASF12
+ 242 0091 02       		.uleb128 0x2
+ 243 0092 01       		.byte	0x1
+ 244 0093 08       		.byte	0x8
+ 245 0094 7F010000 		.4byte	.LASF13
+ 246 0098 04       		.uleb128 0x4
+ 247 0099 00000000 		.4byte	.LASF14
+ 248 009d 02       		.byte	0x2
+ 249 009e 4402     		.2byte	0x244
+ 250 00a0 A4000000 		.4byte	0xa4
+ 251 00a4 05       		.uleb128 0x5
+ 252 00a5 77000000 		.4byte	0x77
+ 253 00a9 06       		.uleb128 0x6
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 8
+
+
+ 254 00aa DE000000 		.4byte	.LASF15
+ 255 00ae 01       		.byte	0x1
+ 256 00af 2A       		.byte	0x2a
+ 257 00b0 00000000 		.4byte	.LFB0
+ 258 00b4 18000000 		.4byte	.LFE0-.LFB0
+ 259 00b8 01       		.uleb128 0x1
+ 260 00b9 9C       		.byte	0x9c
+ 261 00ba DD000000 		.4byte	0xdd
+ 262 00be 07       		.uleb128 0x7
+ 263 00bf 06000000 		.4byte	.LASF17
+ 264 00c3 01       		.byte	0x1
+ 265 00c4 2A       		.byte	0x2a
+ 266 00c5 6B000000 		.4byte	0x6b
+ 267 00c9 00000000 		.4byte	.LLST0
+ 268 00cd 08       		.uleb128 0x8
+ 269 00ce 42000000 		.4byte	.LASF22
+ 270 00d2 01       		.byte	0x1
+ 271 00d3 2C       		.byte	0x2c
+ 272 00d4 6B000000 		.4byte	0x6b
+ 273 00d8 21000000 		.4byte	.LLST1
+ 274 00dc 00       		.byte	0
+ 275 00dd 06       		.uleb128 0x6
+ 276 00de 19000000 		.4byte	.LASF16
+ 277 00e2 01       		.byte	0x1
+ 278 00e3 49       		.byte	0x49
+ 279 00e4 00000000 		.4byte	.LFB1
+ 280 00e8 18000000 		.4byte	.LFE1-.LFB1
+ 281 00ec 01       		.uleb128 0x1
+ 282 00ed 9C       		.byte	0x9c
+ 283 00ee 02010000 		.4byte	0x102
+ 284 00f2 07       		.uleb128 0x7
+ 285 00f3 4C010000 		.4byte	.LASF18
+ 286 00f7 01       		.byte	0x1
+ 287 00f8 49       		.byte	0x49
+ 288 00f9 6B000000 		.4byte	0x6b
+ 289 00fd 3F000000 		.4byte	.LLST2
+ 290 0101 00       		.byte	0
+ 291 0102 09       		.uleb128 0x9
+ 292 0103 51010000 		.4byte	.LASF19
+ 293 0107 01       		.byte	0x1
+ 294 0108 61       		.byte	0x61
+ 295 0109 6B000000 		.4byte	0x6b
+ 296 010d 00000000 		.4byte	.LFB2
+ 297 0111 10000000 		.4byte	.LFE2-.LFB2
+ 298 0115 01       		.uleb128 0x1
+ 299 0116 9C       		.byte	0x9c
+ 300 0117 09       		.uleb128 0x9
+ 301 0118 84010000 		.4byte	.LASF20
+ 302 011c 01       		.byte	0x1
+ 303 011d 75       		.byte	0x75
+ 304 011e 6B000000 		.4byte	0x6b
+ 305 0122 00000000 		.4byte	.LFB3
+ 306 0126 10000000 		.4byte	.LFE3-.LFB3
+ 307 012a 01       		.uleb128 0x1
+ 308 012b 9C       		.byte	0x9c
+ 309 012c 0A       		.uleb128 0xa
+ 310 012d 18010000 		.4byte	.LASF21
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 9
+
+
+ 311 0131 01       		.byte	0x1
+ 312 0132 8D       		.byte	0x8d
+ 313 0133 6B000000 		.4byte	0x6b
+ 314 0137 00000000 		.4byte	.LFB4
+ 315 013b 14000000 		.4byte	.LFE4-.LFB4
+ 316 013f 01       		.uleb128 0x1
+ 317 0140 9C       		.byte	0x9c
+ 318 0141 08       		.uleb128 0x8
+ 319 0142 72010000 		.4byte	.LASF23
+ 320 0146 01       		.byte	0x1
+ 321 0147 8F       		.byte	0x8f
+ 322 0148 6B000000 		.4byte	0x6b
+ 323 014c 60000000 		.4byte	.LLST3
+ 324 0150 00       		.byte	0
+ 325 0151 00       		.byte	0
+ 326              		.section	.debug_abbrev,"",%progbits
+ 327              	.Ldebug_abbrev0:
+ 328 0000 01       		.uleb128 0x1
+ 329 0001 11       		.uleb128 0x11
+ 330 0002 01       		.byte	0x1
+ 331 0003 25       		.uleb128 0x25
+ 332 0004 0E       		.uleb128 0xe
+ 333 0005 13       		.uleb128 0x13
+ 334 0006 0B       		.uleb128 0xb
+ 335 0007 03       		.uleb128 0x3
+ 336 0008 0E       		.uleb128 0xe
+ 337 0009 1B       		.uleb128 0x1b
+ 338 000a 0E       		.uleb128 0xe
+ 339 000b 55       		.uleb128 0x55
+ 340 000c 17       		.uleb128 0x17
+ 341 000d 11       		.uleb128 0x11
+ 342 000e 01       		.uleb128 0x1
+ 343 000f 10       		.uleb128 0x10
+ 344 0010 17       		.uleb128 0x17
+ 345 0011 00       		.byte	0
+ 346 0012 00       		.byte	0
+ 347 0013 02       		.uleb128 0x2
+ 348 0014 24       		.uleb128 0x24
+ 349 0015 00       		.byte	0
+ 350 0016 0B       		.uleb128 0xb
+ 351 0017 0B       		.uleb128 0xb
+ 352 0018 3E       		.uleb128 0x3e
+ 353 0019 0B       		.uleb128 0xb
+ 354 001a 03       		.uleb128 0x3
+ 355 001b 0E       		.uleb128 0xe
+ 356 001c 00       		.byte	0
+ 357 001d 00       		.byte	0
+ 358 001e 03       		.uleb128 0x3
+ 359 001f 24       		.uleb128 0x24
+ 360 0020 00       		.byte	0
+ 361 0021 0B       		.uleb128 0xb
+ 362 0022 0B       		.uleb128 0xb
+ 363 0023 3E       		.uleb128 0x3e
+ 364 0024 0B       		.uleb128 0xb
+ 365 0025 03       		.uleb128 0x3
+ 366 0026 08       		.uleb128 0x8
+ 367 0027 00       		.byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 10
+
+
+ 368 0028 00       		.byte	0
+ 369 0029 04       		.uleb128 0x4
+ 370 002a 16       		.uleb128 0x16
+ 371 002b 00       		.byte	0
+ 372 002c 03       		.uleb128 0x3
+ 373 002d 0E       		.uleb128 0xe
+ 374 002e 3A       		.uleb128 0x3a
+ 375 002f 0B       		.uleb128 0xb
+ 376 0030 3B       		.uleb128 0x3b
+ 377 0031 05       		.uleb128 0x5
+ 378 0032 49       		.uleb128 0x49
+ 379 0033 13       		.uleb128 0x13
+ 380 0034 00       		.byte	0
+ 381 0035 00       		.byte	0
+ 382 0036 05       		.uleb128 0x5
+ 383 0037 35       		.uleb128 0x35
+ 384 0038 00       		.byte	0
+ 385 0039 49       		.uleb128 0x49
+ 386 003a 13       		.uleb128 0x13
+ 387 003b 00       		.byte	0
+ 388 003c 00       		.byte	0
+ 389 003d 06       		.uleb128 0x6
+ 390 003e 2E       		.uleb128 0x2e
+ 391 003f 01       		.byte	0x1
+ 392 0040 3F       		.uleb128 0x3f
+ 393 0041 19       		.uleb128 0x19
+ 394 0042 03       		.uleb128 0x3
+ 395 0043 0E       		.uleb128 0xe
+ 396 0044 3A       		.uleb128 0x3a
+ 397 0045 0B       		.uleb128 0xb
+ 398 0046 3B       		.uleb128 0x3b
+ 399 0047 0B       		.uleb128 0xb
+ 400 0048 27       		.uleb128 0x27
+ 401 0049 19       		.uleb128 0x19
+ 402 004a 11       		.uleb128 0x11
+ 403 004b 01       		.uleb128 0x1
+ 404 004c 12       		.uleb128 0x12
+ 405 004d 06       		.uleb128 0x6
+ 406 004e 40       		.uleb128 0x40
+ 407 004f 18       		.uleb128 0x18
+ 408 0050 9742     		.uleb128 0x2117
+ 409 0052 19       		.uleb128 0x19
+ 410 0053 01       		.uleb128 0x1
+ 411 0054 13       		.uleb128 0x13
+ 412 0055 00       		.byte	0
+ 413 0056 00       		.byte	0
+ 414 0057 07       		.uleb128 0x7
+ 415 0058 05       		.uleb128 0x5
+ 416 0059 00       		.byte	0
+ 417 005a 03       		.uleb128 0x3
+ 418 005b 0E       		.uleb128 0xe
+ 419 005c 3A       		.uleb128 0x3a
+ 420 005d 0B       		.uleb128 0xb
+ 421 005e 3B       		.uleb128 0x3b
+ 422 005f 0B       		.uleb128 0xb
+ 423 0060 49       		.uleb128 0x49
+ 424 0061 13       		.uleb128 0x13
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 11
+
+
+ 425 0062 02       		.uleb128 0x2
+ 426 0063 17       		.uleb128 0x17
+ 427 0064 00       		.byte	0
+ 428 0065 00       		.byte	0
+ 429 0066 08       		.uleb128 0x8
+ 430 0067 34       		.uleb128 0x34
+ 431 0068 00       		.byte	0
+ 432 0069 03       		.uleb128 0x3
+ 433 006a 0E       		.uleb128 0xe
+ 434 006b 3A       		.uleb128 0x3a
+ 435 006c 0B       		.uleb128 0xb
+ 436 006d 3B       		.uleb128 0x3b
+ 437 006e 0B       		.uleb128 0xb
+ 438 006f 49       		.uleb128 0x49
+ 439 0070 13       		.uleb128 0x13
+ 440 0071 02       		.uleb128 0x2
+ 441 0072 17       		.uleb128 0x17
+ 442 0073 00       		.byte	0
+ 443 0074 00       		.byte	0
+ 444 0075 09       		.uleb128 0x9
+ 445 0076 2E       		.uleb128 0x2e
+ 446 0077 00       		.byte	0
+ 447 0078 3F       		.uleb128 0x3f
+ 448 0079 19       		.uleb128 0x19
+ 449 007a 03       		.uleb128 0x3
+ 450 007b 0E       		.uleb128 0xe
+ 451 007c 3A       		.uleb128 0x3a
+ 452 007d 0B       		.uleb128 0xb
+ 453 007e 3B       		.uleb128 0x3b
+ 454 007f 0B       		.uleb128 0xb
+ 455 0080 27       		.uleb128 0x27
+ 456 0081 19       		.uleb128 0x19
+ 457 0082 49       		.uleb128 0x49
+ 458 0083 13       		.uleb128 0x13
+ 459 0084 11       		.uleb128 0x11
+ 460 0085 01       		.uleb128 0x1
+ 461 0086 12       		.uleb128 0x12
+ 462 0087 06       		.uleb128 0x6
+ 463 0088 40       		.uleb128 0x40
+ 464 0089 18       		.uleb128 0x18
+ 465 008a 9742     		.uleb128 0x2117
+ 466 008c 19       		.uleb128 0x19
+ 467 008d 00       		.byte	0
+ 468 008e 00       		.byte	0
+ 469 008f 0A       		.uleb128 0xa
+ 470 0090 2E       		.uleb128 0x2e
+ 471 0091 01       		.byte	0x1
+ 472 0092 3F       		.uleb128 0x3f
+ 473 0093 19       		.uleb128 0x19
+ 474 0094 03       		.uleb128 0x3
+ 475 0095 0E       		.uleb128 0xe
+ 476 0096 3A       		.uleb128 0x3a
+ 477 0097 0B       		.uleb128 0xb
+ 478 0098 3B       		.uleb128 0x3b
+ 479 0099 0B       		.uleb128 0xb
+ 480 009a 27       		.uleb128 0x27
+ 481 009b 19       		.uleb128 0x19
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 12
+
+
+ 482 009c 49       		.uleb128 0x49
+ 483 009d 13       		.uleb128 0x13
+ 484 009e 11       		.uleb128 0x11
+ 485 009f 01       		.uleb128 0x1
+ 486 00a0 12       		.uleb128 0x12
+ 487 00a1 06       		.uleb128 0x6
+ 488 00a2 40       		.uleb128 0x40
+ 489 00a3 18       		.uleb128 0x18
+ 490 00a4 9742     		.uleb128 0x2117
+ 491 00a6 19       		.uleb128 0x19
+ 492 00a7 00       		.byte	0
+ 493 00a8 00       		.byte	0
+ 494 00a9 00       		.byte	0
+ 495              		.section	.debug_loc,"",%progbits
+ 496              	.Ldebug_loc0:
+ 497              	.LLST0:
+ 498 0000 00000000 		.4byte	.LVL0
+ 499 0004 0A000000 		.4byte	.LVL2
+ 500 0008 0100     		.2byte	0x1
+ 501 000a 50       		.byte	0x50
+ 502 000b 0A000000 		.4byte	.LVL2
+ 503 000f 18000000 		.4byte	.LFE0
+ 504 0013 0400     		.2byte	0x4
+ 505 0015 F3       		.byte	0xf3
+ 506 0016 01       		.uleb128 0x1
+ 507 0017 50       		.byte	0x50
+ 508 0018 9F       		.byte	0x9f
+ 509 0019 00000000 		.4byte	0
+ 510 001d 00000000 		.4byte	0
+ 511              	.LLST1:
+ 512 0021 08000000 		.4byte	.LVL1
+ 513 0025 10000000 		.4byte	.LVL3
+ 514 0029 0100     		.2byte	0x1
+ 515 002b 52       		.byte	0x52
+ 516 002c 10000000 		.4byte	.LVL3
+ 517 0030 18000000 		.4byte	.LFE0
+ 518 0034 0100     		.2byte	0x1
+ 519 0036 50       		.byte	0x50
+ 520 0037 00000000 		.4byte	0
+ 521 003b 00000000 		.4byte	0
+ 522              	.LLST2:
+ 523 003f 00000000 		.4byte	.LVL4
+ 524 0043 0A000000 		.4byte	.LVL5
+ 525 0047 0100     		.2byte	0x1
+ 526 0049 50       		.byte	0x50
+ 527 004a 0A000000 		.4byte	.LVL5
+ 528 004e 18000000 		.4byte	.LFE1
+ 529 0052 0400     		.2byte	0x4
+ 530 0054 F3       		.byte	0xf3
+ 531 0055 01       		.uleb128 0x1
+ 532 0056 50       		.byte	0x50
+ 533 0057 9F       		.byte	0x9f
+ 534 0058 00000000 		.4byte	0
+ 535 005c 00000000 		.4byte	0
+ 536              	.LLST3:
+ 537 0060 08000000 		.4byte	.LVL6
+ 538 0064 0C000000 		.4byte	.LVL7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 13
+
+
+ 539 0068 0100     		.2byte	0x1
+ 540 006a 50       		.byte	0x50
+ 541 006b 0C000000 		.4byte	.LVL7
+ 542 006f 14000000 		.4byte	.LFE4
+ 543 0073 0400     		.2byte	0x4
+ 544 0075 72       		.byte	0x72
+ 545 0076 00       		.sleb128 0
+ 546 0077 06       		.byte	0x6
+ 547 0078 9F       		.byte	0x9f
+ 548 0079 00000000 		.4byte	0
+ 549 007d 00000000 		.4byte	0
+ 550              		.section	.debug_aranges,"",%progbits
+ 551 0000 3C000000 		.4byte	0x3c
+ 552 0004 0200     		.2byte	0x2
+ 553 0006 00000000 		.4byte	.Ldebug_info0
+ 554 000a 04       		.byte	0x4
+ 555 000b 00       		.byte	0
+ 556 000c 0000     		.2byte	0
+ 557 000e 0000     		.2byte	0
+ 558 0010 00000000 		.4byte	.LFB0
+ 559 0014 18000000 		.4byte	.LFE0-.LFB0
+ 560 0018 00000000 		.4byte	.LFB1
+ 561 001c 18000000 		.4byte	.LFE1-.LFB1
+ 562 0020 00000000 		.4byte	.LFB2
+ 563 0024 10000000 		.4byte	.LFE2-.LFB2
+ 564 0028 00000000 		.4byte	.LFB3
+ 565 002c 10000000 		.4byte	.LFE3-.LFB3
+ 566 0030 00000000 		.4byte	.LFB4
+ 567 0034 14000000 		.4byte	.LFE4-.LFB4
+ 568 0038 00000000 		.4byte	0
+ 569 003c 00000000 		.4byte	0
+ 570              		.section	.debug_ranges,"",%progbits
+ 571              	.Ldebug_ranges0:
+ 572 0000 00000000 		.4byte	.LFB0
+ 573 0004 18000000 		.4byte	.LFE0
+ 574 0008 00000000 		.4byte	.LFB1
+ 575 000c 18000000 		.4byte	.LFE1
+ 576 0010 00000000 		.4byte	.LFB2
+ 577 0014 10000000 		.4byte	.LFE2
+ 578 0018 00000000 		.4byte	.LFB3
+ 579 001c 10000000 		.4byte	.LFE3
+ 580 0020 00000000 		.4byte	.LFB4
+ 581 0024 14000000 		.4byte	.LFE4
+ 582 0028 00000000 		.4byte	0
+ 583 002c 00000000 		.4byte	0
+ 584              		.section	.debug_line,"",%progbits
+ 585              	.Ldebug_line0:
+ 586 0000 AF000000 		.section	.debug_str,"MS",%progbits,1
+ 586      02004C00 
+ 586      00000201 
+ 586      FB0E0D00 
+ 586      01010101 
+ 587              	.LASF14:
+ 588 0000 72656733 		.ascii	"reg32\000"
+ 588      3200
+ 589              	.LASF17:
+ 590 0006 76616C75 		.ascii	"value\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 14
+
+
+ 590      6500
+ 591              	.LASF12:
+ 592 000c 646F7562 		.ascii	"double\000"
+ 592      6C6500
+ 593              	.LASF11:
+ 594 0013 666C6F61 		.ascii	"float\000"
+ 594      7400
+ 595              	.LASF16:
+ 596 0019 53555050 		.ascii	"SUPPLY_ENABLE_SetDriveMode\000"
+ 596      4C595F45 
+ 596      4E41424C 
+ 596      455F5365 
+ 596      74447269 
+ 597              	.LASF1:
+ 598 0034 756E7369 		.ascii	"unsigned char\000"
+ 598      676E6564 
+ 598      20636861 
+ 598      7200
+ 599              	.LASF22:
+ 600 0042 64725661 		.ascii	"drVal\000"
+ 600      6C00
+ 601              	.LASF26:
+ 602 0048 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 602      73657273 
+ 602      5C537069 
+ 602      74666972 
+ 602      65353434 
+ 603 0076 6C616220 		.ascii	"lab Technologies Inc\\Consultation\\YABtronix\\Auto"
+ 603      54656368 
+ 603      6E6F6C6F 
+ 603      67696573 
+ 603      20496E63 
+ 604 00a6 20536875 		.ascii	" Shut-OFF\\Auto Shut-OFF_SOIC16.cydsn\000"
+ 604      742D4F46 
+ 604      465C4175 
+ 604      746F2053 
+ 604      6875742D 
+ 605              	.LASF3:
+ 606 00cb 73686F72 		.ascii	"short unsigned int\000"
+ 606      7420756E 
+ 606      7369676E 
+ 606      65642069 
+ 606      6E7400
+ 607              	.LASF15:
+ 608 00de 53555050 		.ascii	"SUPPLY_ENABLE_Write\000"
+ 608      4C595F45 
+ 608      4E41424C 
+ 608      455F5772 
+ 608      69746500 
+ 609              	.LASF5:
+ 610 00f2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 610      20756E73 
+ 610      69676E65 
+ 610      6420696E 
+ 610      7400
+ 611              	.LASF10:
+ 612 0104 75696E74 		.ascii	"uint32\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 15
+
+
+ 612      333200
+ 613              	.LASF8:
+ 614 010b 756E7369 		.ascii	"unsigned int\000"
+ 614      676E6564 
+ 614      20696E74 
+ 614      00
+ 615              	.LASF21:
+ 616 0118 53555050 		.ascii	"SUPPLY_ENABLE_ClearInterrupt\000"
+ 616      4C595F45 
+ 616      4E41424C 
+ 616      455F436C 
+ 616      65617249 
+ 617              	.LASF7:
+ 618 0135 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 618      206C6F6E 
+ 618      6720756E 
+ 618      7369676E 
+ 618      65642069 
+ 619              	.LASF18:
+ 620 014c 6D6F6465 		.ascii	"mode\000"
+ 620      00
+ 621              	.LASF19:
+ 622 0151 53555050 		.ascii	"SUPPLY_ENABLE_Read\000"
+ 622      4C595F45 
+ 622      4E41424C 
+ 622      455F5265 
+ 622      616400
+ 623              	.LASF6:
+ 624 0164 6C6F6E67 		.ascii	"long long int\000"
+ 624      206C6F6E 
+ 624      6720696E 
+ 624      7400
+ 625              	.LASF23:
+ 626 0172 6D61736B 		.ascii	"maskedStatus\000"
+ 626      65645374 
+ 626      61747573 
+ 626      00
+ 627              	.LASF13:
+ 628 017f 63686172 		.ascii	"char\000"
+ 628      00
+ 629              	.LASF20:
+ 630 0184 53555050 		.ascii	"SUPPLY_ENABLE_ReadDataReg\000"
+ 630      4C595F45 
+ 630      4E41424C 
+ 630      455F5265 
+ 630      61644461 
+ 631              	.LASF24:
+ 632 019e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 632      4320342E 
+ 632      392E3320 
+ 632      32303135 
+ 632      30333033 
+ 633 01d1 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 633      20726576 
+ 633      6973696F 
+ 633      6E203232 
+ 633      31323230 
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 16
+
+
+ 634 0204 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 634      66756E63 
+ 634      74696F6E 
+ 634      2D736563 
+ 634      74696F6E 
+ 635              	.LASF2:
+ 636 022c 73686F72 		.ascii	"short int\000"
+ 636      7420696E 
+ 636      7400
+ 637              	.LASF9:
+ 638 0236 75696E74 		.ascii	"uint8\000"
+ 638      3800
+ 639              	.LASF4:
+ 640 023c 6C6F6E67 		.ascii	"long int\000"
+ 640      20696E74 
+ 640      00
+ 641              	.LASF25:
+ 642 0245 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\SUPPLY_ENABLE.c\000"
+ 642      6E657261 
+ 642      7465645F 
+ 642      536F7572 
+ 642      63655C50 
+ 643              	.LASF0:
+ 644 026e 7369676E 		.ascii	"signed char\000"
+ 644      65642063 
+ 644      68617200 
+ 645              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,25 @@
+net ClockBlock_HFCLK
+	term   ":m0s8clockblockcell.hfclk"
+	switch ":m0s8clockblockcell.hfclk==>:interrupt_8.clock"
+	term   ":interrupt_8.clock"
+	switch ":m0s8clockblockcell.hfclk==>:interrupt_0.clock"
+	term   ":interrupt_0.clock"
+end ClockBlock_HFCLK
+net Net_11
+	term   ":m0s8tcpwmcell.interrupt"
+	switch ":m0s8tcpwmcell.interrupt==>:interrupt_idmux_8.in_0"
+	switch ":interrupt_idmux_8.interrupt_idmux_8__out==>:interrupt_8.interrupt"
+	term   ":interrupt_8.interrupt"
+end Net_11
+net Net_15
+	term   ":m0s8tcpwmcell.line_out"
+	switch ":m0s8tcpwmcell.line_out==>:ioport1:hsiom_out1.fixed_ACT_1"
+	switch ":ioport1:hsiom_out1.hsiom1_out==>:ioport1:pin1.pin_input"
+	term   ":ioport1:pin1.pin_input"
+end Net_15
+net Net_95
+	term   ":logicalport_0.interrupt"
+	switch ":logicalport_0.interrupt==>:interrupt_idmux_0.in_0"
+	switch ":interrupt_idmux_0.interrupt_idmux_0__out==>:interrupt_0.interrupt"
+	term   ":interrupt_0.interrupt"
+end Net_95
