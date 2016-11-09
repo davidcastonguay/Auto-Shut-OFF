@@ -13,6 +13,7 @@
 /* All includes, defines and global variables are declared in main.h */
 #include "main.h"
 #include <stdio.h>
+#include <math.h>
 
 /* I2C slave read and write buffers */
 uint8 i2cReadBuffer [BUFFER_SIZE] = {PACKET_SOP, STS_CMD_FAIL, STS_CMD_FAIL, PACKET_EOP};
@@ -322,5 +323,70 @@ uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam )
     return (status);
 }
 
+
+/*******************************************************************************
+* Function Name: ExecuteI2CCommand
+********************************************************************************
+* Summary:
+*  Reads the time bits to calculate the delay before shut-off.
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  Returns the hex value of the time bits inputs with mode input as MSB
+*
+*******************************************************************************/
+uint8 GetTimeBitsValue( void )
+{
+    uint8 lTime = 0;
+   
+    if( Time_Bit_0_Read() == 1 )
+    {
+        lTime += pow( 2 , 0 );
+    }
+    else
+    {
+        lTime += 0;
+    }
+    
+    if( Time_Bit_1_Read() == 1 )
+    {
+        lTime += pow( 2 , 1 );
+    }
+    else
+    {
+        lTime += 0;
+    }
+    
+    if( Time_Bit_2_Read() == 1 )
+    {
+        lTime += pow( 2 , 2 );
+    }
+    else
+    {
+        lTime += 0;
+    }
+    
+    if( Time_Bit_3_Read() == 1 )
+    {
+        lTime += pow( 2 , 3 );
+    }
+    else
+    {
+        lTime += 0;
+    }
+    
+    if( Mode_Read() == 1 )
+    {
+        lTime += pow( 2 , 4 );
+    }
+    else
+    {
+        lTime += 0;
+    }
+    
+    return lTime;
+}
 
 /* [] END OF FILE */

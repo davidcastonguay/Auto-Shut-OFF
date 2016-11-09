@@ -80,5 +80,6 @@ uint8   I2C_Status;
 CY_ISR_PROTO(PWM_isr);
 CY_ISR_PROTO(Push_Button_isr);
 uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam );
+uint8 GetTimeBitsValue( void );
 
 /* [] END OF FILE */
