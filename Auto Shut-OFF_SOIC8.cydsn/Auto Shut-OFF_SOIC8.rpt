@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.260ms
+Loading plugins phase: Elapsed time ==> 0s.305ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -d CY8C4013SXI-400 -s C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -d CY8C4013SXI-400 -s C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.490ms
+Elaboration phase: Elapsed time ==> 1s.290ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.032ms
+HDL generation phase: Elapsed time ==> 0s.035ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.032ms
 ======================================================================
 Compiling:  Auto Shut-OFF_SOIC8.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 Auto Shut-OFF_SOIC8.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 Auto Shut-OFF_SOIC8.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Auto Shut-OFF_SOIC8.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 Auto Shut-OFF_SOIC8.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 Auto Shut-OFF_SOIC8.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  Auto Shut-OFF_SOIC8.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Nov 08 11:01:50 2016
+Thu Nov 17 11:29:51 2016
 
 
 ======================================================================
@@ -51,11 +51,9 @@ Options  :    -yv2 -q10 Auto Shut-OFF_SOIC8.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Nov 08 11:01:50 2016
+Thu Nov 17 11:29:51 2016
 
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
 
 vpp:  No errors.
 
@@ -79,11 +77,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  Auto Shut-OFF_SOIC8.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Nov 08 11:01:50 2016
+Thu Nov 17 11:29:51 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -94,11 +92,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.ctl'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.v'.
+Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.v'.
 
 tovif:  No errors.
 
@@ -106,11 +102,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  Auto Shut-OFF_SOIC8.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -dcpsoc3 -verilog Auto Shut-OFF_SOIC8.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Nov 08 11:01:50 2016
+Thu Nov 17 11:29:51 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -121,76 +117,42 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.ctl'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.v'.
+Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\codegentemp\Auto Shut-OFF_SOIC8.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\cpsoc3.vif'.
 
 ----------------------------------------------------------
 Detecting unused logic.
 ----------------------------------------------------------
-    User names
-	\I2C:Net_1257\
-	\I2C:uncfg_rx_irq\
-	\I2C:Net_1099\
-	\I2C:Net_1258\
-	\I2C:Net_547\
-	\I2C:Net_891\
-	\I2C:Net_1001\
-	\I2C:Net_899\
 
 
-Deleted 8 User equations/components.
-Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
 Alias Detection
 ------------------------------------------------------
-Aliasing \I2C:Net_452\ to \I2C:Net_459\
-Aliasing \I2C:Net_1194\ to \I2C:Net_459\
-Aliasing \I2C:Net_1195\ to \I2C:Net_459\
-Aliasing \I2C:Net_1196\ to \I2C:Net_459\
-Aliasing zero to \I2C:Net_459\
-Aliasing one to \I2C:tmpOE__sda_net_0\
-Aliasing \I2C:tmpOE__scl_net_0\ to \I2C:tmpOE__sda_net_0\
-Aliasing \I2C:Net_747\ to \I2C:Net_459\
-Aliasing tmpOE__PUSH_BUTTON_INPUT_net_0 to \I2C:tmpOE__sda_net_0\
-Aliasing tmpOE__SUPPLY_ENABLE_net_0 to \I2C:tmpOE__sda_net_0\
-Aliasing \PWM:Net_75\ to \I2C:Net_459\
-Aliasing \PWM:Net_69\ to \I2C:tmpOE__sda_net_0\
-Aliasing \PWM:Net_66\ to \I2C:Net_459\
-Aliasing \PWM:Net_82\ to \I2C:Net_459\
-Aliasing \PWM:Net_72\ to \I2C:Net_459\
-Aliasing tmpOE__PWM_OUTPUT_net_0 to \I2C:tmpOE__sda_net_0\
-Removing Lhs of wire \I2C:Net_652\[3] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_452\[4] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_1194\[5] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_1195\[6] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_1196\[7] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_654\[8] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_1170\[11] = \I2C:Net_847\[1]
-Removing Lhs of wire \I2C:Net_990\[12] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_909\[13] = \I2C:Net_459\[2]
-Removing Lhs of wire \I2C:Net_663\[14] = \I2C:Net_459\[2]
-Removing Rhs of wire zero[17] = \I2C:Net_459\[2]
-Removing Rhs of wire one[21] = \I2C:tmpOE__sda_net_0\[16]
-Removing Lhs of wire \I2C:tmpOE__scl_net_0\[24] = one[21]
-Removing Lhs of wire \I2C:Net_1175\[33] = zero[17]
-Removing Lhs of wire \I2C:Net_747\[34] = zero[17]
-Removing Lhs of wire tmpOE__PUSH_BUTTON_INPUT_net_0[57] = one[21]
-Removing Lhs of wire tmpOE__SUPPLY_ENABLE_net_0[63] = one[21]
-Removing Lhs of wire \PWM:Net_81\[69] = Net_17[81]
-Removing Lhs of wire \PWM:Net_75\[70] = zero[17]
-Removing Lhs of wire \PWM:Net_69\[71] = one[21]
-Removing Lhs of wire \PWM:Net_66\[72] = zero[17]
-Removing Lhs of wire \PWM:Net_82\[73] = zero[17]
-Removing Lhs of wire \PWM:Net_72\[74] = zero[17]
-Removing Lhs of wire tmpOE__PWM_OUTPUT_net_0[83] = one[21]
+Aliasing one to tmpOE__PUSH_BUTTON_INPUT_net_0
+Aliasing tmpOE__SUPPLY_ENABLE_net_0 to tmpOE__PUSH_BUTTON_INPUT_net_0
+Aliasing \PWM:Net_75\ to zero
+Aliasing \PWM:Net_69\ to tmpOE__PUSH_BUTTON_INPUT_net_0
+Aliasing \PWM:Net_66\ to zero
+Aliasing \PWM:Net_82\ to zero
+Aliasing \PWM:Net_72\ to zero
+Aliasing tmpOE__PWM_OUTPUT_net_0 to tmpOE__PUSH_BUTTON_INPUT_net_0
+Aliasing \SW_Tx_UART:tmpOE__tx_net_0\ to tmpOE__PUSH_BUTTON_INPUT_net_0
+Removing Lhs of wire one[6] = tmpOE__PUSH_BUTTON_INPUT_net_0[1]
+Removing Lhs of wire tmpOE__SUPPLY_ENABLE_net_0[9] = tmpOE__PUSH_BUTTON_INPUT_net_0[1]
+Removing Lhs of wire \PWM:Net_81\[15] = Net_17[27]
+Removing Lhs of wire \PWM:Net_75\[16] = zero[2]
+Removing Lhs of wire \PWM:Net_69\[17] = tmpOE__PUSH_BUTTON_INPUT_net_0[1]
+Removing Lhs of wire \PWM:Net_66\[18] = zero[2]
+Removing Lhs of wire \PWM:Net_82\[19] = zero[2]
+Removing Lhs of wire \PWM:Net_72\[20] = zero[2]
+Removing Lhs of wire tmpOE__PWM_OUTPUT_net_0[29] = tmpOE__PUSH_BUTTON_INPUT_net_0[1]
+Removing Lhs of wire \SW_Tx_UART:tmpOE__tx_net_0\[37] = tmpOE__PUSH_BUTTON_INPUT_net_0[1]
 
 ------------------------------------------------------
-Aliased 0 equations, 24 wires.
+Aliased 0 equations, 10 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -212,16 +174,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj" -dcpsoc3 "Auto Shut-OFF_SOIC8.v" -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj" -dcpsoc3 "Auto Shut-OFF_SOIC8.v" -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.320ms
+Warp synthesis phase: Elapsed time ==> 0s.327ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Tuesday, 08 November 2016 11:01:50
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -d CY8C4013SXI-400 Auto Shut-OFF_SOIC8.v -verilog
+cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Thursday, 17 November 2016 11:29:51
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj -d CY8C4013SXI-400 Auto Shut-OFF_SOIC8.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.009ms
+Design parsing phase: Elapsed time ==> 0s.008ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -230,13 +192,11 @@ Removing unused cells resulting from optimization
 Done removing unused cells.
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Fixed Function Clock 3: Automatic-assigning  clock 'PWM_CLOCK'. Signal=Net_17_ff3
-    Fixed Function Clock 0: Automatic-assigning  clock 'I2C_SCBCLK'. Signal=\I2C:Net_847_ff0\
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
 </CYPRESSTAG>
 </CYPRESSTAG>
+ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: \SW_Tx_UART:tx(0)\
 
-Removing unused cells resulting from optimization
-Done removing unused cells.
 <CYPRESSTAG name="Duplicate Macrocell detection">
 </CYPRESSTAG>
 </CYPRESSTAG>
@@ -252,86 +212,6 @@ Design Equations
     ------------------------------------------------------------
     Pin listing
     ------------------------------------------------------------
-
-    Pin : Name = \I2C:sda(0)\
-        Attributes:
-            In Group/Port: True
-            In Sync Option: NOSYNC
-            Out Sync Option: NOSYNC
-            Interrupt generated: False
-            Interrupt mode: NONE
-            Drive mode: OPEN_DRAIN_LO
-            VTrip: CMOS
-            Slew: FAST
-            Input Sync needed: False
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: True
-            Is OE Registered: False
-            Uses Analog: False
-            Can contain Digital: True
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO Multiplier Index: 0
-            SIO RefSel: VCC_IO
-            Required Capabilitites: DIGITAL
-            Initial Value: 1
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => \I2C:sda(0)\__PA ,
-            fb => \I2C:Net_581\ ,
-            pad => \I2C:sda(0)_PAD\ );
-        Properties:
-        {
-        }
-
-    Pin : Name = \I2C:scl(0)\
-        Attributes:
-            In Group/Port: True
-            In Sync Option: NOSYNC
-            Out Sync Option: NOSYNC
-            Interrupt generated: False
-            Interrupt mode: NONE
-            Drive mode: OPEN_DRAIN_LO
-            VTrip: CMOS
-            Slew: FAST
-            Input Sync needed: False
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: True
-            Is OE Registered: False
-            Uses Analog: False
-            Can contain Digital: True
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO Multiplier Index: 0
-            SIO RefSel: VCC_IO
-            Required Capabilitites: DIGITAL
-            Initial Value: 1
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => \I2C:scl(0)\__PA ,
-            fb => \I2C:Net_580\ ,
-            pad => \I2C:scl(0)_PAD\ );
-        Properties:
-        {
-        }
 
     Pin : Name = PUSH_BUTTON_INPUT(0)
         Attributes:
@@ -450,6 +330,42 @@ Design Equations
         Properties:
         {
         }
+
+    Pin : Name = \SW_Tx_UART:tx(0)\
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: CMOS_OUT
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => \SW_Tx_UART:tx(0)\__PA ,
+            pad => \SW_Tx_UART:tx(0)_PAD\ );
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
     </CYPRESSTAG>
@@ -472,14 +388,6 @@ Design Equations
     ------------------------------------------------------------
     Interrupt listing
     ------------------------------------------------------------
-
-    interrupt: Name =\I2C:SCB_IRQ\
-        PORT MAP (
-            interrupt => Net_1 );
-        Properties:
-        {
-            int_type = "10"
-        }
 
     interrupt: Name =PWM_isr
         PORT MAP (
@@ -506,23 +414,23 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Interrupts                    :    3 :    6 :    9 : 33.33 %
-IO                            :    5 :    0 :    5 : 100.00 %
-Serial Communication (SCB)    :    1 :    0 :    1 : 100.00 %
+Interrupts                    :    2 :    7 :    9 : 22.22 %
+IO                            :    4 :    1 :    5 : 80.00 %
+Serial Communication (SCB)    :    0 :    1 :    1 :  0.00 %
 Timer/Counter/PWM             :    1 :    0 :    1 : 100.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.006ms
-Tech mapping phase: Elapsed time ==> 0s.013ms
+Technology Mapping: Elapsed time ==> 0s.007ms
+Tech mapping phase: Elapsed time ==> 0s.014ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 <CYPRESSTAG name="Analog Placement">
-Elapsed time ==> 0.0067214s
+Elapsed time ==> 0.0072995s
 </CYPRESSTAG>
-Analog Placement phase: Elapsed time ==> 0s.037ms
+Analog Placement phase: Elapsed time ==> 0s.038ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 <CYPRESSTAG name="Analog Routing">
-Route success=True, Iterations=1 Elapsed=0.0006644 secs
+Route success=True, Iterations=1 Elapsed=0.0008873 secs
 </CYPRESSTAG>
 Analog Routing phase: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
@@ -535,7 +443,7 @@ Map of item to net {
 }
 Mux Info {
 }
-Analog Code Generation phase: Elapsed time ==> 0s.011ms
+Analog Code Generation phase: Elapsed time ==> 0s.014ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -559,7 +467,7 @@ Partitioning: Elapsed time ==> 0s.008ms
 Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 4, final cost is 4 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 3, final cost is 3 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -585,14 +493,6 @@ Intr container @ [IntrContainer=(0)]:
         {
             int_type = "10"
         }
-  Intr@ [IntrContainer=(0)][IntrId=(5)] 
-    interrupt: Name =\I2C:SCB_IRQ\
-        PORT MAP (
-            interrupt => Net_1 );
-        Properties:
-        {
-            int_type = "10"
-        }
   Intr@ [IntrContainer=(0)][IntrId=(8)] 
     interrupt: Name =PWM_isr
         PORT MAP (
@@ -604,9 +504,9 @@ Intr container @ [IntrContainer=(0)]:
 Port 0 generates interrupt for logical port:
     logicalport: Name =PUSH_BUTTON_INPUT
         PORT MAP (
-            in_clock_en => one ,
+            in_clock_en => tmpOE__PUSH_BUTTON_INPUT_net_0 ,
             in_reset => zero ,
-            out_clock_en => one ,
+            out_clock_en => tmpOE__PUSH_BUTTON_INPUT_net_0 ,
             out_reset => zero ,
             interrupt => Net_95 );
         Properties:
@@ -792,15 +692,15 @@ Pin : Name = SUPPLY_ENABLE(0)
 
 Port 3 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = \I2C:sda(0)\
+Pin : Name = \SW_Tx_UART:tx(0)\
     Attributes:
         In Group/Port: True
-        In Sync Option: NOSYNC
+        In Sync Option: AUTO
         Out Sync Option: NOSYNC
         Interrupt generated: False
         Interrupt mode: NONE
-        Drive mode: OPEN_DRAIN_LO
-        VTrip: CMOS
+        Drive mode: CMOS_OUT
+        VTrip: EITHER
         Slew: FAST
         Input Sync needed: False
         Output Sync needed: False
@@ -825,50 +725,8 @@ Pin : Name = \I2C:sda(0)\
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => \I2C:sda(0)\__PA ,
-        fb => \I2C:Net_581\ ,
-        pad => \I2C:sda(0)_PAD\ );
-    Properties:
-    {
-    }
-
-[IoId=1]: 
-Pin : Name = \I2C:scl(0)\
-    Attributes:
-        In Group/Port: True
-        In Sync Option: NOSYNC
-        Out Sync Option: NOSYNC
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: OPEN_DRAIN_LO
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL
-        Initial Value: 1
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => \I2C:scl(0)\__PA ,
-        fb => \I2C:Net_580\ ,
-        pad => \I2C:scl(0)_PAD\ );
+        pa_out => \SW_Tx_UART:tx(0)\__PA ,
+        pad => \SW_Tx_UART:tx(0)_PAD\ );
     Properties:
     {
     }
@@ -883,44 +741,20 @@ Clock group 0:
             sysclk => ClockBlock_SYSCLK ,
             ilo => ClockBlock_ILO ,
             lfclk => ClockBlock_LFCLK ,
-            ff_div_3 => Net_17_ff3 ,
-            ff_div_0 => \I2C:Net_847_ff0\ );
+            ff_div_3 => Net_17_ff3 );
         Properties:
         {
         }
 SPC group 0: empty
 WDT group 0: empty
-Serial Communication (SCB) group 0: 
-    SCB Block @ F(SCB,0): 
-    m0s8scbcell: Name =\I2C:SCB\
-        PORT MAP (
-            clock => \I2C:Net_847_ff0\ ,
-            interrupt => Net_1 ,
-            tx => \I2C:Net_1062\ ,
-            rts => \I2C:Net_1053\ ,
-            mosi_m => \I2C:Net_1061\ ,
-            select_m_3 => \I2C:ss_3\ ,
-            select_m_2 => \I2C:ss_2\ ,
-            select_m_1 => \I2C:ss_1\ ,
-            select_m_0 => \I2C:ss_0\ ,
-            sclk_m => \I2C:Net_1059\ ,
-            miso_s => \I2C:Net_1055\ ,
-            scl => \I2C:Net_580\ ,
-            sda => \I2C:Net_581\ ,
-            tx_req => Net_4 ,
-            rx_req => Net_3 );
-        Properties:
-        {
-            cy_registers = ""
-            scb_mode = 0
-        }
+Serial Communication (SCB) group 0: empty
 Timer/Counter/PWM group 0: 
     Tcpwm Block @ F(TCPWM,0): 
     m0s8tcpwmcell: Name =\PWM:cy_m0s8_tcpwm_1\
         PORT MAP (
             clock => Net_17_ff3 ,
             capture => zero ,
-            count => one ,
+            count => tmpOE__PUSH_BUTTON_INPUT_net_0 ,
             reload => zero ,
             stop => zero ,
             start => zero ,
@@ -951,28 +785,27 @@ Port Configuration report
 ------------------------------------------------------------
      |     |       | Interrupt |                  |                      | 
 Port | Pin | Fixed |      Type |       Drive Mode |                 Name | Connections
------+-----+-------+-----------+------------------+----------------------+------------------
+-----+-----+-------+-----------+------------------+----------------------+------------
    0 |   4 |     * |    RISING |    RES_PULL_DOWN | PUSH_BUTTON_INPUT(0) | 
------+-----+-------+-----------+------------------+----------------------+------------------
+-----+-----+-------+-----------+------------------+----------------------+------------
    1 |   1 |     * |      NONE |         CMOS_OUT |        PWM_OUTPUT(0) | In(Net_15)
      |   6 |     * |      NONE |         CMOS_OUT |     SUPPLY_ENABLE(0) | 
------+-----+-------+-----------+------------------+----------------------+------------------
-   3 |   0 |     * |      NONE |    OPEN_DRAIN_LO |         \I2C:sda(0)\ | FB(\I2C:Net_581\)
-     |   1 |     * |      NONE |    OPEN_DRAIN_LO |         \I2C:scl(0)\ | FB(\I2C:Net_580\)
---------------------------------------------------------------------------------------------
+-----+-----+-------+-----------+------------------+----------------------+------------
+   3 |   0 |       |      NONE |         CMOS_OUT |   \SW_Tx_UART:tx(0)\ | 
+--------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 0s.123ms
+Digital Placement phase: Elapsed time ==> 0s.141ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Info: pft.M0077: There is no timing information available for the selected device. Static timing checks will not be applied and digital routing will not be timing-driven. (App=cydsfit)
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.084ms
+Digital Routing phase: Elapsed time ==> 0s.082ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.058ms
+Bitstream and API generation phase: Elapsed time ==> 0s.065ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
 Bitstream verification phase: Elapsed time ==> 0s.002ms
@@ -985,11 +818,11 @@ Static timing analysis phase: Elapsed time ==> 0s.002ms
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.108ms
+Design database save phase: Elapsed time ==> 0s.126ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 0s.463ms
+cydsfit: Elapsed time ==> 0s.508ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 0s.494ms
-API generation phase: Elapsed time ==> 0s.756ms
-Dependency generation phase: Elapsed time ==> 0s.007ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 0s.538ms
+API generation phase: Elapsed time ==> 0s.424ms
+Dependency generation phase: Elapsed time ==> 0s.019ms
+Cleanup phase: Elapsed time ==> 0s.000ms

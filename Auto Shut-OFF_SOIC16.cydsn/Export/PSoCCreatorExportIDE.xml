@@ -34,11 +34,15 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC4\Cm0Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
+      <Folder BuildType="BUILD" Path="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Common">
+        <Files Root="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn">
+          <File BuildType="BUILD" Toolchain="">..\Common\main.c</File>
+          <File BuildType="BUILD" Toolchain="">..\Common\main.h</File>
+        </Files>
+      </Folder>
       <Folder BuildType="BUILD" Path="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn">
         <Files Root="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn">
-          <File BuildType="BUILD" Toolchain="">.\main.c</File>
           <File BuildType="BUILD" Toolchain="">.\cyapicallbacks.h</File>
-          <File BuildType="BUILD" Toolchain="">.\main.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Generated_Source\PSoC4">

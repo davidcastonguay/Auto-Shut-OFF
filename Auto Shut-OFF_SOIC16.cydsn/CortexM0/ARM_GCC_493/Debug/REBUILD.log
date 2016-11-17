@@ -1,5 +1,41 @@
---------------- Rebuild Started: 11/08/2016 11:01:32 Project: Auto Shut-OFF_SOIC16, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
-cydsfit.exe -.appdatapath "C:\Users\Spitfire54444444\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Auto Shut-OFF_SOIC16.cyprj" -d CY8C4014SXI-411 -s "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Generated_Source\PSoC4" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+--------------- Rebuild Started: 11/17/2016 11:28:51 Project: Auto Shut-OFF_SOIC16, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\main.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\cymetadata.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PUSH_BUTTON_INPUT.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\SUPPLY_ENABLE.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PWM.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PWM_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PWM_OUTPUT.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PWM_CLOCK.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\PWM_isr.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\SW_Tx_UART_AsmGnu.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\SW_Tx_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Push_Button_isr.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Mode.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\B.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\G.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\R.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Time_Bit_0.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Time_Bit_1.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Time_Bit_2.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Time_Bit_3.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Cm0Start.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\CyBootAsmGnu.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\CyFlash.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\CyLib.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\cyPm.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\cyutils.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\CyLFClk.o"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.hex"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.map"
+Deleting file ".\Auto Shut-OFF_SOIC16.cycdx"
+Deleting file ".\Auto Shut-OFF_SOIC16.rpt"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\.deps\C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\.deps\ARM_C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_493\Debug\.deps\GNU_ARM_ASM_FILE.P"
+cydsfit.exe -.appdatapath "C:\Users\Spitfire54444444\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Auto Shut-OFF_SOIC16.cyprj" -d CY8C4014SXI-411 -s "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Generated_Source\PSoC4" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 HDL Generation ...
 Synthesis ...
@@ -16,7 +52,7 @@ Static timing analysis ...
 API Generation ...
 Dependency Generation ...
 Clean Temporary Files ...
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\main.c -o .\CortexM0\ARM_GCC_493\Debug\main.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c ..\Common\main.c -o .\CortexM0\ARM_GCC_493\Debug\main.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_493\Debug/cyfitter_cfg.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC4\cyfitter_cfg.c -o .\CortexM0\ARM_GCC_493\Debug\cyfitter_cfg.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_493\Debug/cymetadata.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC4\cymetadata.c -o .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_493\Debug/PUSH_BUTTON_INPUT.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\Generated_Source\PSoC4\PUSH_BUTTON_INPUT.c -o .\CortexM0\ARM_GCC_493\Debug\PUSH_BUTTON_INPUT.o
@@ -47,8 +83,8 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\P
 arm-none-eabi-ar.exe -rs ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a" .\CortexM0\ARM_GCC_493\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_493\Debug\PUSH_BUTTON_INPUT.o .\CortexM0\ARM_GCC_493\Debug\SUPPLY_ENABLE.o .\CortexM0\ARM_GCC_493\Debug\PWM.o .\CortexM0\ARM_GCC_493\Debug\PWM_PM.o .\CortexM0\ARM_GCC_493\Debug\PWM_OUTPUT.o .\CortexM0\ARM_GCC_493\Debug\PWM_CLOCK.o .\CortexM0\ARM_GCC_493\Debug\PWM_isr.o .\CortexM0\ARM_GCC_493\Debug\SW_Tx_UART_AsmGnu.o .\CortexM0\ARM_GCC_493\Debug\SW_Tx_UART.o .\CortexM0\ARM_GCC_493\Debug\Push_Button_isr.o .\CortexM0\ARM_GCC_493\Debug\Mode.o .\CortexM0\ARM_GCC_493\Debug\B.o .\CortexM0\ARM_GCC_493\Debug\G.o .\CortexM0\ARM_GCC_493\Debug\R.o .\CortexM0\ARM_GCC_493\Debug\Time_Bit_0.o .\CortexM0\ARM_GCC_493\Debug\Time_Bit_1.o .\CortexM0\ARM_GCC_493\Debug\Time_Bit_2.o .\CortexM0\ARM_GCC_493\Debug\Time_Bit_3.o .\CortexM0\ARM_GCC_493\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_493\Debug\CyFlash.o .\CortexM0\ARM_GCC_493\Debug\CyLib.o .\CortexM0\ARM_GCC_493\Debug\cyPm.o .\CortexM0\ARM_GCC_493\Debug\cyutils.o .\CortexM0\ARM_GCC_493\Debug\CyLFClk.o
 arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf" .\CortexM0\ARM_GCC_493\Debug\main.o .\CortexM0\ARM_GCC_493\Debug\cymetadata.o .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o ".\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a" "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m0 -mthumb -g -ffunction-sections -Og -ffat-lto-objects -L Generated_Source\PSoC4 "-Wl,-Map,.\CortexM0\ARM_GCC_493\Debug/Auto Shut-OFF_SOIC16.map" -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
-cyelftool.exe -C "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf" --flash_row_size 64 --flash_size 16384
-cyelftool.exe -S "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\Consultation\YABtronix\Auto Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf"
-Flash used: 1728 of 16384 bytes (10,5 %).
-SRAM used: 856 of 2048 bytes (41,8 %). Stack: 512 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 11/08/2016 11:01:46 ---------------
+cyelftool.exe -C "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf" --flash_row_size 64 --flash_size 16384
+cyelftool.exe -S "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf"
+Flash used: 2560 of 16384 bytes (15,6 %).
+SRAM used: 872 of 2048 bytes (42,6 %). Stack: 512 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 11/17/2016 11:29:01 ---------------

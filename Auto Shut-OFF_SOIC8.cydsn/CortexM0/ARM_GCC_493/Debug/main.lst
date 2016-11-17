@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -25,282 +25,287 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 1
   22              		.type	PWM_isr, %function
   23              	PWM_isr:
   24              	.LFB35:
-  25              		.file 1 ".\\main.c"
-   1:.\main.c      **** /* ========================================
-   2:.\main.c      ****  *
-   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
-   4:.\main.c      ****  * All Rights Reserved
-   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
-   6:.\main.c      ****  *
-   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
-   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
-   9:.\main.c      ****  *
-  10:.\main.c      ****  * ========================================
-  11:.\main.c      **** */
-  12:.\main.c      **** 
-  13:.\main.c      **** /* All includes, defines and global variables are declared in main.h */
-  14:.\main.c      **** #include "main.h"
-  15:.\main.c      **** #include <stdio.h>
-  16:.\main.c      **** 
-  17:.\main.c      **** /* I2C slave read and write buffers */
-  18:.\main.c      **** uint8 i2cReadBuffer [BUFFER_SIZE] = {PACKET_SOP, STS_CMD_FAIL, STS_CMD_FAIL, PACKET_EOP};
-  19:.\main.c      **** uint8 i2cWriteBuffer[BUFFER_SIZE];
-  20:.\main.c      **** 
-  21:.\main.c      **** int main()
-  22:.\main.c      **** {
-  23:.\main.c      ****     /* Enabling global interrupts */
-  24:.\main.c      ****     CyGlobalIntEnable;
-  25:.\main.c      ****     
-  26:.\main.c      ****     /* Starting all devices */
-  27:.\main.c      ****     PWM_CLOCK_Start();
-  28:.\main.c      ****     
-  29:.\main.c      ****     /* Starting components */
-  30:.\main.c      ****     I2C_I2CSlaveInitReadBuf (i2cReadBuffer,  BUFFER_SIZE);
-  31:.\main.c      ****     I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, BUFFER_SIZE);
-  32:.\main.c      ****     I2C_Start();
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 2
+  25              		.file 1 "..\\Common\\main.c"
+   1:..\Common/main.c **** /* ========================================
+   2:..\Common/main.c ****  *
+   3:..\Common/main.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:..\Common/main.c ****  * All Rights Reserved
+   5:..\Common/main.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:..\Common/main.c ****  *
+   7:..\Common/main.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:..\Common/main.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:..\Common/main.c ****  *
+  10:..\Common/main.c ****  * ========================================
+  11:..\Common/main.c **** */
+  12:..\Common/main.c **** 
+  13:..\Common/main.c **** /* All includes, defines and global variables are declared in main.h */
+  14:..\Common/main.c **** #include "main.h"
+  15:..\Common/main.c **** #include <stdio.h>
+  16:..\Common/main.c **** #include <math.h>
+  17:..\Common/main.c **** 
+  18:..\Common/main.c **** int main()
+  19:..\Common/main.c **** {
+  20:..\Common/main.c ****     
+  21:..\Common/main.c ****     /* Enabling global interrupts */
+  22:..\Common/main.c ****     CyGlobalIntEnable;
+  23:..\Common/main.c ****     
+  24:..\Common/main.c ****     /* Starting all devices */
+  25:..\Common/main.c ****     PWM_CLOCK_Start();
+  26:..\Common/main.c ****     
+  27:..\Common/main.c ****     /* Starting components */
+  28:..\Common/main.c ****     #if( COMMUNICATION_LAYER == I2C_MODE )
+  29:..\Common/main.c ****         I2C_I2CSlaveInitReadBuf (i2cReadBuffer,  BUFFER_SIZE);
+  30:..\Common/main.c ****         I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, BUFFER_SIZE);
+  31:..\Common/main.c ****         I2C_Start();
+  32:..\Common/main.c ****         I2C_Status = STS_CMD_FAIL;
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 2
 
 
-  33:.\main.c      ****     PWM_Start();
-  34:.\main.c      **** //    SW_Tx_UART_Start();
-  35:.\main.c      ****     
-  36:.\main.c      ****     /* Configure ISR */
-  37:.\main.c      ****     PWM_isr_StartEx( PWM_isr );
-  38:.\main.c      ****     Push_Button_isr_StartEx( Push_Button_isr );
-  39:.\main.c      **** 
-  40:.\main.c      ****     /* Variables default values */
-  41:.\main.c      ****     DelayBeforeShutOff = DEFAULT_TIMEOUT;
-  42:.\main.c      ****     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
-  43:.\main.c      ****     Push_Button_Interrupt_Flag = 0;
-  44:.\main.c      ****     Second_Counter = 0;
-  45:.\main.c      ****     UART_TX_Flag = 0;
-  46:.\main.c      ****     I2C_Status = 0xFE;
-  47:.\main.c      **** 
-  48:.\main.c      ****     for(;;)
-  49:.\main.c      ****     {
-  50:.\main.c      ****         /* Disabling the SUPPLY ENABLE if timeout has been reached */
-  51:.\main.c      ****         if( DelayBeforeShutOff == 0 )
-  52:.\main.c      ****         {
-  53:.\main.c      ****             SUPPLY_ENABLE_Write( LOW ); 
-  54:.\main.c      ****             PWM_WriteCompare( LOW_GLOW );
-  55:.\main.c      ****         }
-  56:.\main.c      ****         else
-  57:.\main.c      ****         {
-  58:.\main.c      ****             /* Continue */
-  59:.\main.c      ****         }
-  60:.\main.c      ****         
-  61:.\main.c      ****         /* Check if push button has been toggled */
-  62:.\main.c      ****         if( Push_Button_Interrupt_Flag == 1 )
-  63:.\main.c      ****         {
-  64:.\main.c      ****             /* Activating the output */
-  65:.\main.c      ****             SUPPLY_ENABLE_Write( HIGH ); 
-  66:.\main.c      ****             
-  67:.\main.c      ****             /* Clearing the pushbutton interrupt flag */
-  68:.\main.c      ****             Push_Button_Interrupt_Flag = 0;
-  69:.\main.c      ****             
-  70:.\main.c      ****             /* Resetting the counter if timeout occured */
-  71:.\main.c      ****             DelayBeforeShutOff = DEFAULT_TIMEOUT;
-  72:.\main.c      ****             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
-  73:.\main.c      ****   
-  74:.\main.c      ****             /* Restarting the interrupt if it has been stopped */
-  75:.\main.c      ****             PWM_isr_StartEx(PWM_isr);
-  76:.\main.c      ****             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
-  77:.\main.c      ****         }
-  78:.\main.c      ****         else
-  79:.\main.c      ****         {
-  80:.\main.c      ****             /* Toggling PWM Compare value depending on seconf counter value */
-  81:.\main.c      ****             if( DelayBeforeShutOff != 0 )
-  82:.\main.c      ****             {
-  83:.\main.c      ****                 if( Second_Counter < ( SECOND_COUNT / 2 ) )
-  84:.\main.c      ****                 {
-  85:.\main.c      ****                     PWM_WriteCompare( MID_GLOW );
-  86:.\main.c      ****                 }
-  87:.\main.c      ****                 else
-  88:.\main.c      ****                 {
-  89:.\main.c      ****                     PWM_WriteCompare( HIGH_GLOW );
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 3
+  33:..\Common/main.c ****     #else
+  34:..\Common/main.c ****         SW_Tx_UART_Start();  
+  35:..\Common/main.c ****         UART_TX_Flag = 0;
+  36:..\Common/main.c ****     #endif
+  37:..\Common/main.c ****     
+  38:..\Common/main.c ****     PWM_Start();
+  39:..\Common/main.c **** 
+  40:..\Common/main.c ****     
+  41:..\Common/main.c ****     /* Configure ISR */
+  42:..\Common/main.c ****     PWM_isr_StartEx( PWM_isr );
+  43:..\Common/main.c ****     Push_Button_isr_StartEx( Push_Button_isr );
+  44:..\Common/main.c **** 
+  45:..\Common/main.c ****     /* Variables default values */
+  46:..\Common/main.c ****     DelayBeforeShutOff = DEFAULT_TIMEOUT;
+  47:..\Common/main.c ****     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+  48:..\Common/main.c ****     Push_Button_Interrupt_Flag = 0;
+  49:..\Common/main.c ****     Second_Counter = 0;
+  50:..\Common/main.c **** 
+  51:..\Common/main.c ****     for(;;)
+  52:..\Common/main.c ****     {
+  53:..\Common/main.c ****         /* Disabling the SUPPLY ENABLE if timeout has been reached */
+  54:..\Common/main.c ****         if( DelayBeforeShutOff == 0 )
+  55:..\Common/main.c ****         {
+  56:..\Common/main.c ****             SUPPLY_ENABLE_Write( LOW ); 
+  57:..\Common/main.c ****             PWM_WriteCompare( LOW_GLOW );
+  58:..\Common/main.c ****         }
+  59:..\Common/main.c ****         else
+  60:..\Common/main.c ****         {
+  61:..\Common/main.c ****             /* Continue */
+  62:..\Common/main.c ****         }
+  63:..\Common/main.c ****         
+  64:..\Common/main.c ****         /* Check if push button has been toggled */
+  65:..\Common/main.c ****         if( Push_Button_Interrupt_Flag == 1 )
+  66:..\Common/main.c ****         {
+  67:..\Common/main.c ****             /* Activating the output */
+  68:..\Common/main.c ****             SUPPLY_ENABLE_Write( HIGH ); 
+  69:..\Common/main.c ****             
+  70:..\Common/main.c ****             /* Clearing the pushbutton interrupt flag */
+  71:..\Common/main.c ****             Push_Button_Interrupt_Flag = 0;
+  72:..\Common/main.c ****             
+  73:..\Common/main.c ****             /* Resetting the counter if timeout occured */
+  74:..\Common/main.c ****             DelayBeforeShutOff = DEFAULT_TIMEOUT;
+  75:..\Common/main.c ****             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+  76:..\Common/main.c ****   
+  77:..\Common/main.c ****             /* Restarting the interrupt if it has been stopped */
+  78:..\Common/main.c ****             PWM_isr_StartEx(PWM_isr);
+  79:..\Common/main.c ****             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
+  80:..\Common/main.c ****         }
+  81:..\Common/main.c ****         else
+  82:..\Common/main.c ****         {
+  83:..\Common/main.c ****             /* Toggling PWM Compare value depending on seconf counter value */
+  84:..\Common/main.c ****             if( DelayBeforeShutOff != 0 )
+  85:..\Common/main.c ****             {
+  86:..\Common/main.c ****                 if( Second_Counter < ( SECOND_COUNT / 2 ) )
+  87:..\Common/main.c ****                 {
+  88:..\Common/main.c ****                     PWM_WriteCompare( MID_GLOW );
+  89:..\Common/main.c ****                 }
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 3
 
 
-  90:.\main.c      ****                 }
-  91:.\main.c      ****                 
-  92:.\main.c      ****             }
-  93:.\main.c      ****             else
-  94:.\main.c      ****             {
-  95:.\main.c      ****                 /* Continue */
-  96:.\main.c      ****             }
-  97:.\main.c      ****         }
-  98:.\main.c      ****         
-  99:.\main.c      ****         /* Check if we must send info over UART */
- 100:.\main.c      **** //        if( UART_TX_Flag == 1 )
- 101:.\main.c      **** //        {
- 102:.\main.c      **** //            SW_Tx_UART_PutString("--------------------------");
- 103:.\main.c      **** //            SW_Tx_UART_PutCRLF();
- 104:.\main.c      **** //            SW_Tx_UART_PutString("Operating Mode: ");
- 105:.\main.c      **** //            if( Mode == 0 )
- 106:.\main.c      **** //            {
- 107:.\main.c      **** //                SW_Tx_UART_PutString("Shuttoff");
- 108:.\main.c      **** //            }
- 109:.\main.c      **** //            else
- 110:.\main.c      **** //            {
- 111:.\main.c      **** //                SW_Tx_UART_PutString("Toggle");
- 112:.\main.c      **** //            }
- 113:.\main.c      **** //            SW_Tx_UART_PutCRLF();
- 114:.\main.c      **** //            SW_Tx_UART_PutString("Seconds remaning: ");
- 115:.\main.c      **** //            SW_Tx_UART_PutHexInt( Second_in_Base_60 );
- 116:.\main.c      **** //            SW_Tx_UART_PutCRLF();
- 117:.\main.c      **** //            UART_TX_Flag = 0;
- 118:.\main.c      **** //        }
- 119:.\main.c      **** //        else
- 120:.\main.c      **** //        {
- 121:.\main.c      **** //            /* Continue */
- 122:.\main.c      **** //        }
- 123:.\main.c      ****         
- 124:.\main.c      ****         /* I2C Decode Received Packets */
- 125:.\main.c      ****         
- 126:.\main.c      ****         if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
- 127:.\main.c      ****         {
- 128:.\main.c      ****             /* Check packet length */
- 129:.\main.c      ****             if (PACKET_SIZE == I2C_I2CSlaveGetWriteBufSize())
- 130:.\main.c      ****             {
- 131:.\main.c      ****                 /* Check start and end of packet markers */
- 132:.\main.c      ****                 if ((i2cWriteBuffer[PACKET_SOP_POS] == PACKET_SOP) &&
- 133:.\main.c      ****                     (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
- 134:.\main.c      ****                 {
- 135:.\main.c      ****                     I2C_Status = ExecuteI2CCommand(i2cWriteBuffer[PACKET_CMD_POS], i2cWriteBuffer[P
- 136:.\main.c      ****                 }
- 137:.\main.c      ****             }
- 138:.\main.c      **** 
- 139:.\main.c      ****             /* Clear slave write buffer and status */
- 140:.\main.c      ****             I2C_I2CSlaveClearWriteBuf();
- 141:.\main.c      ****             (void) I2C_I2CSlaveClearWriteStatus();
- 142:.\main.c      **** 
- 143:.\main.c      ****             /* Update read buffer */
- 144:.\main.c      ****             i2cReadBuffer[PACKET_STS_POS] = I2C_Status;
- 145:.\main.c      ****             i2cReadBuffer[PACKET_PARAM_POS] = i2cWriteBuffer[PACKET_PARAM_POS];
- 146:.\main.c      ****             I2C_Status = STS_CMD_FAIL;
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 4
+  90:..\Common/main.c ****                 else
+  91:..\Common/main.c ****                 {
+  92:..\Common/main.c ****                     PWM_WriteCompare( HIGH_GLOW );
+  93:..\Common/main.c ****                 }
+  94:..\Common/main.c ****                 
+  95:..\Common/main.c ****             }
+  96:..\Common/main.c ****             else
+  97:..\Common/main.c ****             {
+  98:..\Common/main.c ****                 /* Continue */
+  99:..\Common/main.c ****             }
+ 100:..\Common/main.c ****         }
+ 101:..\Common/main.c ****         
+ 102:..\Common/main.c ****         /* Check if we must send info over UART */
+ 103:..\Common/main.c ****         #if( COMMUNICATION_LAYER == SERIAL_MODE )
+ 104:..\Common/main.c ****             if( UART_TX_Flag == 1 )
+ 105:..\Common/main.c ****             {
+ 106:..\Common/main.c ****                 SW_Tx_UART_PutString("--------------------------");
+ 107:..\Common/main.c ****                 SW_Tx_UART_PutCRLF();
+ 108:..\Common/main.c ****                 SW_Tx_UART_PutString("Operating Mode: ");
+ 109:..\Common/main.c ****                 if( Mode == 0 )
+ 110:..\Common/main.c ****                 {
+ 111:..\Common/main.c ****                     SW_Tx_UART_PutString("Shuttoff");
+ 112:..\Common/main.c ****                 }
+ 113:..\Common/main.c ****                 else
+ 114:..\Common/main.c ****                 {
+ 115:..\Common/main.c ****                     SW_Tx_UART_PutString("Toggle");
+ 116:..\Common/main.c ****                 }
+ 117:..\Common/main.c ****                 SW_Tx_UART_PutCRLF();
+ 118:..\Common/main.c ****                 SW_Tx_UART_PutString("Seconds remaning: ");
+ 119:..\Common/main.c ****                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
+ 120:..\Common/main.c ****                 SW_Tx_UART_PutCRLF();
+ 121:..\Common/main.c ****                 UART_TX_Flag = 0;
+ 122:..\Common/main.c ****             }
+ 123:..\Common/main.c ****             else
+ 124:..\Common/main.c ****             {
+ 125:..\Common/main.c ****                 /* Continue */
+ 126:..\Common/main.c ****             }
+ 127:..\Common/main.c ****         #else
+ 128:..\Common/main.c ****             if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
+ 129:..\Common/main.c ****             {
+ 130:..\Common/main.c ****                 /* Check packet length */
+ 131:..\Common/main.c ****                 if (PACKET_SIZE == I2C_I2CSlaveGetWriteBufSize())
+ 132:..\Common/main.c ****                 {
+ 133:..\Common/main.c ****                     /* Check start and end of packet markers */
+ 134:..\Common/main.c ****                     if ((i2cWriteBuffer[PACKET_SOP_POS] == PACKET_SOP) &&
+ 135:..\Common/main.c ****                         (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
+ 136:..\Common/main.c ****                     {
+ 137:..\Common/main.c ****                         I2C_Status = ExecuteI2CCommand(i2cWriteBuffer[PACKET_CMD_POS], i2cWriteBuff
+ 138:..\Common/main.c ****                     }
+ 139:..\Common/main.c ****                 }
+ 140:..\Common/main.c ****             
+ 141:..\Common/main.c ****                 /* Clear slave write buffer and status */
+ 142:..\Common/main.c ****                 I2C_I2CSlaveClearWriteBuf();
+ 143:..\Common/main.c ****                 (void) I2C_I2CSlaveClearWriteStatus();
+ 144:..\Common/main.c ****             
+ 145:..\Common/main.c ****                 /* Update read buffer */
+ 146:..\Common/main.c ****                 i2cReadBuffer[PACKET_STS_POS] = I2C_Status;
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 4
 
 
- 147:.\main.c      ****         }
- 148:.\main.c      **** 
- 149:.\main.c      ****         /* Read complete: expose buffer to master */
- 150:.\main.c      ****         if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_RD_CMPLT))
- 151:.\main.c      ****         {
- 152:.\main.c      ****             /* Clear slave read buffer and status */
- 153:.\main.c      ****             I2C_I2CSlaveClearReadBuf();
- 154:.\main.c      ****             (void) I2C_I2CSlaveClearReadStatus();
- 155:.\main.c      ****         }
- 156:.\main.c      ****     }
- 157:.\main.c      **** }
- 158:.\main.c      **** 
- 159:.\main.c      **** /*******************************************************************************
- 160:.\main.c      **** * Function Name: PWM_isr
- 161:.\main.c      **** ********************************************************************************
- 162:.\main.c      **** * Summary:
- 163:.\main.c      **** *  PWM module TC interrupt routine code
- 164:.\main.c      **** *
- 165:.\main.c      **** * Parameters: None.
- 166:.\main.c      **** *
- 167:.\main.c      **** * Return: None.
- 168:.\main.c      **** *
- 169:.\main.c      **** *******************************************************************************/
- 170:.\main.c      **** CY_ISR(PWM_isr)
- 171:.\main.c      **** {
-  26              		.loc 1 171 0
+ 147:..\Common/main.c ****                 I2C_Status = STS_CMD_FAIL;
+ 148:..\Common/main.c ****             }
+ 149:..\Common/main.c **** 
+ 150:..\Common/main.c ****             /* Read complete: expose buffer to master */
+ 151:..\Common/main.c ****             if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_RD_CMPLT))
+ 152:..\Common/main.c ****             {
+ 153:..\Common/main.c ****                 /* Clear slave read buffer and status */
+ 154:..\Common/main.c ****                 I2C_I2CSlaveClearReadBuf();
+ 155:..\Common/main.c ****                 (void) I2C_I2CSlaveClearReadStatus();
+ 156:..\Common/main.c ****             }
+ 157:..\Common/main.c ****         #endif
+ 158:..\Common/main.c ****     }
+ 159:..\Common/main.c **** }
+ 160:..\Common/main.c **** 
+ 161:..\Common/main.c **** /*******************************************************************************
+ 162:..\Common/main.c **** * Function Name: PWM_isr
+ 163:..\Common/main.c **** ********************************************************************************
+ 164:..\Common/main.c **** * Summary:
+ 165:..\Common/main.c **** *  PWM module TC interrupt routine code
+ 166:..\Common/main.c **** *
+ 167:..\Common/main.c **** * Parameters: None.
+ 168:..\Common/main.c **** *
+ 169:..\Common/main.c **** * Return: None.
+ 170:..\Common/main.c **** *
+ 171:..\Common/main.c **** *******************************************************************************/
+ 172:..\Common/main.c **** CY_ISR(PWM_isr)
+ 173:..\Common/main.c **** {
+  26              		.loc 1 173 0
   27              		.cfi_startproc
   28 0000 08B5     		push	{r3, lr}
   29              		.cfi_def_cfa_offset 8
   30              		.cfi_offset 3, -8
   31              		.cfi_offset 14, -4
- 172:.\main.c      ****     if( DelayBeforeShutOff <= 1 )
-  32              		.loc 1 172 0
+ 174:..\Common/main.c ****     if( DelayBeforeShutOff <= 1 )
+  32              		.loc 1 174 0
   33 0002 124B     		ldr	r3, .L6
   34 0004 1B68     		ldr	r3, [r3]
   35 0006 012B     		cmp	r3, #1
   36 0008 07D8     		bhi	.L2
- 173:.\main.c      ****     {
- 174:.\main.c      ****         DelayBeforeShutOff = 0;
-  37              		.loc 1 174 0
+ 175:..\Common/main.c ****     {
+ 176:..\Common/main.c ****         DelayBeforeShutOff = 0;
+  37              		.loc 1 176 0
   38 000a 0023     		mov	r3, #0
   39 000c 0F4A     		ldr	r2, .L6
   40 000e 1360     		str	r3, [r2]
- 175:.\main.c      ****         Second_in_Base_60 = 0;
-  41              		.loc 1 175 0
+ 177:..\Common/main.c ****         Second_in_Base_60 = 0;
+  41              		.loc 1 177 0
   42 0010 0F4A     		ldr	r2, .L6+4
   43 0012 1370     		strb	r3, [r2]
- 176:.\main.c      ****         PWM_isr_Stop();
-  44              		.loc 1 176 0
+ 178:..\Common/main.c ****         PWM_isr_Stop();
+  44              		.loc 1 178 0
   45 0014 FFF7FEFF 		bl	PWM_isr_Stop
   46              	.LVL0:
   47 0018 02E0     		b	.L3
   48              	.L2:
- 177:.\main.c      ****     }
- 178:.\main.c      ****     else
- 179:.\main.c      ****     {
- 180:.\main.c      ****         DelayBeforeShutOff--;
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 5
+ 179:..\Common/main.c ****     }
+ 180:..\Common/main.c ****     else
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 5
 
 
-  49              		.loc 1 180 0
+ 181:..\Common/main.c ****     {
+ 182:..\Common/main.c ****         DelayBeforeShutOff--;
+  49              		.loc 1 182 0
   50 001a 013B     		sub	r3, r3, #1
   51 001c 0B4A     		ldr	r2, .L6
   52 001e 1360     		str	r3, [r2]
   53              	.L3:
- 181:.\main.c      ****     }
- 182:.\main.c      ****     
- 183:.\main.c      ****     if( Second_Counter == SECOND_COUNT )
-  54              		.loc 1 183 0
+ 183:..\Common/main.c ****     }
+ 184:..\Common/main.c ****     
+ 185:..\Common/main.c ****     if( Second_Counter == SECOND_COUNT )
+  54              		.loc 1 185 0
   55 0020 0C4B     		ldr	r3, .L6+8
   56 0022 1B78     		ldrb	r3, [r3]
   57 0024 C82B     		cmp	r3, #200
   58 0026 0AD1     		bne	.L4
- 184:.\main.c      ****     {
- 185:.\main.c      ****         Second_Counter = 0;
-  59              		.loc 1 185 0
+ 186:..\Common/main.c ****     {
+ 187:..\Common/main.c ****         Second_Counter = 0;
+  59              		.loc 1 187 0
   60 0028 0022     		mov	r2, #0
   61 002a 0A4B     		ldr	r3, .L6+8
   62 002c 1A70     		strb	r2, [r3]
- 186:.\main.c      ****         Second_in_Base_60--;
-  63              		.loc 1 186 0
+ 188:..\Common/main.c ****         Second_in_Base_60--;
+  63              		.loc 1 188 0
   64 002e 084A     		ldr	r2, .L6+4
   65 0030 1378     		ldrb	r3, [r2]
   66 0032 013B     		sub	r3, r3, #1
   67 0034 1370     		strb	r3, [r2]
- 187:.\main.c      ****         UART_TX_Flag = 1;
-  68              		.loc 1 187 0
+ 189:..\Common/main.c ****         #if( COMMUNICATION_LAYER == SERIAL_MODE )
+ 190:..\Common/main.c ****             UART_TX_Flag = 1;
+  68              		.loc 1 190 0
   69 0036 0122     		mov	r2, #1
   70 0038 074B     		ldr	r3, .L6+12
   71 003a 1A70     		strb	r2, [r3]
   72 003c 02E0     		b	.L5
   73              	.L4:
- 188:.\main.c      ****     }
- 189:.\main.c      ****     else
- 190:.\main.c      ****     {
- 191:.\main.c      ****         Second_Counter++;
-  74              		.loc 1 191 0
+ 191:..\Common/main.c ****         #else
+ 192:..\Common/main.c ****         #endif
+ 193:..\Common/main.c ****     }
+ 194:..\Common/main.c ****     else
+ 195:..\Common/main.c ****     {
+ 196:..\Common/main.c ****         Second_Counter++;
+  74              		.loc 1 196 0
   75 003e 0133     		add	r3, r3, #1
   76 0040 044A     		ldr	r2, .L6+8
   77 0042 1370     		strb	r3, [r2]
   78              	.L5:
- 192:.\main.c      ****     }
- 193:.\main.c      **** 
- 194:.\main.c      ****     /* Clear interrupt status in an interrupt controller */
- 195:.\main.c      ****     PWM_ClearInterrupt(PWM_INTR_MASK_TC);
-  79              		.loc 1 195 0
+ 197:..\Common/main.c ****     }
+ 198:..\Common/main.c **** 
+ 199:..\Common/main.c ****     /* Clear interrupt status in an interrupt controller */
+ 200:..\Common/main.c ****     PWM_ClearInterrupt(PWM_INTR_MASK_TC);
+  79              		.loc 1 200 0
   80 0044 0120     		mov	r0, #1
   81 0046 FFF7FEFF 		bl	PWM_ClearInterrupt
   82              	.LVL1:
- 196:.\main.c      **** }
-  83              		.loc 1 196 0
+ 201:..\Common/main.c **** }
+  83              		.loc 1 201 0
   84              		@ sp needed
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 6
+
+
   85 004a 08BD     		pop	{r3, pc}
   86              	.L7:
   87              		.align	2
   88              	.L6:
   89 004c 00000000 		.word	DelayBeforeShutOff
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 6
-
-
   90 0050 00000000 		.word	Second_in_Base_60
   91 0054 00000000 		.word	Second_Counter
   92 0058 00000000 		.word	UART_TX_Flag
@@ -315,2340 +320,1529 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 1
  101              		.type	Push_Button_isr, %function
  102              	Push_Button_isr:
  103              	.LFB36:
- 197:.\main.c      **** 
- 198:.\main.c      **** 
- 199:.\main.c      **** /*******************************************************************************
- 200:.\main.c      **** * Function Name: Push_Button_isr
- 201:.\main.c      **** ********************************************************************************
- 202:.\main.c      **** * Summary:
- 203:.\main.c      **** *  Push Button ISR routine code
- 204:.\main.c      **** *
- 205:.\main.c      **** * Parameters: None.
- 206:.\main.c      **** *
- 207:.\main.c      **** * Return: None.
- 208:.\main.c      **** *
- 209:.\main.c      **** *******************************************************************************/
- 210:.\main.c      **** CY_ISR_PROTO(Push_Button_isr)
- 211:.\main.c      **** {
- 104              		.loc 1 211 0
+ 202:..\Common/main.c **** 
+ 203:..\Common/main.c **** 
+ 204:..\Common/main.c **** /*******************************************************************************
+ 205:..\Common/main.c **** * Function Name: Push_Button_isr
+ 206:..\Common/main.c **** ********************************************************************************
+ 207:..\Common/main.c **** * Summary:
+ 208:..\Common/main.c **** *  Push Button ISR routine code
+ 209:..\Common/main.c **** *
+ 210:..\Common/main.c **** * Parameters: None.
+ 211:..\Common/main.c **** *
+ 212:..\Common/main.c **** * Return: None.
+ 213:..\Common/main.c **** *
+ 214:..\Common/main.c **** *******************************************************************************/
+ 215:..\Common/main.c **** CY_ISR_PROTO(Push_Button_isr)
+ 216:..\Common/main.c **** {
+ 104              		.loc 1 216 0
  105              		.cfi_startproc
  106 0000 08B5     		push	{r3, lr}
  107              		.cfi_def_cfa_offset 8
  108              		.cfi_offset 3, -8
  109              		.cfi_offset 14, -4
- 212:.\main.c      ****     Push_Button_Interrupt_Flag = 1;
- 110              		.loc 1 212 0
+ 217:..\Common/main.c ****     Push_Button_Interrupt_Flag = 1;
+ 110              		.loc 1 217 0
  111 0002 0122     		mov	r2, #1
  112 0004 024B     		ldr	r3, .L9
  113 0006 1A70     		strb	r2, [r3]
- 213:.\main.c      ****     PUSH_BUTTON_INPUT_ClearInterrupt();
- 114              		.loc 1 213 0
+ 218:..\Common/main.c ****     PUSH_BUTTON_INPUT_ClearInterrupt();
+ 114              		.loc 1 218 0
  115 0008 FFF7FEFF 		bl	PUSH_BUTTON_INPUT_ClearInterrupt
  116              	.LVL2:
- 214:.\main.c      **** }
- 117              		.loc 1 214 0
+ 219:..\Common/main.c **** }
+ 117              		.loc 1 219 0
  118              		@ sp needed
  119 000c 08BD     		pop	{r3, pc}
  120              	.L10:
  121 000e C046     		.align	2
  122              	.L9:
  123 0010 00000000 		.word	Push_Button_Interrupt_Flag
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 7
+
+
  124              		.cfi_endproc
  125              	.LFE36:
  126              		.size	Push_Button_isr, .-Push_Button_isr
- 127              		.section	.text.ExecuteI2CCommand,"ax",%progbits
+ 127              		.section	.text.main,"ax",%progbits
  128              		.align	2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 7
-
-
- 129              		.global	ExecuteI2CCommand
+ 129              		.global	main
  130              		.code	16
  131              		.thumb_func
- 132              		.type	ExecuteI2CCommand, %function
- 133              	ExecuteI2CCommand:
- 134              	.LFB37:
- 215:.\main.c      **** 
- 216:.\main.c      **** /*******************************************************************************
- 217:.\main.c      **** * Function Name: ExecuteI2CCommand
- 218:.\main.c      **** ********************************************************************************
- 219:.\main.c      **** * Summary:
- 220:.\main.c      **** *  Executes received command to control the LED color and returns status.
- 221:.\main.c      **** *  If the command is unknown, the LED color is not changed.
- 222:.\main.c      **** *
- 223:.\main.c      **** * Parameters:
- 224:.\main.c      **** *  cmd: command to execute. Available commands:
- 225:.\main.c      **** 
- 226:.\main.c      **** *
- 227:.\main.c      **** * Return:
- 228:.\main.c      **** *  Returns status of command execution. There are two statuses
- 229:.\main.c      **** *  - STS_CMD_DONE: command is executed successfully.
- 230:.\main.c      **** *  - STS_CMD_FAIL: unknown command
- 231:.\main.c      **** *
- 232:.\main.c      **** *******************************************************************************/
- 233:.\main.c      **** uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam )
- 234:.\main.c      **** {
- 135              		.loc 1 234 0
+ 132              		.type	main, %function
+ 133              	main:
+ 134              	.LFB34:
+  19:..\Common/main.c ****     
+ 135              		.loc 1 19 0
  136              		.cfi_startproc
- 137              	.LVL3:
- 138 0000 08B5     		push	{r3, lr}
- 139              		.cfi_def_cfa_offset 8
- 140              		.cfi_offset 3, -8
- 141              		.cfi_offset 14, -4
- 142              	.LVL4:
- 235:.\main.c      ****     uint8 status;
- 236:.\main.c      **** 
- 237:.\main.c      ****     status = STS_CMD_DONE;
- 238:.\main.c      **** 
- 239:.\main.c      ****     /* Execute received command */
- 240:.\main.c      ****     switch (cmd)
- 143              		.loc 1 240 0
- 144 0002 1028     		cmp	r0, #16
- 145 0004 57D8     		bhi	.L30
- 146 0006 8000     		lsl	r0, r0, #2
- 147              	.LVL5:
- 148 0008 2C4B     		ldr	r3, .L31
- 149 000a 1B58     		ldr	r3, [r3, r0]
- 150 000c 9F46     		mov	pc, r3
- 151              		.section	.rodata
- 152              		.align	2
- 153              	.L14:
- 154 0000 12000000 		.word	.L13
- 155 0004 1C000000 		.word	.L15
- 156 0008 26000000 		.word	.L16
- 157 000c 32000000 		.word	.L17
- 158 0010 3C000000 		.word	.L18
- 159 0014 46000000 		.word	.L19
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 8
+ 137 0000 10B5     		push	{r4, lr}
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 4, -8
+ 140              		.cfi_offset 14, -4
+  22:..\Common/main.c ****     
+ 141              		.loc 1 22 0
+ 142              	@ 22 "..\Common\main.c" 1
+ 143 0002 62B6     		CPSIE   i
+ 144              	@ 0 "" 2
+  25:..\Common/main.c ****     
+ 145              		.loc 1 25 0
+ 146              		.code	16
+ 147 0004 FF20     		mov	r0, #255
+ 148 0006 FFF7FEFF 		bl	PWM_CLOCK_StartEx
+ 149              	.LVL3:
+  34:..\Common/main.c ****         UART_TX_Flag = 0;
+ 150              		.loc 1 34 0
+ 151 000a FFF7FEFF 		bl	SW_Tx_UART_Start
+ 152              	.LVL4:
+  35:..\Common/main.c ****     #endif
+ 153              		.loc 1 35 0
+ 154 000e 0024     		mov	r4, #0
+ 155 0010 344B     		ldr	r3, .L20
+ 156 0012 1C70     		strb	r4, [r3]
+  38:..\Common/main.c **** 
+ 157              		.loc 1 38 0
+ 158 0014 FFF7FEFF 		bl	PWM_Start
+ 159              	.LVL5:
+  42:..\Common/main.c ****     Push_Button_isr_StartEx( Push_Button_isr );
+ 160              		.loc 1 42 0
+ 161 0018 3348     		ldr	r0, .L20+4
+ 162 001a FFF7FEFF 		bl	PWM_isr_StartEx
+ 163              	.LVL6:
+  43:..\Common/main.c **** 
+ 164              		.loc 1 43 0
+ 165 001e 3348     		ldr	r0, .L20+8
+ 166 0020 FFF7FEFF 		bl	Push_Button_isr_StartEx
+ 167              	.LVL7:
+  46:..\Common/main.c ****     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+ 168              		.loc 1 46 0
+ 169 0024 324A     		ldr	r2, .L20+12
+ 170 0026 334B     		ldr	r3, .L20+16
+ 171 0028 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 8
 
 
- 160 0018 50000000 		.word	.L20
- 161 001c 5E000000 		.word	.L21
- 162 0020 68000000 		.word	.L22
- 163 0024 72000000 		.word	.L23
- 164 0028 7C000000 		.word	.L24
- 165 002c 8A000000 		.word	.L25
- 166 0030 94000000 		.word	.L26
- 167 0034 9E000000 		.word	.L27
- 168 0038 A8000000 		.word	.L28
- 169 003c 0E000000 		.word	.L29
- 170 0040 0E000000 		.word	.L29
- 171              		.section	.text.ExecuteI2CCommand
- 172              	.L29:
- 237:.\main.c      **** 
- 173              		.loc 1 237 0
- 174 000e 0020     		mov	r0, #0
- 175 0010 52E0     		b	.L12
- 176              	.L13:
- 241:.\main.c      ****     {
- 242:.\main.c      ****         case CMD_SET_OUPUT_ON:
- 243:.\main.c      ****             SUPPLY_ENABLE_Write( HIGH ); 
- 177              		.loc 1 243 0
- 178 0012 0120     		mov	r0, #1
- 179 0014 FFF7FEFF 		bl	SUPPLY_ENABLE_Write
- 180              	.LVL6:
- 237:.\main.c      **** 
- 181              		.loc 1 237 0
- 182 0018 0020     		mov	r0, #0
- 244:.\main.c      ****             break;
- 183              		.loc 1 244 0
- 184 001a 4DE0     		b	.L12
- 185              	.LVL7:
- 186              	.L15:
- 245:.\main.c      **** 
- 246:.\main.c      ****         case CMD_SET_OUTPUT_OFF:
- 247:.\main.c      ****             SUPPLY_ENABLE_Write( LOW ); 
- 187              		.loc 1 247 0
- 188 001c 0020     		mov	r0, #0
- 189 001e FFF7FEFF 		bl	SUPPLY_ENABLE_Write
- 190              	.LVL8:
- 237:.\main.c      **** 
- 191              		.loc 1 237 0
- 192 0022 0020     		mov	r0, #0
- 248:.\main.c      ****             break;
- 193              		.loc 1 248 0
- 194 0024 48E0     		b	.L12
+  47:..\Common/main.c ****     Push_Button_Interrupt_Flag = 0;
+ 172              		.loc 1 47 0
+ 173 002a 3C22     		mov	r2, #60
+ 174 002c 324B     		ldr	r3, .L20+20
+ 175 002e 1A70     		strb	r2, [r3]
+  48:..\Common/main.c ****     Second_Counter = 0;
+ 176              		.loc 1 48 0
+ 177 0030 324B     		ldr	r3, .L20+24
+ 178 0032 1C70     		strb	r4, [r3]
+  49:..\Common/main.c **** 
+ 179              		.loc 1 49 0
+ 180 0034 324B     		ldr	r3, .L20+28
+ 181 0036 1C70     		strb	r4, [r3]
+ 182              	.L16:
+  54:..\Common/main.c ****         {
+ 183              		.loc 1 54 0
+ 184 0038 2E4B     		ldr	r3, .L20+16
+ 185 003a 1B68     		ldr	r3, [r3]
+ 186 003c 002B     		cmp	r3, #0
+ 187 003e 05D1     		bne	.L12
+  56:..\Common/main.c ****             PWM_WriteCompare( LOW_GLOW );
+ 188              		.loc 1 56 0
+ 189 0040 0020     		mov	r0, #0
+ 190 0042 FFF7FEFF 		bl	SUPPLY_ENABLE_Write
+ 191              	.LVL8:
+  57:..\Common/main.c ****         }
+ 192              		.loc 1 57 0
+ 193 0046 2F48     		ldr	r0, .L20+32
+ 194 0048 FFF7FEFF 		bl	PWM_WriteCompare
  195              	.LVL9:
- 196              	.L16:
- 249:.\main.c      **** 
- 250:.\main.c      ****         case CMD_SET_MODE:
- 251:.\main.c      ****             Mode = i2cReadBuffer[ PACKET_CMD_POS ];
- 197              		.loc 1 251 0
- 198 0026 264B     		ldr	r3, .L31+4
- 199 0028 5A78     		ldrb	r2, [r3, #1]
- 200 002a 264B     		ldr	r3, .L31+8
- 201 002c 1A70     		strb	r2, [r3]
- 237:.\main.c      **** 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 9
-
-
- 202              		.loc 1 237 0
- 203 002e 0020     		mov	r0, #0
- 252:.\main.c      ****             break;
- 204              		.loc 1 252 0
- 205 0030 42E0     		b	.L12
- 206              	.L17:
- 253:.\main.c      **** 
- 254:.\main.c      ****         case CMD_SET_SHUT_OFF_DELAY_MSB:
- 255:.\main.c      ****             DelayBeforeShutOff = cmdparam;
- 256:.\main.c      ****             DelayBeforeShutOff = DelayBeforeShutOff << 24;
- 207              		.loc 1 256 0
- 208 0032 0906     		lsl	r1, r1, #24
- 209              	.LVL10:
- 210 0034 244B     		ldr	r3, .L31+12
- 211 0036 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 212              		.loc 1 237 0
- 213 0038 0020     		mov	r0, #0
- 257:.\main.c      ****             break;
- 214              		.loc 1 257 0
- 215 003a 3DE0     		b	.L12
- 216              	.LVL11:
- 217              	.L18:
- 258:.\main.c      ****         
- 259:.\main.c      ****         case CMD_SET_SHUT_OFF_DELAY_THRDB:
- 260:.\main.c      ****             DelayBeforeShutOff = cmdparam;
- 261:.\main.c      ****             DelayBeforeShutOff = DelayBeforeShutOff << 16;
- 218              		.loc 1 261 0
- 219 003c 0904     		lsl	r1, r1, #16
- 220              	.LVL12:
- 221 003e 224B     		ldr	r3, .L31+12
- 222 0040 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 223              		.loc 1 237 0
- 224 0042 0020     		mov	r0, #0
- 262:.\main.c      ****             break;
- 225              		.loc 1 262 0
- 226 0044 38E0     		b	.L12
- 227              	.LVL13:
- 228              	.L19:
- 263:.\main.c      ****         
- 264:.\main.c      ****         case CMD_SET_SHUT_OFF_DELAY_SCNDB:
- 265:.\main.c      ****             DelayBeforeShutOff = cmdparam;
- 266:.\main.c      ****             DelayBeforeShutOff = DelayBeforeShutOff << 8;
- 229              		.loc 1 266 0
- 230 0046 0902     		lsl	r1, r1, #8
- 231              	.LVL14:
- 232 0048 1F4B     		ldr	r3, .L31+12
- 233 004a 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 234              		.loc 1 237 0
- 235 004c 0020     		mov	r0, #0
- 267:.\main.c      ****             break;
- 236              		.loc 1 267 0
- 237 004e 33E0     		b	.L12
- 238              	.LVL15:
- 239              	.L20:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 10
-
-
- 268:.\main.c      ****         
- 269:.\main.c      ****         case CMD_SET_SHUT_OFF_DELAY_LSB:
- 270:.\main.c      ****             DelayBeforeShutOff += cmdparam;
- 240              		.loc 1 270 0
- 241 0050 1D4B     		ldr	r3, .L31+12
- 242 0052 1A68     		ldr	r2, [r3]
- 243 0054 9446     		mov	ip, r2
- 244 0056 6144     		add	r1, r1, ip
- 245              	.LVL16:
- 246 0058 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 247              		.loc 1 237 0
- 248 005a 0020     		mov	r0, #0
- 271:.\main.c      ****             break;
- 249              		.loc 1 271 0
- 250 005c 2CE0     		b	.L12
- 251              	.LVL17:
- 252              	.L21:
- 272:.\main.c      ****         
- 273:.\main.c      ****         case CMD_SET_ON_TIME_DELAY_MSB:
- 274:.\main.c      ****             ON_Time = cmdparam;
- 275:.\main.c      ****             ON_Time = ON_Time << 24;
- 253              		.loc 1 275 0
- 254 005e 0906     		lsl	r1, r1, #24
- 255              	.LVL18:
- 256 0060 1A4B     		ldr	r3, .L31+16
- 257 0062 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 258              		.loc 1 237 0
- 259 0064 0020     		mov	r0, #0
- 276:.\main.c      ****             break;
- 260              		.loc 1 276 0
- 261 0066 27E0     		b	.L12
- 262              	.LVL19:
- 263              	.L22:
- 277:.\main.c      ****         
- 278:.\main.c      ****         case CMD_SET_ON_TIME_DELAY_THRDB:
- 279:.\main.c      ****             ON_Time = cmdparam;
- 280:.\main.c      ****             ON_Time = ON_Time << 16;
- 264              		.loc 1 280 0
- 265 0068 0904     		lsl	r1, r1, #16
- 266              	.LVL20:
- 267 006a 184B     		ldr	r3, .L31+16
- 268 006c 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 269              		.loc 1 237 0
- 270 006e 0020     		mov	r0, #0
- 281:.\main.c      ****             break;
- 271              		.loc 1 281 0
- 272 0070 22E0     		b	.L12
- 273              	.LVL21:
- 274              	.L23:
- 282:.\main.c      ****         
- 283:.\main.c      ****         case CMD_SET_ON_TIME_DELAY_SCNDB:
- 284:.\main.c      ****             ON_Time = cmdparam;
- 285:.\main.c      ****             ON_Time = ON_Time << 8;
- 275              		.loc 1 285 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 11
-
-
- 276 0072 0902     		lsl	r1, r1, #8
- 277              	.LVL22:
- 278 0074 154B     		ldr	r3, .L31+16
- 279 0076 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 280              		.loc 1 237 0
- 281 0078 0020     		mov	r0, #0
- 286:.\main.c      ****             break;
- 282              		.loc 1 286 0
- 283 007a 1DE0     		b	.L12
- 284              	.LVL23:
- 285              	.L24:
- 287:.\main.c      ****         
- 288:.\main.c      ****         case CMD_SET_ON_TIME_DELAY_LSB:
- 289:.\main.c      ****             ON_Time += cmdparam;
- 286              		.loc 1 289 0
- 287 007c 134B     		ldr	r3, .L31+16
- 288 007e 1A68     		ldr	r2, [r3]
- 289 0080 9446     		mov	ip, r2
- 290 0082 6144     		add	r1, r1, ip
- 291              	.LVL24:
- 292 0084 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 293              		.loc 1 237 0
- 294 0086 0020     		mov	r0, #0
- 290:.\main.c      ****             break;
- 295              		.loc 1 290 0
- 296 0088 16E0     		b	.L12
- 297              	.LVL25:
- 298              	.L25:
- 291:.\main.c      ****         
- 292:.\main.c      ****         case CMD_SET_OFF_TIME_DELAY_MSB:
- 293:.\main.c      ****             OFF_Time = cmdparam;
- 294:.\main.c      ****             OFF_Time = OFF_Time << 24;
- 299              		.loc 1 294 0
- 300 008a 0906     		lsl	r1, r1, #24
- 301              	.LVL26:
- 302 008c 104B     		ldr	r3, .L31+20
- 303 008e 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 304              		.loc 1 237 0
- 305 0090 0020     		mov	r0, #0
- 295:.\main.c      ****             break;
- 306              		.loc 1 295 0
- 307 0092 11E0     		b	.L12
- 308              	.LVL27:
- 309              	.L26:
- 296:.\main.c      ****         
- 297:.\main.c      ****         case CMD_SET_OFF_TIME_DELAY_THRDB:
- 298:.\main.c      ****             OFF_Time = cmdparam;
- 299:.\main.c      ****             OFF_Time = OFF_Time << 16;
- 310              		.loc 1 299 0
- 311 0094 0904     		lsl	r1, r1, #16
- 312              	.LVL28:
- 313 0096 0E4B     		ldr	r3, .L31+20
- 314 0098 1960     		str	r1, [r3]
- 237:.\main.c      **** 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 12
-
-
- 315              		.loc 1 237 0
- 316 009a 0020     		mov	r0, #0
- 300:.\main.c      ****             break;
- 317              		.loc 1 300 0
- 318 009c 0CE0     		b	.L12
- 319              	.LVL29:
- 320              	.L27:
- 301:.\main.c      ****         
- 302:.\main.c      ****         case CMD_SET_OFF_TIME_DELAY_SCNDB:
- 303:.\main.c      ****             OFF_Time = cmdparam;
- 304:.\main.c      ****             OFF_Time = OFF_Time << 8;
- 321              		.loc 1 304 0
- 322 009e 0902     		lsl	r1, r1, #8
- 323              	.LVL30:
- 324 00a0 0B4B     		ldr	r3, .L31+20
- 325 00a2 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 326              		.loc 1 237 0
- 327 00a4 0020     		mov	r0, #0
- 305:.\main.c      ****             break;
- 328              		.loc 1 305 0
- 329 00a6 07E0     		b	.L12
- 330              	.LVL31:
- 331              	.L28:
- 306:.\main.c      ****         
- 307:.\main.c      ****         case CMD_SET_OFF_TIME_DELAY_LSB:
- 308:.\main.c      ****             OFF_Time += cmdparam;
- 332              		.loc 1 308 0
- 333 00a8 094B     		ldr	r3, .L31+20
- 334 00aa 1A68     		ldr	r2, [r3]
- 335 00ac 9446     		mov	ip, r2
- 336 00ae 6144     		add	r1, r1, ip
- 337              	.LVL32:
- 338 00b0 1960     		str	r1, [r3]
- 237:.\main.c      **** 
- 339              		.loc 1 237 0
- 340 00b2 0020     		mov	r0, #0
- 309:.\main.c      ****             break;
- 341              		.loc 1 309 0
- 342 00b4 00E0     		b	.L12
- 343              	.LVL33:
- 344              	.L30:
- 310:.\main.c      ****         
- 311:.\main.c      ****         case CMD_SET_DEVICE_ADDRESS:
- 312:.\main.c      ****             //I2C_I2CSlaveSetAddress( cmdparam );
- 313:.\main.c      ****             break;
- 314:.\main.c      ****             
- 315:.\main.c      ****         case STS_CMD_BUTTON_EVENT:
- 316:.\main.c      ****             /* To be added */
- 317:.\main.c      ****             break;
- 318:.\main.c      **** 
- 319:.\main.c      ****         default:
- 320:.\main.c      ****             status = STS_CMD_FAIL;
- 345              		.loc 1 320 0
- 346 00b6 FF20     		mov	r0, #255
- 347              	.LVL34:
- 348              	.L12:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 13
-
-
- 321:.\main.c      ****             break;
- 322:.\main.c      ****     }
- 323:.\main.c      **** 
- 324:.\main.c      ****     return (status);
- 325:.\main.c      **** }
- 349              		.loc 1 325 0
- 350              		@ sp needed
- 351 00b8 08BD     		pop	{r3, pc}
- 352              	.L32:
- 353 00ba C046     		.align	2
- 354              	.L31:
- 355 00bc 00000000 		.word	.L14
- 356 00c0 00000000 		.word	.LANCHOR0
- 357 00c4 00000000 		.word	Mode
- 358 00c8 00000000 		.word	DelayBeforeShutOff
- 359 00cc 00000000 		.word	ON_Time
- 360 00d0 00000000 		.word	OFF_Time
- 361              		.cfi_endproc
- 362              	.LFE37:
- 363              		.size	ExecuteI2CCommand, .-ExecuteI2CCommand
- 364              		.section	.text.main,"ax",%progbits
- 365              		.align	2
- 366              		.global	main
- 367              		.code	16
- 368              		.thumb_func
- 369              		.type	main, %function
- 370              	main:
- 371              	.LFB34:
-  22:.\main.c      ****     /* Enabling global interrupts */
- 372              		.loc 1 22 0
- 373              		.cfi_startproc
- 374 0000 08B5     		push	{r3, lr}
- 375              		.cfi_def_cfa_offset 8
- 376              		.cfi_offset 3, -8
- 377              		.cfi_offset 14, -4
-  24:.\main.c      ****     
- 378              		.loc 1 24 0
- 379              	@ 24 ".\main.c" 1
- 380 0002 62B6     		CPSIE   i
- 381              	@ 0 "" 2
-  27:.\main.c      ****     
- 382              		.loc 1 27 0
- 383              		.code	16
- 384 0004 FF20     		mov	r0, #255
- 385 0006 FFF7FEFF 		bl	PWM_CLOCK_StartEx
- 386              	.LVL35:
-  30:.\main.c      ****     I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, BUFFER_SIZE);
- 387              		.loc 1 30 0
- 388 000a 3F48     		ldr	r0, .L42
- 389 000c 0421     		mov	r1, #4
- 390 000e FFF7FEFF 		bl	I2C_I2CSlaveInitReadBuf
- 391              	.LVL36:
-  31:.\main.c      ****     I2C_Start();
- 392              		.loc 1 31 0
- 393 0012 3E48     		ldr	r0, .L42+4
- 394 0014 0421     		mov	r1, #4
- 395 0016 FFF7FEFF 		bl	I2C_I2CSlaveInitWriteBuf
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 14
-
-
- 396              	.LVL37:
-  32:.\main.c      ****     PWM_Start();
- 397              		.loc 1 32 0
- 398 001a FFF7FEFF 		bl	I2C_Start
- 399              	.LVL38:
-  33:.\main.c      **** //    SW_Tx_UART_Start();
- 400              		.loc 1 33 0
- 401 001e FFF7FEFF 		bl	PWM_Start
- 402              	.LVL39:
-  37:.\main.c      ****     Push_Button_isr_StartEx( Push_Button_isr );
- 403              		.loc 1 37 0
- 404 0022 3B48     		ldr	r0, .L42+8
- 405 0024 FFF7FEFF 		bl	PWM_isr_StartEx
- 406              	.LVL40:
-  38:.\main.c      **** 
- 407              		.loc 1 38 0
- 408 0028 3A48     		ldr	r0, .L42+12
- 409 002a FFF7FEFF 		bl	Push_Button_isr_StartEx
- 410              	.LVL41:
-  41:.\main.c      ****     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
- 411              		.loc 1 41 0
- 412 002e 3A4A     		ldr	r2, .L42+16
- 413 0030 3A4B     		ldr	r3, .L42+20
- 414 0032 1A60     		str	r2, [r3]
-  42:.\main.c      ****     Push_Button_Interrupt_Flag = 0;
- 415              		.loc 1 42 0
- 416 0034 3C22     		mov	r2, #60
- 417 0036 3A4B     		ldr	r3, .L42+24
- 418 0038 1A70     		strb	r2, [r3]
-  43:.\main.c      ****     Second_Counter = 0;
- 419              		.loc 1 43 0
- 420 003a 0023     		mov	r3, #0
- 421 003c 394A     		ldr	r2, .L42+28
- 422 003e 1370     		strb	r3, [r2]
-  44:.\main.c      ****     UART_TX_Flag = 0;
- 423              		.loc 1 44 0
- 424 0040 394A     		ldr	r2, .L42+32
- 425 0042 1370     		strb	r3, [r2]
-  45:.\main.c      ****     I2C_Status = 0xFE;
- 426              		.loc 1 45 0
- 427 0044 394A     		ldr	r2, .L42+36
- 428 0046 1370     		strb	r3, [r2]
-  46:.\main.c      **** 
- 429              		.loc 1 46 0
- 430 0048 FE22     		mov	r2, #254
- 431 004a 394B     		ldr	r3, .L42+40
- 432 004c 1A70     		strb	r2, [r3]
- 433              	.L40:
-  51:.\main.c      ****         {
- 434              		.loc 1 51 0
- 435 004e 334B     		ldr	r3, .L42+20
- 436 0050 1B68     		ldr	r3, [r3]
- 437 0052 002B     		cmp	r3, #0
- 438 0054 05D1     		bne	.L34
-  53:.\main.c      ****             PWM_WriteCompare( LOW_GLOW );
- 439              		.loc 1 53 0
- 440 0056 0020     		mov	r0, #0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 15
-
-
- 441 0058 FFF7FEFF 		bl	SUPPLY_ENABLE_Write
- 442              	.LVL42:
-  54:.\main.c      ****         }
- 443              		.loc 1 54 0
- 444 005c 3548     		ldr	r0, .L42+44
- 445 005e FFF7FEFF 		bl	PWM_WriteCompare
- 446              	.LVL43:
- 447              	.L34:
-  62:.\main.c      ****         {
- 448              		.loc 1 62 0
- 449 0062 304B     		ldr	r3, .L42+28
- 450 0064 1B78     		ldrb	r3, [r3]
- 451 0066 012B     		cmp	r3, #1
- 452 0068 12D1     		bne	.L35
-  65:.\main.c      ****             
- 453              		.loc 1 65 0
- 454 006a 0120     		mov	r0, #1
- 455 006c FFF7FEFF 		bl	SUPPLY_ENABLE_Write
- 456              	.LVL44:
-  68:.\main.c      ****             
- 457              		.loc 1 68 0
- 458 0070 0022     		mov	r2, #0
- 459 0072 2C4B     		ldr	r3, .L42+28
- 460 0074 1A70     		strb	r2, [r3]
-  71:.\main.c      ****             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
- 461              		.loc 1 71 0
- 462 0076 284A     		ldr	r2, .L42+16
- 463 0078 284B     		ldr	r3, .L42+20
- 464 007a 1A60     		str	r2, [r3]
-  72:.\main.c      ****   
- 465              		.loc 1 72 0
- 466 007c 3C22     		mov	r2, #60
- 467 007e 284B     		ldr	r3, .L42+24
- 468 0080 1A70     		strb	r2, [r3]
-  75:.\main.c      ****             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
- 469              		.loc 1 75 0
- 470 0082 2348     		ldr	r0, .L42+8
- 471 0084 FFF7FEFF 		bl	PWM_isr_StartEx
- 472              	.LVL45:
-  76:.\main.c      ****         }
- 473              		.loc 1 76 0
- 474 0088 0120     		mov	r0, #1
- 475 008a FFF7FEFF 		bl	PWM_ClearInterrupt
- 476              	.LVL46:
- 477 008e 0EE0     		b	.L36
- 478              	.L35:
-  81:.\main.c      ****             {
- 479              		.loc 1 81 0
- 480 0090 224B     		ldr	r3, .L42+20
- 481 0092 1B68     		ldr	r3, [r3]
- 482 0094 002B     		cmp	r3, #0
- 483 0096 0AD0     		beq	.L36
-  83:.\main.c      ****                 {
- 484              		.loc 1 83 0
- 485 0098 234B     		ldr	r3, .L42+32
- 486 009a 1B78     		ldrb	r3, [r3]
- 487 009c 632B     		cmp	r3, #99
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 16
-
-
- 488 009e 03D8     		bhi	.L37
-  85:.\main.c      ****                 }
- 489              		.loc 1 85 0
- 490 00a0 2548     		ldr	r0, .L42+48
- 491 00a2 FFF7FEFF 		bl	PWM_WriteCompare
- 492              	.LVL47:
- 493 00a6 02E0     		b	.L36
- 494              	.L37:
-  89:.\main.c      ****                 }
- 495              		.loc 1 89 0
- 496 00a8 2448     		ldr	r0, .L42+52
- 497 00aa FFF7FEFF 		bl	PWM_WriteCompare
- 498              	.LVL48:
- 499              	.L36:
- 126:.\main.c      ****         {
- 500              		.loc 1 126 0
- 501 00ae FFF7FEFF 		bl	I2C_I2CSlaveStatus
- 502              	.LVL49:
- 503 00b2 C306     		lsl	r3, r0, #27
- 504 00b4 1FD5     		bpl	.L38
- 129:.\main.c      ****             {
- 505              		.loc 1 129 0
- 506 00b6 FFF7FEFF 		bl	I2C_I2CSlaveGetWriteBufSize
- 507              	.LVL50:
- 508 00ba 0428     		cmp	r0, #4
- 509 00bc 0ED1     		bne	.L39
- 132:.\main.c      ****                     (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
- 510              		.loc 1 132 0
- 511 00be 134B     		ldr	r3, .L42+4
- 512 00c0 1B78     		ldrb	r3, [r3]
- 513 00c2 012B     		cmp	r3, #1
- 514 00c4 0AD1     		bne	.L39
- 133:.\main.c      ****                 {
- 515              		.loc 1 133 0 discriminator 1
- 516 00c6 114B     		ldr	r3, .L42+4
- 517 00c8 DB78     		ldrb	r3, [r3, #3]
- 132:.\main.c      ****                     (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
- 518              		.loc 1 132 0 discriminator 1
- 519 00ca 172B     		cmp	r3, #23
- 520 00cc 06D1     		bne	.L39
- 135:.\main.c      ****                 }
- 521              		.loc 1 135 0
- 522 00ce 0F4B     		ldr	r3, .L42+4
- 523 00d0 5878     		ldrb	r0, [r3, #1]
- 524 00d2 9978     		ldrb	r1, [r3, #2]
- 525 00d4 FFF7FEFF 		bl	ExecuteI2CCommand
- 526              	.LVL51:
- 527 00d8 154B     		ldr	r3, .L42+40
- 528 00da 1870     		strb	r0, [r3]
- 529              	.L39:
- 140:.\main.c      ****             (void) I2C_I2CSlaveClearWriteStatus();
- 530              		.loc 1 140 0
- 531 00dc FFF7FEFF 		bl	I2C_I2CSlaveClearWriteBuf
- 532              	.LVL52:
- 141:.\main.c      **** 
- 533              		.loc 1 141 0
- 534 00e0 FFF7FEFF 		bl	I2C_I2CSlaveClearWriteStatus
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 17
-
-
- 535              	.LVL53:
- 144:.\main.c      ****             i2cReadBuffer[PACKET_PARAM_POS] = i2cWriteBuffer[PACKET_PARAM_POS];
- 536              		.loc 1 144 0
- 537 00e4 084A     		ldr	r2, .L42
- 538 00e6 124B     		ldr	r3, .L42+40
- 539 00e8 1978     		ldrb	r1, [r3]
- 540 00ea 5170     		strb	r1, [r2, #1]
- 145:.\main.c      ****             I2C_Status = STS_CMD_FAIL;
- 541              		.loc 1 145 0
- 542 00ec 0749     		ldr	r1, .L42+4
- 543 00ee 8978     		ldrb	r1, [r1, #2]
- 544 00f0 9170     		strb	r1, [r2, #2]
- 146:.\main.c      ****         }
- 545              		.loc 1 146 0
- 546 00f2 FF22     		mov	r2, #255
- 547 00f4 1A70     		strb	r2, [r3]
- 548              	.L38:
- 150:.\main.c      ****         {
- 549              		.loc 1 150 0
- 550 00f6 FFF7FEFF 		bl	I2C_I2CSlaveStatus
- 551              	.LVL54:
- 552 00fa C307     		lsl	r3, r0, #31
- 553 00fc A7D5     		bpl	.L40
- 153:.\main.c      ****             (void) I2C_I2CSlaveClearReadStatus();
- 554              		.loc 1 153 0
- 555 00fe FFF7FEFF 		bl	I2C_I2CSlaveClearReadBuf
- 556              	.LVL55:
- 154:.\main.c      ****         }
- 557              		.loc 1 154 0
- 558 0102 FFF7FEFF 		bl	I2C_I2CSlaveClearReadStatus
- 559              	.LVL56:
- 560 0106 A2E7     		b	.L40
- 561              	.L43:
- 562              		.align	2
- 563              	.L42:
- 564 0108 00000000 		.word	.LANCHOR0
- 565 010c 00000000 		.word	i2cWriteBuffer
- 566 0110 00000000 		.word	PWM_isr
- 567 0114 00000000 		.word	Push_Button_isr
- 568 0118 E02E0000 		.word	12000
- 569 011c 00000000 		.word	DelayBeforeShutOff
- 570 0120 00000000 		.word	Second_in_Base_60
- 571 0124 00000000 		.word	Push_Button_Interrupt_Flag
- 572 0128 00000000 		.word	Second_Counter
- 573 012c 00000000 		.word	UART_TX_Flag
- 574 0130 00000000 		.word	I2C_Status
- 575 0134 983A0000 		.word	15000
- 576 0138 30750000 		.word	30000
- 577 013c 60EA0000 		.word	60000
- 578              		.cfi_endproc
- 579              	.LFE34:
- 580              		.size	main, .-main
- 581              		.comm	i2cWriteBuffer,4,4
- 582              		.global	i2cReadBuffer
- 583              		.comm	I2C_Status,1,1
- 584              		.comm	UART_Tx_Size,1,1
- 585              		.comm	UART_Buffer,32,4
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 18
-
-
- 586              		.comm	UART_TX_Flag,1,1
- 587              		.comm	Push_Button_Interrupt_Flag,1,1
- 588              		.comm	Second_in_Base_60,1,1
- 589              		.comm	Mode,1,1
- 590              		.comm	Second_Counter,1,1
- 591              		.comm	ON_OFF_Input_Value,1,1
- 592              		.comm	RESET_TIMEOUT_FLAG,1,1
- 593              		.comm	OFF_Time,4,4
- 594              		.comm	ON_Time,4,4
- 595              		.comm	DelayBeforeShutOff,4,4
- 596              		.data
- 597              		.align	2
- 598              		.set	.LANCHOR0,. + 0
- 599              		.type	i2cReadBuffer, %object
- 600              		.size	i2cReadBuffer, 4
- 601              	i2cReadBuffer:
- 602 0000 01       		.byte	1
- 603 0001 FF       		.byte	-1
- 604 0002 FF       		.byte	-1
- 605 0003 17       		.byte	23
- 606              		.text
- 607              	.Letext0:
- 608              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
- 609              		.file 3 ".\\main.h"
- 610              		.file 4 "Generated_Source\\PSoC4/PWM.h"
- 611              		.file 5 "Generated_Source\\PSoC4/SUPPLY_ENABLE.h"
- 612              		.file 6 "Generated_Source\\PSoC4/PWM_CLOCK.h"
- 613              		.file 7 "Generated_Source\\PSoC4/I2C_I2C.h"
- 614              		.file 8 "Generated_Source\\PSoC4/PWM_isr.h"
- 615              		.file 9 "Generated_Source\\PSoC4/I2C.h"
- 616              		.file 10 "Generated_Source\\PSoC4/Push_Button_isr.h"
- 617              		.file 11 "Generated_Source\\PSoC4/PUSH_BUTTON_INPUT.h"
- 618              		.section	.debug_info,"",%progbits
- 619              	.Ldebug_info0:
- 620 0000 F6040000 		.4byte	0x4f6
- 621 0004 0400     		.2byte	0x4
- 622 0006 00000000 		.4byte	.Ldebug_abbrev0
- 623 000a 04       		.byte	0x4
- 624 000b 01       		.uleb128 0x1
- 625 000c BC020000 		.4byte	.LASF53
- 626 0010 01       		.byte	0x1
- 627 0011 B3010000 		.4byte	.LASF54
- 628 0015 84030000 		.4byte	.LASF55
- 629 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 630 001d 00000000 		.4byte	0
- 631 0021 00000000 		.4byte	.Ldebug_line0
- 632 0025 02       		.uleb128 0x2
- 633 0026 01       		.byte	0x1
- 634 0027 06       		.byte	0x6
- 635 0028 38040000 		.4byte	.LASF0
- 636 002c 02       		.uleb128 0x2
- 637 002d 01       		.byte	0x1
- 638 002e 08       		.byte	0x8
- 639 002f FD000000 		.4byte	.LASF1
- 640 0033 02       		.uleb128 0x2
- 641 0034 02       		.byte	0x2
- 642 0035 05       		.byte	0x5
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 19
-
-
- 643 0036 62030000 		.4byte	.LASF2
- 644 003a 02       		.uleb128 0x2
- 645 003b 02       		.byte	0x2
- 646 003c 07       		.byte	0x7
- 647 003d 81000000 		.4byte	.LASF3
- 648 0041 02       		.uleb128 0x2
- 649 0042 04       		.byte	0x4
- 650 0043 05       		.byte	0x5
- 651 0044 16040000 		.4byte	.LASF4
- 652 0048 02       		.uleb128 0x2
- 653 0049 04       		.byte	0x4
- 654 004a 07       		.byte	0x7
- 655 004b 3A010000 		.4byte	.LASF5
- 656 004f 02       		.uleb128 0x2
- 657 0050 08       		.byte	0x8
- 658 0051 05       		.byte	0x5
- 659 0052 00000000 		.4byte	.LASF6
- 660 0056 02       		.uleb128 0x2
- 661 0057 08       		.byte	0x8
- 662 0058 07       		.byte	0x7
- 663 0059 04020000 		.4byte	.LASF7
- 664 005d 03       		.uleb128 0x3
- 665 005e 04       		.byte	0x4
- 666 005f 05       		.byte	0x5
- 667 0060 696E7400 		.ascii	"int\000"
- 668 0064 02       		.uleb128 0x2
- 669 0065 04       		.byte	0x4
- 670 0066 07       		.byte	0x7
- 671 0067 F7010000 		.4byte	.LASF8
- 672 006b 04       		.uleb128 0x4
- 673 006c 4C010000 		.4byte	.LASF9
- 674 0070 02       		.byte	0x2
- 675 0071 9801     		.2byte	0x198
- 676 0073 2C000000 		.4byte	0x2c
- 677 0077 04       		.uleb128 0x4
- 678 0078 E2010000 		.4byte	.LASF10
- 679 007c 02       		.byte	0x2
- 680 007d 9A01     		.2byte	0x19a
- 681 007f 48000000 		.4byte	0x48
- 682 0083 02       		.uleb128 0x2
- 683 0084 04       		.byte	0x4
- 684 0085 04       		.byte	0x4
- 685 0086 60000000 		.4byte	.LASF11
- 686 008a 02       		.uleb128 0x2
- 687 008b 08       		.byte	0x8
- 688 008c 04       		.byte	0x4
- 689 008d 79010000 		.4byte	.LASF12
- 690 0091 02       		.uleb128 0x2
- 691 0092 01       		.byte	0x1
- 692 0093 08       		.byte	0x8
- 693 0094 0E000000 		.4byte	.LASF13
- 694 0098 04       		.uleb128 0x4
- 695 0099 3E020000 		.4byte	.LASF14
- 696 009d 02       		.byte	0x2
- 697 009e 5402     		.2byte	0x254
- 698 00a0 A4000000 		.4byte	0xa4
- 699 00a4 05       		.uleb128 0x5
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 20
-
-
- 700 00a5 04       		.byte	0x4
- 701 00a6 AA000000 		.4byte	0xaa
- 702 00aa 06       		.uleb128 0x6
- 703 00ab 02       		.uleb128 0x2
- 704 00ac 04       		.byte	0x4
- 705 00ad 07       		.byte	0x7
- 706 00ae 64020000 		.4byte	.LASF15
- 707 00b2 07       		.uleb128 0x7
- 708 00b3 F5000000 		.4byte	.LASF16
- 709 00b7 01       		.byte	0x1
- 710 00b8 AA       		.byte	0xaa
- 711 00b9 00000000 		.4byte	.LFB35
- 712 00bd 5C000000 		.4byte	.LFE35-.LFB35
- 713 00c1 01       		.uleb128 0x1
- 714 00c2 9C       		.byte	0x9c
- 715 00c3 E0000000 		.4byte	0xe0
- 716 00c7 08       		.uleb128 0x8
- 717 00c8 18000000 		.4byte	.LVL0
- 718 00cc 04040000 		.4byte	0x404
- 719 00d0 09       		.uleb128 0x9
- 720 00d1 4A000000 		.4byte	.LVL1
- 721 00d5 0B040000 		.4byte	0x40b
- 722 00d9 0A       		.uleb128 0xa
- 723 00da 01       		.uleb128 0x1
- 724 00db 50       		.byte	0x50
- 725 00dc 01       		.uleb128 0x1
- 726 00dd 31       		.byte	0x31
- 727 00de 00       		.byte	0
- 728 00df 00       		.byte	0
- 729 00e0 07       		.uleb128 0x7
- 730 00e1 06040000 		.4byte	.LASF17
- 731 00e5 01       		.byte	0x1
- 732 00e6 D2       		.byte	0xd2
- 733 00e7 00000000 		.4byte	.LFB36
- 734 00eb 14000000 		.4byte	.LFE36-.LFB36
- 735 00ef 01       		.uleb128 0x1
- 736 00f0 9C       		.byte	0x9c
- 737 00f1 FF000000 		.4byte	0xff
- 738 00f5 08       		.uleb128 0x8
- 739 00f6 0C000000 		.4byte	.LVL2
- 740 00fa 1D040000 		.4byte	0x41d
- 741 00fe 00       		.byte	0
- 742 00ff 0B       		.uleb128 0xb
- 743 0100 58040000 		.4byte	.LASF56
- 744 0104 01       		.byte	0x1
- 745 0105 E9       		.byte	0xe9
- 746 0106 6B000000 		.4byte	0x6b
- 747 010a 00000000 		.4byte	.LFB37
- 748 010e D4000000 		.4byte	.LFE37-.LFB37
- 749 0112 01       		.uleb128 0x1
- 750 0113 9C       		.byte	0x9c
- 751 0114 68010000 		.4byte	0x168
- 752 0118 0C       		.uleb128 0xc
- 753 0119 636D6400 		.ascii	"cmd\000"
- 754 011d 01       		.byte	0x1
- 755 011e E9       		.byte	0xe9
- 756 011f 77000000 		.4byte	0x77
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 21
-
-
- 757 0123 00000000 		.4byte	.LLST0
- 758 0127 0D       		.uleb128 0xd
- 759 0128 EE010000 		.4byte	.LASF18
- 760 012c 01       		.byte	0x1
- 761 012d E9       		.byte	0xe9
- 762 012e 6B000000 		.4byte	0x6b
- 763 0132 3A000000 		.4byte	.LLST1
- 764 0136 0E       		.uleb128 0xe
- 765 0137 94000000 		.4byte	.LASF57
- 766 013b 01       		.byte	0x1
- 767 013c EB       		.byte	0xeb
- 768 013d 6B000000 		.4byte	0x6b
- 769 0141 B9010000 		.4byte	.LLST2
- 770 0145 0F       		.uleb128 0xf
- 771 0146 18000000 		.4byte	.LVL6
- 772 014a 28040000 		.4byte	0x428
- 773 014e 58010000 		.4byte	0x158
- 774 0152 0A       		.uleb128 0xa
- 775 0153 01       		.uleb128 0x1
- 776 0154 50       		.byte	0x50
- 777 0155 01       		.uleb128 0x1
- 778 0156 31       		.byte	0x31
- 779 0157 00       		.byte	0
- 780 0158 09       		.uleb128 0x9
- 781 0159 22000000 		.4byte	.LVL8
- 782 015d 28040000 		.4byte	0x428
- 783 0161 0A       		.uleb128 0xa
- 784 0162 01       		.uleb128 0x1
- 785 0163 50       		.byte	0x50
- 786 0164 01       		.uleb128 0x1
- 787 0165 30       		.byte	0x30
- 788 0166 00       		.byte	0
- 789 0167 00       		.byte	0
- 790 0168 10       		.uleb128 0x10
- 791 0169 E9010000 		.4byte	.LASF19
- 792 016d 01       		.byte	0x1
- 793 016e 15       		.byte	0x15
- 794 016f 5D000000 		.4byte	0x5d
- 795 0173 00000000 		.4byte	.LFB34
- 796 0177 40010000 		.4byte	.LFE34-.LFB34
- 797 017b 01       		.uleb128 0x1
- 798 017c 9C       		.byte	0x9c
- 799 017d E5020000 		.4byte	0x2e5
- 800 0181 0F       		.uleb128 0xf
- 801 0182 0A000000 		.4byte	.LVL35
- 802 0186 39040000 		.4byte	0x439
- 803 018a 95010000 		.4byte	0x195
- 804 018e 0A       		.uleb128 0xa
- 805 018f 01       		.uleb128 0x1
- 806 0190 50       		.byte	0x50
- 807 0191 02       		.uleb128 0x2
- 808 0192 08       		.byte	0x8
- 809 0193 FF       		.byte	0xff
- 810 0194 00       		.byte	0
- 811 0195 0F       		.uleb128 0xf
- 812 0196 12000000 		.4byte	.LVL36
- 813 019a 4A040000 		.4byte	0x44a
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 22
-
-
- 814 019e B1010000 		.4byte	0x1b1
- 815 01a2 0A       		.uleb128 0xa
- 816 01a3 01       		.uleb128 0x1
- 817 01a4 51       		.byte	0x51
- 818 01a5 01       		.uleb128 0x1
- 819 01a6 34       		.byte	0x34
- 820 01a7 0A       		.uleb128 0xa
- 821 01a8 01       		.uleb128 0x1
- 822 01a9 50       		.byte	0x50
- 823 01aa 05       		.uleb128 0x5
- 824 01ab 03       		.byte	0x3
- 825 01ac 00000000 		.4byte	.LANCHOR0
- 826 01b0 00       		.byte	0
- 827 01b1 0F       		.uleb128 0xf
- 828 01b2 1A000000 		.4byte	.LVL37
- 829 01b6 66040000 		.4byte	0x466
- 830 01ba CD010000 		.4byte	0x1cd
- 831 01be 0A       		.uleb128 0xa
- 832 01bf 01       		.uleb128 0x1
- 833 01c0 51       		.byte	0x51
- 834 01c1 01       		.uleb128 0x1
- 835 01c2 34       		.byte	0x34
- 836 01c3 0A       		.uleb128 0xa
- 837 01c4 01       		.uleb128 0x1
- 838 01c5 50       		.byte	0x50
- 839 01c6 05       		.uleb128 0x5
- 840 01c7 03       		.byte	0x3
- 841 01c8 00000000 		.4byte	i2cWriteBuffer
- 842 01cc 00       		.byte	0
- 843 01cd 08       		.uleb128 0x8
- 844 01ce 1E000000 		.4byte	.LVL38
- 845 01d2 7C040000 		.4byte	0x47c
- 846 01d6 08       		.uleb128 0x8
- 847 01d7 22000000 		.4byte	.LVL39
- 848 01db 83040000 		.4byte	0x483
- 849 01df 0F       		.uleb128 0xf
- 850 01e0 28000000 		.4byte	.LVL40
- 851 01e4 8B040000 		.4byte	0x48b
- 852 01e8 F6010000 		.4byte	0x1f6
- 853 01ec 0A       		.uleb128 0xa
- 854 01ed 01       		.uleb128 0x1
- 855 01ee 50       		.byte	0x50
- 856 01ef 05       		.uleb128 0x5
- 857 01f0 03       		.byte	0x3
- 858 01f1 00000000 		.4byte	PWM_isr
- 859 01f5 00       		.byte	0
- 860 01f6 0F       		.uleb128 0xf
- 861 01f7 2E000000 		.4byte	.LVL41
- 862 01fb 9C040000 		.4byte	0x49c
- 863 01ff 0D020000 		.4byte	0x20d
- 864 0203 0A       		.uleb128 0xa
- 865 0204 01       		.uleb128 0x1
- 866 0205 50       		.byte	0x50
- 867 0206 05       		.uleb128 0x5
- 868 0207 03       		.byte	0x3
- 869 0208 00000000 		.4byte	Push_Button_isr
- 870 020c 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 23
-
-
- 871 020d 0F       		.uleb128 0xf
- 872 020e 5C000000 		.4byte	.LVL42
- 873 0212 28040000 		.4byte	0x428
- 874 0216 20020000 		.4byte	0x220
- 875 021a 0A       		.uleb128 0xa
- 876 021b 01       		.uleb128 0x1
- 877 021c 50       		.byte	0x50
- 878 021d 01       		.uleb128 0x1
- 879 021e 30       		.byte	0x30
- 880 021f 00       		.byte	0
- 881 0220 0F       		.uleb128 0xf
- 882 0221 62000000 		.4byte	.LVL43
- 883 0225 AD040000 		.4byte	0x4ad
- 884 0229 35020000 		.4byte	0x235
- 885 022d 0A       		.uleb128 0xa
- 886 022e 01       		.uleb128 0x1
- 887 022f 50       		.byte	0x50
- 888 0230 03       		.uleb128 0x3
- 889 0231 0A       		.byte	0xa
- 890 0232 983A     		.2byte	0x3a98
- 891 0234 00       		.byte	0
- 892 0235 0F       		.uleb128 0xf
- 893 0236 70000000 		.4byte	.LVL44
- 894 023a 28040000 		.4byte	0x428
- 895 023e 48020000 		.4byte	0x248
- 896 0242 0A       		.uleb128 0xa
- 897 0243 01       		.uleb128 0x1
- 898 0244 50       		.byte	0x50
- 899 0245 01       		.uleb128 0x1
- 900 0246 31       		.byte	0x31
- 901 0247 00       		.byte	0
- 902 0248 0F       		.uleb128 0xf
- 903 0249 88000000 		.4byte	.LVL45
- 904 024d 8B040000 		.4byte	0x48b
- 905 0251 5F020000 		.4byte	0x25f
- 906 0255 0A       		.uleb128 0xa
- 907 0256 01       		.uleb128 0x1
- 908 0257 50       		.byte	0x50
- 909 0258 05       		.uleb128 0x5
- 910 0259 03       		.byte	0x3
- 911 025a 00000000 		.4byte	PWM_isr
- 912 025e 00       		.byte	0
- 913 025f 0F       		.uleb128 0xf
- 914 0260 8E000000 		.4byte	.LVL46
- 915 0264 0B040000 		.4byte	0x40b
- 916 0268 72020000 		.4byte	0x272
- 917 026c 0A       		.uleb128 0xa
- 918 026d 01       		.uleb128 0x1
- 919 026e 50       		.byte	0x50
- 920 026f 01       		.uleb128 0x1
- 921 0270 31       		.byte	0x31
- 922 0271 00       		.byte	0
- 923 0272 0F       		.uleb128 0xf
- 924 0273 A6000000 		.4byte	.LVL47
- 925 0277 AD040000 		.4byte	0x4ad
- 926 027b 87020000 		.4byte	0x287
- 927 027f 0A       		.uleb128 0xa
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 24
-
-
- 928 0280 01       		.uleb128 0x1
- 929 0281 50       		.byte	0x50
- 930 0282 03       		.uleb128 0x3
- 931 0283 0A       		.byte	0xa
- 932 0284 3075     		.2byte	0x7530
- 933 0286 00       		.byte	0
- 934 0287 0F       		.uleb128 0xf
- 935 0288 AE000000 		.4byte	.LVL48
- 936 028c AD040000 		.4byte	0x4ad
- 937 0290 9C020000 		.4byte	0x29c
- 938 0294 0A       		.uleb128 0xa
- 939 0295 01       		.uleb128 0x1
- 940 0296 50       		.byte	0x50
- 941 0297 03       		.uleb128 0x3
- 942 0298 0A       		.byte	0xa
- 943 0299 60EA     		.2byte	0xea60
- 944 029b 00       		.byte	0
- 945 029c 08       		.uleb128 0x8
- 946 029d B2000000 		.4byte	.LVL49
- 947 02a1 BF040000 		.4byte	0x4bf
- 948 02a5 08       		.uleb128 0x8
- 949 02a6 BA000000 		.4byte	.LVL50
- 950 02aa CA040000 		.4byte	0x4ca
- 951 02ae 08       		.uleb128 0x8
- 952 02af D8000000 		.4byte	.LVL51
- 953 02b3 FF000000 		.4byte	0xff
- 954 02b7 08       		.uleb128 0x8
- 955 02b8 E0000000 		.4byte	.LVL52
- 956 02bc D5040000 		.4byte	0x4d5
- 957 02c0 08       		.uleb128 0x8
- 958 02c1 E4000000 		.4byte	.LVL53
- 959 02c5 DC040000 		.4byte	0x4dc
- 960 02c9 08       		.uleb128 0x8
- 961 02ca FA000000 		.4byte	.LVL54
- 962 02ce BF040000 		.4byte	0x4bf
- 963 02d2 08       		.uleb128 0x8
- 964 02d3 02010000 		.4byte	.LVL55
- 965 02d7 E7040000 		.4byte	0x4e7
- 966 02db 08       		.uleb128 0x8
- 967 02dc 06010000 		.4byte	.LVL56
- 968 02e0 EE040000 		.4byte	0x4ee
- 969 02e4 00       		.byte	0
- 970 02e5 11       		.uleb128 0x11
- 971 02e6 BC010000 		.4byte	.LASF20
- 972 02ea 03       		.byte	0x3
- 973 02eb 3F       		.byte	0x3f
- 974 02ec 77000000 		.4byte	0x77
- 975 02f0 05       		.uleb128 0x5
- 976 02f1 03       		.byte	0x3
- 977 02f2 00000000 		.4byte	DelayBeforeShutOff
- 978 02f6 11       		.uleb128 0x11
- 979 02f7 1B020000 		.4byte	.LASF21
- 980 02fb 03       		.byte	0x3
- 981 02fc 40       		.byte	0x40
- 982 02fd 77000000 		.4byte	0x77
- 983 0301 05       		.uleb128 0x5
- 984 0302 03       		.byte	0x3
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 25
-
-
- 985 0303 00000000 		.4byte	ON_Time
- 986 0307 11       		.uleb128 0x11
- 987 0308 6D020000 		.4byte	.LASF22
- 988 030c 03       		.byte	0x3
- 989 030d 41       		.byte	0x41
- 990 030e 77000000 		.4byte	0x77
- 991 0312 05       		.uleb128 0x5
- 992 0313 03       		.byte	0x3
- 993 0314 00000000 		.4byte	OFF_Time
- 994 0318 11       		.uleb128 0x11
- 995 0319 CF010000 		.4byte	.LASF23
- 996 031d 03       		.byte	0x3
- 997 031e 42       		.byte	0x42
- 998 031f 6B000000 		.4byte	0x6b
- 999 0323 05       		.uleb128 0x5
- 1000 0324 03       		.byte	0x3
- 1001 0325 00000000 		.4byte	RESET_TIMEOUT_FLAG
- 1002 0329 11       		.uleb128 0x11
- 1003 032a 30000000 		.4byte	.LASF24
- 1004 032e 03       		.byte	0x3
- 1005 032f 43       		.byte	0x43
- 1006 0330 6B000000 		.4byte	0x6b
- 1007 0334 05       		.uleb128 0x5
- 1008 0335 03       		.byte	0x3
- 1009 0336 00000000 		.4byte	ON_OFF_Input_Value
- 1010 033a 11       		.uleb128 0x11
- 1011 033b A5000000 		.4byte	.LASF25
- 1012 033f 03       		.byte	0x3
- 1013 0340 44       		.byte	0x44
- 1014 0341 6B000000 		.4byte	0x6b
- 1015 0345 05       		.uleb128 0x5
- 1016 0346 03       		.byte	0x3
- 1017 0347 00000000 		.4byte	Second_Counter
- 1018 034b 11       		.uleb128 0x11
- 1019 034c 6C030000 		.4byte	.LASF26
- 1020 0350 03       		.byte	0x3
- 1021 0351 45       		.byte	0x45
- 1022 0352 6B000000 		.4byte	0x6b
- 1023 0356 05       		.uleb128 0x5
- 1024 0357 03       		.byte	0x3
- 1025 0358 00000000 		.4byte	Mode
- 1026 035c 11       		.uleb128 0x11
- 1027 035d C7000000 		.4byte	.LASF27
- 1028 0361 03       		.byte	0x3
- 1029 0362 46       		.byte	0x46
- 1030 0363 6B000000 		.4byte	0x6b
- 1031 0367 05       		.uleb128 0x5
- 1032 0368 03       		.byte	0x3
- 1033 0369 00000000 		.4byte	Second_in_Base_60
- 1034 036d 11       		.uleb128 0x11
- 1035 036e 98010000 		.4byte	.LASF28
- 1036 0372 03       		.byte	0x3
- 1037 0373 47       		.byte	0x47
- 1038 0374 6B000000 		.4byte	0x6b
- 1039 0378 05       		.uleb128 0x5
- 1040 0379 03       		.byte	0x3
- 1041 037a 00000000 		.4byte	Push_Button_Interrupt_Flag
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 26
-
-
- 1042 037e 11       		.uleb128 0x11
- 1043 037f AF020000 		.4byte	.LASF29
- 1044 0383 03       		.byte	0x3
- 1045 0384 48       		.byte	0x48
- 1046 0385 6B000000 		.4byte	0x6b
- 1047 0389 05       		.uleb128 0x5
- 1048 038a 03       		.byte	0x3
- 1049 038b 00000000 		.4byte	UART_TX_Flag
- 1050 038f 12       		.uleb128 0x12
- 1051 0390 6B000000 		.4byte	0x6b
- 1052 0394 9F030000 		.4byte	0x39f
- 1053 0398 13       		.uleb128 0x13
- 1054 0399 AB000000 		.4byte	0xab
- 1055 039d 1F       		.byte	0x1f
- 1056 039e 00       		.byte	0
- 1057 039f 11       		.uleb128 0x11
- 1058 03a0 23020000 		.4byte	.LASF30
- 1059 03a4 03       		.byte	0x3
- 1060 03a5 49       		.byte	0x49
- 1061 03a6 8F030000 		.4byte	0x38f
- 1062 03aa 05       		.uleb128 0x5
- 1063 03ab 03       		.byte	0x3
- 1064 03ac 00000000 		.4byte	UART_Buffer
- 1065 03b0 11       		.uleb128 0x11
- 1066 03b1 88020000 		.4byte	.LASF31
- 1067 03b5 03       		.byte	0x3
- 1068 03b6 4A       		.byte	0x4a
- 1069 03b7 6B000000 		.4byte	0x6b
- 1070 03bb 05       		.uleb128 0x5
- 1071 03bc 03       		.byte	0x3
- 1072 03bd 00000000 		.4byte	UART_Tx_Size
- 1073 03c1 11       		.uleb128 0x11
- 1074 03c2 6E010000 		.4byte	.LASF32
- 1075 03c6 03       		.byte	0x3
- 1076 03c7 4B       		.byte	0x4b
- 1077 03c8 6B000000 		.4byte	0x6b
- 1078 03cc 05       		.uleb128 0x5
- 1079 03cd 03       		.byte	0x3
- 1080 03ce 00000000 		.4byte	I2C_Status
- 1081 03d2 12       		.uleb128 0x12
- 1082 03d3 6B000000 		.4byte	0x6b
- 1083 03d7 E2030000 		.4byte	0x3e2
- 1084 03db 13       		.uleb128 0x13
- 1085 03dc AB000000 		.4byte	0xab
- 1086 03e0 03       		.byte	0x3
- 1087 03e1 00       		.byte	0
- 1088 03e2 11       		.uleb128 0x11
- 1089 03e3 0B010000 		.4byte	.LASF33
- 1090 03e7 01       		.byte	0x1
- 1091 03e8 12       		.byte	0x12
- 1092 03e9 D2030000 		.4byte	0x3d2
- 1093 03ed 05       		.uleb128 0x5
- 1094 03ee 03       		.byte	0x3
- 1095 03ef 00000000 		.4byte	i2cReadBuffer
- 1096 03f3 11       		.uleb128 0x11
- 1097 03f4 2F020000 		.4byte	.LASF34
- 1098 03f8 01       		.byte	0x1
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 27
-
-
- 1099 03f9 13       		.byte	0x13
- 1100 03fa D2030000 		.4byte	0x3d2
- 1101 03fe 05       		.uleb128 0x5
- 1102 03ff 03       		.byte	0x3
- 1103 0400 00000000 		.4byte	i2cWriteBuffer
- 1104 0404 14       		.uleb128 0x14
- 1105 0405 43000000 		.4byte	.LASF40
- 1106 0409 08       		.byte	0x8
- 1107 040a 19       		.byte	0x19
- 1108 040b 15       		.uleb128 0x15
- 1109 040c 71030000 		.4byte	.LASF35
- 1110 0410 04       		.byte	0x4
- 1111 0411 4601     		.2byte	0x146
- 1112 0413 1D040000 		.4byte	0x41d
- 1113 0417 16       		.uleb128 0x16
- 1114 0418 77000000 		.4byte	0x77
- 1115 041c 00       		.byte	0
- 1116 041d 17       		.uleb128 0x17
- 1117 041e 19010000 		.4byte	.LASF46
- 1118 0422 0B       		.byte	0xb
- 1119 0423 21       		.byte	0x21
- 1120 0424 6B000000 		.4byte	0x6b
- 1121 0428 18       		.uleb128 0x18
- 1122 0429 44040000 		.4byte	.LASF36
- 1123 042d 05       		.byte	0x5
- 1124 042e 1D       		.byte	0x1d
- 1125 042f 39040000 		.4byte	0x439
- 1126 0433 16       		.uleb128 0x16
- 1127 0434 6B000000 		.4byte	0x6b
- 1128 0438 00       		.byte	0
- 1129 0439 18       		.uleb128 0x18
- 1130 043a 76020000 		.4byte	.LASF37
- 1131 043e 06       		.byte	0x6
- 1132 043f 1D       		.byte	0x1d
- 1133 0440 4A040000 		.4byte	0x44a
- 1134 0444 16       		.uleb128 0x16
- 1135 0445 77000000 		.4byte	0x77
- 1136 0449 00       		.byte	0
- 1137 044a 18       		.uleb128 0x18
- 1138 044b 4A030000 		.4byte	.LASF38
- 1139 044f 07       		.byte	0x7
- 1140 0450 DF       		.byte	0xdf
- 1141 0451 60040000 		.4byte	0x460
- 1142 0455 16       		.uleb128 0x16
- 1143 0456 60040000 		.4byte	0x460
- 1144 045a 16       		.uleb128 0x16
- 1145 045b 77000000 		.4byte	0x77
- 1146 045f 00       		.byte	0
- 1147 0460 05       		.uleb128 0x5
- 1148 0461 04       		.byte	0x4
- 1149 0462 6B000000 		.4byte	0x6b
- 1150 0466 18       		.uleb128 0x18
- 1151 0467 4B020000 		.4byte	.LASF39
- 1152 046b 07       		.byte	0x7
- 1153 046c E0       		.byte	0xe0
- 1154 046d 7C040000 		.4byte	0x47c
- 1155 0471 16       		.uleb128 0x16
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 28
-
-
- 1156 0472 60040000 		.4byte	0x460
- 1157 0476 16       		.uleb128 0x16
- 1158 0477 77000000 		.4byte	0x77
- 1159 047b 00       		.byte	0
- 1160 047c 14       		.uleb128 0x14
- 1161 047d 9B000000 		.4byte	.LASF41
- 1162 0481 09       		.byte	0x9
- 1163 0482 68       		.byte	0x68
- 1164 0483 19       		.uleb128 0x19
- 1165 0484 77000000 		.4byte	.LASF42
- 1166 0488 04       		.byte	0x4
- 1167 0489 3101     		.2byte	0x131
- 1168 048b 18       		.uleb128 0x18
- 1169 048c 50000000 		.4byte	.LASF43
- 1170 0490 08       		.byte	0x8
- 1171 0491 18       		.byte	0x18
- 1172 0492 9C040000 		.4byte	0x49c
- 1173 0496 16       		.uleb128 0x16
- 1174 0497 98000000 		.4byte	0x98
- 1175 049b 00       		.byte	0
- 1176 049c 18       		.uleb128 0x18
- 1177 049d 80010000 		.4byte	.LASF44
- 1178 04a1 0A       		.byte	0xa
- 1179 04a2 18       		.byte	0x18
- 1180 04a3 AD040000 		.4byte	0x4ad
- 1181 04a7 16       		.uleb128 0x16
- 1182 04a8 98000000 		.4byte	0x98
- 1183 04ac 00       		.byte	0
- 1184 04ad 15       		.uleb128 0x15
- 1185 04ae 66000000 		.4byte	.LASF45
- 1186 04b2 04       		.byte	0x4
- 1187 04b3 5401     		.2byte	0x154
- 1188 04b5 BF040000 		.4byte	0x4bf
- 1189 04b9 16       		.uleb128 0x16
- 1190 04ba 77000000 		.4byte	0x77
- 1191 04be 00       		.byte	0
- 1192 04bf 17       		.uleb128 0x17
- 1193 04c0 B4000000 		.4byte	.LASF47
- 1194 04c4 07       		.byte	0x7
- 1195 04c5 D6       		.byte	0xd6
- 1196 04c6 77000000 		.4byte	0x77
- 1197 04ca 17       		.uleb128 0x17
- 1198 04cb D9000000 		.4byte	.LASF48
- 1199 04cf 07       		.byte	0x7
- 1200 04d0 E2       		.byte	0xe2
- 1201 04d1 77000000 		.4byte	0x77
- 1202 04d5 14       		.uleb128 0x14
- 1203 04d6 95020000 		.4byte	.LASF49
- 1204 04da 07       		.byte	0x7
- 1205 04db E4       		.byte	0xe4
- 1206 04dc 17       		.uleb128 0x17
- 1207 04dd 13000000 		.4byte	.LASF50
- 1208 04e1 07       		.byte	0x7
- 1209 04e2 D8       		.byte	0xd8
- 1210 04e3 77000000 		.4byte	0x77
- 1211 04e7 14       		.uleb128 0x14
- 1212 04e8 1F040000 		.4byte	.LASF51
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 29
-
-
- 1213 04ec 07       		.byte	0x7
- 1214 04ed E3       		.byte	0xe3
- 1215 04ee 17       		.uleb128 0x17
- 1216 04ef 52010000 		.4byte	.LASF52
- 1217 04f3 07       		.byte	0x7
- 1218 04f4 D7       		.byte	0xd7
- 1219 04f5 77000000 		.4byte	0x77
- 1220 04f9 00       		.byte	0
- 1221              		.section	.debug_abbrev,"",%progbits
- 1222              	.Ldebug_abbrev0:
- 1223 0000 01       		.uleb128 0x1
- 1224 0001 11       		.uleb128 0x11
- 1225 0002 01       		.byte	0x1
- 1226 0003 25       		.uleb128 0x25
- 1227 0004 0E       		.uleb128 0xe
- 1228 0005 13       		.uleb128 0x13
- 1229 0006 0B       		.uleb128 0xb
- 1230 0007 03       		.uleb128 0x3
- 1231 0008 0E       		.uleb128 0xe
- 1232 0009 1B       		.uleb128 0x1b
- 1233 000a 0E       		.uleb128 0xe
- 1234 000b 55       		.uleb128 0x55
- 1235 000c 17       		.uleb128 0x17
- 1236 000d 11       		.uleb128 0x11
- 1237 000e 01       		.uleb128 0x1
- 1238 000f 10       		.uleb128 0x10
- 1239 0010 17       		.uleb128 0x17
- 1240 0011 00       		.byte	0
- 1241 0012 00       		.byte	0
- 1242 0013 02       		.uleb128 0x2
- 1243 0014 24       		.uleb128 0x24
- 1244 0015 00       		.byte	0
- 1245 0016 0B       		.uleb128 0xb
- 1246 0017 0B       		.uleb128 0xb
- 1247 0018 3E       		.uleb128 0x3e
- 1248 0019 0B       		.uleb128 0xb
- 1249 001a 03       		.uleb128 0x3
- 1250 001b 0E       		.uleb128 0xe
- 1251 001c 00       		.byte	0
- 1252 001d 00       		.byte	0
- 1253 001e 03       		.uleb128 0x3
- 1254 001f 24       		.uleb128 0x24
- 1255 0020 00       		.byte	0
- 1256 0021 0B       		.uleb128 0xb
- 1257 0022 0B       		.uleb128 0xb
- 1258 0023 3E       		.uleb128 0x3e
- 1259 0024 0B       		.uleb128 0xb
- 1260 0025 03       		.uleb128 0x3
- 1261 0026 08       		.uleb128 0x8
- 1262 0027 00       		.byte	0
- 1263 0028 00       		.byte	0
- 1264 0029 04       		.uleb128 0x4
- 1265 002a 16       		.uleb128 0x16
- 1266 002b 00       		.byte	0
- 1267 002c 03       		.uleb128 0x3
- 1268 002d 0E       		.uleb128 0xe
- 1269 002e 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 30
-
-
- 1270 002f 0B       		.uleb128 0xb
- 1271 0030 3B       		.uleb128 0x3b
- 1272 0031 05       		.uleb128 0x5
- 1273 0032 49       		.uleb128 0x49
- 1274 0033 13       		.uleb128 0x13
- 1275 0034 00       		.byte	0
- 1276 0035 00       		.byte	0
- 1277 0036 05       		.uleb128 0x5
- 1278 0037 0F       		.uleb128 0xf
- 1279 0038 00       		.byte	0
- 1280 0039 0B       		.uleb128 0xb
- 1281 003a 0B       		.uleb128 0xb
- 1282 003b 49       		.uleb128 0x49
- 1283 003c 13       		.uleb128 0x13
- 1284 003d 00       		.byte	0
- 1285 003e 00       		.byte	0
- 1286 003f 06       		.uleb128 0x6
- 1287 0040 15       		.uleb128 0x15
- 1288 0041 00       		.byte	0
- 1289 0042 27       		.uleb128 0x27
- 1290 0043 19       		.uleb128 0x19
- 1291 0044 00       		.byte	0
- 1292 0045 00       		.byte	0
- 1293 0046 07       		.uleb128 0x7
- 1294 0047 2E       		.uleb128 0x2e
- 1295 0048 01       		.byte	0x1
- 1296 0049 3F       		.uleb128 0x3f
- 1297 004a 19       		.uleb128 0x19
- 1298 004b 03       		.uleb128 0x3
- 1299 004c 0E       		.uleb128 0xe
- 1300 004d 3A       		.uleb128 0x3a
- 1301 004e 0B       		.uleb128 0xb
- 1302 004f 3B       		.uleb128 0x3b
- 1303 0050 0B       		.uleb128 0xb
- 1304 0051 27       		.uleb128 0x27
- 1305 0052 19       		.uleb128 0x19
- 1306 0053 11       		.uleb128 0x11
- 1307 0054 01       		.uleb128 0x1
- 1308 0055 12       		.uleb128 0x12
- 1309 0056 06       		.uleb128 0x6
- 1310 0057 40       		.uleb128 0x40
- 1311 0058 18       		.uleb128 0x18
- 1312 0059 9742     		.uleb128 0x2117
- 1313 005b 19       		.uleb128 0x19
- 1314 005c 01       		.uleb128 0x1
- 1315 005d 13       		.uleb128 0x13
- 1316 005e 00       		.byte	0
- 1317 005f 00       		.byte	0
- 1318 0060 08       		.uleb128 0x8
- 1319 0061 898201   		.uleb128 0x4109
- 1320 0064 00       		.byte	0
- 1321 0065 11       		.uleb128 0x11
- 1322 0066 01       		.uleb128 0x1
- 1323 0067 31       		.uleb128 0x31
- 1324 0068 13       		.uleb128 0x13
- 1325 0069 00       		.byte	0
- 1326 006a 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 31
-
-
- 1327 006b 09       		.uleb128 0x9
- 1328 006c 898201   		.uleb128 0x4109
- 1329 006f 01       		.byte	0x1
- 1330 0070 11       		.uleb128 0x11
- 1331 0071 01       		.uleb128 0x1
- 1332 0072 31       		.uleb128 0x31
- 1333 0073 13       		.uleb128 0x13
- 1334 0074 00       		.byte	0
- 1335 0075 00       		.byte	0
- 1336 0076 0A       		.uleb128 0xa
- 1337 0077 8A8201   		.uleb128 0x410a
- 1338 007a 00       		.byte	0
- 1339 007b 02       		.uleb128 0x2
- 1340 007c 18       		.uleb128 0x18
- 1341 007d 9142     		.uleb128 0x2111
- 1342 007f 18       		.uleb128 0x18
- 1343 0080 00       		.byte	0
- 1344 0081 00       		.byte	0
- 1345 0082 0B       		.uleb128 0xb
- 1346 0083 2E       		.uleb128 0x2e
- 1347 0084 01       		.byte	0x1
- 1348 0085 3F       		.uleb128 0x3f
- 1349 0086 19       		.uleb128 0x19
- 1350 0087 03       		.uleb128 0x3
- 1351 0088 0E       		.uleb128 0xe
- 1352 0089 3A       		.uleb128 0x3a
- 1353 008a 0B       		.uleb128 0xb
- 1354 008b 3B       		.uleb128 0x3b
- 1355 008c 0B       		.uleb128 0xb
- 1356 008d 27       		.uleb128 0x27
- 1357 008e 19       		.uleb128 0x19
- 1358 008f 49       		.uleb128 0x49
- 1359 0090 13       		.uleb128 0x13
- 1360 0091 11       		.uleb128 0x11
- 1361 0092 01       		.uleb128 0x1
- 1362 0093 12       		.uleb128 0x12
- 1363 0094 06       		.uleb128 0x6
- 1364 0095 40       		.uleb128 0x40
- 1365 0096 18       		.uleb128 0x18
- 1366 0097 9742     		.uleb128 0x2117
- 1367 0099 19       		.uleb128 0x19
- 1368 009a 01       		.uleb128 0x1
- 1369 009b 13       		.uleb128 0x13
- 1370 009c 00       		.byte	0
- 1371 009d 00       		.byte	0
- 1372 009e 0C       		.uleb128 0xc
- 1373 009f 05       		.uleb128 0x5
- 1374 00a0 00       		.byte	0
- 1375 00a1 03       		.uleb128 0x3
- 1376 00a2 08       		.uleb128 0x8
- 1377 00a3 3A       		.uleb128 0x3a
- 1378 00a4 0B       		.uleb128 0xb
- 1379 00a5 3B       		.uleb128 0x3b
- 1380 00a6 0B       		.uleb128 0xb
- 1381 00a7 49       		.uleb128 0x49
- 1382 00a8 13       		.uleb128 0x13
- 1383 00a9 02       		.uleb128 0x2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 32
-
-
- 1384 00aa 17       		.uleb128 0x17
- 1385 00ab 00       		.byte	0
- 1386 00ac 00       		.byte	0
- 1387 00ad 0D       		.uleb128 0xd
- 1388 00ae 05       		.uleb128 0x5
- 1389 00af 00       		.byte	0
- 1390 00b0 03       		.uleb128 0x3
- 1391 00b1 0E       		.uleb128 0xe
- 1392 00b2 3A       		.uleb128 0x3a
- 1393 00b3 0B       		.uleb128 0xb
- 1394 00b4 3B       		.uleb128 0x3b
- 1395 00b5 0B       		.uleb128 0xb
- 1396 00b6 49       		.uleb128 0x49
- 1397 00b7 13       		.uleb128 0x13
- 1398 00b8 02       		.uleb128 0x2
- 1399 00b9 17       		.uleb128 0x17
- 1400 00ba 00       		.byte	0
- 1401 00bb 00       		.byte	0
- 1402 00bc 0E       		.uleb128 0xe
- 1403 00bd 34       		.uleb128 0x34
- 1404 00be 00       		.byte	0
- 1405 00bf 03       		.uleb128 0x3
- 1406 00c0 0E       		.uleb128 0xe
- 1407 00c1 3A       		.uleb128 0x3a
- 1408 00c2 0B       		.uleb128 0xb
- 1409 00c3 3B       		.uleb128 0x3b
- 1410 00c4 0B       		.uleb128 0xb
- 1411 00c5 49       		.uleb128 0x49
- 1412 00c6 13       		.uleb128 0x13
- 1413 00c7 02       		.uleb128 0x2
- 1414 00c8 17       		.uleb128 0x17
- 1415 00c9 00       		.byte	0
- 1416 00ca 00       		.byte	0
- 1417 00cb 0F       		.uleb128 0xf
- 1418 00cc 898201   		.uleb128 0x4109
- 1419 00cf 01       		.byte	0x1
- 1420 00d0 11       		.uleb128 0x11
- 1421 00d1 01       		.uleb128 0x1
- 1422 00d2 31       		.uleb128 0x31
- 1423 00d3 13       		.uleb128 0x13
- 1424 00d4 01       		.uleb128 0x1
- 1425 00d5 13       		.uleb128 0x13
- 1426 00d6 00       		.byte	0
- 1427 00d7 00       		.byte	0
- 1428 00d8 10       		.uleb128 0x10
- 1429 00d9 2E       		.uleb128 0x2e
- 1430 00da 01       		.byte	0x1
- 1431 00db 3F       		.uleb128 0x3f
- 1432 00dc 19       		.uleb128 0x19
- 1433 00dd 03       		.uleb128 0x3
- 1434 00de 0E       		.uleb128 0xe
- 1435 00df 3A       		.uleb128 0x3a
- 1436 00e0 0B       		.uleb128 0xb
- 1437 00e1 3B       		.uleb128 0x3b
- 1438 00e2 0B       		.uleb128 0xb
- 1439 00e3 49       		.uleb128 0x49
- 1440 00e4 13       		.uleb128 0x13
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 33
-
-
- 1441 00e5 11       		.uleb128 0x11
- 1442 00e6 01       		.uleb128 0x1
- 1443 00e7 12       		.uleb128 0x12
- 1444 00e8 06       		.uleb128 0x6
- 1445 00e9 40       		.uleb128 0x40
- 1446 00ea 18       		.uleb128 0x18
- 1447 00eb 9742     		.uleb128 0x2117
- 1448 00ed 19       		.uleb128 0x19
- 1449 00ee 01       		.uleb128 0x1
- 1450 00ef 13       		.uleb128 0x13
- 1451 00f0 00       		.byte	0
- 1452 00f1 00       		.byte	0
- 1453 00f2 11       		.uleb128 0x11
- 1454 00f3 34       		.uleb128 0x34
- 1455 00f4 00       		.byte	0
- 1456 00f5 03       		.uleb128 0x3
- 1457 00f6 0E       		.uleb128 0xe
- 1458 00f7 3A       		.uleb128 0x3a
- 1459 00f8 0B       		.uleb128 0xb
- 1460 00f9 3B       		.uleb128 0x3b
- 1461 00fa 0B       		.uleb128 0xb
- 1462 00fb 49       		.uleb128 0x49
- 1463 00fc 13       		.uleb128 0x13
- 1464 00fd 3F       		.uleb128 0x3f
- 1465 00fe 19       		.uleb128 0x19
- 1466 00ff 02       		.uleb128 0x2
- 1467 0100 18       		.uleb128 0x18
- 1468 0101 00       		.byte	0
- 1469 0102 00       		.byte	0
- 1470 0103 12       		.uleb128 0x12
- 1471 0104 01       		.uleb128 0x1
- 1472 0105 01       		.byte	0x1
- 1473 0106 49       		.uleb128 0x49
- 1474 0107 13       		.uleb128 0x13
- 1475 0108 01       		.uleb128 0x1
- 1476 0109 13       		.uleb128 0x13
- 1477 010a 00       		.byte	0
- 1478 010b 00       		.byte	0
- 1479 010c 13       		.uleb128 0x13
- 1480 010d 21       		.uleb128 0x21
- 1481 010e 00       		.byte	0
- 1482 010f 49       		.uleb128 0x49
- 1483 0110 13       		.uleb128 0x13
- 1484 0111 2F       		.uleb128 0x2f
- 1485 0112 0B       		.uleb128 0xb
- 1486 0113 00       		.byte	0
- 1487 0114 00       		.byte	0
- 1488 0115 14       		.uleb128 0x14
- 1489 0116 2E       		.uleb128 0x2e
- 1490 0117 00       		.byte	0
- 1491 0118 3F       		.uleb128 0x3f
- 1492 0119 19       		.uleb128 0x19
- 1493 011a 03       		.uleb128 0x3
- 1494 011b 0E       		.uleb128 0xe
- 1495 011c 3A       		.uleb128 0x3a
- 1496 011d 0B       		.uleb128 0xb
- 1497 011e 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 34
-
-
- 1498 011f 0B       		.uleb128 0xb
- 1499 0120 27       		.uleb128 0x27
- 1500 0121 19       		.uleb128 0x19
- 1501 0122 3C       		.uleb128 0x3c
- 1502 0123 19       		.uleb128 0x19
- 1503 0124 00       		.byte	0
- 1504 0125 00       		.byte	0
- 1505 0126 15       		.uleb128 0x15
- 1506 0127 2E       		.uleb128 0x2e
- 1507 0128 01       		.byte	0x1
- 1508 0129 3F       		.uleb128 0x3f
- 1509 012a 19       		.uleb128 0x19
- 1510 012b 03       		.uleb128 0x3
- 1511 012c 0E       		.uleb128 0xe
- 1512 012d 3A       		.uleb128 0x3a
- 1513 012e 0B       		.uleb128 0xb
- 1514 012f 3B       		.uleb128 0x3b
- 1515 0130 05       		.uleb128 0x5
- 1516 0131 27       		.uleb128 0x27
- 1517 0132 19       		.uleb128 0x19
- 1518 0133 3C       		.uleb128 0x3c
- 1519 0134 19       		.uleb128 0x19
- 1520 0135 01       		.uleb128 0x1
- 1521 0136 13       		.uleb128 0x13
- 1522 0137 00       		.byte	0
- 1523 0138 00       		.byte	0
- 1524 0139 16       		.uleb128 0x16
- 1525 013a 05       		.uleb128 0x5
- 1526 013b 00       		.byte	0
- 1527 013c 49       		.uleb128 0x49
- 1528 013d 13       		.uleb128 0x13
- 1529 013e 00       		.byte	0
- 1530 013f 00       		.byte	0
- 1531 0140 17       		.uleb128 0x17
- 1532 0141 2E       		.uleb128 0x2e
- 1533 0142 00       		.byte	0
- 1534 0143 3F       		.uleb128 0x3f
- 1535 0144 19       		.uleb128 0x19
- 1536 0145 03       		.uleb128 0x3
- 1537 0146 0E       		.uleb128 0xe
- 1538 0147 3A       		.uleb128 0x3a
- 1539 0148 0B       		.uleb128 0xb
- 1540 0149 3B       		.uleb128 0x3b
- 1541 014a 0B       		.uleb128 0xb
- 1542 014b 27       		.uleb128 0x27
- 1543 014c 19       		.uleb128 0x19
- 1544 014d 49       		.uleb128 0x49
- 1545 014e 13       		.uleb128 0x13
- 1546 014f 3C       		.uleb128 0x3c
- 1547 0150 19       		.uleb128 0x19
- 1548 0151 00       		.byte	0
- 1549 0152 00       		.byte	0
- 1550 0153 18       		.uleb128 0x18
- 1551 0154 2E       		.uleb128 0x2e
- 1552 0155 01       		.byte	0x1
- 1553 0156 3F       		.uleb128 0x3f
- 1554 0157 19       		.uleb128 0x19
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 35
-
-
- 1555 0158 03       		.uleb128 0x3
- 1556 0159 0E       		.uleb128 0xe
- 1557 015a 3A       		.uleb128 0x3a
- 1558 015b 0B       		.uleb128 0xb
- 1559 015c 3B       		.uleb128 0x3b
- 1560 015d 0B       		.uleb128 0xb
- 1561 015e 27       		.uleb128 0x27
- 1562 015f 19       		.uleb128 0x19
- 1563 0160 3C       		.uleb128 0x3c
- 1564 0161 19       		.uleb128 0x19
- 1565 0162 01       		.uleb128 0x1
- 1566 0163 13       		.uleb128 0x13
- 1567 0164 00       		.byte	0
- 1568 0165 00       		.byte	0
- 1569 0166 19       		.uleb128 0x19
- 1570 0167 2E       		.uleb128 0x2e
- 1571 0168 00       		.byte	0
- 1572 0169 3F       		.uleb128 0x3f
- 1573 016a 19       		.uleb128 0x19
- 1574 016b 03       		.uleb128 0x3
- 1575 016c 0E       		.uleb128 0xe
- 1576 016d 3A       		.uleb128 0x3a
- 1577 016e 0B       		.uleb128 0xb
- 1578 016f 3B       		.uleb128 0x3b
- 1579 0170 05       		.uleb128 0x5
- 1580 0171 27       		.uleb128 0x27
- 1581 0172 19       		.uleb128 0x19
- 1582 0173 3C       		.uleb128 0x3c
- 1583 0174 19       		.uleb128 0x19
- 1584 0175 00       		.byte	0
- 1585 0176 00       		.byte	0
- 1586 0177 00       		.byte	0
- 1587              		.section	.debug_loc,"",%progbits
- 1588              	.Ldebug_loc0:
- 1589              	.LLST0:
- 1590 0000 00000000 		.4byte	.LVL3
- 1591 0004 08000000 		.4byte	.LVL5
- 1592 0008 0100     		.2byte	0x1
- 1593 000a 50       		.byte	0x50
- 1594 000b 08000000 		.4byte	.LVL5
- 1595 000f B6000000 		.4byte	.LVL33
- 1596 0013 0400     		.2byte	0x4
- 1597 0015 F3       		.byte	0xf3
- 1598 0016 01       		.uleb128 0x1
- 1599 0017 50       		.byte	0x50
- 1600 0018 9F       		.byte	0x9f
- 1601 0019 B6000000 		.4byte	.LVL33
- 1602 001d B8000000 		.4byte	.LVL34
- 1603 0021 0100     		.2byte	0x1
- 1604 0023 50       		.byte	0x50
- 1605 0024 B8000000 		.4byte	.LVL34
- 1606 0028 D4000000 		.4byte	.LFE37
- 1607 002c 0400     		.2byte	0x4
- 1608 002e F3       		.byte	0xf3
- 1609 002f 01       		.uleb128 0x1
- 1610 0030 50       		.byte	0x50
- 1611 0031 9F       		.byte	0x9f
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 36
-
-
- 1612 0032 00000000 		.4byte	0
- 1613 0036 00000000 		.4byte	0
- 1614              	.LLST1:
- 1615 003a 00000000 		.4byte	.LVL3
- 1616 003e 17000000 		.4byte	.LVL6-1
- 1617 0042 0100     		.2byte	0x1
- 1618 0044 51       		.byte	0x51
- 1619 0045 17000000 		.4byte	.LVL6-1
- 1620 0049 1C000000 		.4byte	.LVL7
- 1621 004d 0400     		.2byte	0x4
- 1622 004f F3       		.byte	0xf3
- 1623 0050 01       		.uleb128 0x1
- 1624 0051 51       		.byte	0x51
- 1625 0052 9F       		.byte	0x9f
- 1626 0053 1C000000 		.4byte	.LVL7
- 1627 0057 21000000 		.4byte	.LVL8-1
- 1628 005b 0100     		.2byte	0x1
- 1629 005d 51       		.byte	0x51
- 1630 005e 21000000 		.4byte	.LVL8-1
- 1631 0062 26000000 		.4byte	.LVL9
- 1632 0066 0400     		.2byte	0x4
- 1633 0068 F3       		.byte	0xf3
- 1634 0069 01       		.uleb128 0x1
- 1635 006a 51       		.byte	0x51
- 1636 006b 9F       		.byte	0x9f
- 1637 006c 26000000 		.4byte	.LVL9
- 1638 0070 34000000 		.4byte	.LVL10
- 1639 0074 0100     		.2byte	0x1
- 1640 0076 51       		.byte	0x51
- 1641 0077 34000000 		.4byte	.LVL10
- 1642 007b 3C000000 		.4byte	.LVL11
- 1643 007f 0400     		.2byte	0x4
- 1644 0081 F3       		.byte	0xf3
- 1645 0082 01       		.uleb128 0x1
- 1646 0083 51       		.byte	0x51
- 1647 0084 9F       		.byte	0x9f
- 1648 0085 3C000000 		.4byte	.LVL11
- 1649 0089 3E000000 		.4byte	.LVL12
- 1650 008d 0100     		.2byte	0x1
- 1651 008f 51       		.byte	0x51
- 1652 0090 3E000000 		.4byte	.LVL12
- 1653 0094 46000000 		.4byte	.LVL13
- 1654 0098 0400     		.2byte	0x4
- 1655 009a F3       		.byte	0xf3
- 1656 009b 01       		.uleb128 0x1
- 1657 009c 51       		.byte	0x51
- 1658 009d 9F       		.byte	0x9f
- 1659 009e 46000000 		.4byte	.LVL13
- 1660 00a2 48000000 		.4byte	.LVL14
- 1661 00a6 0100     		.2byte	0x1
- 1662 00a8 51       		.byte	0x51
- 1663 00a9 48000000 		.4byte	.LVL14
- 1664 00ad 50000000 		.4byte	.LVL15
- 1665 00b1 0400     		.2byte	0x4
- 1666 00b3 F3       		.byte	0xf3
- 1667 00b4 01       		.uleb128 0x1
- 1668 00b5 51       		.byte	0x51
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 37
-
-
- 1669 00b6 9F       		.byte	0x9f
- 1670 00b7 50000000 		.4byte	.LVL15
- 1671 00bb 58000000 		.4byte	.LVL16
- 1672 00bf 0100     		.2byte	0x1
- 1673 00c1 51       		.byte	0x51
- 1674 00c2 58000000 		.4byte	.LVL16
- 1675 00c6 5E000000 		.4byte	.LVL17
- 1676 00ca 0400     		.2byte	0x4
- 1677 00cc F3       		.byte	0xf3
- 1678 00cd 01       		.uleb128 0x1
- 1679 00ce 51       		.byte	0x51
- 1680 00cf 9F       		.byte	0x9f
- 1681 00d0 5E000000 		.4byte	.LVL17
- 1682 00d4 60000000 		.4byte	.LVL18
- 1683 00d8 0100     		.2byte	0x1
- 1684 00da 51       		.byte	0x51
- 1685 00db 60000000 		.4byte	.LVL18
- 1686 00df 68000000 		.4byte	.LVL19
- 1687 00e3 0400     		.2byte	0x4
- 1688 00e5 F3       		.byte	0xf3
- 1689 00e6 01       		.uleb128 0x1
- 1690 00e7 51       		.byte	0x51
- 1691 00e8 9F       		.byte	0x9f
- 1692 00e9 68000000 		.4byte	.LVL19
- 1693 00ed 6A000000 		.4byte	.LVL20
- 1694 00f1 0100     		.2byte	0x1
- 1695 00f3 51       		.byte	0x51
- 1696 00f4 6A000000 		.4byte	.LVL20
- 1697 00f8 72000000 		.4byte	.LVL21
- 1698 00fc 0400     		.2byte	0x4
- 1699 00fe F3       		.byte	0xf3
- 1700 00ff 01       		.uleb128 0x1
- 1701 0100 51       		.byte	0x51
- 1702 0101 9F       		.byte	0x9f
- 1703 0102 72000000 		.4byte	.LVL21
- 1704 0106 74000000 		.4byte	.LVL22
- 1705 010a 0100     		.2byte	0x1
- 1706 010c 51       		.byte	0x51
- 1707 010d 74000000 		.4byte	.LVL22
- 1708 0111 7C000000 		.4byte	.LVL23
- 1709 0115 0400     		.2byte	0x4
- 1710 0117 F3       		.byte	0xf3
- 1711 0118 01       		.uleb128 0x1
- 1712 0119 51       		.byte	0x51
- 1713 011a 9F       		.byte	0x9f
- 1714 011b 7C000000 		.4byte	.LVL23
- 1715 011f 84000000 		.4byte	.LVL24
- 1716 0123 0100     		.2byte	0x1
- 1717 0125 51       		.byte	0x51
- 1718 0126 84000000 		.4byte	.LVL24
- 1719 012a 8A000000 		.4byte	.LVL25
- 1720 012e 0400     		.2byte	0x4
- 1721 0130 F3       		.byte	0xf3
- 1722 0131 01       		.uleb128 0x1
- 1723 0132 51       		.byte	0x51
- 1724 0133 9F       		.byte	0x9f
- 1725 0134 8A000000 		.4byte	.LVL25
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 38
-
-
- 1726 0138 8C000000 		.4byte	.LVL26
- 1727 013c 0100     		.2byte	0x1
- 1728 013e 51       		.byte	0x51
- 1729 013f 8C000000 		.4byte	.LVL26
- 1730 0143 94000000 		.4byte	.LVL27
- 1731 0147 0400     		.2byte	0x4
- 1732 0149 F3       		.byte	0xf3
- 1733 014a 01       		.uleb128 0x1
- 1734 014b 51       		.byte	0x51
- 1735 014c 9F       		.byte	0x9f
- 1736 014d 94000000 		.4byte	.LVL27
- 1737 0151 96000000 		.4byte	.LVL28
- 1738 0155 0100     		.2byte	0x1
- 1739 0157 51       		.byte	0x51
- 1740 0158 96000000 		.4byte	.LVL28
- 1741 015c 9E000000 		.4byte	.LVL29
- 1742 0160 0400     		.2byte	0x4
- 1743 0162 F3       		.byte	0xf3
- 1744 0163 01       		.uleb128 0x1
- 1745 0164 51       		.byte	0x51
- 1746 0165 9F       		.byte	0x9f
- 1747 0166 9E000000 		.4byte	.LVL29
- 1748 016a A0000000 		.4byte	.LVL30
- 1749 016e 0100     		.2byte	0x1
- 1750 0170 51       		.byte	0x51
- 1751 0171 A0000000 		.4byte	.LVL30
- 1752 0175 A8000000 		.4byte	.LVL31
- 1753 0179 0400     		.2byte	0x4
- 1754 017b F3       		.byte	0xf3
- 1755 017c 01       		.uleb128 0x1
- 1756 017d 51       		.byte	0x51
- 1757 017e 9F       		.byte	0x9f
- 1758 017f A8000000 		.4byte	.LVL31
- 1759 0183 B0000000 		.4byte	.LVL32
- 1760 0187 0100     		.2byte	0x1
- 1761 0189 51       		.byte	0x51
- 1762 018a B0000000 		.4byte	.LVL32
- 1763 018e B6000000 		.4byte	.LVL33
- 1764 0192 0400     		.2byte	0x4
- 1765 0194 F3       		.byte	0xf3
- 1766 0195 01       		.uleb128 0x1
- 1767 0196 51       		.byte	0x51
- 1768 0197 9F       		.byte	0x9f
- 1769 0198 B6000000 		.4byte	.LVL33
- 1770 019c B8000000 		.4byte	.LVL34
- 1771 01a0 0100     		.2byte	0x1
- 1772 01a2 51       		.byte	0x51
- 1773 01a3 B8000000 		.4byte	.LVL34
- 1774 01a7 D4000000 		.4byte	.LFE37
- 1775 01ab 0400     		.2byte	0x4
- 1776 01ad F3       		.byte	0xf3
- 1777 01ae 01       		.uleb128 0x1
- 1778 01af 51       		.byte	0x51
- 1779 01b0 9F       		.byte	0x9f
- 1780 01b1 00000000 		.4byte	0
- 1781 01b5 00000000 		.4byte	0
- 1782              	.LLST2:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 39
-
-
- 1783 01b9 02000000 		.4byte	.LVL4
- 1784 01bd B8000000 		.4byte	.LVL34
- 1785 01c1 0200     		.2byte	0x2
- 1786 01c3 30       		.byte	0x30
- 1787 01c4 9F       		.byte	0x9f
- 1788 01c5 B8000000 		.4byte	.LVL34
- 1789 01c9 D4000000 		.4byte	.LFE37
- 1790 01cd 0100     		.2byte	0x1
- 1791 01cf 50       		.byte	0x50
- 1792 01d0 00000000 		.4byte	0
- 1793 01d4 00000000 		.4byte	0
- 1794              		.section	.debug_aranges,"",%progbits
- 1795 0000 34000000 		.4byte	0x34
- 1796 0004 0200     		.2byte	0x2
- 1797 0006 00000000 		.4byte	.Ldebug_info0
- 1798 000a 04       		.byte	0x4
- 1799 000b 00       		.byte	0
- 1800 000c 0000     		.2byte	0
- 1801 000e 0000     		.2byte	0
- 1802 0010 00000000 		.4byte	.LFB35
- 1803 0014 5C000000 		.4byte	.LFE35-.LFB35
- 1804 0018 00000000 		.4byte	.LFB36
- 1805 001c 14000000 		.4byte	.LFE36-.LFB36
- 1806 0020 00000000 		.4byte	.LFB37
- 1807 0024 D4000000 		.4byte	.LFE37-.LFB37
- 1808 0028 00000000 		.4byte	.LFB34
- 1809 002c 40010000 		.4byte	.LFE34-.LFB34
- 1810 0030 00000000 		.4byte	0
- 1811 0034 00000000 		.4byte	0
- 1812              		.section	.debug_ranges,"",%progbits
- 1813              	.Ldebug_ranges0:
- 1814 0000 00000000 		.4byte	.LFB35
- 1815 0004 5C000000 		.4byte	.LFE35
- 1816 0008 00000000 		.4byte	.LFB36
- 1817 000c 14000000 		.4byte	.LFE36
- 1818 0010 00000000 		.4byte	.LFB37
- 1819 0014 D4000000 		.4byte	.LFE37
- 1820 0018 00000000 		.4byte	.LFB34
- 1821 001c 40010000 		.4byte	.LFE34
- 1822 0020 00000000 		.4byte	0
- 1823 0024 00000000 		.4byte	0
- 1824              		.section	.debug_line,"",%progbits
- 1825              	.Ldebug_line0:
- 1826 0000 C2010000 		.section	.debug_str,"MS",%progbits,1
- 1826      0200C900 
- 1826      00000201 
- 1826      FB0E0D00 
- 1826      01010101 
- 1827              	.LASF6:
- 1828 0000 6C6F6E67 		.ascii	"long long int\000"
- 1828      206C6F6E 
- 1828      6720696E 
- 1828      7400
- 1829              	.LASF13:
- 1830 000e 63686172 		.ascii	"char\000"
- 1830      00
- 1831              	.LASF50:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 40
-
-
- 1832 0013 4932435F 		.ascii	"I2C_I2CSlaveClearWriteStatus\000"
- 1832      49324353 
- 1832      6C617665 
- 1832      436C6561 
- 1832      72577269 
- 1833              	.LASF24:
- 1834 0030 4F4E5F4F 		.ascii	"ON_OFF_Input_Value\000"
- 1834      46465F49 
- 1834      6E707574 
- 1834      5F56616C 
- 1834      756500
- 1835              	.LASF40:
- 1836 0043 50574D5F 		.ascii	"PWM_isr_Stop\000"
- 1836      6973725F 
- 1836      53746F70 
- 1836      00
- 1837              	.LASF43:
- 1838 0050 50574D5F 		.ascii	"PWM_isr_StartEx\000"
- 1838      6973725F 
- 1838      53746172 
- 1838      74457800 
- 1839              	.LASF11:
- 1840 0060 666C6F61 		.ascii	"float\000"
- 1840      7400
- 1841              	.LASF45:
- 1842 0066 50574D5F 		.ascii	"PWM_WriteCompare\000"
- 1842      57726974 
- 1842      65436F6D 
- 1842      70617265 
- 1842      00
- 1843              	.LASF42:
- 1844 0077 50574D5F 		.ascii	"PWM_Start\000"
- 1844      53746172 
- 1844      7400
- 1845              	.LASF3:
- 1846 0081 73686F72 		.ascii	"short unsigned int\000"
- 1846      7420756E 
- 1846      7369676E 
- 1846      65642069 
- 1846      6E7400
- 1847              	.LASF57:
- 1848 0094 73746174 		.ascii	"status\000"
- 1848      757300
- 1849              	.LASF41:
- 1850 009b 4932435F 		.ascii	"I2C_Start\000"
- 1850      53746172 
- 1850      7400
- 1851              	.LASF25:
- 1852 00a5 5365636F 		.ascii	"Second_Counter\000"
- 1852      6E645F43 
- 1852      6F756E74 
- 1852      657200
- 1853              	.LASF47:
- 1854 00b4 4932435F 		.ascii	"I2C_I2CSlaveStatus\000"
- 1854      49324353 
- 1854      6C617665 
- 1854      53746174 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 41
-
-
- 1854      757300
- 1855              	.LASF27:
- 1856 00c7 5365636F 		.ascii	"Second_in_Base_60\000"
- 1856      6E645F69 
- 1856      6E5F4261 
- 1856      73655F36 
- 1856      3000
- 1857              	.LASF48:
- 1858 00d9 4932435F 		.ascii	"I2C_I2CSlaveGetWriteBufSize\000"
- 1858      49324353 
- 1858      6C617665 
- 1858      47657457 
- 1858      72697465 
- 1859              	.LASF16:
- 1860 00f5 50574D5F 		.ascii	"PWM_isr\000"
- 1860      69737200 
- 1861              	.LASF1:
- 1862 00fd 756E7369 		.ascii	"unsigned char\000"
- 1862      676E6564 
- 1862      20636861 
- 1862      7200
- 1863              	.LASF33:
- 1864 010b 69326352 		.ascii	"i2cReadBuffer\000"
- 1864      65616442 
- 1864      75666665 
- 1864      7200
- 1865              	.LASF46:
- 1866 0119 50555348 		.ascii	"PUSH_BUTTON_INPUT_ClearInterrupt\000"
- 1866      5F425554 
- 1866      544F4E5F 
- 1866      494E5055 
- 1866      545F436C 
- 1867              	.LASF5:
- 1868 013a 6C6F6E67 		.ascii	"long unsigned int\000"
- 1868      20756E73 
- 1868      69676E65 
- 1868      6420696E 
- 1868      7400
- 1869              	.LASF9:
- 1870 014c 75696E74 		.ascii	"uint8\000"
- 1870      3800
- 1871              	.LASF52:
- 1872 0152 4932435F 		.ascii	"I2C_I2CSlaveClearReadStatus\000"
- 1872      49324353 
- 1872      6C617665 
- 1872      436C6561 
- 1872      72526561 
- 1873              	.LASF32:
- 1874 016e 4932435F 		.ascii	"I2C_Status\000"
- 1874      53746174 
- 1874      757300
- 1875              	.LASF12:
- 1876 0179 646F7562 		.ascii	"double\000"
- 1876      6C6500
- 1877              	.LASF44:
- 1878 0180 50757368 		.ascii	"Push_Button_isr_StartEx\000"
- 1878      5F427574 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 42
-
-
- 1878      746F6E5F 
- 1878      6973725F 
- 1878      53746172 
- 1879              	.LASF28:
- 1880 0198 50757368 		.ascii	"Push_Button_Interrupt_Flag\000"
- 1880      5F427574 
- 1880      746F6E5F 
- 1880      496E7465 
- 1880      72727570 
- 1881              	.LASF54:
- 1882 01b3 2E5C6D61 		.ascii	".\\main.c\000"
- 1882      696E2E63 
- 1882      00
- 1883              	.LASF20:
- 1884 01bc 44656C61 		.ascii	"DelayBeforeShutOff\000"
- 1884      79426566 
- 1884      6F726553 
- 1884      6875744F 
- 1884      666600
- 1885              	.LASF23:
- 1886 01cf 52455345 		.ascii	"RESET_TIMEOUT_FLAG\000"
- 1886      545F5449 
- 1886      4D454F55 
- 1886      545F464C 
- 1886      414700
- 1887              	.LASF10:
- 1888 01e2 75696E74 		.ascii	"uint32\000"
- 1888      333200
- 1889              	.LASF19:
- 1890 01e9 6D61696E 		.ascii	"main\000"
- 1890      00
- 1891              	.LASF18:
- 1892 01ee 636D6470 		.ascii	"cmdparam\000"
- 1892      6172616D 
- 1892      00
- 1893              	.LASF8:
- 1894 01f7 756E7369 		.ascii	"unsigned int\000"
- 1894      676E6564 
- 1894      20696E74 
- 1894      00
- 1895              	.LASF7:
- 1896 0204 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1896      206C6F6E 
- 1896      6720756E 
- 1896      7369676E 
- 1896      65642069 
- 1897              	.LASF21:
- 1898 021b 4F4E5F54 		.ascii	"ON_Time\000"
- 1898      696D6500 
- 1899              	.LASF30:
- 1900 0223 55415254 		.ascii	"UART_Buffer\000"
- 1900      5F427566 
- 1900      66657200 
- 1901              	.LASF34:
- 1902 022f 69326357 		.ascii	"i2cWriteBuffer\000"
- 1902      72697465 
- 1902      42756666 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 43
-
-
- 1902      657200
- 1903              	.LASF14:
- 1904 023e 63796973 		.ascii	"cyisraddress\000"
- 1904      72616464 
- 1904      72657373 
- 1904      00
- 1905              	.LASF39:
- 1906 024b 4932435F 		.ascii	"I2C_I2CSlaveInitWriteBuf\000"
- 1906      49324353 
- 1906      6C617665 
- 1906      496E6974 
- 1906      57726974 
- 1907              	.LASF15:
- 1908 0264 73697A65 		.ascii	"sizetype\000"
- 1908      74797065 
- 1908      00
- 1909              	.LASF22:
- 1910 026d 4F46465F 		.ascii	"OFF_Time\000"
- 1910      54696D65 
- 1910      00
- 1911              	.LASF37:
- 1912 0276 50574D5F 		.ascii	"PWM_CLOCK_StartEx\000"
- 1912      434C4F43 
- 1912      4B5F5374 
- 1912      61727445 
- 1912      7800
- 1913              	.LASF31:
- 1914 0288 55415254 		.ascii	"UART_Tx_Size\000"
- 1914      5F54785F 
- 1914      53697A65 
- 1914      00
- 1915              	.LASF49:
- 1916 0295 4932435F 		.ascii	"I2C_I2CSlaveClearWriteBuf\000"
- 1916      49324353 
- 1916      6C617665 
- 1916      436C6561 
- 1916      72577269 
- 1917              	.LASF29:
- 1918 02af 55415254 		.ascii	"UART_TX_Flag\000"
- 1918      5F54585F 
- 1918      466C6167 
- 1918      00
- 1919              	.LASF53:
- 1920 02bc 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1920      4320342E 
- 1920      392E3320 
- 1920      32303135 
- 1920      30333033 
- 1921 02ef 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 1921      20726576 
- 1921      6973696F 
- 1921      6E203232 
- 1921      31323230 
- 1922 0322 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1922      66756E63 
- 1922      74696F6E 
- 1922      2D736563 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 44
-
-
- 1922      74696F6E 
- 1923              	.LASF38:
- 1924 034a 4932435F 		.ascii	"I2C_I2CSlaveInitReadBuf\000"
- 1924      49324353 
- 1924      6C617665 
- 1924      496E6974 
- 1924      52656164 
- 1925              	.LASF2:
- 1926 0362 73686F72 		.ascii	"short int\000"
- 1926      7420696E 
- 1926      7400
- 1927              	.LASF26:
- 1928 036c 4D6F6465 		.ascii	"Mode\000"
- 1928      00
- 1929              	.LASF35:
- 1930 0371 50574D5F 		.ascii	"PWM_ClearInterrupt\000"
- 1930      436C6561 
- 1930      72496E74 
- 1930      65727275 
- 1930      707400
- 1931              	.LASF55:
- 1932 0384 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
- 1932      73657273 
- 1932      5C537069 
- 1932      74666972 
- 1932      65353434 
- 1933 03b2 6C616220 		.ascii	"lab Technologies Inc\\Consultation\\YABtronix\\Auto"
- 1933      54656368 
- 1933      6E6F6C6F 
- 1933      67696573 
- 1933      20496E63 
- 1934 03e2 20536875 		.ascii	" Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
- 1934      742D4F46 
- 1934      465C4175 
- 1934      746F2053 
- 1934      6875742D 
- 1935              	.LASF17:
- 1936 0406 50757368 		.ascii	"Push_Button_isr\000"
- 1936      5F427574 
- 1936      746F6E5F 
- 1936      69737200 
- 1937              	.LASF4:
- 1938 0416 6C6F6E67 		.ascii	"long int\000"
- 1938      20696E74 
- 1938      00
- 1939              	.LASF51:
- 1940 041f 4932435F 		.ascii	"I2C_I2CSlaveClearReadBuf\000"
- 1940      49324353 
- 1940      6C617665 
- 1940      436C6561 
- 1940      72526561 
- 1941              	.LASF0:
- 1942 0438 7369676E 		.ascii	"signed char\000"
- 1942      65642063 
- 1942      68617200 
- 1943              	.LASF36:
- 1944 0444 53555050 		.ascii	"SUPPLY_ENABLE_Write\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccgJqqNs.s 			page 45
-
-
- 1944      4C595F45 
- 1944      4E41424C 
- 1944      455F5772 
- 1944      69746500 
- 1945              	.LASF56:
- 1946 0458 45786563 		.ascii	"ExecuteI2CCommand\000"
- 1946      75746549 
- 1946      3243436F 
- 1946      6D6D616E 
- 1946      6400
- 1947              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 196              	.L12:
+  65:..\Common/main.c ****         {
+ 197              		.loc 1 65 0
+ 198 004c 2B4B     		ldr	r3, .L20+24
+ 199 004e 1B78     		ldrb	r3, [r3]
+ 200 0050 012B     		cmp	r3, #1
+ 201 0052 12D1     		bne	.L13
+  68:..\Common/main.c ****             
+ 202              		.loc 1 68 0
+ 203 0054 0120     		mov	r0, #1
+ 204 0056 FFF7FEFF 		bl	SUPPLY_ENABLE_Write
+ 205              	.LVL10:
+  71:..\Common/main.c ****             
+ 206              		.loc 1 71 0
+ 207 005a 0022     		mov	r2, #0
+ 208 005c 274B     		ldr	r3, .L20+24
+ 209 005e 1A70     		strb	r2, [r3]
+  74:..\Common/main.c ****             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+ 210              		.loc 1 74 0
+ 211 0060 234A     		ldr	r2, .L20+12
+ 212 0062 244B     		ldr	r3, .L20+16
+ 213 0064 1A60     		str	r2, [r3]
+  75:..\Common/main.c ****   
+ 214              		.loc 1 75 0
+ 215 0066 3C22     		mov	r2, #60
+ 216 0068 234B     		ldr	r3, .L20+20
+ 217 006a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 9
+
+
+  78:..\Common/main.c ****             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
+ 218              		.loc 1 78 0
+ 219 006c 1E48     		ldr	r0, .L20+4
+ 220 006e FFF7FEFF 		bl	PWM_isr_StartEx
+ 221              	.LVL11:
+  79:..\Common/main.c ****         }
+ 222              		.loc 1 79 0
+ 223 0072 0120     		mov	r0, #1
+ 224 0074 FFF7FEFF 		bl	PWM_ClearInterrupt
+ 225              	.LVL12:
+ 226 0078 0EE0     		b	.L14
+ 227              	.L13:
+  84:..\Common/main.c ****             {
+ 228              		.loc 1 84 0
+ 229 007a 1E4B     		ldr	r3, .L20+16
+ 230 007c 1B68     		ldr	r3, [r3]
+ 231 007e 002B     		cmp	r3, #0
+ 232 0080 0AD0     		beq	.L14
+  86:..\Common/main.c ****                 {
+ 233              		.loc 1 86 0
+ 234 0082 1F4B     		ldr	r3, .L20+28
+ 235 0084 1B78     		ldrb	r3, [r3]
+ 236 0086 632B     		cmp	r3, #99
+ 237 0088 03D8     		bhi	.L15
+  88:..\Common/main.c ****                 }
+ 238              		.loc 1 88 0
+ 239 008a 1F48     		ldr	r0, .L20+36
+ 240 008c FFF7FEFF 		bl	PWM_WriteCompare
+ 241              	.LVL13:
+ 242 0090 02E0     		b	.L14
+ 243              	.L15:
+  92:..\Common/main.c ****                 }
+ 244              		.loc 1 92 0
+ 245 0092 1E48     		ldr	r0, .L20+40
+ 246 0094 FFF7FEFF 		bl	PWM_WriteCompare
+ 247              	.LVL14:
+ 248              	.L14:
+ 104:..\Common/main.c ****             {
+ 249              		.loc 1 104 0
+ 250 0098 124B     		ldr	r3, .L20
+ 251 009a 1B78     		ldrb	r3, [r3]
+ 252 009c 012B     		cmp	r3, #1
+ 253 009e CBD1     		bne	.L16
+ 106:..\Common/main.c ****                 SW_Tx_UART_PutCRLF();
+ 254              		.loc 1 106 0
+ 255 00a0 1B48     		ldr	r0, .L20+44
+ 256 00a2 FFF7FEFF 		bl	SW_Tx_UART_PutString
+ 257              	.LVL15:
+ 107:..\Common/main.c ****                 SW_Tx_UART_PutString("Operating Mode: ");
+ 258              		.loc 1 107 0
+ 259 00a6 FFF7FEFF 		bl	SW_Tx_UART_PutCRLF
+ 260              	.LVL16:
+ 108:..\Common/main.c ****                 if( Mode == 0 )
+ 261              		.loc 1 108 0
+ 262 00aa 1A48     		ldr	r0, .L20+48
+ 263 00ac FFF7FEFF 		bl	SW_Tx_UART_PutString
+ 264              	.LVL17:
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 10
+
+
+ 109:..\Common/main.c ****                 {
+ 265              		.loc 1 109 0
+ 266 00b0 194B     		ldr	r3, .L20+52
+ 267 00b2 1B78     		ldrb	r3, [r3]
+ 268 00b4 002B     		cmp	r3, #0
+ 269 00b6 03D1     		bne	.L17
+ 111:..\Common/main.c ****                 }
+ 270              		.loc 1 111 0
+ 271 00b8 1848     		ldr	r0, .L20+56
+ 272 00ba FFF7FEFF 		bl	SW_Tx_UART_PutString
+ 273              	.LVL18:
+ 274 00be 02E0     		b	.L18
+ 275              	.L17:
+ 115:..\Common/main.c ****                 }
+ 276              		.loc 1 115 0
+ 277 00c0 1748     		ldr	r0, .L20+60
+ 278 00c2 FFF7FEFF 		bl	SW_Tx_UART_PutString
+ 279              	.LVL19:
+ 280              	.L18:
+ 117:..\Common/main.c ****                 SW_Tx_UART_PutString("Seconds remaning: ");
+ 281              		.loc 1 117 0
+ 282 00c6 FFF7FEFF 		bl	SW_Tx_UART_PutCRLF
+ 283              	.LVL20:
+ 118:..\Common/main.c ****                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
+ 284              		.loc 1 118 0
+ 285 00ca 1648     		ldr	r0, .L20+64
+ 286 00cc FFF7FEFF 		bl	SW_Tx_UART_PutString
+ 287              	.LVL21:
+ 119:..\Common/main.c ****                 SW_Tx_UART_PutCRLF();
+ 288              		.loc 1 119 0
+ 289 00d0 094B     		ldr	r3, .L20+20
+ 290 00d2 1878     		ldrb	r0, [r3]
+ 291 00d4 FFF7FEFF 		bl	SW_Tx_UART_PutHexInt
+ 292              	.LVL22:
+ 120:..\Common/main.c ****                 UART_TX_Flag = 0;
+ 293              		.loc 1 120 0
+ 294 00d8 FFF7FEFF 		bl	SW_Tx_UART_PutCRLF
+ 295              	.LVL23:
+ 121:..\Common/main.c ****             }
+ 296              		.loc 1 121 0
+ 297 00dc 0022     		mov	r2, #0
+ 298 00de 014B     		ldr	r3, .L20
+ 299 00e0 1A70     		strb	r2, [r3]
+ 300 00e2 A9E7     		b	.L16
+ 301              	.L21:
+ 302              		.align	2
+ 303              	.L20:
+ 304 00e4 00000000 		.word	UART_TX_Flag
+ 305 00e8 00000000 		.word	PWM_isr
+ 306 00ec 00000000 		.word	Push_Button_isr
+ 307 00f0 E02E0000 		.word	12000
+ 308 00f4 00000000 		.word	DelayBeforeShutOff
+ 309 00f8 00000000 		.word	Second_in_Base_60
+ 310 00fc 00000000 		.word	Push_Button_Interrupt_Flag
+ 311 0100 00000000 		.word	Second_Counter
+ 312 0104 983A0000 		.word	15000
+ 313 0108 30750000 		.word	30000
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 11
+
+
+ 314 010c 60EA0000 		.word	60000
+ 315 0110 00000000 		.word	.LC12
+ 316 0114 1C000000 		.word	.LC14
+ 317 0118 00000000 		.word	Mode
+ 318 011c 30000000 		.word	.LC17
+ 319 0120 3C000000 		.word	.LC19
+ 320 0124 44000000 		.word	.LC21
+ 321              		.cfi_endproc
+ 322              	.LFE34:
+ 323              		.size	main, .-main
+ 324              		.comm	UART_Tx_Size,1,1
+ 325              		.comm	UART_Buffer,32,4
+ 326              		.comm	UART_TX_Flag,1,1
+ 327              		.comm	Push_Button_Interrupt_Flag,1,1
+ 328              		.comm	Second_in_Base_60,1,1
+ 329              		.comm	Mode,1,1
+ 330              		.comm	Second_Counter,1,1
+ 331              		.comm	Push_Button_State_Value,1,1
+ 332              		.comm	OFF_Time,4,4
+ 333              		.comm	ON_Time,4,4
+ 334              		.comm	DelayBeforeShutOff,4,4
+ 335              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 336              		.align	2
+ 337              	.LC12:
+ 338 0000 2D2D2D2D 		.ascii	"--------------------------\000"
+ 338      2D2D2D2D 
+ 338      2D2D2D2D 
+ 338      2D2D2D2D 
+ 338      2D2D2D2D 
+ 339 001b 00       		.space	1
+ 340              	.LC14:
+ 341 001c 4F706572 		.ascii	"Operating Mode: \000"
+ 341      6174696E 
+ 341      67204D6F 
+ 341      64653A20 
+ 341      00
+ 342 002d 000000   		.space	3
+ 343              	.LC17:
+ 344 0030 53687574 		.ascii	"Shuttoff\000"
+ 344      746F6666 
+ 344      00
+ 345 0039 000000   		.space	3
+ 346              	.LC19:
+ 347 003c 546F6767 		.ascii	"Toggle\000"
+ 347      6C6500
+ 348 0043 00       		.space	1
+ 349              	.LC21:
+ 350 0044 5365636F 		.ascii	"Seconds remaning: \000"
+ 350      6E647320 
+ 350      72656D61 
+ 350      6E696E67 
+ 350      3A2000
+ 351 0057 00       		.text
+ 352              	.Letext0:
+ 353              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 354              		.file 3 "..\\Common\\main.h"
+ 355              		.file 4 "Generated_Source\\PSoC4/PWM.h"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 12
+
+
+ 356              		.file 5 "Generated_Source\\PSoC4/PWM_CLOCK.h"
+ 357              		.file 6 "Generated_Source\\PSoC4/PWM_isr.h"
+ 358              		.file 7 "Generated_Source\\PSoC4/SW_Tx_UART.h"
+ 359              		.file 8 "Generated_Source\\PSoC4/Push_Button_isr.h"
+ 360              		.file 9 "Generated_Source\\PSoC4/SUPPLY_ENABLE.h"
+ 361              		.file 10 "Generated_Source\\PSoC4/PUSH_BUTTON_INPUT.h"
+ 362              		.section	.debug_info,"",%progbits
+ 363              	.Ldebug_info0:
+ 364 0000 34040000 		.4byte	0x434
+ 365 0004 0400     		.2byte	0x4
+ 366 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 367 000a 04       		.byte	0x4
+ 368 000b 01       		.uleb128 0x1
+ 369 000c B7020000 		.4byte	.LASF44
+ 370 0010 01       		.byte	0x1
+ 371 0011 36000000 		.4byte	.LASF45
+ 372 0015 BC000000 		.4byte	.LASF46
+ 373 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 374 001d 00000000 		.4byte	0
+ 375 0021 00000000 		.4byte	.Ldebug_line0
+ 376 0025 02       		.uleb128 0x2
+ 377 0026 01       		.byte	0x1
+ 378 0027 06       		.byte	0x6
+ 379 0028 A2030000 		.4byte	.LASF0
+ 380 002c 02       		.uleb128 0x2
+ 381 002d 01       		.byte	0x1
+ 382 002e 08       		.byte	0x8
+ 383 002f 8D000000 		.4byte	.LASF1
+ 384 0033 02       		.uleb128 0x2
+ 385 0034 02       		.byte	0x2
+ 386 0035 05       		.byte	0x5
+ 387 0036 45030000 		.4byte	.LASF2
+ 388 003a 02       		.uleb128 0x2
+ 389 003b 02       		.byte	0x2
+ 390 003c 07       		.byte	0x7
+ 391 003d 62000000 		.4byte	.LASF3
+ 392 0041 02       		.uleb128 0x2
+ 393 0042 04       		.byte	0x4
+ 394 0043 05       		.byte	0x5
+ 395 0044 77030000 		.4byte	.LASF4
+ 396 0048 02       		.uleb128 0x2
+ 397 0049 04       		.byte	0x4
+ 398 004a 07       		.byte	0x7
+ 399 004b 41010000 		.4byte	.LASF5
+ 400 004f 02       		.uleb128 0x2
+ 401 0050 08       		.byte	0x8
+ 402 0051 05       		.byte	0x5
+ 403 0052 00000000 		.4byte	.LASF6
+ 404 0056 02       		.uleb128 0x2
+ 405 0057 08       		.byte	0x8
+ 406 0058 07       		.byte	0x7
+ 407 0059 17020000 		.4byte	.LASF7
+ 408 005d 03       		.uleb128 0x3
+ 409 005e 04       		.byte	0x4
+ 410 005f 05       		.byte	0x5
+ 411 0060 696E7400 		.ascii	"int\000"
+ 412 0064 02       		.uleb128 0x2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 13
+
+
+ 413 0065 04       		.byte	0x4
+ 414 0066 07       		.byte	0x7
+ 415 0067 0A020000 		.4byte	.LASF8
+ 416 006b 04       		.uleb128 0x4
+ 417 006c 53010000 		.4byte	.LASF9
+ 418 0070 02       		.byte	0x2
+ 419 0071 9801     		.2byte	0x198
+ 420 0073 2C000000 		.4byte	0x2c
+ 421 0077 04       		.uleb128 0x4
+ 422 0078 D4010000 		.4byte	.LASF10
+ 423 007c 02       		.byte	0x2
+ 424 007d 9901     		.2byte	0x199
+ 425 007f 3A000000 		.4byte	0x3a
+ 426 0083 04       		.uleb128 0x4
+ 427 0084 DB010000 		.4byte	.LASF11
+ 428 0088 02       		.byte	0x2
+ 429 0089 9A01     		.2byte	0x19a
+ 430 008b 48000000 		.4byte	0x48
+ 431 008f 02       		.uleb128 0x2
+ 432 0090 04       		.byte	0x4
+ 433 0091 04       		.byte	0x4
+ 434 0092 87000000 		.4byte	.LASF12
+ 435 0096 02       		.uleb128 0x2
+ 436 0097 08       		.byte	0x8
+ 437 0098 04       		.byte	0x4
+ 438 0099 82010000 		.4byte	.LASF13
+ 439 009d 04       		.uleb128 0x4
+ 440 009e 6D010000 		.4byte	.LASF14
+ 441 00a2 02       		.byte	0x2
+ 442 00a3 A901     		.2byte	0x1a9
+ 443 00a5 A9000000 		.4byte	0xa9
+ 444 00a9 02       		.uleb128 0x2
+ 445 00aa 01       		.byte	0x1
+ 446 00ab 08       		.byte	0x8
+ 447 00ac 80030000 		.4byte	.LASF15
+ 448 00b0 04       		.uleb128 0x4
+ 449 00b1 4F020000 		.4byte	.LASF16
+ 450 00b5 02       		.byte	0x2
+ 451 00b6 5402     		.2byte	0x254
+ 452 00b8 BC000000 		.4byte	0xbc
+ 453 00bc 05       		.uleb128 0x5
+ 454 00bd 04       		.byte	0x4
+ 455 00be C2000000 		.4byte	0xc2
+ 456 00c2 06       		.uleb128 0x6
+ 457 00c3 02       		.uleb128 0x2
+ 458 00c4 04       		.byte	0x4
+ 459 00c5 07       		.byte	0x7
+ 460 00c6 71020000 		.4byte	.LASF17
+ 461 00ca 02       		.uleb128 0x2
+ 462 00cb 08       		.byte	0x8
+ 463 00cc 04       		.byte	0x4
+ 464 00cd 85030000 		.4byte	.LASF18
+ 465 00d1 07       		.uleb128 0x7
+ 466 00d2 A2020000 		.4byte	.LASF19
+ 467 00d6 01       		.byte	0x1
+ 468 00d7 AC       		.byte	0xac
+ 469 00d8 00000000 		.4byte	.LFB35
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 14
+
+
+ 470 00dc 5C000000 		.4byte	.LFE35-.LFB35
+ 471 00e0 01       		.uleb128 0x1
+ 472 00e1 9C       		.byte	0x9c
+ 473 00e2 FF000000 		.4byte	0xff
+ 474 00e6 08       		.uleb128 0x8
+ 475 00e7 18000000 		.4byte	.LVL0
+ 476 00eb 7E030000 		.4byte	0x37e
+ 477 00ef 09       		.uleb128 0x9
+ 478 00f0 4A000000 		.4byte	.LVL1
+ 479 00f4 85030000 		.4byte	0x385
+ 480 00f8 0A       		.uleb128 0xa
+ 481 00f9 01       		.uleb128 0x1
+ 482 00fa 50       		.byte	0x50
+ 483 00fb 01       		.uleb128 0x1
+ 484 00fc 31       		.byte	0x31
+ 485 00fd 00       		.byte	0
+ 486 00fe 00       		.byte	0
+ 487 00ff 07       		.uleb128 0x7
+ 488 0100 67030000 		.4byte	.LASF20
+ 489 0104 01       		.byte	0x1
+ 490 0105 D7       		.byte	0xd7
+ 491 0106 00000000 		.4byte	.LFB36
+ 492 010a 14000000 		.4byte	.LFE36-.LFB36
+ 493 010e 01       		.uleb128 0x1
+ 494 010f 9C       		.byte	0x9c
+ 495 0110 1E010000 		.4byte	0x11e
+ 496 0114 08       		.uleb128 0x8
+ 497 0115 0C000000 		.4byte	.LVL2
+ 498 0119 97030000 		.4byte	0x397
+ 499 011d 00       		.byte	0
+ 500 011e 0B       		.uleb128 0xb
+ 501 011f BC010000 		.4byte	.LASF21
+ 502 0123 01       		.byte	0x1
+ 503 0124 12       		.byte	0x12
+ 504 0125 5D000000 		.4byte	0x5d
+ 505 0129 00000000 		.4byte	.LFB34
+ 506 012d 28010000 		.4byte	.LFE34-.LFB34
+ 507 0131 01       		.uleb128 0x1
+ 508 0132 9C       		.byte	0x9c
+ 509 0133 B3020000 		.4byte	0x2b3
+ 510 0137 0C       		.uleb128 0xc
+ 511 0138 0A000000 		.4byte	.LVL3
+ 512 013c A2030000 		.4byte	0x3a2
+ 513 0140 4B010000 		.4byte	0x14b
+ 514 0144 0A       		.uleb128 0xa
+ 515 0145 01       		.uleb128 0x1
+ 516 0146 50       		.byte	0x50
+ 517 0147 02       		.uleb128 0x2
+ 518 0148 08       		.byte	0x8
+ 519 0149 FF       		.byte	0xff
+ 520 014a 00       		.byte	0
+ 521 014b 08       		.uleb128 0x8
+ 522 014c 0E000000 		.4byte	.LVL4
+ 523 0150 B3030000 		.4byte	0x3b3
+ 524 0154 08       		.uleb128 0x8
+ 525 0155 18000000 		.4byte	.LVL5
+ 526 0159 BA030000 		.4byte	0x3ba
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 15
+
+
+ 527 015d 0C       		.uleb128 0xc
+ 528 015e 1E000000 		.4byte	.LVL6
+ 529 0162 C2030000 		.4byte	0x3c2
+ 530 0166 74010000 		.4byte	0x174
+ 531 016a 0A       		.uleb128 0xa
+ 532 016b 01       		.uleb128 0x1
+ 533 016c 50       		.byte	0x50
+ 534 016d 05       		.uleb128 0x5
+ 535 016e 03       		.byte	0x3
+ 536 016f 00000000 		.4byte	PWM_isr
+ 537 0173 00       		.byte	0
+ 538 0174 0C       		.uleb128 0xc
+ 539 0175 24000000 		.4byte	.LVL7
+ 540 0179 D3030000 		.4byte	0x3d3
+ 541 017d 8B010000 		.4byte	0x18b
+ 542 0181 0A       		.uleb128 0xa
+ 543 0182 01       		.uleb128 0x1
+ 544 0183 50       		.byte	0x50
+ 545 0184 05       		.uleb128 0x5
+ 546 0185 03       		.byte	0x3
+ 547 0186 00000000 		.4byte	Push_Button_isr
+ 548 018a 00       		.byte	0
+ 549 018b 0C       		.uleb128 0xc
+ 550 018c 46000000 		.4byte	.LVL8
+ 551 0190 E4030000 		.4byte	0x3e4
+ 552 0194 9F010000 		.4byte	0x19f
+ 553 0198 0A       		.uleb128 0xa
+ 554 0199 01       		.uleb128 0x1
+ 555 019a 50       		.byte	0x50
+ 556 019b 02       		.uleb128 0x2
+ 557 019c 74       		.byte	0x74
+ 558 019d 00       		.sleb128 0
+ 559 019e 00       		.byte	0
+ 560 019f 0C       		.uleb128 0xc
+ 561 01a0 4C000000 		.4byte	.LVL9
+ 562 01a4 F5030000 		.4byte	0x3f5
+ 563 01a8 B4010000 		.4byte	0x1b4
+ 564 01ac 0A       		.uleb128 0xa
+ 565 01ad 01       		.uleb128 0x1
+ 566 01ae 50       		.byte	0x50
+ 567 01af 03       		.uleb128 0x3
+ 568 01b0 0A       		.byte	0xa
+ 569 01b1 983A     		.2byte	0x3a98
+ 570 01b3 00       		.byte	0
+ 571 01b4 0C       		.uleb128 0xc
+ 572 01b5 5A000000 		.4byte	.LVL10
+ 573 01b9 E4030000 		.4byte	0x3e4
+ 574 01bd C7010000 		.4byte	0x1c7
+ 575 01c1 0A       		.uleb128 0xa
+ 576 01c2 01       		.uleb128 0x1
+ 577 01c3 50       		.byte	0x50
+ 578 01c4 01       		.uleb128 0x1
+ 579 01c5 31       		.byte	0x31
+ 580 01c6 00       		.byte	0
+ 581 01c7 0C       		.uleb128 0xc
+ 582 01c8 72000000 		.4byte	.LVL11
+ 583 01cc C2030000 		.4byte	0x3c2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 16
+
+
+ 584 01d0 DE010000 		.4byte	0x1de
+ 585 01d4 0A       		.uleb128 0xa
+ 586 01d5 01       		.uleb128 0x1
+ 587 01d6 50       		.byte	0x50
+ 588 01d7 05       		.uleb128 0x5
+ 589 01d8 03       		.byte	0x3
+ 590 01d9 00000000 		.4byte	PWM_isr
+ 591 01dd 00       		.byte	0
+ 592 01de 0C       		.uleb128 0xc
+ 593 01df 78000000 		.4byte	.LVL12
+ 594 01e3 85030000 		.4byte	0x385
+ 595 01e7 F1010000 		.4byte	0x1f1
+ 596 01eb 0A       		.uleb128 0xa
+ 597 01ec 01       		.uleb128 0x1
+ 598 01ed 50       		.byte	0x50
+ 599 01ee 01       		.uleb128 0x1
+ 600 01ef 31       		.byte	0x31
+ 601 01f0 00       		.byte	0
+ 602 01f1 0C       		.uleb128 0xc
+ 603 01f2 90000000 		.4byte	.LVL13
+ 604 01f6 F5030000 		.4byte	0x3f5
+ 605 01fa 06020000 		.4byte	0x206
+ 606 01fe 0A       		.uleb128 0xa
+ 607 01ff 01       		.uleb128 0x1
+ 608 0200 50       		.byte	0x50
+ 609 0201 03       		.uleb128 0x3
+ 610 0202 0A       		.byte	0xa
+ 611 0203 3075     		.2byte	0x7530
+ 612 0205 00       		.byte	0
+ 613 0206 0C       		.uleb128 0xc
+ 614 0207 98000000 		.4byte	.LVL14
+ 615 020b F5030000 		.4byte	0x3f5
+ 616 020f 1B020000 		.4byte	0x21b
+ 617 0213 0A       		.uleb128 0xa
+ 618 0214 01       		.uleb128 0x1
+ 619 0215 50       		.byte	0x50
+ 620 0216 03       		.uleb128 0x3
+ 621 0217 0A       		.byte	0xa
+ 622 0218 60EA     		.2byte	0xea60
+ 623 021a 00       		.byte	0
+ 624 021b 0C       		.uleb128 0xc
+ 625 021c A6000000 		.4byte	.LVL15
+ 626 0220 07040000 		.4byte	0x407
+ 627 0224 32020000 		.4byte	0x232
+ 628 0228 0A       		.uleb128 0xa
+ 629 0229 01       		.uleb128 0x1
+ 630 022a 50       		.byte	0x50
+ 631 022b 05       		.uleb128 0x5
+ 632 022c 03       		.byte	0x3
+ 633 022d 00000000 		.4byte	.LC12
+ 634 0231 00       		.byte	0
+ 635 0232 08       		.uleb128 0x8
+ 636 0233 AA000000 		.4byte	.LVL16
+ 637 0237 23040000 		.4byte	0x423
+ 638 023b 0C       		.uleb128 0xc
+ 639 023c B0000000 		.4byte	.LVL17
+ 640 0240 07040000 		.4byte	0x407
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 17
+
+
+ 641 0244 52020000 		.4byte	0x252
+ 642 0248 0A       		.uleb128 0xa
+ 643 0249 01       		.uleb128 0x1
+ 644 024a 50       		.byte	0x50
+ 645 024b 05       		.uleb128 0x5
+ 646 024c 03       		.byte	0x3
+ 647 024d 1C000000 		.4byte	.LC14
+ 648 0251 00       		.byte	0
+ 649 0252 0C       		.uleb128 0xc
+ 650 0253 BE000000 		.4byte	.LVL18
+ 651 0257 07040000 		.4byte	0x407
+ 652 025b 69020000 		.4byte	0x269
+ 653 025f 0A       		.uleb128 0xa
+ 654 0260 01       		.uleb128 0x1
+ 655 0261 50       		.byte	0x50
+ 656 0262 05       		.uleb128 0x5
+ 657 0263 03       		.byte	0x3
+ 658 0264 30000000 		.4byte	.LC17
+ 659 0268 00       		.byte	0
+ 660 0269 0C       		.uleb128 0xc
+ 661 026a C6000000 		.4byte	.LVL19
+ 662 026e 07040000 		.4byte	0x407
+ 663 0272 80020000 		.4byte	0x280
+ 664 0276 0A       		.uleb128 0xa
+ 665 0277 01       		.uleb128 0x1
+ 666 0278 50       		.byte	0x50
+ 667 0279 05       		.uleb128 0x5
+ 668 027a 03       		.byte	0x3
+ 669 027b 3C000000 		.4byte	.LC19
+ 670 027f 00       		.byte	0
+ 671 0280 08       		.uleb128 0x8
+ 672 0281 CA000000 		.4byte	.LVL20
+ 673 0285 23040000 		.4byte	0x423
+ 674 0289 0C       		.uleb128 0xc
+ 675 028a D0000000 		.4byte	.LVL21
+ 676 028e 07040000 		.4byte	0x407
+ 677 0292 A0020000 		.4byte	0x2a0
+ 678 0296 0A       		.uleb128 0xa
+ 679 0297 01       		.uleb128 0x1
+ 680 0298 50       		.byte	0x50
+ 681 0299 05       		.uleb128 0x5
+ 682 029a 03       		.byte	0x3
+ 683 029b 44000000 		.4byte	.LC21
+ 684 029f 00       		.byte	0
+ 685 02a0 08       		.uleb128 0x8
+ 686 02a1 D8000000 		.4byte	.LVL22
+ 687 02a5 2A040000 		.4byte	0x42a
+ 688 02a9 08       		.uleb128 0x8
+ 689 02aa DC000000 		.4byte	.LVL23
+ 690 02ae 23040000 		.4byte	0x423
+ 691 02b2 00       		.byte	0
+ 692 02b3 0D       		.uleb128 0xd
+ 693 02b4 C1010000 		.4byte	.LASF22
+ 694 02b8 03       		.byte	0x3
+ 695 02b9 4E       		.byte	0x4e
+ 696 02ba 83000000 		.4byte	0x83
+ 697 02be 05       		.uleb128 0x5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 18
+
+
+ 698 02bf 03       		.byte	0x3
+ 699 02c0 00000000 		.4byte	DelayBeforeShutOff
+ 700 02c4 0D       		.uleb128 0xd
+ 701 02c5 2E020000 		.4byte	.LASF23
+ 702 02c9 03       		.byte	0x3
+ 703 02ca 4F       		.byte	0x4f
+ 704 02cb 83000000 		.4byte	0x83
+ 705 02cf 05       		.uleb128 0x5
+ 706 02d0 03       		.byte	0x3
+ 707 02d1 00000000 		.4byte	ON_Time
+ 708 02d5 0D       		.uleb128 0xd
+ 709 02d6 7A020000 		.4byte	.LASF24
+ 710 02da 03       		.byte	0x3
+ 711 02db 50       		.byte	0x50
+ 712 02dc 83000000 		.4byte	0x83
+ 713 02e0 05       		.uleb128 0x5
+ 714 02e1 03       		.byte	0x3
+ 715 02e2 00000000 		.4byte	OFF_Time
+ 716 02e6 0D       		.uleb128 0xd
+ 717 02e7 1E000000 		.4byte	.LASF25
+ 718 02eb 03       		.byte	0x3
+ 719 02ec 51       		.byte	0x51
+ 720 02ed 6B000000 		.4byte	0x6b
+ 721 02f1 05       		.uleb128 0x5
+ 722 02f2 03       		.byte	0x3
+ 723 02f3 00000000 		.4byte	Push_Button_State_Value
+ 724 02f7 0D       		.uleb128 0xd
+ 725 02f8 73010000 		.4byte	.LASF26
+ 726 02fc 03       		.byte	0x3
+ 727 02fd 52       		.byte	0x52
+ 728 02fe 6B000000 		.4byte	0x6b
+ 729 0302 05       		.uleb128 0x5
+ 730 0303 03       		.byte	0x3
+ 731 0304 00000000 		.4byte	Second_Counter
+ 732 0308 0D       		.uleb128 0xd
+ 733 0309 4F030000 		.4byte	.LASF27
+ 734 030d 03       		.byte	0x3
+ 735 030e 53       		.byte	0x53
+ 736 030f 6B000000 		.4byte	0x6b
+ 737 0313 05       		.uleb128 0x5
+ 738 0314 03       		.byte	0x3
+ 739 0315 00000000 		.4byte	Mode
+ 740 0319 0D       		.uleb128 0xd
+ 741 031a 75000000 		.4byte	.LASF28
+ 742 031e 03       		.byte	0x3
+ 743 031f 54       		.byte	0x54
+ 744 0320 6B000000 		.4byte	0x6b
+ 745 0324 05       		.uleb128 0x5
+ 746 0325 03       		.byte	0x3
+ 747 0326 00000000 		.4byte	Second_in_Base_60
+ 748 032a 0D       		.uleb128 0xd
+ 749 032b A1010000 		.4byte	.LASF29
+ 750 032f 03       		.byte	0x3
+ 751 0330 55       		.byte	0x55
+ 752 0331 6B000000 		.4byte	0x6b
+ 753 0335 05       		.uleb128 0x5
+ 754 0336 03       		.byte	0x3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 19
+
+
+ 755 0337 00000000 		.4byte	Push_Button_Interrupt_Flag
+ 756 033b 0D       		.uleb128 0xd
+ 757 033c AA020000 		.4byte	.LASF30
+ 758 0340 03       		.byte	0x3
+ 759 0341 5D       		.byte	0x5d
+ 760 0342 6B000000 		.4byte	0x6b
+ 761 0346 05       		.uleb128 0x5
+ 762 0347 03       		.byte	0x3
+ 763 0348 00000000 		.4byte	UART_TX_Flag
+ 764 034c 0E       		.uleb128 0xe
+ 765 034d 6B000000 		.4byte	0x6b
+ 766 0351 5C030000 		.4byte	0x35c
+ 767 0355 0F       		.uleb128 0xf
+ 768 0356 C3000000 		.4byte	0xc3
+ 769 035a 1F       		.byte	0x1f
+ 770 035b 00       		.byte	0
+ 771 035c 0D       		.uleb128 0xd
+ 772 035d 36020000 		.4byte	.LASF31
+ 773 0361 03       		.byte	0x3
+ 774 0362 5E       		.byte	0x5e
+ 775 0363 4C030000 		.4byte	0x34c
+ 776 0367 05       		.uleb128 0x5
+ 777 0368 03       		.byte	0x3
+ 778 0369 00000000 		.4byte	UART_Buffer
+ 779 036d 0D       		.uleb128 0xd
+ 780 036e 95020000 		.4byte	.LASF32
+ 781 0372 03       		.byte	0x3
+ 782 0373 5F       		.byte	0x5f
+ 783 0374 6B000000 		.4byte	0x6b
+ 784 0378 05       		.uleb128 0x5
+ 785 0379 03       		.byte	0x3
+ 786 037a 00000000 		.4byte	UART_Tx_Size
+ 787 037e 10       		.uleb128 0x10
+ 788 037f 42020000 		.4byte	.LASF35
+ 789 0383 06       		.byte	0x6
+ 790 0384 19       		.byte	0x19
+ 791 0385 11       		.uleb128 0x11
+ 792 0386 54030000 		.4byte	.LASF33
+ 793 038a 04       		.byte	0x4
+ 794 038b 4601     		.2byte	0x146
+ 795 038d 97030000 		.4byte	0x397
+ 796 0391 12       		.uleb128 0x12
+ 797 0392 83000000 		.4byte	0x83
+ 798 0396 00       		.byte	0
+ 799 0397 13       		.uleb128 0x13
+ 800 0398 9B000000 		.4byte	.LASF47
+ 801 039c 0A       		.byte	0xa
+ 802 039d 21       		.byte	0x21
+ 803 039e 6B000000 		.4byte	0x6b
+ 804 03a2 14       		.uleb128 0x14
+ 805 03a3 83020000 		.4byte	.LASF34
+ 806 03a7 05       		.byte	0x5
+ 807 03a8 1D       		.byte	0x1d
+ 808 03a9 B3030000 		.4byte	0x3b3
+ 809 03ad 12       		.uleb128 0x12
+ 810 03ae 83000000 		.4byte	0x83
+ 811 03b2 00       		.byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 20
+
+
+ 812 03b3 10       		.uleb128 0x10
+ 813 03b4 91030000 		.4byte	.LASF36
+ 814 03b8 07       		.byte	0x7
+ 815 03b9 1F       		.byte	0x1f
+ 816 03ba 15       		.uleb128 0x15
+ 817 03bb 58000000 		.4byte	.LASF37
+ 818 03bf 04       		.byte	0x4
+ 819 03c0 3101     		.2byte	0x131
+ 820 03c2 14       		.uleb128 0x14
+ 821 03c3 0E000000 		.4byte	.LASF38
+ 822 03c7 06       		.byte	0x6
+ 823 03c8 18       		.byte	0x18
+ 824 03c9 D3030000 		.4byte	0x3d3
+ 825 03cd 12       		.uleb128 0x12
+ 826 03ce B0000000 		.4byte	0xb0
+ 827 03d2 00       		.byte	0
+ 828 03d3 14       		.uleb128 0x14
+ 829 03d4 89010000 		.4byte	.LASF39
+ 830 03d8 08       		.byte	0x8
+ 831 03d9 18       		.byte	0x18
+ 832 03da E4030000 		.4byte	0x3e4
+ 833 03de 12       		.uleb128 0x12
+ 834 03df B0000000 		.4byte	0xb0
+ 835 03e3 00       		.byte	0
+ 836 03e4 14       		.uleb128 0x14
+ 837 03e5 59010000 		.4byte	.LASF40
+ 838 03e9 09       		.byte	0x9
+ 839 03ea 1D       		.byte	0x1d
+ 840 03eb F5030000 		.4byte	0x3f5
+ 841 03ef 12       		.uleb128 0x12
+ 842 03f0 6B000000 		.4byte	0x6b
+ 843 03f4 00       		.byte	0
+ 844 03f5 11       		.uleb128 0x11
+ 845 03f6 47000000 		.4byte	.LASF41
+ 846 03fa 04       		.byte	0x4
+ 847 03fb 5401     		.2byte	0x154
+ 848 03fd 07040000 		.4byte	0x407
+ 849 0401 12       		.uleb128 0x12
+ 850 0402 83000000 		.4byte	0x83
+ 851 0406 00       		.byte	0
+ 852 0407 14       		.uleb128 0x14
+ 853 0408 E2010000 		.4byte	.LASF42
+ 854 040c 07       		.byte	0x7
+ 855 040d 26       		.byte	0x26
+ 856 040e 18040000 		.4byte	0x418
+ 857 0412 12       		.uleb128 0x12
+ 858 0413 18040000 		.4byte	0x418
+ 859 0417 00       		.byte	0
+ 860 0418 05       		.uleb128 0x5
+ 861 0419 04       		.byte	0x4
+ 862 041a 1E040000 		.4byte	0x41e
+ 863 041e 16       		.uleb128 0x16
+ 864 041f 9D000000 		.4byte	0x9d
+ 865 0423 10       		.uleb128 0x10
+ 866 0424 F7010000 		.4byte	.LASF43
+ 867 0428 07       		.byte	0x7
+ 868 0429 2A       		.byte	0x2a
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 21
+
+
+ 869 042a 17       		.uleb128 0x17
+ 870 042b 5C020000 		.4byte	.LASF48
+ 871 042f 07       		.byte	0x7
+ 872 0430 29       		.byte	0x29
+ 873 0431 12       		.uleb128 0x12
+ 874 0432 77000000 		.4byte	0x77
+ 875 0436 00       		.byte	0
+ 876 0437 00       		.byte	0
+ 877              		.section	.debug_abbrev,"",%progbits
+ 878              	.Ldebug_abbrev0:
+ 879 0000 01       		.uleb128 0x1
+ 880 0001 11       		.uleb128 0x11
+ 881 0002 01       		.byte	0x1
+ 882 0003 25       		.uleb128 0x25
+ 883 0004 0E       		.uleb128 0xe
+ 884 0005 13       		.uleb128 0x13
+ 885 0006 0B       		.uleb128 0xb
+ 886 0007 03       		.uleb128 0x3
+ 887 0008 0E       		.uleb128 0xe
+ 888 0009 1B       		.uleb128 0x1b
+ 889 000a 0E       		.uleb128 0xe
+ 890 000b 55       		.uleb128 0x55
+ 891 000c 17       		.uleb128 0x17
+ 892 000d 11       		.uleb128 0x11
+ 893 000e 01       		.uleb128 0x1
+ 894 000f 10       		.uleb128 0x10
+ 895 0010 17       		.uleb128 0x17
+ 896 0011 00       		.byte	0
+ 897 0012 00       		.byte	0
+ 898 0013 02       		.uleb128 0x2
+ 899 0014 24       		.uleb128 0x24
+ 900 0015 00       		.byte	0
+ 901 0016 0B       		.uleb128 0xb
+ 902 0017 0B       		.uleb128 0xb
+ 903 0018 3E       		.uleb128 0x3e
+ 904 0019 0B       		.uleb128 0xb
+ 905 001a 03       		.uleb128 0x3
+ 906 001b 0E       		.uleb128 0xe
+ 907 001c 00       		.byte	0
+ 908 001d 00       		.byte	0
+ 909 001e 03       		.uleb128 0x3
+ 910 001f 24       		.uleb128 0x24
+ 911 0020 00       		.byte	0
+ 912 0021 0B       		.uleb128 0xb
+ 913 0022 0B       		.uleb128 0xb
+ 914 0023 3E       		.uleb128 0x3e
+ 915 0024 0B       		.uleb128 0xb
+ 916 0025 03       		.uleb128 0x3
+ 917 0026 08       		.uleb128 0x8
+ 918 0027 00       		.byte	0
+ 919 0028 00       		.byte	0
+ 920 0029 04       		.uleb128 0x4
+ 921 002a 16       		.uleb128 0x16
+ 922 002b 00       		.byte	0
+ 923 002c 03       		.uleb128 0x3
+ 924 002d 0E       		.uleb128 0xe
+ 925 002e 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 22
+
+
+ 926 002f 0B       		.uleb128 0xb
+ 927 0030 3B       		.uleb128 0x3b
+ 928 0031 05       		.uleb128 0x5
+ 929 0032 49       		.uleb128 0x49
+ 930 0033 13       		.uleb128 0x13
+ 931 0034 00       		.byte	0
+ 932 0035 00       		.byte	0
+ 933 0036 05       		.uleb128 0x5
+ 934 0037 0F       		.uleb128 0xf
+ 935 0038 00       		.byte	0
+ 936 0039 0B       		.uleb128 0xb
+ 937 003a 0B       		.uleb128 0xb
+ 938 003b 49       		.uleb128 0x49
+ 939 003c 13       		.uleb128 0x13
+ 940 003d 00       		.byte	0
+ 941 003e 00       		.byte	0
+ 942 003f 06       		.uleb128 0x6
+ 943 0040 15       		.uleb128 0x15
+ 944 0041 00       		.byte	0
+ 945 0042 27       		.uleb128 0x27
+ 946 0043 19       		.uleb128 0x19
+ 947 0044 00       		.byte	0
+ 948 0045 00       		.byte	0
+ 949 0046 07       		.uleb128 0x7
+ 950 0047 2E       		.uleb128 0x2e
+ 951 0048 01       		.byte	0x1
+ 952 0049 3F       		.uleb128 0x3f
+ 953 004a 19       		.uleb128 0x19
+ 954 004b 03       		.uleb128 0x3
+ 955 004c 0E       		.uleb128 0xe
+ 956 004d 3A       		.uleb128 0x3a
+ 957 004e 0B       		.uleb128 0xb
+ 958 004f 3B       		.uleb128 0x3b
+ 959 0050 0B       		.uleb128 0xb
+ 960 0051 27       		.uleb128 0x27
+ 961 0052 19       		.uleb128 0x19
+ 962 0053 11       		.uleb128 0x11
+ 963 0054 01       		.uleb128 0x1
+ 964 0055 12       		.uleb128 0x12
+ 965 0056 06       		.uleb128 0x6
+ 966 0057 40       		.uleb128 0x40
+ 967 0058 18       		.uleb128 0x18
+ 968 0059 9742     		.uleb128 0x2117
+ 969 005b 19       		.uleb128 0x19
+ 970 005c 01       		.uleb128 0x1
+ 971 005d 13       		.uleb128 0x13
+ 972 005e 00       		.byte	0
+ 973 005f 00       		.byte	0
+ 974 0060 08       		.uleb128 0x8
+ 975 0061 898201   		.uleb128 0x4109
+ 976 0064 00       		.byte	0
+ 977 0065 11       		.uleb128 0x11
+ 978 0066 01       		.uleb128 0x1
+ 979 0067 31       		.uleb128 0x31
+ 980 0068 13       		.uleb128 0x13
+ 981 0069 00       		.byte	0
+ 982 006a 00       		.byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 23
+
+
+ 983 006b 09       		.uleb128 0x9
+ 984 006c 898201   		.uleb128 0x4109
+ 985 006f 01       		.byte	0x1
+ 986 0070 11       		.uleb128 0x11
+ 987 0071 01       		.uleb128 0x1
+ 988 0072 31       		.uleb128 0x31
+ 989 0073 13       		.uleb128 0x13
+ 990 0074 00       		.byte	0
+ 991 0075 00       		.byte	0
+ 992 0076 0A       		.uleb128 0xa
+ 993 0077 8A8201   		.uleb128 0x410a
+ 994 007a 00       		.byte	0
+ 995 007b 02       		.uleb128 0x2
+ 996 007c 18       		.uleb128 0x18
+ 997 007d 9142     		.uleb128 0x2111
+ 998 007f 18       		.uleb128 0x18
+ 999 0080 00       		.byte	0
+ 1000 0081 00       		.byte	0
+ 1001 0082 0B       		.uleb128 0xb
+ 1002 0083 2E       		.uleb128 0x2e
+ 1003 0084 01       		.byte	0x1
+ 1004 0085 3F       		.uleb128 0x3f
+ 1005 0086 19       		.uleb128 0x19
+ 1006 0087 03       		.uleb128 0x3
+ 1007 0088 0E       		.uleb128 0xe
+ 1008 0089 3A       		.uleb128 0x3a
+ 1009 008a 0B       		.uleb128 0xb
+ 1010 008b 3B       		.uleb128 0x3b
+ 1011 008c 0B       		.uleb128 0xb
+ 1012 008d 49       		.uleb128 0x49
+ 1013 008e 13       		.uleb128 0x13
+ 1014 008f 11       		.uleb128 0x11
+ 1015 0090 01       		.uleb128 0x1
+ 1016 0091 12       		.uleb128 0x12
+ 1017 0092 06       		.uleb128 0x6
+ 1018 0093 40       		.uleb128 0x40
+ 1019 0094 18       		.uleb128 0x18
+ 1020 0095 9742     		.uleb128 0x2117
+ 1021 0097 19       		.uleb128 0x19
+ 1022 0098 01       		.uleb128 0x1
+ 1023 0099 13       		.uleb128 0x13
+ 1024 009a 00       		.byte	0
+ 1025 009b 00       		.byte	0
+ 1026 009c 0C       		.uleb128 0xc
+ 1027 009d 898201   		.uleb128 0x4109
+ 1028 00a0 01       		.byte	0x1
+ 1029 00a1 11       		.uleb128 0x11
+ 1030 00a2 01       		.uleb128 0x1
+ 1031 00a3 31       		.uleb128 0x31
+ 1032 00a4 13       		.uleb128 0x13
+ 1033 00a5 01       		.uleb128 0x1
+ 1034 00a6 13       		.uleb128 0x13
+ 1035 00a7 00       		.byte	0
+ 1036 00a8 00       		.byte	0
+ 1037 00a9 0D       		.uleb128 0xd
+ 1038 00aa 34       		.uleb128 0x34
+ 1039 00ab 00       		.byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 24
+
+
+ 1040 00ac 03       		.uleb128 0x3
+ 1041 00ad 0E       		.uleb128 0xe
+ 1042 00ae 3A       		.uleb128 0x3a
+ 1043 00af 0B       		.uleb128 0xb
+ 1044 00b0 3B       		.uleb128 0x3b
+ 1045 00b1 0B       		.uleb128 0xb
+ 1046 00b2 49       		.uleb128 0x49
+ 1047 00b3 13       		.uleb128 0x13
+ 1048 00b4 3F       		.uleb128 0x3f
+ 1049 00b5 19       		.uleb128 0x19
+ 1050 00b6 02       		.uleb128 0x2
+ 1051 00b7 18       		.uleb128 0x18
+ 1052 00b8 00       		.byte	0
+ 1053 00b9 00       		.byte	0
+ 1054 00ba 0E       		.uleb128 0xe
+ 1055 00bb 01       		.uleb128 0x1
+ 1056 00bc 01       		.byte	0x1
+ 1057 00bd 49       		.uleb128 0x49
+ 1058 00be 13       		.uleb128 0x13
+ 1059 00bf 01       		.uleb128 0x1
+ 1060 00c0 13       		.uleb128 0x13
+ 1061 00c1 00       		.byte	0
+ 1062 00c2 00       		.byte	0
+ 1063 00c3 0F       		.uleb128 0xf
+ 1064 00c4 21       		.uleb128 0x21
+ 1065 00c5 00       		.byte	0
+ 1066 00c6 49       		.uleb128 0x49
+ 1067 00c7 13       		.uleb128 0x13
+ 1068 00c8 2F       		.uleb128 0x2f
+ 1069 00c9 0B       		.uleb128 0xb
+ 1070 00ca 00       		.byte	0
+ 1071 00cb 00       		.byte	0
+ 1072 00cc 10       		.uleb128 0x10
+ 1073 00cd 2E       		.uleb128 0x2e
+ 1074 00ce 00       		.byte	0
+ 1075 00cf 3F       		.uleb128 0x3f
+ 1076 00d0 19       		.uleb128 0x19
+ 1077 00d1 03       		.uleb128 0x3
+ 1078 00d2 0E       		.uleb128 0xe
+ 1079 00d3 3A       		.uleb128 0x3a
+ 1080 00d4 0B       		.uleb128 0xb
+ 1081 00d5 3B       		.uleb128 0x3b
+ 1082 00d6 0B       		.uleb128 0xb
+ 1083 00d7 27       		.uleb128 0x27
+ 1084 00d8 19       		.uleb128 0x19
+ 1085 00d9 3C       		.uleb128 0x3c
+ 1086 00da 19       		.uleb128 0x19
+ 1087 00db 00       		.byte	0
+ 1088 00dc 00       		.byte	0
+ 1089 00dd 11       		.uleb128 0x11
+ 1090 00de 2E       		.uleb128 0x2e
+ 1091 00df 01       		.byte	0x1
+ 1092 00e0 3F       		.uleb128 0x3f
+ 1093 00e1 19       		.uleb128 0x19
+ 1094 00e2 03       		.uleb128 0x3
+ 1095 00e3 0E       		.uleb128 0xe
+ 1096 00e4 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 25
+
+
+ 1097 00e5 0B       		.uleb128 0xb
+ 1098 00e6 3B       		.uleb128 0x3b
+ 1099 00e7 05       		.uleb128 0x5
+ 1100 00e8 27       		.uleb128 0x27
+ 1101 00e9 19       		.uleb128 0x19
+ 1102 00ea 3C       		.uleb128 0x3c
+ 1103 00eb 19       		.uleb128 0x19
+ 1104 00ec 01       		.uleb128 0x1
+ 1105 00ed 13       		.uleb128 0x13
+ 1106 00ee 00       		.byte	0
+ 1107 00ef 00       		.byte	0
+ 1108 00f0 12       		.uleb128 0x12
+ 1109 00f1 05       		.uleb128 0x5
+ 1110 00f2 00       		.byte	0
+ 1111 00f3 49       		.uleb128 0x49
+ 1112 00f4 13       		.uleb128 0x13
+ 1113 00f5 00       		.byte	0
+ 1114 00f6 00       		.byte	0
+ 1115 00f7 13       		.uleb128 0x13
+ 1116 00f8 2E       		.uleb128 0x2e
+ 1117 00f9 00       		.byte	0
+ 1118 00fa 3F       		.uleb128 0x3f
+ 1119 00fb 19       		.uleb128 0x19
+ 1120 00fc 03       		.uleb128 0x3
+ 1121 00fd 0E       		.uleb128 0xe
+ 1122 00fe 3A       		.uleb128 0x3a
+ 1123 00ff 0B       		.uleb128 0xb
+ 1124 0100 3B       		.uleb128 0x3b
+ 1125 0101 0B       		.uleb128 0xb
+ 1126 0102 27       		.uleb128 0x27
+ 1127 0103 19       		.uleb128 0x19
+ 1128 0104 49       		.uleb128 0x49
+ 1129 0105 13       		.uleb128 0x13
+ 1130 0106 3C       		.uleb128 0x3c
+ 1131 0107 19       		.uleb128 0x19
+ 1132 0108 00       		.byte	0
+ 1133 0109 00       		.byte	0
+ 1134 010a 14       		.uleb128 0x14
+ 1135 010b 2E       		.uleb128 0x2e
+ 1136 010c 01       		.byte	0x1
+ 1137 010d 3F       		.uleb128 0x3f
+ 1138 010e 19       		.uleb128 0x19
+ 1139 010f 03       		.uleb128 0x3
+ 1140 0110 0E       		.uleb128 0xe
+ 1141 0111 3A       		.uleb128 0x3a
+ 1142 0112 0B       		.uleb128 0xb
+ 1143 0113 3B       		.uleb128 0x3b
+ 1144 0114 0B       		.uleb128 0xb
+ 1145 0115 27       		.uleb128 0x27
+ 1146 0116 19       		.uleb128 0x19
+ 1147 0117 3C       		.uleb128 0x3c
+ 1148 0118 19       		.uleb128 0x19
+ 1149 0119 01       		.uleb128 0x1
+ 1150 011a 13       		.uleb128 0x13
+ 1151 011b 00       		.byte	0
+ 1152 011c 00       		.byte	0
+ 1153 011d 15       		.uleb128 0x15
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 26
+
+
+ 1154 011e 2E       		.uleb128 0x2e
+ 1155 011f 00       		.byte	0
+ 1156 0120 3F       		.uleb128 0x3f
+ 1157 0121 19       		.uleb128 0x19
+ 1158 0122 03       		.uleb128 0x3
+ 1159 0123 0E       		.uleb128 0xe
+ 1160 0124 3A       		.uleb128 0x3a
+ 1161 0125 0B       		.uleb128 0xb
+ 1162 0126 3B       		.uleb128 0x3b
+ 1163 0127 05       		.uleb128 0x5
+ 1164 0128 27       		.uleb128 0x27
+ 1165 0129 19       		.uleb128 0x19
+ 1166 012a 3C       		.uleb128 0x3c
+ 1167 012b 19       		.uleb128 0x19
+ 1168 012c 00       		.byte	0
+ 1169 012d 00       		.byte	0
+ 1170 012e 16       		.uleb128 0x16
+ 1171 012f 26       		.uleb128 0x26
+ 1172 0130 00       		.byte	0
+ 1173 0131 49       		.uleb128 0x49
+ 1174 0132 13       		.uleb128 0x13
+ 1175 0133 00       		.byte	0
+ 1176 0134 00       		.byte	0
+ 1177 0135 17       		.uleb128 0x17
+ 1178 0136 2E       		.uleb128 0x2e
+ 1179 0137 01       		.byte	0x1
+ 1180 0138 3F       		.uleb128 0x3f
+ 1181 0139 19       		.uleb128 0x19
+ 1182 013a 03       		.uleb128 0x3
+ 1183 013b 0E       		.uleb128 0xe
+ 1184 013c 3A       		.uleb128 0x3a
+ 1185 013d 0B       		.uleb128 0xb
+ 1186 013e 3B       		.uleb128 0x3b
+ 1187 013f 0B       		.uleb128 0xb
+ 1188 0140 27       		.uleb128 0x27
+ 1189 0141 19       		.uleb128 0x19
+ 1190 0142 3C       		.uleb128 0x3c
+ 1191 0143 19       		.uleb128 0x19
+ 1192 0144 00       		.byte	0
+ 1193 0145 00       		.byte	0
+ 1194 0146 00       		.byte	0
+ 1195              		.section	.debug_aranges,"",%progbits
+ 1196 0000 2C000000 		.4byte	0x2c
+ 1197 0004 0200     		.2byte	0x2
+ 1198 0006 00000000 		.4byte	.Ldebug_info0
+ 1199 000a 04       		.byte	0x4
+ 1200 000b 00       		.byte	0
+ 1201 000c 0000     		.2byte	0
+ 1202 000e 0000     		.2byte	0
+ 1203 0010 00000000 		.4byte	.LFB35
+ 1204 0014 5C000000 		.4byte	.LFE35-.LFB35
+ 1205 0018 00000000 		.4byte	.LFB36
+ 1206 001c 14000000 		.4byte	.LFE36-.LFB36
+ 1207 0020 00000000 		.4byte	.LFB34
+ 1208 0024 28010000 		.4byte	.LFE34-.LFB34
+ 1209 0028 00000000 		.4byte	0
+ 1210 002c 00000000 		.4byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 27
+
+
+ 1211              		.section	.debug_ranges,"",%progbits
+ 1212              	.Ldebug_ranges0:
+ 1213 0000 00000000 		.4byte	.LFB35
+ 1214 0004 5C000000 		.4byte	.LFE35
+ 1215 0008 00000000 		.4byte	.LFB36
+ 1216 000c 14000000 		.4byte	.LFE36
+ 1217 0010 00000000 		.4byte	.LFB34
+ 1218 0014 28010000 		.4byte	.LFE34
+ 1219 0018 00000000 		.4byte	0
+ 1220 001c 00000000 		.4byte	0
+ 1221              		.section	.debug_line,"",%progbits
+ 1222              	.Ldebug_line0:
+ 1223 0000 36010000 		.section	.debug_str,"MS",%progbits,1
+ 1223      0200C900 
+ 1223      00000201 
+ 1223      FB0E0D00 
+ 1223      01010101 
+ 1224              	.LASF6:
+ 1225 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1225      206C6F6E 
+ 1225      6720696E 
+ 1225      7400
+ 1226              	.LASF38:
+ 1227 000e 50574D5F 		.ascii	"PWM_isr_StartEx\000"
+ 1227      6973725F 
+ 1227      53746172 
+ 1227      74457800 
+ 1228              	.LASF25:
+ 1229 001e 50757368 		.ascii	"Push_Button_State_Value\000"
+ 1229      5F427574 
+ 1229      746F6E5F 
+ 1229      53746174 
+ 1229      655F5661 
+ 1230              	.LASF45:
+ 1231 0036 2E2E5C43 		.ascii	"..\\Common\\main.c\000"
+ 1231      6F6D6D6F 
+ 1231      6E5C6D61 
+ 1231      696E2E63 
+ 1231      00
+ 1232              	.LASF41:
+ 1233 0047 50574D5F 		.ascii	"PWM_WriteCompare\000"
+ 1233      57726974 
+ 1233      65436F6D 
+ 1233      70617265 
+ 1233      00
+ 1234              	.LASF37:
+ 1235 0058 50574D5F 		.ascii	"PWM_Start\000"
+ 1235      53746172 
+ 1235      7400
+ 1236              	.LASF3:
+ 1237 0062 73686F72 		.ascii	"short unsigned int\000"
+ 1237      7420756E 
+ 1237      7369676E 
+ 1237      65642069 
+ 1237      6E7400
+ 1238              	.LASF28:
+ 1239 0075 5365636F 		.ascii	"Second_in_Base_60\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 28
+
+
+ 1239      6E645F69 
+ 1239      6E5F4261 
+ 1239      73655F36 
+ 1239      3000
+ 1240              	.LASF12:
+ 1241 0087 666C6F61 		.ascii	"float\000"
+ 1241      7400
+ 1242              	.LASF1:
+ 1243 008d 756E7369 		.ascii	"unsigned char\000"
+ 1243      676E6564 
+ 1243      20636861 
+ 1243      7200
+ 1244              	.LASF47:
+ 1245 009b 50555348 		.ascii	"PUSH_BUTTON_INPUT_ClearInterrupt\000"
+ 1245      5F425554 
+ 1245      544F4E5F 
+ 1245      494E5055 
+ 1245      545F436C 
+ 1246              	.LASF46:
+ 1247 00bc 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 1247      73657273 
+ 1247      5C537069 
+ 1247      74666972 
+ 1247      65353434 
+ 1248 00ea 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
+ 1248      54656368 
+ 1248      6E6F6C6F 
+ 1248      67696573 
+ 1248      20496E63 
+ 1249 0119 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
+ 1249      2D536875 
+ 1249      742D4F46 
+ 1249      465C4175 
+ 1249      746F2053 
+ 1250              	.LASF5:
+ 1251 0141 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1251      20756E73 
+ 1251      69676E65 
+ 1251      6420696E 
+ 1251      7400
+ 1252              	.LASF9:
+ 1253 0153 75696E74 		.ascii	"uint8\000"
+ 1253      3800
+ 1254              	.LASF40:
+ 1255 0159 53555050 		.ascii	"SUPPLY_ENABLE_Write\000"
+ 1255      4C595F45 
+ 1255      4E41424C 
+ 1255      455F5772 
+ 1255      69746500 
+ 1256              	.LASF14:
+ 1257 016d 63686172 		.ascii	"char8\000"
+ 1257      3800
+ 1258              	.LASF26:
+ 1259 0173 5365636F 		.ascii	"Second_Counter\000"
+ 1259      6E645F43 
+ 1259      6F756E74 
+ 1259      657200
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 29
+
+
+ 1260              	.LASF13:
+ 1261 0182 646F7562 		.ascii	"double\000"
+ 1261      6C6500
+ 1262              	.LASF39:
+ 1263 0189 50757368 		.ascii	"Push_Button_isr_StartEx\000"
+ 1263      5F427574 
+ 1263      746F6E5F 
+ 1263      6973725F 
+ 1263      53746172 
+ 1264              	.LASF29:
+ 1265 01a1 50757368 		.ascii	"Push_Button_Interrupt_Flag\000"
+ 1265      5F427574 
+ 1265      746F6E5F 
+ 1265      496E7465 
+ 1265      72727570 
+ 1266              	.LASF21:
+ 1267 01bc 6D61696E 		.ascii	"main\000"
+ 1267      00
+ 1268              	.LASF22:
+ 1269 01c1 44656C61 		.ascii	"DelayBeforeShutOff\000"
+ 1269      79426566 
+ 1269      6F726553 
+ 1269      6875744F 
+ 1269      666600
+ 1270              	.LASF10:
+ 1271 01d4 75696E74 		.ascii	"uint16\000"
+ 1271      313600
+ 1272              	.LASF11:
+ 1273 01db 75696E74 		.ascii	"uint32\000"
+ 1273      333200
+ 1274              	.LASF42:
+ 1275 01e2 53575F54 		.ascii	"SW_Tx_UART_PutString\000"
+ 1275      785F5541 
+ 1275      52545F50 
+ 1275      75745374 
+ 1275      72696E67 
+ 1276              	.LASF43:
+ 1277 01f7 53575F54 		.ascii	"SW_Tx_UART_PutCRLF\000"
+ 1277      785F5541 
+ 1277      52545F50 
+ 1277      75744352 
+ 1277      4C4600
+ 1278              	.LASF8:
+ 1279 020a 756E7369 		.ascii	"unsigned int\000"
+ 1279      676E6564 
+ 1279      20696E74 
+ 1279      00
+ 1280              	.LASF7:
+ 1281 0217 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1281      206C6F6E 
+ 1281      6720756E 
+ 1281      7369676E 
+ 1281      65642069 
+ 1282              	.LASF23:
+ 1283 022e 4F4E5F54 		.ascii	"ON_Time\000"
+ 1283      696D6500 
+ 1284              	.LASF31:
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 30
+
+
+ 1285 0236 55415254 		.ascii	"UART_Buffer\000"
+ 1285      5F427566 
+ 1285      66657200 
+ 1286              	.LASF35:
+ 1287 0242 50574D5F 		.ascii	"PWM_isr_Stop\000"
+ 1287      6973725F 
+ 1287      53746F70 
+ 1287      00
+ 1288              	.LASF16:
+ 1289 024f 63796973 		.ascii	"cyisraddress\000"
+ 1289      72616464 
+ 1289      72657373 
+ 1289      00
+ 1290              	.LASF48:
+ 1291 025c 53575F54 		.ascii	"SW_Tx_UART_PutHexInt\000"
+ 1291      785F5541 
+ 1291      52545F50 
+ 1291      75744865 
+ 1291      78496E74 
+ 1292              	.LASF17:
+ 1293 0271 73697A65 		.ascii	"sizetype\000"
+ 1293      74797065 
+ 1293      00
+ 1294              	.LASF24:
+ 1295 027a 4F46465F 		.ascii	"OFF_Time\000"
+ 1295      54696D65 
+ 1295      00
+ 1296              	.LASF34:
+ 1297 0283 50574D5F 		.ascii	"PWM_CLOCK_StartEx\000"
+ 1297      434C4F43 
+ 1297      4B5F5374 
+ 1297      61727445 
+ 1297      7800
+ 1298              	.LASF32:
+ 1299 0295 55415254 		.ascii	"UART_Tx_Size\000"
+ 1299      5F54785F 
+ 1299      53697A65 
+ 1299      00
+ 1300              	.LASF19:
+ 1301 02a2 50574D5F 		.ascii	"PWM_isr\000"
+ 1301      69737200 
+ 1302              	.LASF30:
+ 1303 02aa 55415254 		.ascii	"UART_TX_Flag\000"
+ 1303      5F54585F 
+ 1303      466C6167 
+ 1303      00
+ 1304              	.LASF44:
+ 1305 02b7 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1305      4320342E 
+ 1305      392E3320 
+ 1305      32303135 
+ 1305      30333033 
+ 1306 02ea 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 1306      20726576 
+ 1306      6973696F 
+ 1306      6E203232 
+ 1306      31323230 
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccjKQFlf.s 			page 31
+
+
+ 1307 031d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1307      66756E63 
+ 1307      74696F6E 
+ 1307      2D736563 
+ 1307      74696F6E 
+ 1308              	.LASF2:
+ 1309 0345 73686F72 		.ascii	"short int\000"
+ 1309      7420696E 
+ 1309      7400
+ 1310              	.LASF27:
+ 1311 034f 4D6F6465 		.ascii	"Mode\000"
+ 1311      00
+ 1312              	.LASF33:
+ 1313 0354 50574D5F 		.ascii	"PWM_ClearInterrupt\000"
+ 1313      436C6561 
+ 1313      72496E74 
+ 1313      65727275 
+ 1313      707400
+ 1314              	.LASF20:
+ 1315 0367 50757368 		.ascii	"Push_Button_isr\000"
+ 1315      5F427574 
+ 1315      746F6E5F 
+ 1315      69737200 
+ 1316              	.LASF4:
+ 1317 0377 6C6F6E67 		.ascii	"long int\000"
+ 1317      20696E74 
+ 1317      00
+ 1318              	.LASF15:
+ 1319 0380 63686172 		.ascii	"char\000"
+ 1319      00
+ 1320              	.LASF18:
+ 1321 0385 6C6F6E67 		.ascii	"long double\000"
+ 1321      20646F75 
+ 1321      626C6500 
+ 1322              	.LASF36:
+ 1323 0391 53575F54 		.ascii	"SW_Tx_UART_Start\000"
+ 1323      785F5541 
+ 1323      52545F53 
+ 1323      74617274 
+ 1323      00
+ 1324              	.LASF0:
+ 1325 03a2 7369676E 		.ascii	"signed char\000"
+ 1325      65642063 
+ 1325      68617200 
+ 1326              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

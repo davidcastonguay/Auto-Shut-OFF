@@ -1,6 +1,6 @@
-C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj|4918ffc5-9c39-44fe-a451-a2ae4e41a6fc
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|92e51df7-a122-46c8-9ba0-45f14e58b912
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8d0bf2d6-bc97-445b-890e-f7c2a294b6cf
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|8b8f5cac-c524-49f9-9012-c44cca59d123
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d8e834c1-f83a-4cbb-98e5-660631db4fc3
-C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Auto Shut-OFF_SOIC16.cyprj|b90aeca6-01dc-4404-ab33-50f112d73b00
+C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC8.cydsn\Auto Shut-OFF_SOIC8.cyprj|f1c4fe44-e72f-43ec-9bd6-6904ce5cfd54
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ae694d9c-6b01-4faa-a070-d3dd6cdf91b4
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0b17b4be-0a7d-4fe2-a4a0-51800fdb0e81
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|124b37d8-0cae-464c-a4fc-ebaea953a540
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7b44458a-0172-4f59-92e8-8309a76cab11
+C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\Auto Shut-OFF_SOIC16.cyprj|9698a396-f725-4a99-afaa-c6c237035002

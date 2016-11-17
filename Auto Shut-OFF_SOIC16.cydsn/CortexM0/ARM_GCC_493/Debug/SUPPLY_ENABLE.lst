@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
   30:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
   31:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
   32:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  Assign a new value to the digital port's data output register.  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
   51:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_SetDriveMode
   52:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** ********************************************************************************
   53:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 3
 
 
   54:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
   77:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
   78:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** 
   79:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** /*******************************************************************************
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 4
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 4
 
 
   80:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Function Name: SUPPLY_ENABLE_Read
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  109:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
  110:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** * Parameters:  
  111:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *  None 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 5
 
 
  112:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  141:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     uint8 SUPPLY_ENABLE_ClearInterrupt(void) 
  142:.\Generated_Source\PSoC4/SUPPLY_ENABLE.c ****     {
  143              		.loc 1 142 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 6
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 6
 
 
  144              		.cfi_startproc
@@ -338,48 +338,48 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  174 0006 00000000 		.4byte	.Ldebug_abbrev0
  175 000a 04       		.byte	0x4
  176 000b 01       		.uleb128 0x1
- 177 000c 9E010000 		.4byte	.LASF24
+ 177 000c A1010000 		.4byte	.LASF24
  178 0010 01       		.byte	0x1
- 179 0011 45020000 		.4byte	.LASF25
- 180 0015 48000000 		.4byte	.LASF26
+ 179 0011 48020000 		.4byte	.LASF25
+ 180 0015 66000000 		.4byte	.LASF26
  181 0019 00000000 		.4byte	.Ldebug_ranges0+0
  182 001d 00000000 		.4byte	0
  183 0021 00000000 		.4byte	.Ldebug_line0
  184 0025 02       		.uleb128 0x2
  185 0026 01       		.byte	0x1
  186 0027 06       		.byte	0x6
- 187 0028 6E020000 		.4byte	.LASF0
+ 187 0028 71020000 		.4byte	.LASF0
  188 002c 02       		.uleb128 0x2
  189 002d 01       		.byte	0x1
  190 002e 08       		.byte	0x8
- 191 002f 34000000 		.4byte	.LASF1
+ 191 002f 2D000000 		.4byte	.LASF1
  192 0033 02       		.uleb128 0x2
  193 0034 02       		.byte	0x2
  194 0035 05       		.byte	0x5
- 195 0036 2C020000 		.4byte	.LASF2
+ 195 0036 2F020000 		.4byte	.LASF2
  196 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 7
 
 
  197 003b 02       		.byte	0x2
  198 003c 07       		.byte	0x7
- 199 003d CB000000 		.4byte	.LASF3
+ 199 003d 53000000 		.4byte	.LASF3
  200 0041 02       		.uleb128 0x2
  201 0042 04       		.byte	0x4
  202 0043 05       		.byte	0x5
- 203 0044 3C020000 		.4byte	.LASF4
+ 203 0044 3F020000 		.4byte	.LASF4
  204 0048 02       		.uleb128 0x2
  205 0049 04       		.byte	0x4
  206 004a 07       		.byte	0x7
- 207 004b F2000000 		.4byte	.LASF5
+ 207 004b 41000000 		.4byte	.LASF5
  208 004f 02       		.uleb128 0x2
  209 0050 08       		.byte	0x8
  210 0051 05       		.byte	0x5
- 211 0052 64010000 		.4byte	.LASF6
+ 211 0052 67010000 		.4byte	.LASF6
  212 0056 02       		.uleb128 0x2
  213 0057 08       		.byte	0x8
  214 0058 07       		.byte	0x7
- 215 0059 35010000 		.4byte	.LASF7
+ 215 0059 38010000 		.4byte	.LASF7
  216 005d 03       		.uleb128 0x3
  217 005e 04       		.byte	0x4
  218 005f 05       		.byte	0x5
@@ -387,29 +387,29 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  220 0064 02       		.uleb128 0x2
  221 0065 04       		.byte	0x4
  222 0066 07       		.byte	0x7
- 223 0067 0B010000 		.4byte	.LASF8
+ 223 0067 0E010000 		.4byte	.LASF8
  224 006b 04       		.uleb128 0x4
- 225 006c 36020000 		.4byte	.LASF9
+ 225 006c 39020000 		.4byte	.LASF9
  226 0070 02       		.byte	0x2
  227 0071 9801     		.2byte	0x198
  228 0073 2C000000 		.4byte	0x2c
  229 0077 04       		.uleb128 0x4
- 230 0078 04010000 		.4byte	.LASF10
+ 230 0078 07010000 		.4byte	.LASF10
  231 007c 02       		.byte	0x2
  232 007d 9A01     		.2byte	0x19a
  233 007f 48000000 		.4byte	0x48
  234 0083 02       		.uleb128 0x2
  235 0084 04       		.byte	0x4
  236 0085 04       		.byte	0x4
- 237 0086 13000000 		.4byte	.LASF11
+ 237 0086 0C000000 		.4byte	.LASF11
  238 008a 02       		.uleb128 0x2
  239 008b 08       		.byte	0x8
  240 008c 04       		.byte	0x4
- 241 008d 0C000000 		.4byte	.LASF12
+ 241 008d 00010000 		.4byte	.LASF12
  242 0091 02       		.uleb128 0x2
  243 0092 01       		.byte	0x1
  244 0093 08       		.byte	0x8
- 245 0094 7F010000 		.4byte	.LASF13
+ 245 0094 82010000 		.4byte	.LASF13
  246 0098 04       		.uleb128 0x4
  247 0099 00000000 		.4byte	.LASF14
  248 009d 02       		.byte	0x2
@@ -418,10 +418,10 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  251 00a4 05       		.uleb128 0x5
  252 00a5 77000000 		.4byte	0x77
  253 00a9 06       		.uleb128 0x6
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 8
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 8
 
 
- 254 00aa DE000000 		.4byte	.LASF15
+ 254 00aa EC000000 		.4byte	.LASF15
  255 00ae 01       		.byte	0x1
  256 00af 2A       		.byte	0x2a
  257 00b0 00000000 		.4byte	.LFB0
@@ -436,14 +436,14 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  266 00c5 6B000000 		.4byte	0x6b
  267 00c9 00000000 		.4byte	.LLST0
  268 00cd 08       		.uleb128 0x8
- 269 00ce 42000000 		.4byte	.LASF22
+ 269 00ce 3B000000 		.4byte	.LASF22
  270 00d2 01       		.byte	0x1
  271 00d3 2C       		.byte	0x2c
  272 00d4 6B000000 		.4byte	0x6b
  273 00d8 21000000 		.4byte	.LLST1
  274 00dc 00       		.byte	0
  275 00dd 06       		.uleb128 0x6
- 276 00de 19000000 		.4byte	.LASF16
+ 276 00de 12000000 		.4byte	.LASF16
  277 00e2 01       		.byte	0x1
  278 00e3 49       		.byte	0x49
  279 00e4 00000000 		.4byte	.LFB1
@@ -452,14 +452,14 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  282 00ed 9C       		.byte	0x9c
  283 00ee 02010000 		.4byte	0x102
  284 00f2 07       		.uleb128 0x7
- 285 00f3 4C010000 		.4byte	.LASF18
+ 285 00f3 4F010000 		.4byte	.LASF18
  286 00f7 01       		.byte	0x1
  287 00f8 49       		.byte	0x49
  288 00f9 6B000000 		.4byte	0x6b
  289 00fd 3F000000 		.4byte	.LLST2
  290 0101 00       		.byte	0
  291 0102 09       		.uleb128 0x9
- 292 0103 51010000 		.4byte	.LASF19
+ 292 0103 54010000 		.4byte	.LASF19
  293 0107 01       		.byte	0x1
  294 0108 61       		.byte	0x61
  295 0109 6B000000 		.4byte	0x6b
@@ -468,7 +468,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  298 0115 01       		.uleb128 0x1
  299 0116 9C       		.byte	0x9c
  300 0117 09       		.uleb128 0x9
- 301 0118 84010000 		.4byte	.LASF20
+ 301 0118 87010000 		.4byte	.LASF20
  302 011c 01       		.byte	0x1
  303 011d 75       		.byte	0x75
  304 011e 6B000000 		.4byte	0x6b
@@ -477,8 +477,8 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  307 012a 01       		.uleb128 0x1
  308 012b 9C       		.byte	0x9c
  309 012c 0A       		.uleb128 0xa
- 310 012d 18010000 		.4byte	.LASF21
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 9
+ 310 012d 1B010000 		.4byte	.LASF21
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 9
 
 
  311 0131 01       		.byte	0x1
@@ -489,7 +489,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  316 013f 01       		.uleb128 0x1
  317 0140 9C       		.byte	0x9c
  318 0141 08       		.uleb128 0x8
- 319 0142 72010000 		.4byte	.LASF23
+ 319 0142 75010000 		.4byte	.LASF23
  320 0146 01       		.byte	0x1
  321 0147 8F       		.byte	0x8f
  322 0148 6B000000 		.4byte	0x6b
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  365 0025 03       		.uleb128 0x3
  366 0026 08       		.uleb128 0x8
  367 0027 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 10
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 10
 
 
  368 0028 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  422 005f 0B       		.uleb128 0xb
  423 0060 49       		.uleb128 0x49
  424 0061 13       		.uleb128 0x13
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 11
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 11
 
 
  425 0062 02       		.uleb128 0x2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  479 0099 0B       		.uleb128 0xb
  480 009a 27       		.uleb128 0x27
  481 009b 19       		.uleb128 0x19
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 12
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 12
 
 
  482 009c 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  536              	.LLST3:
  537 0060 08000000 		.4byte	.LVL6
  538 0064 0C000000 		.4byte	.LVL7
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 13
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 13
 
 
  539 0068 0100     		.2byte	0x1
@@ -778,153 +778,153 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 1
  588      3200
  589              	.LASF17:
  590 0006 76616C75 		.ascii	"value\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 14
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 14
 
 
  590      6500
- 591              	.LASF12:
- 592 000c 646F7562 		.ascii	"double\000"
- 592      6C6500
- 593              	.LASF11:
- 594 0013 666C6F61 		.ascii	"float\000"
- 594      7400
- 595              	.LASF16:
- 596 0019 53555050 		.ascii	"SUPPLY_ENABLE_SetDriveMode\000"
- 596      4C595F45 
- 596      4E41424C 
- 596      455F5365 
- 596      74447269 
- 597              	.LASF1:
- 598 0034 756E7369 		.ascii	"unsigned char\000"
- 598      676E6564 
- 598      20636861 
- 598      7200
- 599              	.LASF22:
- 600 0042 64725661 		.ascii	"drVal\000"
- 600      6C00
- 601              	.LASF26:
- 602 0048 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
- 602      73657273 
- 602      5C537069 
- 602      74666972 
- 602      65353434 
- 603 0076 6C616220 		.ascii	"lab Technologies Inc\\Consultation\\YABtronix\\Auto"
- 603      54656368 
- 603      6E6F6C6F 
- 603      67696573 
- 603      20496E63 
- 604 00a6 20536875 		.ascii	" Shut-OFF\\Auto Shut-OFF_SOIC16.cydsn\000"
- 604      742D4F46 
- 604      465C4175 
- 604      746F2053 
- 604      6875742D 
- 605              	.LASF3:
- 606 00cb 73686F72 		.ascii	"short unsigned int\000"
- 606      7420756E 
- 606      7369676E 
- 606      65642069 
- 606      6E7400
+ 591              	.LASF11:
+ 592 000c 666C6F61 		.ascii	"float\000"
+ 592      7400
+ 593              	.LASF16:
+ 594 0012 53555050 		.ascii	"SUPPLY_ENABLE_SetDriveMode\000"
+ 594      4C595F45 
+ 594      4E41424C 
+ 594      455F5365 
+ 594      74447269 
+ 595              	.LASF1:
+ 596 002d 756E7369 		.ascii	"unsigned char\000"
+ 596      676E6564 
+ 596      20636861 
+ 596      7200
+ 597              	.LASF22:
+ 598 003b 64725661 		.ascii	"drVal\000"
+ 598      6C00
+ 599              	.LASF5:
+ 600 0041 6C6F6E67 		.ascii	"long unsigned int\000"
+ 600      20756E73 
+ 600      69676E65 
+ 600      6420696E 
+ 600      7400
+ 601              	.LASF3:
+ 602 0053 73686F72 		.ascii	"short unsigned int\000"
+ 602      7420756E 
+ 602      7369676E 
+ 602      65642069 
+ 602      6E7400
+ 603              	.LASF26:
+ 604 0066 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 604      73657273 
+ 604      5C537069 
+ 604      74666972 
+ 604      65353434 
+ 605 0094 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
+ 605      54656368 
+ 605      6E6F6C6F 
+ 605      67696573 
+ 605      20496E63 
+ 606 00c3 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC16.cydsn\000"
+ 606      2D536875 
+ 606      742D4F46 
+ 606      465C4175 
+ 606      746F2053 
  607              	.LASF15:
- 608 00de 53555050 		.ascii	"SUPPLY_ENABLE_Write\000"
+ 608 00ec 53555050 		.ascii	"SUPPLY_ENABLE_Write\000"
  608      4C595F45 
  608      4E41424C 
  608      455F5772 
  608      69746500 
- 609              	.LASF5:
- 610 00f2 6C6F6E67 		.ascii	"long unsigned int\000"
- 610      20756E73 
- 610      69676E65 
- 610      6420696E 
- 610      7400
+ 609              	.LASF12:
+ 610 0100 646F7562 		.ascii	"double\000"
+ 610      6C6500
  611              	.LASF10:
- 612 0104 75696E74 		.ascii	"uint32\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 15
+ 612 0107 75696E74 		.ascii	"uint32\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 15
 
 
  612      333200
  613              	.LASF8:
- 614 010b 756E7369 		.ascii	"unsigned int\000"
+ 614 010e 756E7369 		.ascii	"unsigned int\000"
  614      676E6564 
  614      20696E74 
  614      00
  615              	.LASF21:
- 616 0118 53555050 		.ascii	"SUPPLY_ENABLE_ClearInterrupt\000"
+ 616 011b 53555050 		.ascii	"SUPPLY_ENABLE_ClearInterrupt\000"
  616      4C595F45 
  616      4E41424C 
  616      455F436C 
  616      65617249 
  617              	.LASF7:
- 618 0135 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 618 0138 6C6F6E67 		.ascii	"long long unsigned int\000"
  618      206C6F6E 
  618      6720756E 
  618      7369676E 
  618      65642069 
  619              	.LASF18:
- 620 014c 6D6F6465 		.ascii	"mode\000"
+ 620 014f 6D6F6465 		.ascii	"mode\000"
  620      00
  621              	.LASF19:
- 622 0151 53555050 		.ascii	"SUPPLY_ENABLE_Read\000"
+ 622 0154 53555050 		.ascii	"SUPPLY_ENABLE_Read\000"
  622      4C595F45 
  622      4E41424C 
  622      455F5265 
  622      616400
  623              	.LASF6:
- 624 0164 6C6F6E67 		.ascii	"long long int\000"
+ 624 0167 6C6F6E67 		.ascii	"long long int\000"
  624      206C6F6E 
  624      6720696E 
  624      7400
  625              	.LASF23:
- 626 0172 6D61736B 		.ascii	"maskedStatus\000"
+ 626 0175 6D61736B 		.ascii	"maskedStatus\000"
  626      65645374 
  626      61747573 
  626      00
  627              	.LASF13:
- 628 017f 63686172 		.ascii	"char\000"
+ 628 0182 63686172 		.ascii	"char\000"
  628      00
  629              	.LASF20:
- 630 0184 53555050 		.ascii	"SUPPLY_ENABLE_ReadDataReg\000"
+ 630 0187 53555050 		.ascii	"SUPPLY_ENABLE_ReadDataReg\000"
  630      4C595F45 
  630      4E41424C 
  630      455F5265 
  630      61644461 
  631              	.LASF24:
- 632 019e 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 632 01a1 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  632      4320342E 
  632      392E3320 
  632      32303135 
  632      30333033 
- 633 01d1 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 633 01d4 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
  633      20726576 
  633      6973696F 
  633      6E203232 
  633      31323230 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cc4ksAvf.s 			page 16
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cccbgTgP.s 			page 16
 
 
- 634 0204 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 634 0207 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  634      66756E63 
  634      74696F6E 
  634      2D736563 
  634      74696F6E 
  635              	.LASF2:
- 636 022c 73686F72 		.ascii	"short int\000"
+ 636 022f 73686F72 		.ascii	"short int\000"
  636      7420696E 
  636      7400
  637              	.LASF9:
- 638 0236 75696E74 		.ascii	"uint8\000"
+ 638 0239 75696E74 		.ascii	"uint8\000"
  638      3800
  639              	.LASF4:
- 640 023c 6C6F6E67 		.ascii	"long int\000"
+ 640 023f 6C6F6E67 		.ascii	"long int\000"
  640      20696E74 
  640      00
  641              	.LASF25:
- 642 0245 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\SUPPLY_ENABLE.c\000"
+ 642 0248 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\SUPPLY_ENABLE.c\000"
  642      6E657261 
  642      7465645F 
  642      536F7572 
  642      63655C50 
  643              	.LASF0:
- 644 026e 7369676E 		.ascii	"signed char\000"
+ 644 0271 7369676E 		.ascii	"signed char\000"
  644      65642063 
  644      68617200 
  645              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

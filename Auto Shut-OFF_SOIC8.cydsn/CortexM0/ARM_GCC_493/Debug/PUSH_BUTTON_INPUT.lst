@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
   30:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** ********************************************************************************
   31:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *
   32:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** * Summary:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *  Assign a new value to the digital port's data output register.  
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
   51:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** * Function Name: PUSH_BUTTON_INPUT_SetDriveMode
   52:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** ********************************************************************************
   53:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 3
 
 
   54:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
   77:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** 
   78:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** 
   79:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** /*******************************************************************************
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 4
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 4
 
 
   80:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** * Function Name: PUSH_BUTTON_INPUT_Read
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  109:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *
  110:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** * Parameters:  
  111:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *  None 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 5
 
 
  112:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c **** *
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  141:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c ****     uint8 PUSH_BUTTON_INPUT_ClearInterrupt(void) 
  142:.\Generated_Source\PSoC4/PUSH_BUTTON_INPUT.c ****     {
  143              		.loc 1 142 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 6
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 6
 
 
  144              		.cfi_startproc
@@ -338,48 +338,48 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  174 0006 00000000 		.4byte	.Ldebug_abbrev0
  175 000a 04       		.byte	0x4
  176 000b 01       		.uleb128 0x1
- 177 000c 3B010000 		.4byte	.LASF24
+ 177 000c B4010000 		.4byte	.LASF24
  178 0010 01       		.byte	0x1
- 179 0011 64020000 		.4byte	.LASF25
- 180 0015 E2010000 		.4byte	.LASF26
+ 179 0011 67020000 		.4byte	.LASF25
+ 180 0015 5F000000 		.4byte	.LASF26
  181 0019 00000000 		.4byte	.Ldebug_ranges0+0
  182 001d 00000000 		.4byte	0
  183 0021 00000000 		.4byte	.Ldebug_line0
  184 0025 02       		.uleb128 0x2
  185 0026 01       		.byte	0x1
  186 0027 06       		.byte	0x6
- 187 0028 4B000000 		.4byte	.LASF0
+ 187 0028 5B020000 		.4byte	.LASF0
  188 002c 02       		.uleb128 0x2
  189 002d 01       		.byte	0x1
  190 002e 08       		.byte	0x8
- 191 002f 57000000 		.4byte	.LASF1
+ 191 002f 4B000000 		.4byte	.LASF1
  192 0033 02       		.uleb128 0x2
  193 0034 02       		.byte	0x2
  194 0035 05       		.byte	0x5
- 195 0036 C9010000 		.4byte	.LASF2
+ 195 0036 42020000 		.4byte	.LASF2
  196 003a 02       		.uleb128 0x2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 7
 
 
  197 003b 02       		.byte	0x2
  198 003c 07       		.byte	0x7
- 199 003d 7D000000 		.4byte	.LASF3
+ 199 003d F6000000 		.4byte	.LASF3
  200 0041 02       		.uleb128 0x2
  201 0042 04       		.byte	0x4
  202 0043 05       		.byte	0x5
- 203 0044 D9010000 		.4byte	.LASF4
+ 203 0044 52020000 		.4byte	.LASF4
  204 0048 02       		.uleb128 0x2
  205 0049 04       		.byte	0x4
  206 004a 07       		.byte	0x7
- 207 004b 6B000000 		.4byte	.LASF5
+ 207 004b E4000000 		.4byte	.LASF5
  208 004f 02       		.uleb128 0x2
  209 0050 08       		.byte	0x8
  210 0051 05       		.byte	0x5
- 211 0052 1B010000 		.4byte	.LASF6
+ 211 0052 94010000 		.4byte	.LASF6
  212 0056 02       		.uleb128 0x2
  213 0057 08       		.byte	0x8
  214 0058 07       		.byte	0x7
- 215 0059 E8000000 		.4byte	.LASF7
+ 215 0059 61010000 		.4byte	.LASF7
  216 005d 03       		.uleb128 0x3
  217 005e 04       		.byte	0x4
  218 005f 05       		.byte	0x5
@@ -387,14 +387,14 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  220 0064 02       		.uleb128 0x2
  221 0065 04       		.byte	0x4
  222 0066 07       		.byte	0x7
- 223 0067 DB000000 		.4byte	.LASF8
+ 223 0067 54010000 		.4byte	.LASF8
  224 006b 04       		.uleb128 0x4
- 225 006c D3010000 		.4byte	.LASF9
+ 225 006c 4C020000 		.4byte	.LASF9
  226 0070 02       		.byte	0x2
  227 0071 9801     		.2byte	0x198
  228 0073 2C000000 		.4byte	0x2c
  229 0077 04       		.uleb128 0x4
- 230 0078 D4000000 		.4byte	.LASF10
+ 230 0078 4D010000 		.4byte	.LASF10
  231 007c 02       		.byte	0x2
  232 007d 9A01     		.2byte	0x19a
  233 007f 48000000 		.4byte	0x48
@@ -405,11 +405,11 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  238 008a 02       		.uleb128 0x2
  239 008b 08       		.byte	0x8
  240 008c 04       		.byte	0x4
- 241 008d AE000000 		.4byte	.LASF12
+ 241 008d 27010000 		.4byte	.LASF12
  242 0091 02       		.uleb128 0x2
  243 0092 01       		.byte	0x1
  244 0093 08       		.byte	0x8
- 245 0094 36010000 		.4byte	.LASF13
+ 245 0094 AF010000 		.4byte	.LASF13
  246 0098 04       		.uleb128 0x4
  247 0099 00000000 		.4byte	.LASF14
  248 009d 02       		.byte	0x2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  251 00a4 05       		.uleb128 0x5
  252 00a5 77000000 		.4byte	0x77
  253 00a9 06       		.uleb128 0x6
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 8
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 8
 
 
  254 00aa 06000000 		.4byte	.LASF15
@@ -436,14 +436,14 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  266 00c5 6B000000 		.4byte	0x6b
  267 00c9 00000000 		.4byte	.LLST0
  268 00cd 08       		.uleb128 0x8
- 269 00ce 65000000 		.4byte	.LASF22
+ 269 00ce 59000000 		.4byte	.LASF22
  270 00d2 01       		.byte	0x1
  271 00d3 2C       		.byte	0x2c
  272 00d4 6B000000 		.4byte	0x6b
  273 00d8 21000000 		.4byte	.LLST1
  274 00dc 00       		.byte	0
  275 00dd 06       		.uleb128 0x6
- 276 00de B5000000 		.4byte	.LASF16
+ 276 00de 2E010000 		.4byte	.LASF16
  277 00e2 01       		.byte	0x1
  278 00e3 49       		.byte	0x49
  279 00e4 00000000 		.4byte	.LFB1
@@ -452,14 +452,14 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  282 00ed 9C       		.byte	0x9c
  283 00ee 02010000 		.4byte	0x102
  284 00f2 07       		.uleb128 0x7
- 285 00f3 FF000000 		.4byte	.LASF18
+ 285 00f3 78010000 		.4byte	.LASF18
  286 00f7 01       		.byte	0x1
  287 00f8 49       		.byte	0x49
  288 00f9 6B000000 		.4byte	0x6b
  289 00fd 3F000000 		.4byte	.LLST2
  290 0101 00       		.byte	0
  291 0102 09       		.uleb128 0x9
- 292 0103 04010000 		.4byte	.LASF19
+ 292 0103 7D010000 		.4byte	.LASF19
  293 0107 01       		.byte	0x1
  294 0108 61       		.byte	0x61
  295 0109 6B000000 		.4byte	0x6b
@@ -468,7 +468,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  298 0115 01       		.uleb128 0x1
  299 0116 9C       		.byte	0x9c
  300 0117 09       		.uleb128 0x9
- 301 0118 90000000 		.4byte	.LASF20
+ 301 0118 09010000 		.4byte	.LASF20
  302 011c 01       		.byte	0x1
  303 011d 75       		.byte	0x75
  304 011e 6B000000 		.4byte	0x6b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  308 012b 9C       		.byte	0x9c
  309 012c 0A       		.uleb128 0xa
  310 012d 1E000000 		.4byte	.LASF21
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 9
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 9
 
 
  311 0131 01       		.byte	0x1
@@ -489,7 +489,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  316 013f 01       		.uleb128 0x1
  317 0140 9C       		.byte	0x9c
  318 0141 08       		.uleb128 0x8
- 319 0142 29010000 		.4byte	.LASF23
+ 319 0142 A2010000 		.4byte	.LASF23
  320 0146 01       		.byte	0x1
  321 0147 8F       		.byte	0x8f
  322 0148 6B000000 		.4byte	0x6b
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  365 0025 03       		.uleb128 0x3
  366 0026 08       		.uleb128 0x8
  367 0027 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 10
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 10
 
 
  368 0028 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  422 005f 0B       		.uleb128 0xb
  423 0060 49       		.uleb128 0x49
  424 0061 13       		.uleb128 0x13
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 11
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 11
 
 
  425 0062 02       		.uleb128 0x2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  479 0099 0B       		.uleb128 0xb
  480 009a 27       		.uleb128 0x27
  481 009b 19       		.uleb128 0x19
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 12
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 12
 
 
  482 009c 49       		.uleb128 0x49
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  536              	.LLST3:
  537 0060 08000000 		.4byte	.LVL6
  538 0064 0C000000 		.4byte	.LVL7
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 13
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 13
 
 
  539 0068 0100     		.2byte	0x1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  588      3200
  589              	.LASF15:
  590 0006 50555348 		.ascii	"PUSH_BUTTON_INPUT_Write\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 14
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 14
 
 
  590      5F425554 
@@ -797,132 +797,132 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 1
  595              	.LASF11:
  596 0045 666C6F61 		.ascii	"float\000"
  596      7400
- 597              	.LASF0:
- 598 004b 7369676E 		.ascii	"signed char\000"
- 598      65642063 
- 598      68617200 
- 599              	.LASF1:
- 600 0057 756E7369 		.ascii	"unsigned char\000"
- 600      676E6564 
- 600      20636861 
- 600      7200
- 601              	.LASF22:
- 602 0065 64725661 		.ascii	"drVal\000"
- 602      6C00
- 603              	.LASF5:
- 604 006b 6C6F6E67 		.ascii	"long unsigned int\000"
- 604      20756E73 
- 604      69676E65 
- 604      6420696E 
- 604      7400
- 605              	.LASF3:
- 606 007d 73686F72 		.ascii	"short unsigned int\000"
- 606      7420756E 
- 606      7369676E 
- 606      65642069 
- 606      6E7400
- 607              	.LASF20:
- 608 0090 50555348 		.ascii	"PUSH_BUTTON_INPUT_ReadDataReg\000"
- 608      5F425554 
- 608      544F4E5F 
- 608      494E5055 
- 608      545F5265 
- 609              	.LASF12:
- 610 00ae 646F7562 		.ascii	"double\000"
- 610      6C6500
- 611              	.LASF16:
- 612 00b5 50555348 		.ascii	"PUSH_BUTTON_INPUT_SetDriveMode\000"
- 612      5F425554 
- 612      544F4E5F 
- 612      494E5055 
- 612      545F5365 
- 613              	.LASF10:
- 614 00d4 75696E74 		.ascii	"uint32\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 15
+ 597              	.LASF1:
+ 598 004b 756E7369 		.ascii	"unsigned char\000"
+ 598      676E6564 
+ 598      20636861 
+ 598      7200
+ 599              	.LASF22:
+ 600 0059 64725661 		.ascii	"drVal\000"
+ 600      6C00
+ 601              	.LASF26:
+ 602 005f 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 602      73657273 
+ 602      5C537069 
+ 602      74666972 
+ 602      65353434 
+ 603 008d 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
+ 603      54656368 
+ 603      6E6F6C6F 
+ 603      67696573 
+ 603      20496E63 
+ 604 00bc 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
+ 604      2D536875 
+ 604      742D4F46 
+ 604      465C4175 
+ 604      746F2053 
+ 605              	.LASF5:
+ 606 00e4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 606      20756E73 
+ 606      69676E65 
+ 606      6420696E 
+ 606      7400
+ 607              	.LASF3:
+ 608 00f6 73686F72 		.ascii	"short unsigned int\000"
+ 608      7420756E 
+ 608      7369676E 
+ 608      65642069 
+ 608      6E7400
+ 609              	.LASF20:
+ 610 0109 50555348 		.ascii	"PUSH_BUTTON_INPUT_ReadDataReg\000"
+ 610      5F425554 
+ 610      544F4E5F 
+ 610      494E5055 
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 15
 
 
- 614      333200
- 615              	.LASF8:
- 616 00db 756E7369 		.ascii	"unsigned int\000"
- 616      676E6564 
- 616      20696E74 
- 616      00
- 617              	.LASF7:
- 618 00e8 6C6F6E67 		.ascii	"long long unsigned int\000"
- 618      206C6F6E 
- 618      6720756E 
- 618      7369676E 
- 618      65642069 
- 619              	.LASF18:
- 620 00ff 6D6F6465 		.ascii	"mode\000"
- 620      00
- 621              	.LASF19:
- 622 0104 50555348 		.ascii	"PUSH_BUTTON_INPUT_Read\000"
- 622      5F425554 
- 622      544F4E5F 
- 622      494E5055 
- 622      545F5265 
- 623              	.LASF6:
- 624 011b 6C6F6E67 		.ascii	"long long int\000"
- 624      206C6F6E 
- 624      6720696E 
- 624      7400
- 625              	.LASF23:
- 626 0129 6D61736B 		.ascii	"maskedStatus\000"
- 626      65645374 
- 626      61747573 
- 626      00
- 627              	.LASF13:
- 628 0136 63686172 		.ascii	"char\000"
+ 610      545F5265 
+ 611              	.LASF12:
+ 612 0127 646F7562 		.ascii	"double\000"
+ 612      6C6500
+ 613              	.LASF16:
+ 614 012e 50555348 		.ascii	"PUSH_BUTTON_INPUT_SetDriveMode\000"
+ 614      5F425554 
+ 614      544F4E5F 
+ 614      494E5055 
+ 614      545F5365 
+ 615              	.LASF10:
+ 616 014d 75696E74 		.ascii	"uint32\000"
+ 616      333200
+ 617              	.LASF8:
+ 618 0154 756E7369 		.ascii	"unsigned int\000"
+ 618      676E6564 
+ 618      20696E74 
+ 618      00
+ 619              	.LASF7:
+ 620 0161 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 620      206C6F6E 
+ 620      6720756E 
+ 620      7369676E 
+ 620      65642069 
+ 621              	.LASF18:
+ 622 0178 6D6F6465 		.ascii	"mode\000"
+ 622      00
+ 623              	.LASF19:
+ 624 017d 50555348 		.ascii	"PUSH_BUTTON_INPUT_Read\000"
+ 624      5F425554 
+ 624      544F4E5F 
+ 624      494E5055 
+ 624      545F5265 
+ 625              	.LASF6:
+ 626 0194 6C6F6E67 		.ascii	"long long int\000"
+ 626      206C6F6E 
+ 626      6720696E 
+ 626      7400
+ 627              	.LASF23:
+ 628 01a2 6D61736B 		.ascii	"maskedStatus\000"
+ 628      65645374 
+ 628      61747573 
  628      00
- 629              	.LASF24:
- 630 013b 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 630      4320342E 
- 630      392E3320 
- 630      32303135 
- 630      30333033 
- 631 016e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 631      20726576 
- 631      6973696F 
- 631      6E203232 
- 631      31323230 
- 632 01a1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 632      66756E63 
- 632      74696F6E 
- 632      2D736563 
- 632      74696F6E 
- 633              	.LASF2:
- 634 01c9 73686F72 		.ascii	"short int\000"
- 634      7420696E 
- 634      7400
- 635              	.LASF9:
- 636 01d3 75696E74 		.ascii	"uint8\000"
- 636      3800
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccAG9N83.s 			page 16
+ 629              	.LASF13:
+ 630 01af 63686172 		.ascii	"char\000"
+ 630      00
+ 631              	.LASF24:
+ 632 01b4 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 632      4320342E 
+ 632      392E3320 
+ 632      32303135 
+ 632      30333033 
+ 633 01e7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 633      20726576 
+ 633      6973696F 
+ 633      6E203232 
+ 633      31323230 
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRHb6JS.s 			page 16
 
 
- 637              	.LASF4:
- 638 01d9 6C6F6E67 		.ascii	"long int\000"
- 638      20696E74 
- 638      00
- 639              	.LASF26:
- 640 01e2 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
- 640      73657273 
- 640      5C537069 
- 640      74666972 
- 640      65353434 
- 641 0210 6C616220 		.ascii	"lab Technologies Inc\\Consultation\\YABtronix\\Auto"
- 641      54656368 
- 641      6E6F6C6F 
- 641      67696573 
- 641      20496E63 
- 642 0240 20536875 		.ascii	" Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
- 642      742D4F46 
- 642      465C4175 
- 642      746F2053 
- 642      6875742D 
+ 634 021a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 634      66756E63 
+ 634      74696F6E 
+ 634      2D736563 
+ 634      74696F6E 
+ 635              	.LASF2:
+ 636 0242 73686F72 		.ascii	"short int\000"
+ 636      7420696E 
+ 636      7400
+ 637              	.LASF9:
+ 638 024c 75696E74 		.ascii	"uint8\000"
+ 638      3800
+ 639              	.LASF4:
+ 640 0252 6C6F6E67 		.ascii	"long int\000"
+ 640      20696E74 
+ 640      00
+ 641              	.LASF0:
+ 642 025b 7369676E 		.ascii	"signed char\000"
+ 642      65642063 
+ 642      68617200 
  643              	.LASF25:
- 644 0264 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PUSH_BUTTON_INPUT.c\000"
+ 644 0267 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PUSH_BUTTON_INPUT.c\000"
  644      6E657261 
  644      7465645F 
  644      536F7572 

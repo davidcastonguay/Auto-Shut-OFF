@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
   31:.\Generated_Source\PSoC4/CyFlash.c **** 
   32:.\Generated_Source\PSoC4/CyFlash.c **** #if (CY_IP_FM || ((!CY_PSOC4_4000) && CY_IP_SPCIF_SYNCHRONOUS) || (!CY_IP_FM) && CY_PSOC4_4000)
   33:.\Generated_Source\PSoC4/CyFlash.c ****     static CY_SYS_FLASH_CLOCK_BACKUP_STRUCT cySysFlashBackup;
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 2
 
 
   34:.\Generated_Source\PSoC4/CyFlash.c **** #endif /* (CY_IP_FM || ((!CY_PSOC4_4000) && CY_IP_SPCIF_SYNCHRONOUS) || (!CY_IP_FM) && CY_PSOC4_400
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
   88:.\Generated_Source\PSoC4/CyFlash.c ****         uint32 needChecksumWorkaround = 0u;
   89:.\Generated_Source\PSoC4/CyFlash.c ****         uint32 savedIndex = 0u;
   90:.\Generated_Source\PSoC4/CyFlash.c ****         uint32 savedValue = 0u;
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 3
 
 
   91:.\Generated_Source\PSoC4/CyFlash.c ****         uint32 checksum = 0u;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  145:.\Generated_Source\PSoC4/CyFlash.c **** 
  146:.\Generated_Source\PSoC4/CyFlash.c ****         #if(CY_IP_SPCIF_SYNCHRONOUS)
  147:.\Generated_Source\PSoC4/CyFlash.c ****             if(clkCnfRetValue == CY_SYS_FLASH_SUCCESS)
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 4
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 4
 
 
  148:.\Generated_Source\PSoC4/CyFlash.c ****             {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  202:.\Generated_Source\PSoC4/CyFlash.c ****             {
  203:.\Generated_Source\PSoC4/CyFlash.c ****                 clkCnfRetValue = CySysFlashClockRestore();
  204:.\Generated_Source\PSoC4/CyFlash.c ****             }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 5
 
 
  205:.\Generated_Source\PSoC4/CyFlash.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  259:.\Generated_Source\PSoC4/CyFlash.c **** #endif  /* (CY_IP_SPCIF_SYNCHRONOUS) */    
  260:.\Generated_Source\PSoC4/CyFlash.c **** 
  261:.\Generated_Source\PSoC4/CyFlash.c ****     if ((rowNum < CY_FLASH_NUMBER_ROWS) && (rowData != 0u))
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 6
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 6
 
 
  262:.\Generated_Source\PSoC4/CyFlash.c ****     {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  316:.\Generated_Source\PSoC4/CyFlash.c ****     {
  317:.\Generated_Source\PSoC4/CyFlash.c ****         retValue = CY_SYS_FLASH_INVALID_ADDR;
  318:.\Generated_Source\PSoC4/CyFlash.c ****     }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 7
 
 
  319:.\Generated_Source\PSoC4/CyFlash.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  373:.\Generated_Source\PSoC4/CyFlash.c **** * For CM0+ based device, if the user wants to keep the vector table in flash
  374:.\Generated_Source\PSoC4/CyFlash.c **** * when performing non-blocking flash write then they need to make sure the
  375:.\Generated_Source\PSoC4/CyFlash.c **** * vector table is placed in the flash macro which is not getting programmed by
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 8
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 8
 
 
  376:.\Generated_Source\PSoC4/CyFlash.c **** * configuring the VTOR register.
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  430:.\Generated_Source\PSoC4/CyFlash.c ****         {
  431:.\Generated_Source\PSoC4/CyFlash.c ****             CY_SYS_CLK_SELECT_REG &= (uint32)(~CY_FLASH_WAIT_STATE_EN);
  432:.\Generated_Source\PSoC4/CyFlash.c ****         }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 9
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 9
 
 
  433:.\Generated_Source\PSoC4/CyFlash.c ****         else
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  487:.\Generated_Source\PSoC4/CyFlash.c **** *
  488:.\Generated_Source\PSoC4/CyFlash.c **** *******************************************************************************/
  489:.\Generated_Source\PSoC4/CyFlash.c **** uint32 CySysSFlashWriteUserRow(uint32 rowNum, const uint8 rowData[])
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 10
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 10
 
 
  490:.\Generated_Source\PSoC4/CyFlash.c **** {
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  544:.\Generated_Source\PSoC4/CyFlash.c ****             {
  545:.\Generated_Source\PSoC4/CyFlash.c ****                 clkCnfRetValue = CySysFlashClockRestore();
  546:.\Generated_Source\PSoC4/CyFlash.c ****             }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 11
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 11
 
 
  547:.\Generated_Source\PSoC4/CyFlash.c ****             CyExitCriticalSection(interruptState);
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  598:.\Generated_Source\PSoC4/CyFlash.c ****         * The registers listed below are modified by CySysFlashClockConfig().
  599:.\Generated_Source\PSoC4/CyFlash.c ****         *
  600:.\Generated_Source\PSoC4/CyFlash.c ****         * The registers to be saved:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 12
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 12
 
 
  601:.\Generated_Source\PSoC4/CyFlash.c ****         * - CY_SYS_CLK_IMO_CONFIG_REG - IMO enable state.
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  638:.\Generated_Source\PSoC4/CyFlash.c **** 
  639:.\Generated_Source\PSoC4/CyFlash.c ****     return (retValue);
  640:.\Generated_Source\PSoC4/CyFlash.c **** }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 13
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 13
 
 
   45              		.loc 1 640 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  667:.\Generated_Source\PSoC4/CyFlash.c ****     * - The IMO frequency should be 48 MHz
  668:.\Generated_Source\PSoC4/CyFlash.c ****     * - The IMO should be source for the HFCLK
  669:.\Generated_Source\PSoC4/CyFlash.c ****     * - The IMO should be the source for the charge pump clock
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 14
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 14
 
 
  670:.\Generated_Source\PSoC4/CyFlash.c ****     *
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  690:.\Generated_Source\PSoC4/CyFlash.c ****         CySysClkImoStart();
  105              		.loc 1 690 0
  106 002e FFF7FEFF 		bl	CySysClkImoStart
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 15
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 15
 
 
  107              	.LVL4:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  136              		.align	2
  137              		.code	16
  138              		.thumb_func
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 16
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 16
 
 
  139              		.type	CySysFlashClockRestore, %function
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  151 0004 9868     		ldr	r0, [r3, #8]
  152 0006 3028     		cmp	r0, #48
  153 0008 06D1     		bne	.L11
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 17
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 17
 
 
  757:.\Generated_Source\PSoC4/CyFlash.c ****             ((cySysFlashBackup.clkSelectReg & CY_SYS_CLK_SELECT_DIRECT_SEL_MASK) != CY_SYS_CLK_HFCL
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  775:.\Generated_Source\PSoC4/CyFlash.c ****             {
  776:.\Generated_Source\PSoC4/CyFlash.c ****                 CySysClkImoStop();
  188              		.loc 1 776 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 18
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 18
 
 
  189 0038 FFF7FEFF 		bl	CySysClkImoStop
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  219              		.cfi_offset 6, -12
  220              		.cfi_offset 7, -8
  221              		.cfi_offset 14, -4
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 19
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 19
 
 
  222 0002 97B0     		sub	sp, sp, #92
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  106:.\Generated_Source\PSoC4/CyFlash.c ****                 {
  265              		.loc 1 106 0
  266 0030 002A     		cmp	r2, #0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 20
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 20
 
 
  267 0032 02D0     		beq	.L19
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  118:.\Generated_Source\PSoC4/CyFlash.c ****             }
  311              		.loc 1 118 0
  312 005c 0022     		mov	r2, #0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 21
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 21
 
 
  313 005e 02A9     		add	r1, sp, #8
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  358 0092 1B0F     		lsr	r3, r3, #28
  359 0094 0A2B     		cmp	r3, #10
  360 0096 02D0     		beq	.L43
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 22
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 22
 
 
  132:.\Generated_Source\PSoC4/CyFlash.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  404 00ce 2B04     		lsl	r3, r5, #16
  405 00d0 1343     		orr	r3, r2
  406 00d2 0293     		str	r3, [sp, #8]
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 23
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 23
 
 
  159:.\Generated_Source\PSoC4/CyFlash.c ****                 CY_FLASH_CPUSS_SYSREQ_REG = CY_FLASH_CPUSS_REQ_START | CY_FLASH_API_OPCODE_WRITE_RO
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  451              		.loc 1 167 0 is_stmt 1
  452 0108 159B     		ldr	r3, [sp, #84]
  453 010a 002B     		cmp	r3, #0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 24
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 24
 
 
  454 010c 4AD1     		bne	.L32
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  498 0146 1340     		and	r3, r2
  499 0148 08E0     		b	.L34
  500              	.L33:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 25
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 25
 
 
  182:.\Generated_Source\PSoC4/CyFlash.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  544              		.code	16
  545 017e 1B68     		ldr	r3, [r3]
  546 0180 1B0F     		lsr	r3, r3, #28
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 26
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 26
 
 
  547 0182 0F2B     		cmp	r3, #15
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  592              	.LVL37:
  593              	.L26:
  214:.\Generated_Source\PSoC4/CyFlash.c **** }
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 27
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 27
 
 
  594              		.loc 1 214 0
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  643 0012 0321     		mov	r1, #3
  644 0014 8B43     		bic	r3, r1
  645 0016 1360     		str	r3, [r2]
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 28
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 28
 
 
  646 0018 16E0     		b	.L51
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  693              	.LFE1:
  694              		.size	CySysFlashSetWaitCycles, .-CySysFlashSetWaitCycles
  695              		.bss
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 29
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 29
 
 
  696              		.align	2
@@ -1701,25 +1701,25 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  711 0006 00000000 		.4byte	.Ldebug_abbrev0
  712 000a 04       		.byte	0x4
  713 000b 01       		.uleb128 0x1
- 714 000c 1D020000 		.4byte	.LASF46
+ 714 000c 9D020000 		.4byte	.LASF46
  715 0010 01       		.byte	0x1
  716 0011 81000000 		.4byte	.LASF47
- 717 0015 26030000 		.4byte	.LASF48
+ 717 0015 30010000 		.4byte	.LASF48
  718 0019 00000000 		.4byte	.Ldebug_ranges0+0
  719 001d 00000000 		.4byte	0
  720 0021 00000000 		.4byte	.Ldebug_line0
  721 0025 02       		.uleb128 0x2
  722 0026 01       		.byte	0x1
  723 0027 06       		.byte	0x6
- 724 0028 C4030000 		.4byte	.LASF0
+ 724 0028 C7030000 		.4byte	.LASF0
  725 002c 02       		.uleb128 0x2
  726 002d 01       		.byte	0x1
  727 002e 08       		.byte	0x8
- 728 002f DC000000 		.4byte	.LASF1
+ 728 002f D7000000 		.4byte	.LASF1
  729 0033 02       		.uleb128 0x2
  730 0034 02       		.byte	0x2
  731 0035 05       		.byte	0x5
- 732 0036 3C010000 		.4byte	.LASF2
+ 732 0036 BC010000 		.4byte	.LASF2
  733 003a 02       		.uleb128 0x2
  734 003b 02       		.byte	0x2
  735 003c 07       		.byte	0x7
@@ -1727,22 +1727,22 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  737 0041 02       		.uleb128 0x2
  738 0042 04       		.byte	0x4
  739 0043 05       		.byte	0x5
- 740 0044 1D030000 		.4byte	.LASF4
+ 740 0044 9D030000 		.4byte	.LASF4
  741 0048 02       		.uleb128 0x2
  742 0049 04       		.byte	0x4
  743 004a 07       		.byte	0x7
- 744 004b FD000000 		.4byte	.LASF5
+ 744 004b F8000000 		.4byte	.LASF5
  745 004f 02       		.uleb128 0x2
  746 0050 08       		.byte	0x8
  747 0051 05       		.byte	0x5
- 748 0052 EC010000 		.4byte	.LASF6
+ 748 0052 6C020000 		.4byte	.LASF6
  749 0056 02       		.uleb128 0x2
  750 0057 08       		.byte	0x8
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 30
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 30
 
 
  751 0058 07       		.byte	0x7
- 752 0059 8F010000 		.4byte	.LASF7
+ 752 0059 0F020000 		.4byte	.LASF7
  753 005d 03       		.uleb128 0x3
  754 005e 04       		.byte	0x4
  755 005f 05       		.byte	0x5
@@ -1750,34 +1750,34 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  757 0064 02       		.uleb128 0x2
  758 0065 04       		.byte	0x4
  759 0066 07       		.byte	0x7
- 760 0067 82010000 		.4byte	.LASF8
+ 760 0067 02020000 		.4byte	.LASF8
  761 006b 04       		.uleb128 0x4
- 762 006c 0F010000 		.4byte	.LASF9
+ 762 006c 0A010000 		.4byte	.LASF9
  763 0070 02       		.byte	0x2
  764 0071 9801     		.2byte	0x198
  765 0073 2C000000 		.4byte	0x2c
  766 0077 04       		.uleb128 0x4
- 767 0078 5D010000 		.4byte	.LASF10
+ 767 0078 DD010000 		.4byte	.LASF10
  768 007c 02       		.byte	0x2
  769 007d 9901     		.2byte	0x199
  770 007f 3A000000 		.4byte	0x3a
  771 0083 04       		.uleb128 0x4
- 772 0084 64010000 		.4byte	.LASF11
+ 772 0084 E4010000 		.4byte	.LASF11
  773 0088 02       		.byte	0x2
  774 0089 9A01     		.2byte	0x19a
  775 008b 48000000 		.4byte	0x48
  776 008f 02       		.uleb128 0x2
  777 0090 04       		.byte	0x4
  778 0091 04       		.byte	0x4
- 779 0092 CD000000 		.4byte	.LASF12
+ 779 0092 C8000000 		.4byte	.LASF12
  780 0096 02       		.uleb128 0x2
  781 0097 08       		.byte	0x8
  782 0098 04       		.byte	0x4
- 783 0099 35010000 		.4byte	.LASF13
+ 783 0099 B5010000 		.4byte	.LASF13
  784 009d 02       		.uleb128 0x2
  785 009e 01       		.byte	0x1
  786 009f 08       		.byte	0x8
- 787 00a0 C8000000 		.4byte	.LASF14
+ 787 00a0 A6030000 		.4byte	.LASF14
  788 00a4 04       		.uleb128 0x4
  789 00a5 16000000 		.4byte	.LASF15
  790 00a9 02       		.byte	0x2
@@ -1793,12 +1793,12 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  800 00c1 02       		.uleb128 0x2
  801 00c2 04       		.byte	0x4
  802 00c3 07       		.byte	0x7
- 803 00c4 E3010000 		.4byte	.LASF17
+ 803 00c4 63020000 		.4byte	.LASF17
  804 00c8 06       		.uleb128 0x6
  805 00c9 04       		.byte	0x4
  806 00ca 07       		.uleb128 0x7
  807 00cb 39000000 		.4byte	.LASF49
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 31
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 31
 
 
  808 00cf 0C       		.byte	0xc
@@ -1806,31 +1806,31 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  810 00d1 D7       		.byte	0xd7
  811 00d2 FB000000 		.4byte	0xfb
  812 00d6 08       		.uleb128 0x8
- 813 00d7 0B020000 		.4byte	.LASF18
+ 813 00d7 8B020000 		.4byte	.LASF18
  814 00db 03       		.byte	0x3
  815 00dc DD       		.byte	0xdd
  816 00dd 83000000 		.4byte	0x83
  817 00e1 00       		.byte	0
  818 00e2 08       		.uleb128 0x8
- 819 00e3 FA010000 		.4byte	.LASF19
+ 819 00e3 7A020000 		.4byte	.LASF19
  820 00e7 03       		.byte	0x3
  821 00e8 DE       		.byte	0xde
  822 00e9 83000000 		.4byte	0x83
  823 00ed 04       		.byte	0x4
  824 00ee 08       		.uleb128 0x8
- 825 00ef A8030000 		.4byte	.LASF20
+ 825 00ef AB030000 		.4byte	.LASF20
  826 00f3 03       		.byte	0x3
  827 00f4 DF       		.byte	0xdf
  828 00f5 83000000 		.4byte	0x83
  829 00f9 08       		.byte	0x8
  830 00fa 00       		.byte	0
  831 00fb 09       		.uleb128 0x9
- 832 00fc FC020000 		.4byte	.LASF21
+ 832 00fc 7C030000 		.4byte	.LASF21
  833 0100 03       		.byte	0x3
  834 0101 ED       		.byte	0xed
  835 0102 CA000000 		.4byte	0xca
  836 0106 0A       		.uleb128 0xa
- 837 0107 E6020000 		.4byte	.LASF22
+ 837 0107 66030000 		.4byte	.LASF22
  838 010b 01       		.byte	0x1
  839 010c 3902     		.2byte	0x239
  840 010e A4000000 		.4byte	0xa4
@@ -1847,7 +1847,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  851 012c 00       		.byte	0
  852 012d 00       		.byte	0
  853 012e 0A       		.uleb128 0xa
- 854 012f C5020000 		.4byte	.LASF23
+ 854 012f 45030000 		.4byte	.LASF23
  855 0133 01       		.byte	0x1
  856 0134 8D02     		.2byte	0x28d
  857 0136 A4000000 		.4byte	0xa4
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  862 0144 95010000 		.4byte	0x195
  863 0148 0B       		.uleb128 0xb
  864 0149 30000000 		.4byte	.LASF24
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 32
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 32
 
 
  865 014d 01       		.byte	0x1
@@ -1900,7 +1900,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  901 0193 00       		.byte	0
  902 0194 00       		.byte	0
  903 0195 0A       		.uleb128 0xa
- 904 0196 46010000 		.4byte	.LASF25
+ 904 0196 C6010000 		.4byte	.LASF25
  905 019a 01       		.byte	0x1
  906 019b D702     		.2byte	0x2d7
  907 019d A4000000 		.4byte	0xa4
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  919 01bc 0E       		.uleb128 0xe
  920 01bd 20000000 		.4byte	.LVL7
  921 01c1 DD030000 		.4byte	0x3dd
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 33
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 33
 
 
  922 01c5 0E       		.uleb128 0xe
@@ -1929,7 +1929,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  927 01d3 06040000 		.4byte	0x406
  928 01d7 00       		.byte	0
  929 01d8 10       		.uleb128 0x10
- 930 01d9 D0030000 		.4byte	.LASF50
+ 930 01d9 D3030000 		.4byte	.LASF50
  931 01dd 01       		.byte	0x1
  932 01de 50       		.byte	0x50
  933 01df 83000000 		.4byte	0x83
@@ -1945,7 +1945,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  943 01f8 83000000 		.4byte	0x83
  944 01fc 00000000 		.4byte	.LLST0
  945 0200 11       		.uleb128 0x11
- 946 0201 EA000000 		.4byte	.LASF27
+ 946 0201 E5000000 		.4byte	.LASF27
  947 0205 01       		.byte	0x1
  948 0206 50       		.byte	0x50
  949 0207 38030000 		.4byte	0x338
@@ -1967,7 +1967,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  965 0229 91       		.byte	0x91
  966 022a 60       		.sleb128 -32
  967 022b 12       		.uleb128 0x12
- 968 022c F2000000 		.4byte	.LASF29
+ 968 022c ED000000 		.4byte	.LASF29
  969 0230 01       		.byte	0x1
  970 0231 54       		.byte	0x54
  971 0232 53030000 		.4byte	0x353
@@ -1975,16 +1975,16 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  973 0237 91       		.byte	0x91
  974 0238 987F     		.sleb128 -104
  975 023a 13       		.uleb128 0x13
- 976 023b BD010000 		.4byte	.LASF30
+ 976 023b 3D020000 		.4byte	.LASF30
  977 023f 01       		.byte	0x1
  978 0240 55       		.byte	0x55
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 34
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 34
 
 
  979 0241 6B000000 		.4byte	0x6b
  980 0245 7F000000 		.4byte	.LLST2
  981 0249 13       		.uleb128 0x13
- 982 024a A6010000 		.4byte	.LASF31
+ 982 024a 26020000 		.4byte	.LASF31
  983 024e 01       		.byte	0x1
  984 024f 58       		.byte	0x58
  985 0250 83000000 		.4byte	0x83
@@ -1996,19 +1996,19 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  991 025f 83000000 		.4byte	0x83
  992 0263 BF000000 		.4byte	.LLST4
  993 0267 13       		.uleb128 0x13
- 994 0268 DB020000 		.4byte	.LASF33
+ 994 0268 5B030000 		.4byte	.LASF33
  995 026c 01       		.byte	0x1
  996 026d 5A       		.byte	0x5a
  997 026e 83000000 		.4byte	0x83
  998 0272 00010000 		.4byte	.LLST5
  999 0276 13       		.uleb128 0x13
- 1000 0277 D3000000 		.4byte	.LASF34
+ 1000 0277 CE000000 		.4byte	.LASF34
  1001 027b 01       		.byte	0x1
  1002 027c 5B       		.byte	0x5b
  1003 027d 83000000 		.4byte	0x83
  1004 0281 42010000 		.4byte	.LLST6
  1005 0285 13       		.uleb128 0x13
- 1006 0286 18020000 		.4byte	.LASF35
+ 1006 0286 98020000 		.4byte	.LASF35
  1007 028a 01       		.byte	0x1
  1008 028b 5C       		.byte	0x5c
  1009 028c 83000000 		.4byte	0x83
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1033 02cc 01       		.uleb128 0x1
  1034 02cd 52       		.byte	0x52
  1035 02ce 02       		.uleb128 0x2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 35
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 35
 
 
  1036 02cf 08       		.byte	0x8
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1090 032e 01       		.uleb128 0x1
  1091 032f 50       		.byte	0x50
  1092 0330 05       		.uleb128 0x5
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 36
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 36
 
 
  1093 0331 91       		.byte	0x91
@@ -2122,7 +2122,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1111 0353 05       		.uleb128 0x5
  1112 0354 43030000 		.4byte	0x343
  1113 0358 1A       		.uleb128 0x1a
- 1114 0359 E3030000 		.4byte	.LASF51
+ 1114 0359 E6030000 		.4byte	.LASF51
  1115 035d 01       		.byte	0x1
  1116 035e A501     		.2byte	0x1a5
  1117 0360 00000000 		.4byte	.LFB1
@@ -2131,13 +2131,13 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1120 0369 9C       		.byte	0x9c
  1121 036a BB030000 		.4byte	0x3bb
  1122 036e 1B       		.uleb128 0x1b
- 1123 036f AB020000 		.4byte	.LASF36
+ 1123 036f 2B030000 		.4byte	.LASF36
  1124 0373 01       		.byte	0x1
  1125 0374 A501     		.2byte	0x1a5
  1126 0376 83000000 		.4byte	0x83
  1127 037a E0010000 		.4byte	.LLST10
  1128 037e 1C       		.uleb128 0x1c
- 1129 037f BD010000 		.4byte	.LASF30
+ 1129 037f 3D020000 		.4byte	.LASF30
  1130 0383 01       		.byte	0x1
  1131 0384 A701     		.2byte	0x1a7
  1132 0386 6B000000 		.4byte	0x6b
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1147 03aa 0F       		.uleb128 0xf
  1148 03ab 4E000000 		.4byte	.LVL42
  1149 03af 59040000 		.4byte	0x459
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 37
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 37
 
 
  1150 03b3 0D       		.uleb128 0xd
@@ -2186,7 +2186,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1172 03d8 83000000 		.4byte	0x83
  1173 03dc 00       		.byte	0
  1174 03dd 1D       		.uleb128 0x1d
- 1175 03de B0020000 		.4byte	.LASF39
+ 1175 03de 30030000 		.4byte	.LASF39
  1176 03e2 04       		.byte	0x4
  1177 03e3 6C       		.byte	0x6c
  1178 03e4 EE030000 		.4byte	0x3ee
@@ -2194,11 +2194,11 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1180 03e9 83000000 		.4byte	0x83
  1181 03ed 00       		.byte	0
  1182 03ee 1F       		.uleb128 0x1f
- 1183 03ef B3030000 		.4byte	.LASF41
+ 1183 03ef B6030000 		.4byte	.LASF41
  1184 03f3 04       		.byte	0x4
  1185 03f4 57       		.byte	0x57
  1186 03f5 1D       		.uleb128 0x1d
- 1187 03f6 15010000 		.4byte	.LASF40
+ 1187 03f6 10010000 		.4byte	.LASF40
  1188 03fa 04       		.byte	0x4
  1189 03fb 59       		.byte	0x59
  1190 03fc 06040000 		.4byte	0x406
@@ -2206,11 +2206,11 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1192 0401 83000000 		.4byte	0x83
  1193 0405 00       		.byte	0
  1194 0406 1F       		.uleb128 0x1f
- 1195 0407 D3010000 		.4byte	.LASF42
+ 1195 0407 53020000 		.4byte	.LASF42
  1196 040b 04       		.byte	0x4
  1197 040c 58       		.byte	0x58
  1198 040d 20       		.uleb128 0x20
- 1199 040e 04020000 		.4byte	.LASF43
+ 1199 040e 84020000 		.4byte	.LASF43
  1200 0412 C8000000 		.4byte	0xc8
  1201 0416 2A040000 		.4byte	0x42a
  1202 041a 1E       		.uleb128 0x1e
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1204 041f 1E       		.uleb128 0x1e
  1205 0420 2A040000 		.4byte	0x42a
  1206 0424 1E       		.uleb128 0x1e
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 38
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 38
 
 
  1207 0425 C1000000 		.4byte	0xc1
@@ -2228,12 +2228,12 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1211 042c 30040000 		.4byte	0x430
  1212 0430 21       		.uleb128 0x21
  1213 0431 22       		.uleb128 0x22
- 1214 0432 6B010000 		.4byte	.LASF52
+ 1214 0432 EB010000 		.4byte	.LASF52
  1215 0436 04       		.byte	0x4
  1216 0437 E3       		.byte	0xe3
  1217 0438 6B000000 		.4byte	0x6b
  1218 043c 20       		.uleb128 0x20
- 1219 043d 2E010000 		.4byte	.LASF44
+ 1219 043d 29010000 		.4byte	.LASF44
  1220 0441 C8000000 		.4byte	0xc8
  1221 0445 59040000 		.4byte	0x459
  1222 0449 1E       		.uleb128 0x1e
@@ -2252,7 +2252,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1235 0465 6B000000 		.4byte	0x6b
  1236 0469 00       		.byte	0
  1237 046a 23       		.uleb128 0x23
- 1238 046b CC010000 		.4byte	.LASF53
+ 1238 046b 4C020000 		.4byte	.LASF53
  1239 046f 04       		.byte	0x4
  1240 0470 E5       		.byte	0xe5
  1241 0471 1E       		.uleb128 0x1e
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1261 000e 01       		.uleb128 0x1
  1262 000f 10       		.uleb128 0x10
  1263 0010 17       		.uleb128 0x17
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 39
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 39
 
 
  1264 0011 00       		.byte	0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1318 0047 03       		.uleb128 0x3
  1319 0048 0E       		.uleb128 0xe
  1320 0049 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 40
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 40
 
 
  1321 004a 0B       		.uleb128 0xb
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1375 0080 40       		.uleb128 0x40
  1376 0081 18       		.uleb128 0x18
  1377 0082 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 41
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 41
 
 
  1378 0084 19       		.uleb128 0x19
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1432 00c3 31       		.uleb128 0x31
  1433 00c4 13       		.uleb128 0x13
  1434 00c5 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 42
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 42
 
 
  1435 00c6 00       		.byte	0
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1489 00fd 02       		.uleb128 0x2
  1490 00fe 18       		.uleb128 0x18
  1491 00ff 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 43
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 43
 
 
  1492 0100 00       		.byte	0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1546 0136 49       		.uleb128 0x49
  1547 0137 13       		.uleb128 0x13
  1548 0138 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 44
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 44
 
 
  1549 0139 00       		.byte	0
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1603 0170 13       		.uleb128 0x13
  1604 0171 02       		.uleb128 0x2
  1605 0172 17       		.uleb128 0x17
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 45
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 45
 
 
  1606 0173 00       		.byte	0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1660 01a9 27       		.uleb128 0x27
  1661 01aa 19       		.uleb128 0x19
  1662 01ab 3C       		.uleb128 0x3c
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 46
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 46
 
 
  1663 01ac 19       		.uleb128 0x19
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1717 01e2 0B       		.uleb128 0xb
  1718 01e3 3B       		.uleb128 0x3b
  1719 01e4 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 47
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 47
 
 
  1720 01e5 27       		.uleb128 0x27
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1774 0069 BC010000 		.4byte	.LVL37
  1775 006d E4010000 		.4byte	.LFE0
  1776 0071 0400     		.2byte	0x4
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 48
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 48
 
 
  1777 0073 F3       		.byte	0xf3
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1831 00f8 00000000 		.4byte	0
  1832 00fc 00000000 		.4byte	0
  1833              	.LLST5:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 49
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 49
 
 
  1834 0100 0A000000 		.4byte	.LVL11
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1888 018c 0100     		.2byte	0x1
  1889 018e 50       		.byte	0x50
  1890 018f B8010000 		.4byte	.LVL36
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 50
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 50
 
 
  1891 0193 BC010000 		.4byte	.LVL37
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1945              		.section	.debug_aranges,"",%progbits
  1946 0000 3C000000 		.4byte	0x3c
  1947 0004 0200     		.2byte	0x2
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 51
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 51
 
 
  1948 0006 00000000 		.4byte	.Ldebug_info0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  1989      657800
  1990              	.LASF24:
  1991 0030 72657456 		.ascii	"retValue\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 52
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 52
 
 
  1991      616C7565 
@@ -3101,226 +3101,226 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 1
  2005      7369676E 
  2005      65642069 
  2005      6E7400
- 2006              	.LASF14:
- 2007 00c8 63686172 		.ascii	"char\000"
- 2007      00
- 2008              	.LASF12:
- 2009 00cd 666C6F61 		.ascii	"float\000"
- 2009      7400
- 2010              	.LASF34:
- 2011 00d3 63686563 		.ascii	"checksum\000"
- 2011      6B73756D 
- 2011      00
- 2012              	.LASF1:
- 2013 00dc 756E7369 		.ascii	"unsigned char\000"
- 2013      676E6564 
- 2013      20636861 
- 2013      7200
- 2014              	.LASF27:
- 2015 00ea 726F7744 		.ascii	"rowData\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 53
+ 2006              	.LASF12:
+ 2007 00c8 666C6F61 		.ascii	"float\000"
+ 2007      7400
+ 2008              	.LASF34:
+ 2009 00ce 63686563 		.ascii	"checksum\000"
+ 2009      6B73756D 
+ 2009      00
+ 2010              	.LASF1:
+ 2011 00d7 756E7369 		.ascii	"unsigned char\000"
+ 2011      676E6564 
+ 2011      20636861 
+ 2011      7200
+ 2012              	.LASF27:
+ 2013 00e5 726F7744 		.ascii	"rowData\000"
+ 2013      61746100 
+ 2014              	.LASF29:
+ 2015 00ed 70617261 		.ascii	"parameters\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 53
 
 
- 2015      61746100 
- 2016              	.LASF29:
- 2017 00f2 70617261 		.ascii	"parameters\000"
- 2017      6D657465 
- 2017      727300
- 2018              	.LASF5:
- 2019 00fd 6C6F6E67 		.ascii	"long unsigned int\000"
- 2019      20756E73 
- 2019      69676E65 
- 2019      6420696E 
- 2019      7400
- 2020              	.LASF9:
- 2021 010f 75696E74 		.ascii	"uint8\000"
- 2021      3800
- 2022              	.LASF40:
- 2023 0115 43795379 		.ascii	"CySysClkWriteHfclkDirect\000"
- 2023      73436C6B 
- 2023      57726974 
- 2023      65486663 
- 2023      6C6B4469 
- 2024              	.LASF44:
- 2025 012e 6D656D73 		.ascii	"memset\000"
- 2025      657400
- 2026              	.LASF13:
- 2027 0135 646F7562 		.ascii	"double\000"
- 2027      6C6500
- 2028              	.LASF2:
- 2029 013c 73686F72 		.ascii	"short int\000"
- 2029      7420696E 
- 2029      7400
- 2030              	.LASF25:
- 2031 0146 43795379 		.ascii	"CySysFlashClockRestore\000"
- 2031      73466C61 
- 2031      7368436C 
- 2031      6F636B52 
- 2031      6573746F 
- 2032              	.LASF10:
- 2033 015d 75696E74 		.ascii	"uint16\000"
- 2033      313600
- 2034              	.LASF11:
- 2035 0164 75696E74 		.ascii	"uint32\000"
- 2035      333200
- 2036              	.LASF52:
- 2037 016b 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 2037      74657243 
- 2037      72697469 
- 2037      63616C53 
- 2037      65637469 
- 2038              	.LASF8:
- 2039 0182 756E7369 		.ascii	"unsigned int\000"
- 2039      676E6564 
- 2039      20696E74 
- 2039      00
- 2040              	.LASF7:
- 2041 018f 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2041      206C6F6E 
- 2041      6720756E 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 54
+ 2015      6D657465 
+ 2015      727300
+ 2016              	.LASF5:
+ 2017 00f8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2017      20756E73 
+ 2017      69676E65 
+ 2017      6420696E 
+ 2017      7400
+ 2018              	.LASF9:
+ 2019 010a 75696E74 		.ascii	"uint8\000"
+ 2019      3800
+ 2020              	.LASF40:
+ 2021 0110 43795379 		.ascii	"CySysClkWriteHfclkDirect\000"
+ 2021      73436C6B 
+ 2021      57726974 
+ 2021      65486663 
+ 2021      6C6B4469 
+ 2022              	.LASF44:
+ 2023 0129 6D656D73 		.ascii	"memset\000"
+ 2023      657400
+ 2024              	.LASF48:
+ 2025 0130 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 2025      73657273 
+ 2025      5C537069 
+ 2025      74666972 
+ 2025      65353434 
+ 2026 015e 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
+ 2026      54656368 
+ 2026      6E6F6C6F 
+ 2026      67696573 
+ 2026      20496E63 
+ 2027 018d 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
+ 2027      2D536875 
+ 2027      742D4F46 
+ 2027      465C4175 
+ 2027      746F2053 
+ 2028              	.LASF13:
+ 2029 01b5 646F7562 		.ascii	"double\000"
+ 2029      6C6500
+ 2030              	.LASF2:
+ 2031 01bc 73686F72 		.ascii	"short int\000"
+ 2031      7420696E 
+ 2031      7400
+ 2032              	.LASF25:
+ 2033 01c6 43795379 		.ascii	"CySysFlashClockRestore\000"
+ 2033      73466C61 
+ 2033      7368436C 
+ 2033      6F636B52 
+ 2033      6573746F 
+ 2034              	.LASF10:
+ 2035 01dd 75696E74 		.ascii	"uint16\000"
+ 2035      313600
+ 2036              	.LASF11:
+ 2037 01e4 75696E74 		.ascii	"uint32\000"
+ 2037      333200
+ 2038              	.LASF52:
+ 2039 01eb 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 54
 
 
- 2041      7369676E 
- 2041      65642069 
- 2042              	.LASF31:
- 2043 01a6 6E656564 		.ascii	"needChecksumWorkaround\000"
- 2043      43686563 
- 2043      6B73756D 
- 2043      576F726B 
- 2043      61726F75 
- 2044              	.LASF30:
- 2045 01bd 696E7465 		.ascii	"interruptState\000"
- 2045      72727570 
- 2045      74537461 
- 2045      746500
- 2046              	.LASF53:
- 2047 01cc 43794861 		.ascii	"CyHalt\000"
- 2047      6C7400
- 2048              	.LASF42:
- 2049 01d3 43795379 		.ascii	"CySysClkImoStop\000"
- 2049      73436C6B 
- 2049      496D6F53 
- 2049      746F7000 
- 2050              	.LASF17:
- 2051 01e3 73697A65 		.ascii	"sizetype\000"
- 2051      74797065 
- 2051      00
- 2052              	.LASF6:
- 2053 01ec 6C6F6E67 		.ascii	"long long int\000"
- 2053      206C6F6E 
- 2053      6720696E 
- 2053      7400
- 2054              	.LASF19:
- 2055 01fa 636C6B49 		.ascii	"clkImoEna\000"
- 2055      6D6F456E 
- 2055      6100
- 2056              	.LASF43:
- 2057 0204 6D656D63 		.ascii	"memcpy\000"
- 2057      707900
- 2058              	.LASF18:
- 2059 020b 636C6B53 		.ascii	"clkSelectReg\000"
- 2059      656C6563 
- 2059      74526567 
- 2059      00
- 2060              	.LASF35:
- 2061 0218 62697473 		.ascii	"bits\000"
+ 2039      74657243 
+ 2039      72697469 
+ 2039      63616C53 
+ 2039      65637469 
+ 2040              	.LASF8:
+ 2041 0202 756E7369 		.ascii	"unsigned int\000"
+ 2041      676E6564 
+ 2041      20696E74 
+ 2041      00
+ 2042              	.LASF7:
+ 2043 020f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2043      206C6F6E 
+ 2043      6720756E 
+ 2043      7369676E 
+ 2043      65642069 
+ 2044              	.LASF31:
+ 2045 0226 6E656564 		.ascii	"needChecksumWorkaround\000"
+ 2045      43686563 
+ 2045      6B73756D 
+ 2045      576F726B 
+ 2045      61726F75 
+ 2046              	.LASF30:
+ 2047 023d 696E7465 		.ascii	"interruptState\000"
+ 2047      72727570 
+ 2047      74537461 
+ 2047      746500
+ 2048              	.LASF53:
+ 2049 024c 43794861 		.ascii	"CyHalt\000"
+ 2049      6C7400
+ 2050              	.LASF42:
+ 2051 0253 43795379 		.ascii	"CySysClkImoStop\000"
+ 2051      73436C6B 
+ 2051      496D6F53 
+ 2051      746F7000 
+ 2052              	.LASF17:
+ 2053 0263 73697A65 		.ascii	"sizetype\000"
+ 2053      74797065 
+ 2053      00
+ 2054              	.LASF6:
+ 2055 026c 6C6F6E67 		.ascii	"long long int\000"
+ 2055      206C6F6E 
+ 2055      6720696E 
+ 2055      7400
+ 2056              	.LASF19:
+ 2057 027a 636C6B49 		.ascii	"clkImoEna\000"
+ 2057      6D6F456E 
+ 2057      6100
+ 2058              	.LASF43:
+ 2059 0284 6D656D63 		.ascii	"memcpy\000"
+ 2059      707900
+ 2060              	.LASF18:
+ 2061 028b 636C6B53 		.ascii	"clkSelectReg\000"
+ 2061      656C6563 
+ 2061      74526567 
  2061      00
- 2062              	.LASF46:
- 2063 021d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 2063      4320342E 
- 2063      392E3320 
- 2063      32303135 
- 2063      30333033 
- 2064 0250 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 2064      20726576 
- 2064      6973696F 
- 2064      6E203232 
- 2064      31323230 
- 2065 0283 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 55
+ 2062              	.LASF35:
+ 2063 0298 62697473 		.ascii	"bits\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 55
 
 
- 2065      66756E63 
- 2065      74696F6E 
- 2065      2D736563 
- 2065      74696F6E 
- 2066              	.LASF36:
- 2067 02ab 66726571 		.ascii	"freq\000"
- 2067      00
- 2068              	.LASF39:
- 2069 02b0 43795379 		.ascii	"CySysClkWriteImoFreq\000"
- 2069      73436C6B 
- 2069      57726974 
- 2069      65496D6F 
- 2069      46726571 
- 2070              	.LASF23:
- 2071 02c5 43795379 		.ascii	"CySysFlashClockConfig\000"
- 2071      73466C61 
- 2071      7368436C 
- 2071      6F636B43 
- 2071      6F6E6669 
- 2072              	.LASF33:
- 2073 02db 73617665 		.ascii	"savedValue\000"
- 2073      6456616C 
- 2073      756500
- 2074              	.LASF22:
- 2075 02e6 43795379 		.ascii	"CySysFlashClockBackup\000"
- 2075      73466C61 
- 2075      7368436C 
- 2075      6F636B42 
- 2075      61636B75 
- 2076              	.LASF21:
- 2077 02fc 43595F53 		.ascii	"CY_SYS_FLASH_CLOCK_BACKUP_STRUCT\000"
- 2077      59535F46 
- 2077      4C415348 
- 2077      5F434C4F 
- 2077      434B5F42 
- 2078              	.LASF4:
- 2079 031d 6C6F6E67 		.ascii	"long int\000"
- 2079      20696E74 
- 2079      00
- 2080              	.LASF48:
- 2081 0326 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
- 2081      73657273 
- 2081      5C537069 
- 2081      74666972 
- 2081      65353434 
- 2082 0354 6C616220 		.ascii	"lab Technologies Inc\\Consultation\\YABtronix\\Auto"
- 2082      54656368 
- 2082      6E6F6C6F 
- 2082      67696573 
- 2082      20496E63 
- 2083 0384 20536875 		.ascii	" Shut-OFF\\Auto Shut-OFF_SOIC8.cydsn\000"
- 2083      742D4F46 
- 2083      465C4175 
- 2083      746F2053 
- 2083      6875742D 
+ 2063      00
+ 2064              	.LASF46:
+ 2065 029d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2065      4320342E 
+ 2065      392E3320 
+ 2065      32303135 
+ 2065      30333033 
+ 2066 02d0 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 2066      20726576 
+ 2066      6973696F 
+ 2066      6E203232 
+ 2066      31323230 
+ 2067 0303 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2067      66756E63 
+ 2067      74696F6E 
+ 2067      2D736563 
+ 2067      74696F6E 
+ 2068              	.LASF36:
+ 2069 032b 66726571 		.ascii	"freq\000"
+ 2069      00
+ 2070              	.LASF39:
+ 2071 0330 43795379 		.ascii	"CySysClkWriteImoFreq\000"
+ 2071      73436C6B 
+ 2071      57726974 
+ 2071      65496D6F 
+ 2071      46726571 
+ 2072              	.LASF23:
+ 2073 0345 43795379 		.ascii	"CySysFlashClockConfig\000"
+ 2073      73466C61 
+ 2073      7368436C 
+ 2073      6F636B43 
+ 2073      6F6E6669 
+ 2074              	.LASF33:
+ 2075 035b 73617665 		.ascii	"savedValue\000"
+ 2075      6456616C 
+ 2075      756500
+ 2076              	.LASF22:
+ 2077 0366 43795379 		.ascii	"CySysFlashClockBackup\000"
+ 2077      73466C61 
+ 2077      7368436C 
+ 2077      6F636B42 
+ 2077      61636B75 
+ 2078              	.LASF21:
+ 2079 037c 43595F53 		.ascii	"CY_SYS_FLASH_CLOCK_BACKUP_STRUCT\000"
+ 2079      59535F46 
+ 2079      4C415348 
+ 2079      5F434C4F 
+ 2079      434B5F42 
+ 2080              	.LASF4:
+ 2081 039d 6C6F6E67 		.ascii	"long int\000"
+ 2081      20696E74 
+ 2081      00
+ 2082              	.LASF14:
+ 2083 03a6 63686172 		.ascii	"char\000"
+ 2083      00
  2084              	.LASF20:
- 2085 03a8 636C6B49 		.ascii	"clkImoFreq\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\cchrZFQR.s 			page 56
+ 2085 03ab 636C6B49 		.ascii	"clkImoFreq\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccNYBXH6.s 			page 56
 
 
  2085      6D6F4672 
  2085      657100
  2086              	.LASF41:
- 2087 03b3 43795379 		.ascii	"CySysClkImoStart\000"
+ 2087 03b6 43795379 		.ascii	"CySysClkImoStart\000"
  2087      73436C6B 
  2087      496D6F53 
  2087      74617274 
  2087      00
  2088              	.LASF0:
- 2089 03c4 7369676E 		.ascii	"signed char\000"
+ 2089 03c7 7369676E 		.ascii	"signed char\000"
  2089      65642063 
  2089      68617200 
  2090              	.LASF50:
- 2091 03d0 43795379 		.ascii	"CySysFlashWriteRow\000"
+ 2091 03d3 43795379 		.ascii	"CySysFlashWriteRow\000"
  2091      73466C61 
  2091      73685772 
  2091      69746552 
  2091      6F7700
  2092              	.LASF51:
- 2093 03e3 43795379 		.ascii	"CySysFlashSetWaitCycles\000"
+ 2093 03e6 43795379 		.ascii	"CySysFlashSetWaitCycles\000"
  2093      73466C61 
  2093      73685365 
  2093      74576169 
