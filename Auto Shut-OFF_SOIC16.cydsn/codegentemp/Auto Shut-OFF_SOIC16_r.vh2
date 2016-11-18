@@ -1,5 +1,5 @@
 -- Project:   Auto Shut-OFF_SOIC16
--- Generated: 11/17/2016 11:28:54
+-- Generated: 11/18/2016 14:59:42
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Auto Shut-OFF_SOIC16\ IS
@@ -274,7 +274,7 @@ BEGIN
             input_clk_en => 0,
             input_sync => "0",
             input_sync_mode => "0",
-            intr_mode => "01",
+            intr_mode => "10",
             invert_in_clock => 0,
             invert_in_clock_en => 0,
             invert_in_reset => 0,

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
   31:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     #ifndef CY_CFG_SECTION
   32:.\Generated_Source\PSoC4/cyfitter_cfg.c ****         #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
   33:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     #endif
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 2
 
 
   34:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
   88:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
   89:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: CyClockStartupError
   90:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 3
 
 
   91:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  145:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void ClockSetup(void)
  146:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
   25              		.loc 1 146 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 4
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 4
 
 
   26              		.cfi_startproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
   61 002a C046     		.align	2
   62              	.L2:
   63 002c 30001040 		.word	1074790448
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 5
 
 
   64 0030 00030140 		.word	1073808128
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  205:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
  206:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
  207:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 6
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 6
 
 
  208:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
@@ -344,21 +344,21 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
   99 0054 0D4A     		ldr	r2, .L5+8
  100 0056 0E4B     		ldr	r3, .L5+12
  101 0058 1A60     		str	r2, [r3]
- 228:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_INTR_CFG), 0x00000010u);
+ 228:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_INTR_CFG), 0x00000020u);
  102              		.loc 1 228 0
- 103 005a 1022     		mov	r2, #16
+ 103 005a 2022     		mov	r2, #32
  104 005c 0D4B     		ldr	r3, .L5+16
  105 005e 1A60     		str	r2, [r3]
  229:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
  230:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_1 Starting address: CYDEV_GPIO_PRT1_BASE */
  231:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT1_BASE), 0x00000002u);
  106              		.loc 1 231 0
- 107 0060 0E3A     		sub	r2, r2, #14
+ 107 0060 1E3A     		sub	r2, r2, #30
  108 0062 0D4B     		ldr	r3, .L5+20
  109 0064 1A60     		str	r2, [r3]
  232:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT1_PC), 0x006C0DB0u);
  110              		.loc 1 232 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 7
 
 
  111 0066 0D4A     		ldr	r2, .L5+24
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  149              		.text
  150              	.Letext0:
  151              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 8
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 8
 
 
  152              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  206 0067 56000000 		.4byte	.LASF8
  207 006b 03       		.uleb128 0x3
  208 006c 04       		.byte	0x4
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 9
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 9
 
 
  209 006d 07       		.byte	0x7
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  263 00de 0A       		.uleb128 0xa
  264 00df 82000000 		.4byte	.LVL1
  265 00e3 A4000000 		.4byte	0xa4
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 10
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 10
 
 
  266 00e7 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  320 002b 00       		.byte	0
  321 002c 03       		.uleb128 0x3
  322 002d 0E       		.uleb128 0xe
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 11
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 11
 
 
  323 002e 3A       		.uleb128 0x3a
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  377 006a 00       		.byte	0
  378 006b 00       		.byte	0
  379 006c 09       		.uleb128 0x9
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 12
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 12
 
 
  380 006d 2E       		.uleb128 0x2e
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  434 00a6 13       		.uleb128 0x13
  435 00a7 00       		.byte	0
  436 00a8 00       		.byte	0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 13
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 13
 
 
  437 00a9 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  472      7400
  473              	.LASF19:
  474 0049 63796669 		.ascii	"cyfitter_cfg\000"
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 14
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 14
 
 
  474      74746572 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 1
  496 014f 72656733 		.ascii	"reg32\000"
  496      3200
  497              	.LASF4:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccQr2Hzb.s 			page 15
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccTu8s3G.s 			page 15
 
 
  498 0155 73686F72 		.ascii	"short unsigned int\000"

@@ -35,6 +35,13 @@ int main()
         UART_TX_Flag = 0;
     #endif
     
+    #if( IC_PACKAGE == SOIC_16 )
+        R_Write( 1 );
+        G_Write( 1 );
+        B_Write( 1 );
+    #else
+    #endif
+    
     PWM_Start();
 
     
@@ -80,7 +87,7 @@ int main()
         }
         else
         {
-            /* Toggling PWM Compare value depending on seconf counter value */
+            /* Toggling PWM Compare value depending on second counter value */
             if( DelayBeforeShutOff != 0 )
             {
                 if( Second_Counter < ( SECOND_COUNT / 2 ) )
@@ -92,10 +99,13 @@ int main()
                     PWM_WriteCompare( HIGH_GLOW );
                 }
                 
+                R_Write( 1 );
+                G_Write( 0 );
             }
             else
             {
-                /* Continue */
+                R_Write( 0 );
+                G_Write( 1 );
             }
         }
         
@@ -315,7 +325,7 @@ uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam )
             break;
         
         case CMD_SET_DEVICE_ADDRESS:
-             I2C_I2CSlaveSetAddress( cmdparam );
+            I2C_I2CSlaveSetAddress( cmdparam );
             break;
             
         case STS_CMD_BUTTON_EVENT:

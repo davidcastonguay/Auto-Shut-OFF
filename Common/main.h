@@ -83,12 +83,17 @@ uint8   Second_Counter;                                     // The second counte
 uint8   Mode;                                               // The operating mode
 uint8   Second_in_Base_60;                                  // The second in base 60 for serial output
 uint8   Push_Button_Interrupt_Flag;                         // The push button interrupt occurance flag
+#if( IC_PACKAGE == SOIC_16 )
+uint32  Time_Bits_Look_Up_Table_Row[ 32 ];                  // The Look-Up Table Row for timer settings when using time bits inputs
+uint32  Time_Bits_Look_Up_Table_Col[ 32 ];                  // The Look-Up Table Column for timer settings when using time bits inputs
+#else
+#endif
 
 #if( COMMUNICATION_LAYER == I2C_MODE )
 /* I2C slave read and write buffers */
     uint8 i2cReadBuffer [BUFFER_SIZE] = {PACKET_SOP, STS_CMD_FAIL, STS_CMD_FAIL, PACKET_EOP};
     uint8 i2cWriteBuffer[BUFFER_SIZE];
-    uint8   I2C_Status;
+    uint8 I2C_Status;
 #else
     uint8   UART_TX_Flag;
     uint8   UART_Buffer[ 32 ];
@@ -109,5 +114,11 @@ CY_ISR_PROTO(Push_Button_isr);
 uint8 GetTimeBitsValue( void );
 #else
 #endif
+
+/***************************************
+*        Time Bits Look-Up Table
+****************************************/
+
+
 
 /* [] END OF FILE */

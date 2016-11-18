@@ -1,4 +1,4 @@
---------------- Rebuild Started: 11/17/2016 11:28:51 Project: Auto Shut-OFF_SOIC16, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Rebuild Started: 11/17/2016 13:53:40 Project: Auto Shut-OFF_SOIC16, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 Deleting file ".\CortexM0\ARM_GCC_493\Debug\main.o"
 Deleting file ".\CortexM0\ARM_GCC_493\Debug\cyfitter_cfg.o"
 Deleting file ".\CortexM0\ARM_GCC_493\Debug\cymetadata.o"
@@ -86,5 +86,5 @@ arm-none-eabi-gcc.exe -Wl,--start-group -o ".\CortexM0\ARM_GCC_493\Debug\Auto Sh
 cyelftool.exe -C "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf" --flash_row_size 64 --flash_size 16384
 cyelftool.exe -S "C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf"
 Flash used: 2560 of 16384 bytes (15,6 %).
-SRAM used: 872 of 2048 bytes (42,6 %). Stack: 512 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 11/17/2016 11:29:01 ---------------
+SRAM used: 1128 of 2048 bytes (55,1 %). Stack: 512 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 11/17/2016 13:53:50 ---------------
