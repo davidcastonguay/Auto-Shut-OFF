@@ -19,6 +19,10 @@
 ****************************************/
 #define HIGH                            (1u)                // High value
 #define LOW                             (0u)                // Low Value
+#define ASSERTED_HIGH                   (0u)                // Asserted High value for P-Channel MOSFET
+#define ASSERTED_LOW                    (1u)                // Asserted Low value for P-Channel MOSFET
+#define LED_ON                          (0u)
+#define LED_OFF                         (1u)
 #define DEFAULT_TIMEOUT                 (0x2EE0u)           // 1 minute default timeout value
 #define LOW_GLOW                        (0x3A98u)           // Low intensity LED glow - ¼ of 60000
 #define MID_GLOW                        (0x7530u)           // High intensity LED glow - ½ of 60000
@@ -36,6 +40,7 @@
 /* Uncomment the line according to the enabled layer in the schematic */
 #define COMMUNICATION_LAYER             (SERIAL_MODE)
 //#define COMMUNICATION_LAYER             (I2C_MODE)
+//#define COMMUNICATION_LAYER             (0x00u)
 
 /* The used IC Package */
 /* Uncomment the line according to the device selected in the device selector */
@@ -84,8 +89,9 @@ uint8   Mode;                                               // The operating mod
 uint8   Second_in_Base_60;                                  // The second in base 60 for serial output
 uint8   Push_Button_Interrupt_Flag;                         // The push button interrupt occurance flag
 #if( IC_PACKAGE == SOIC_16 )
-uint32  Time_Bits_Look_Up_Table_Row[ 32 ];                  // The Look-Up Table Row for timer settings when using time bits inputs
-uint32  Time_Bits_Look_Up_Table_Col[ 32 ];                  // The Look-Up Table Column for timer settings when using time bits inputs
+uint32  ON_Time_Look_Up_Table[ 16 ];                        // The ON Time Look-Up Table for timer settings when using time bits inputs
+uint32  OFF_Time_Look_Up_Table[ 16 ];                       // The OFF Time Look-Up Table for timer settings when using time bits inputs
+
 #else
 #endif
 
@@ -112,6 +118,8 @@ CY_ISR_PROTO(Push_Button_isr);
 
 #if( IC_PACKAGE == SOIC_16 )
 uint8 GetTimeBitsValue( void );
+void  SetLookUpTable( void );
+void  SetTimerSettings( void );
 #else
 #endif
 

@@ -50,7 +50,8 @@ int main()
     Push_Button_isr_StartEx( Push_Button_isr );
 
     /* Variables default values */
-    DelayBeforeShutOff = DEFAULT_TIMEOUT;
+    SetTimerSettings();
+//    DelayBeforeShutOff = DEFAULT_TIMEOUT;
     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
     Push_Button_Interrupt_Flag = 0;
     Second_Counter = 0;
@@ -60,26 +61,67 @@ int main()
         /* Disabling the SUPPLY ENABLE if timeout has been reached */
         if( DelayBeforeShutOff == 0 )
         {
-            SUPPLY_ENABLE_Write( LOW ); 
-            PWM_WriteCompare( LOW_GLOW );
+            if( Mode == 0 )
+            {
+                SUPPLY_ENABLE_Write( ASSERTED_LOW ); 
+                PWM_WriteCompare( LOW_GLOW );
+                
+                /* Managing LED states */
+                R_Write( LED_ON );
+                G_Write( LED_OFF );
+                B_Write( LED_OFF );
+            }
+            else
+            {
+                /* Toggling from ON to OFF */
+                if( SUPPLY_ENABLE_Read() == ASSERTED_HIGH )
+                {
+                    SUPPLY_ENABLE_Write( ASSERTED_LOW );
+                    DelayBeforeShutOff = OFF_Time;
+                    /* Managing LED states */
+                    R_Write( LED_ON );
+                    G_Write( LED_OFF );
+                    B_Write( LED_OFF );
+                }
+                /* Toggling from OFF to ON */
+                else
+                {
+                    SUPPLY_ENABLE_Write( ASSERTED_HIGH );
+                    DelayBeforeShutOff = ON_Time;
+                    /* Managing LED states */
+                    R_Write( LED_OFF );
+                    G_Write( LED_ON );
+                    B_Write( LED_OFF );
+                }
+            }
         }
         else
         {
-            /* Continue */
+            /* Toggling PWM Compare value depending on second counter value */
+            if( Second_Counter < ( SECOND_COUNT / 2 ) )
+            {
+                PWM_WriteCompare( MID_GLOW );
+            }
+            else
+            {
+                PWM_WriteCompare( HIGH_GLOW );
+            }
         }
         
         /* Check if push button has been toggled */
         if( Push_Button_Interrupt_Flag == 1 )
         {
             /* Activating the output */
-            SUPPLY_ENABLE_Write( HIGH ); 
+            SUPPLY_ENABLE_Write( ASSERTED_HIGH ); 
             
             /* Clearing the pushbutton interrupt flag */
             Push_Button_Interrupt_Flag = 0;
             
             /* Resetting the counter if timeout occured */
-            DelayBeforeShutOff = DEFAULT_TIMEOUT;
+            SetTimerSettings();
+//            DelayBeforeShutOff = DEFAULT_TIMEOUT;
             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+            Second_Counter = 0;
   
             /* Restarting the interrupt if it has been stopped */
             PWM_isr_StartEx(PWM_isr);
@@ -87,26 +129,7 @@ int main()
         }
         else
         {
-            /* Toggling PWM Compare value depending on second counter value */
-            if( DelayBeforeShutOff != 0 )
-            {
-                if( Second_Counter < ( SECOND_COUNT / 2 ) )
-                {
-                    PWM_WriteCompare( MID_GLOW );
-                }
-                else
-                {
-                    PWM_WriteCompare( HIGH_GLOW );
-                }
-                
-                R_Write( 1 );
-                G_Write( 0 );
-            }
-            else
-            {
-                R_Write( 0 );
-                G_Write( 1 );
-            }
+            /* Continue */
         }
         
         /* Check if we must send info over UART */
@@ -118,12 +141,18 @@ int main()
                 SW_Tx_UART_PutString("Operating Mode: ");
                 if( Mode == 0 )
                 {
-                    SW_Tx_UART_PutString("Shuttoff");
+                    SW_Tx_UART_PutString("Shutt-off");
                 }
                 else
                 {
                     SW_Tx_UART_PutString("Toggle");
                 }
+                SW_Tx_UART_PutCRLF();
+                SW_Tx_UART_PutString("ON Time setting: ");
+                SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
+                SW_Tx_UART_PutCRLF();
+                SW_Tx_UART_PutString("OFF Time setting: ");
+                SW_Tx_UART_PutHexInt( ( OFF_Time / OVERFLOW_PER_SECOND ) );
                 SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Seconds remaning: ");
                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
@@ -181,6 +210,7 @@ int main()
 *******************************************************************************/
 CY_ISR(PWM_isr)
 {
+    /* Decrementing the timer */
     if( DelayBeforeShutOff <= 1 )
     {
         DelayBeforeShutOff = 0;
@@ -192,6 +222,7 @@ CY_ISR(PWM_isr)
         DelayBeforeShutOff--;
     }
     
+    /* Second in base 60 timer */
     if( Second_Counter == SECOND_COUNT )
     {
         Second_Counter = 0;
@@ -409,5 +440,156 @@ uint8 GetTimeBitsValue( void )
 }
 #else
 #endif
+
+/*******************************************************************************
+* Function Name: SetLookUpTable
+********************************************************************************
+* Summary:
+*  Sets the Look-Up Table according to the mode and time bits inputs.
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+*******************************************************************************/
+#if( IC_PACKAGE == SOIC_16 )
+void  SetLookUpTable( void )
+{
+    uint8 lmode_bit = 0;
+    
+    lmode_bit = GetTimeBitsValue();
+    lmode_bit = lmode_bit & 0x10;
+    lmode_bit = lmode_bit >> 4;
+    
+    switch (lmode_bit)
+    {
+        /*  Mode bit is not set so we're in Shut-Off Mode */
+        case 0x00:
+        ON_Time_Look_Up_Table[ 0 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 1 ] =    0x0000001E;
+        ON_Time_Look_Up_Table[ 2 ] =    0x0000003C;
+        ON_Time_Look_Up_Table[ 3 ] =    0x00000078;
+        ON_Time_Look_Up_Table[ 4 ] =    0x000000F0;
+        ON_Time_Look_Up_Table[ 5 ] =    0x000001E0;
+        ON_Time_Look_Up_Table[ 6 ] =    0x00000384;
+        ON_Time_Look_Up_Table[ 7 ] =    0x00000708;
+        ON_Time_Look_Up_Table[ 8 ] =    0x00000E10;
+        ON_Time_Look_Up_Table[ 9 ] =    0x00001C20;
+        ON_Time_Look_Up_Table[ 10 ] =   0x00002A30;
+        ON_Time_Look_Up_Table[ 11 ] =   0x00003840;
+        ON_Time_Look_Up_Table[ 12 ] =   0x00005460;
+        ON_Time_Look_Up_Table[ 13 ] =   0x00007080;
+        ON_Time_Look_Up_Table[ 14 ] =   0x0000A8C0;
+        ON_Time_Look_Up_Table[ 15 ] =   0x0009C720;
+        
+        OFF_Time_Look_Up_Table[ 0 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 1 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 2 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 3 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 4 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 5 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 6 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 7 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 8 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 9 ] =   0x00000000;
+        OFF_Time_Look_Up_Table[ 10 ] =  0x00000000;
+        OFF_Time_Look_Up_Table[ 11 ] =  0x00000000;
+        OFF_Time_Look_Up_Table[ 12 ] =  0x00000000;
+        OFF_Time_Look_Up_Table[ 13 ] =  0x00000000;
+        OFF_Time_Look_Up_Table[ 14 ] =  0x00000000;
+        OFF_Time_Look_Up_Table[ 15 ] =  0x00000000;
+        Mode = 0;
+        break;
+        
+        /*  Mode bit is set so we're in Toggle Mode */
+        case 0x01:
+        ON_Time_Look_Up_Table[ 0 ] =    0x00000001;
+        ON_Time_Look_Up_Table[ 1 ] =    0x00000001;
+        ON_Time_Look_Up_Table[ 2 ] =    0x00000005;
+        ON_Time_Look_Up_Table[ 3 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 4 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 5 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 6 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 7 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 8 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 9 ] =    0x0000000A;
+        ON_Time_Look_Up_Table[ 10 ] =   0x0000001E;
+        ON_Time_Look_Up_Table[ 11 ] =   0x0000003C;
+        ON_Time_Look_Up_Table[ 12 ] =   0x0000003C;
+        ON_Time_Look_Up_Table[ 13 ] =   0x0000003C;
+        ON_Time_Look_Up_Table[ 14 ] =   0x000000F0;
+        ON_Time_Look_Up_Table[ 15 ] =   0x000000F0;
+        
+        OFF_Time_Look_Up_Table[ 0 ] =   0x00000001;
+        OFF_Time_Look_Up_Table[ 1 ] =   0x0000000A;
+        OFF_Time_Look_Up_Table[ 0 ] =   0x0000012C;
+        OFF_Time_Look_Up_Table[ 3 ] =   0x0000003C;
+        OFF_Time_Look_Up_Table[ 4 ] =   0x00000708;
+        OFF_Time_Look_Up_Table[ 5 ] =   0x00000E10;
+        OFF_Time_Look_Up_Table[ 6 ] =   0x00001C20;
+        OFF_Time_Look_Up_Table[ 7 ] =   0x00003840;
+        OFF_Time_Look_Up_Table[ 8 ] =   0x00005460;
+        OFF_Time_Look_Up_Table[ 9 ] =   0x0000A8C0;
+        OFF_Time_Look_Up_Table[ 10 ] =  0x00000384;
+        OFF_Time_Look_Up_Table[ 11 ] =  0x00000E10;
+        OFF_Time_Look_Up_Table[ 12 ] =  0x00003840;
+        OFF_Time_Look_Up_Table[ 13 ] =  0x0000A8C0;
+        OFF_Time_Look_Up_Table[ 14 ] =  0x00000E10;
+        OFF_Time_Look_Up_Table[ 15 ] =  0x00003840;
+        Mode = 1;
+        break;
+    }
+}
+#else
+#endif
+
+/*******************************************************************************
+* Function Name: SetTimerSettings
+********************************************************************************
+* Summary:
+*  Sets the timer parameters according to time bits and mode.
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+*******************************************************************************/
+#if( IC_PACKAGE == SOIC_16 )
+void  SetTimerSettings( void )
+{
+    uint8 lAddress = 0;
+    
+    /* Reading the time bits and masking the mode input */
+    lAddress = GetTimeBitsValue();
+    lAddress = lAddress & 0x0F;
+    
+    /* Setting the Look-Up Table properly */
+    SetLookUpTable();
+    
+    /* Setting ON-time and OFF-time accordingly */
+    if( Mode == 0 )
+    {
+        DelayBeforeShutOff = ON_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
+        ON_Time = DelayBeforeShutOff;
+    }
+    else
+    {
+        ON_Time = ON_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
+        OFF_Time = OFF_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
+        DelayBeforeShutOff = ON_Time;
+    }
+    
+    /* Managing LED states */
+    R_Write( LED_OFF );
+    G_Write( LED_ON );
+    B_Write( LED_OFF );
+}
+#else
+#endif
+
 
 /* [] END OF FILE */

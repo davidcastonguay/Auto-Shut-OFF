@@ -2,7 +2,7 @@
 --	Conversion of Auto Shut-OFF_SOIC16.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Nov 18 14:59:41 2016
+--	Mon Nov 21 15:14:01 2016
 --
 
 USE cypress.cypress.all;
@@ -95,9 +95,9 @@ tmpOE__PUSH_BUTTON_INPUT_net_0 <=  ('1') ;
 
 PUSH_BUTTON_INPUT:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
-		drive_mode=>"011",
+		drive_mode=>"010",
 		ibuf_enabled=>"1",
-		init_dr_st=>"0",
+		init_dr_st=>"1",
 		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",

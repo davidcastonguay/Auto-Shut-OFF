@@ -1,5 +1,5 @@
 -- Project:   Auto Shut-OFF_SOIC16
--- Generated: 11/18/2016 14:59:42
+-- Generated: 11/21/2016 15:14:01
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Auto Shut-OFF_SOIC16\ IS
@@ -249,10 +249,10 @@ BEGIN
 
     PUSH_BUTTON_INPUT:logicalport
         GENERIC MAP(
-            drive_mode => "011",
+            drive_mode => "010",
             ibuf_enabled => "1",
             id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "0",
