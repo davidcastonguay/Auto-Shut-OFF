@@ -38,9 +38,9 @@
 /* Those defines must be commented/uncommented accordingly prior to building the project */
 /* The used communication layer */
 /* Uncomment the line according to the enabled layer in the schematic */
-//#define COMMUNICATION_LAYER             (SERIAL_MODE)
+#define COMMUNICATION_LAYER             (SERIAL_MODE)
 //#define COMMUNICATION_LAYER             (I2C_MODE)
-#define COMMUNICATION_LAYER             (0x00u)
+//#define COMMUNICATION_LAYER             (0x00u)
 
 /* The used IC Package */
 /* Uncomment the line according to the device selected in the device selector */
@@ -76,6 +76,11 @@
 #define CMD_SET_OFF_TIME_DELAY_SCNDB    (0x0Du)             // Command: Set the OFF Time delay second byte    
 #define CMD_SET_OFF_TIME_DELAY_LSB      (0x0Eu)             // Command: Set the OFF Time delay LSB
 #define CMD_SET_DEVICE_ADDRESS          (0x0Fu)             // Command: Set device address
+#define BUTTON_NO_EVENT                 (0x00u)             // Status; Push button no event
+#define BUTTON_CLICK_EVENT              (0xC0u)             // Status: Push button click event
+#define BUTTON_DOUBLE_CLICK_EVENT       (0xDCu)             // Status: Push button double-click event 
+#define BUTTON_HOLD_DOWN                (0xBDu)             // Status: Push button hold down event
+#define BUTTON_RELEASED                 (0xBEu)             // Status: Push button released event
 
 /***************************************
 *         Global Variables
@@ -83,12 +88,16 @@
 uint32  DelayBeforeShutOff;                                 // The timeout value variable
 uint32  ON_Time;                                            // The toggle mode ON Time variable
 uint32  OFF_Time;                                           // The toggle mode OFF Time variable
+uint32  Toggle_Counter;                                     // The toggle counter for user feedback
 uint8   Push_Button_State_Value;                            // The push button state value             
 uint8   Second_Counter;                                     // The second counter
 uint8   Mode;                                               // The operating mode
 uint8   Second_in_Base_60;                                  // The second in base 60 for serial output
 uint8   Push_Button_Interrupt_Flag;                         // The push button interrupt occurance flag
-uint8   Output_Value;
+uint8   Output_Value;                                       // The supply enable output value
+uint8   Look_Up_Table_Address;                              // The look-up table address set by the time bits
+uint8   Overflow_Counter;                                   // The overflow counter for button event processor
+uint8   Push_Button_Event;                                  // The processed push button event
 #if( IC_PACKAGE == SOIC_16 )
 uint32  ON_Time_Look_Up_Table[ 16 ];                        // The ON Time Look-Up Table for timer settings when using time bits inputs
 uint32  OFF_Time_Look_Up_Table[ 16 ];                       // The OFF Time Look-Up Table for timer settings when using time bits inputs

@@ -27,6 +27,8 @@
 #include "PWM_OUTPUT_aliases.h"
 #include "PWM_CLOCK.h"
 #include "PWM_isr.h"
+#include "SW_Tx_UART.h"
+#include "SW_Tx_UART_PVT.h"
 #include "Push_Button_isr.h"
 #include "Mode.h"
 #include "Mode_aliases.h"

@@ -31,8 +31,12 @@ int main()
         I2C_Start();
         I2C_Status = STS_CMD_FAIL;
     //#else
+    #endif
+        
+    #if( COMMUNICATION_LAYER == SERIAL_MODE )    
         SW_Tx_UART_Start();  
         UART_TX_Flag = 0;
+    //#else
     #endif
     
     #if( IC_PACKAGE == SOIC_16 )
@@ -43,7 +47,6 @@ int main()
     #endif
     
     PWM_Start();
-
     
     /* Configure ISR */
     PWM_isr_StartEx( PWM_isr );
@@ -51,13 +54,12 @@ int main()
 
     /* Variables default values */
     SetTimerSettings();
-//    DelayBeforeShutOff = DEFAULT_TIMEOUT;
     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
     Push_Button_Interrupt_Flag = 0;
     Second_Counter = 0;
+    Toggle_Counter = 0;
     Output_Value = HIGH;
-    
-    /* Managing LED states */
+    SUPPLY_ENABLE_Write( ASSERTED_HIGH );
     R_Write( LED_OFF );
     G_Write( LED_ON );
     B_Write( LED_OFF );
@@ -86,7 +88,7 @@ int main()
                     //DelayBeforeShutOff = OFF_Time;
                     /* Managing LED states */
                     R_Write( LED_ON );
-                    G_Write( LED_OFF );
+                    G_Write( LED_ON );
                     B_Write( LED_OFF );
                     Output_Value = LOW;
                 }
@@ -100,11 +102,11 @@ int main()
                     G_Write( LED_ON );
                     B_Write( LED_OFF );
                     Output_Value = HIGH;
+                    Toggle_Counter++;
                 }
                 
                 SetTimerSettings();
                 Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
-                Second_Counter = 0;
                 PWM_isr_StartEx(PWM_isr);
                 PWM_ClearInterrupt(PWM_INTR_MASK_TC);
             }
@@ -122,8 +124,51 @@ int main()
             }
         }
         
+        /* Processing push button events */
+        if( Overflow_Counter >= 200 )
+        {
+            if( ( Push_Button_Event == BUTTON_HOLD_DOWN ) && ( Push_Button_State_Value == 1 ) )
+            {
+                Push_Button_Event = BUTTON_RELEASED;
+                SW_Tx_UART_PutString("Push Button Event: Button Released");
+                SW_Tx_UART_PutCRLF();
+            }
+            else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 1 ) )
+            {
+                Push_Button_Event = BUTTON_CLICK_EVENT;
+                SW_Tx_UART_PutString("Push Button Event: Click");
+                SW_Tx_UART_PutCRLF();
+            }
+            else if( ( Push_Button_Interrupt_Flag >= 2 ) && ( Push_Button_State_Value == 1 ) )
+            {
+                Push_Button_Event = BUTTON_DOUBLE_CLICK_EVENT;
+                SW_Tx_UART_PutString("Push Button Event: Double Click");
+                SW_Tx_UART_PutCRLF();
+            }
+            else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 0 ) )
+            {
+                Push_Button_Event = BUTTON_HOLD_DOWN;
+                SW_Tx_UART_PutString("Push Button Event: Hold Down");
+                SW_Tx_UART_PutCRLF();
+            }
+            else
+            {
+                /* Continue */
+//                Push_Button_Event = BUTTON_NO_EVENT;
+//                SW_Tx_UART_PutString("Push Button Event: Click");
+//                SW_Tx_UART_PutCRLF();
+            }
+            
+            Overflow_Counter = 0;
+            Push_Button_Interrupt_Flag = 0;
+        }
+        else
+        {
+            /* Continue */
+        }
+        
         /* Check if push button has been toggled */
-        if( Push_Button_Interrupt_Flag == 1 )
+        if( ( Push_Button_Interrupt_Flag == 1 ) && ( PWM_isr_GetState() == 0 ) )
         {
             /* Activating the output */
             SUPPLY_ENABLE_Write( ASSERTED_HIGH ); 
@@ -135,6 +180,7 @@ int main()
             SetTimerSettings();
             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
             Second_Counter = 0;
+            Toggle_Counter = 0;
   
             /* Restarting the interrupt if it has been stopped */
             PWM_isr_StartEx(PWM_isr);
@@ -164,17 +210,30 @@ int main()
                 else
                 {
                     SW_Tx_UART_PutString("Toggle");
+                    SW_Tx_UART_PutCRLF();
+                    SW_Tx_UART_PutString("Toggle Count: ");
+                    SW_Tx_UART_PutHexInt( Toggle_Counter );
+//                    SW_Tx_UART_PutHexInt( Toggle_Counter << 16 );
                 }
                 SW_Tx_UART_PutCRLF();
-                SW_Tx_UART_PutString("ON Time setting: ");
-                SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
-                SW_Tx_UART_PutCRLF();
-                SW_Tx_UART_PutString("OFF Time setting: ");
-                SW_Tx_UART_PutHexInt( ( OFF_Time / OVERFLOW_PER_SECOND ) );
+                SW_Tx_UART_PutString("Look-Up Table Address: ");
+                SW_Tx_UART_PutHexInt( Look_Up_Table_Address );
                 SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Seconds remaning: ");
                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
                 SW_Tx_UART_PutCRLF();
+                
+                if( Output_Value == HIGH )
+                {
+                    SW_Tx_UART_PutString("Output = High ");
+                    SW_Tx_UART_PutCRLF(); 
+                }
+                else
+                {
+                    SW_Tx_UART_PutString("Output = Low ");
+                    SW_Tx_UART_PutCRLF();
+                }
+
                 UART_TX_Flag = 0;
             }
             else
@@ -184,6 +243,7 @@ int main()
         //#else
         #endif
         
+        /* Check if we must send info over I2C */
         #if( COMMUNICATION_LAYER == I2C_MODE )
             if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
             {
@@ -236,6 +296,7 @@ CY_ISR(PWM_isr)
     {
         DelayBeforeShutOff = 0;
         Second_in_Base_60 = 0;
+        Push_Button_Interrupt_Flag = 0;
         PWM_isr_Stop();
     }
     else
@@ -257,6 +318,16 @@ CY_ISR(PWM_isr)
     {
         Second_Counter++;
     }
+    
+    /* Incrementing the overflow counter for button processor */
+    if( Overflow_Counter > 200 )
+    {
+        Overflow_Counter = 0;
+    }
+    else
+    {
+        Overflow_Counter++;
+    }
 
     /* Clear interrupt status in an interrupt controller */
     PWM_ClearInterrupt(PWM_INTR_MASK_TC);
@@ -276,7 +347,20 @@ CY_ISR(PWM_isr)
 *******************************************************************************/
 CY_ISR_PROTO(Push_Button_isr)
 {
-    Push_Button_Interrupt_Flag = 1;
+    /* Waiting for the state to stabilize */
+    CyDelayUs( 5000 );
+    
+    /* Reading the state */
+    if( PUSH_BUTTON_INPUT_Read() == 0 )
+    {
+        Push_Button_State_Value = 0;
+        Push_Button_Interrupt_Flag++;
+    }
+    else
+    {
+        Push_Button_State_Value = 1;
+    }
+    
     PUSH_BUTTON_INPUT_ClearInterrupt();
 }
 
@@ -582,11 +666,11 @@ void  SetLookUpTable( void )
 #if( IC_PACKAGE == SOIC_16 )
 void  SetTimerSettings( void )
 {
-    uint8 lAddress = 0;
+    //uint8 lAddress = 0;
     
     /* Reading the time bits and masking the mode input */
-    lAddress = GetTimeBitsValue();
-    lAddress = lAddress & 0x0F;
+    Look_Up_Table_Address = GetTimeBitsValue();
+    Look_Up_Table_Address = Look_Up_Table_Address & 0x0F;
     
     /* Setting the Look-Up Table properly */
     SetLookUpTable();
@@ -594,14 +678,14 @@ void  SetTimerSettings( void )
     /* Setting ON-time and OFF-time accordingly */
     if( Mode == 0 )
     {
-        DelayBeforeShutOff = ON_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
+        DelayBeforeShutOff = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
         ON_Time = DelayBeforeShutOff;
     }
     else
     {
-        ON_Time = ON_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
-        OFF_Time = OFF_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
-        DelayBeforeShutOff = ON_Time;
+        ON_Time = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
+        OFF_Time = OFF_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
+        DelayBeforeShutOff = ON_Time;;
     }
 }
 //#else
