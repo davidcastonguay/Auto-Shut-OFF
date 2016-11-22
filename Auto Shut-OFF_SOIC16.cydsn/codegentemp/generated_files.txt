@@ -30,12 +30,6 @@
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\PWM_CLOCK.h" value="NONE;PWM_CLOCK" />
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\PWM_isr.c" value="ARM_C_FILE;PWM_isr" />
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\PWM_isr.h" value="NONE;PWM_isr" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART_AsmGnu.s" value="GNU_ARM_ASM_FILE;SW_Tx_UART" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART_AsmRv.s" value="REALVIEW_ARM_ASM_FILE;SW_Tx_UART" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART.c" value="ARM_C_FILE;SW_Tx_UART" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART.h" value="NONE;SW_Tx_UART" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART_PVT.h" value="NONE;SW_Tx_UART" />
-  <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\SW_Tx_UART_AsmIar.s" value="IAR_ASM_FILE;SW_Tx_UART" />
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\Push_Button_isr.c" value="ARM_C_FILE;Push_Button_isr" />
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\Push_Button_isr.h" value="NONE;Push_Button_isr" />
   <file name="C:\Users\Spitfire54444444\Dropbox\Projets\Wavelab Technologies Inc\RnD\Projets\Auto Shut-OFF\Auto-Shut-OFF\Auto Shut-OFF_SOIC16.cydsn\codegentemp\Mode.c" value="ARM_C_FILE;Mode" />

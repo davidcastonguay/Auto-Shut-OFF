@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="R" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Time_Bit_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="G" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Time_Bit_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="G" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_lfclk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Time_Bit_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Time_Bit_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VMux_count" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VMux_reload" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -26,11 +26,8 @@
   <block name="PWM_OUTPUT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PUSH_BUTTON_INPUT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SUPPLY_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_CLOCK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Push_Button_isr" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Mode" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_CLOCK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM_isr" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_Tx_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="tx" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  </block>
 </blockRegMap>

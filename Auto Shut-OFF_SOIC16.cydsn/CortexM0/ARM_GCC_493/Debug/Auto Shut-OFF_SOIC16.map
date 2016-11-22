@@ -12,8 +12,6 @@ Archive member included because of file (symbol)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (PWM_CLOCK_StartEx)
 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (PWM_isr_StartEx)
-.\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                              .\CortexM0\ARM_GCC_493\Debug\main.o (SW_Tx_UART_Start)
 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (Push_Button_isr_StartEx)
 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
@@ -38,8 +36,6 @@ Archive member included because of file (symbol)
                               .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (CyHalt)
 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
                               .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o (CySysWdtDisable)
-.\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
-                              .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o) (SW_Tx_UART_PutChar)
 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
                               .\CortexM0\ARM_GCC_493\Debug\main.o (__aeabi_uidiv)
 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
@@ -79,21 +75,19 @@ Allocating common symbols
 Common symbol       size              file
 
 DelayBeforeShutOff  0x4               .\CortexM0\ARM_GCC_493\Debug\main.o
+Output_Value        0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 OFF_Time_Look_Up_Table
                     0x40              .\CortexM0\ARM_GCC_493\Debug\main.o
 Push_Button_State_Value
                     0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 ON_Time             0x4               .\CortexM0\ARM_GCC_493\Debug\main.o
 Mode                0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
-UART_Buffer         0x20              .\CortexM0\ARM_GCC_493\Debug\main.o
-UART_TX_Flag        0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 ON_Time_Look_Up_Table
                     0x40              .\CortexM0\ARM_GCC_493\Debug\main.o
 Push_Button_Interrupt_Flag
                     0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 Second_Counter      0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 Second_in_Base_60   0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
-UART_Tx_Size        0x1               .\CortexM0\ARM_GCC_493\Debug\main.o
 OFF_Time            0x4               .\CortexM0\ARM_GCC_493\Debug\main.o
 
 Discarded input sections
@@ -137,6 +131,8 @@ Discarded input sections
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
  .text.SUPPLY_ENABLE_SetDriveMode
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+ .text.SUPPLY_ENABLE_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
  .text.SUPPLY_ENABLE_ReadDataReg
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
  .text.SUPPLY_ENABLE_ClearInterrupt
@@ -233,11 +229,6 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
  .text.PWM_isr_ClearPending
                 0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .text.SW_Tx_UART_Stop
-                0x00000000        0x4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .text.SW_Tx_UART_PutArray
-                0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
@@ -345,6 +336,7 @@ Discarded input sections
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .data          0x00000000       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
  .bss           0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
  .text.CySysClkImoStart
                 0x00000000       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
@@ -462,8 +454,6 @@ Discarded input sections
                 0x00000000        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
  .text.CySysWdtIsr
                 0x00000000       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .data          0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
- .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
@@ -564,7 +554,7 @@ END GROUP
                 0x00000000                CY_APPL_LOADABLE = 0x0
                 0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
                 0x00000000                CY_APP_FOR_STACK_AND_COPIER = 0x0
-                0x20000170                PROVIDE (__cy_heap_start, _end)
+                0x20000138                PROVIDE (__cy_heap_start, _end)
                 0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
                 0x20000800                PROVIDE (__cy_stack, (ORIGIN (ram) + 0x800))
                 0x20000600                PROVIDE (__cy_heap_end, (__cy_stack - 0x200))
@@ -577,7 +567,7 @@ END GROUP
                 0x00000001                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
                 0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
 
-.text           0x00000000     0x1e60
+.text           0x00000000     0x1c78
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -591,200 +581,179 @@ END GROUP
                 0x00000010                Reset
                 0x00000001                ASSERT ((. != __cy_reset), No reset code)
  *(.psocinit)
- .psocinit      0x0000001c       0xbc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
+ .psocinit      0x0000001c       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
                 0x00000060                cyfitter_cfg
                 0x00000100                . = MAX (., 0x100)
- *fill*         0x000000d8       0x28 
+ *fill*         0x000000cc       0x34 
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x00000100       0x60 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .text.PWM_isr  0x00000160       0x5c .\CortexM0\ARM_GCC_493\Debug\main.o
+ .text.PWM_isr  0x00000160       0x54 .\CortexM0\ARM_GCC_493\Debug\main.o
                 0x00000160                PWM_isr
  .text.Push_Button_isr
-                0x000001bc       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000001bc                Push_Button_isr
+                0x000001b4       0x14 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000001b4                Push_Button_isr
  .text.GetTimeBitsValue
-                0x000001d0       0x94 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000001d0                GetTimeBitsValue
+                0x000001c8       0x94 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000001c8                GetTimeBitsValue
  .text.SetLookUpTable
-                0x00000264      0x118 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x00000264                SetLookUpTable
+                0x0000025c      0x118 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x0000025c                SetLookUpTable
  .text.SetTimerSettings
-                0x0000037c       0x74 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x0000037c                SetTimerSettings
- .text.main     0x000003f0      0x1e8 .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x000003f0                main
+                0x00000374       0x60 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x00000374                SetTimerSettings
+ .text.main     0x000003d4      0x188 .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x000003d4                main
  .text.IntDefaultHandler
-                0x000005d8        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x000005d8                IntDefaultHandler
- .text.Start_c  0x000005dc       0x48 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x000005dc                Start_c
+                0x0000055c        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x0000055c                IntDefaultHandler
+ .text.Start_c  0x00000560       0x48 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00000560                Start_c
  .text.initialize_psoc
-                0x00000624       0x54 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00000624                initialize_psoc
+                0x000005a8       0x54 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x000005a8                initialize_psoc
  .text.PUSH_BUTTON_INPUT_ClearInterrupt
-                0x00000678       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
-                0x00000678                PUSH_BUTTON_INPUT_ClearInterrupt
+                0x000005fc       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
+                0x000005fc                PUSH_BUTTON_INPUT_ClearInterrupt
  .text.SUPPLY_ENABLE_Write
-                0x0000068c       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
-                0x0000068c                SUPPLY_ENABLE_Write
- .text.SUPPLY_ENABLE_Read
-                0x000006a4       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
-                0x000006a4                SUPPLY_ENABLE_Read
+                0x00000610       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+                0x00000610                SUPPLY_ENABLE_Write
  .text.PWM_WriteCounter
-                0x000006b4       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x000006b4                PWM_WriteCounter
+                0x00000628       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000628                PWM_WriteCounter
  .text.PWM_WritePeriod
-                0x000006c4       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x000006c4                PWM_WritePeriod
+                0x00000638       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000638                PWM_WritePeriod
  .text.PWM_WriteCompare
-                0x000006d4       0x38 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x000006d4                PWM_WriteCompare
+                0x00000648       0x38 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000648                PWM_WriteCompare
  .text.PWM_TriggerCommand
-                0x0000070c       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x0000070c                PWM_TriggerCommand
+                0x00000680       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000680                PWM_TriggerCommand
  .text.PWM_Enable
-                0x00000728       0x24 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x00000728                PWM_Enable
+                0x0000069c       0x24 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x0000069c                PWM_Enable
  .text.PWM_SetInterruptMode
-                0x0000074c        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x0000074c                PWM_SetInterruptMode
+                0x000006c0        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x000006c0                PWM_SetInterruptMode
  .text.PWM_Init
-                0x00000758       0x48 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x00000758                PWM_Init
+                0x000006cc       0x48 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x000006cc                PWM_Init
  .text.PWM_Start
-                0x000007a0       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x000007a0                PWM_Start
+                0x00000714       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000714                PWM_Start
  .text.PWM_ClearInterrupt
-                0x000007c0        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x000007c0                PWM_ClearInterrupt
+                0x00000734        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x00000734                PWM_ClearInterrupt
  .text.PWM_CLOCK_StartEx
-                0x000007cc       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
-                0x000007cc                PWM_CLOCK_StartEx
+                0x00000740       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
+                0x00000740                PWM_CLOCK_StartEx
  .text.PWM_isr_SetVector
-                0x000007e8        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x000007e8                PWM_isr_SetVector
+                0x0000075c        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x0000075c                PWM_isr_SetVector
  .text.PWM_isr_SetPriority
-                0x000007f4       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x000007f4                PWM_isr_SetPriority
+                0x00000768       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x00000768                PWM_isr_SetPriority
  .text.PWM_isr_Enable
-                0x00000814       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x00000814                PWM_isr_Enable
+                0x00000788       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x00000788                PWM_isr_Enable
  .text.PWM_isr_Disable
-                0x00000824       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x00000824                PWM_isr_Disable
+                0x00000798       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x00000798                PWM_isr_Disable
  .text.PWM_isr_StartEx
-                0x00000834       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x00000834                PWM_isr_StartEx
+                0x000007a8       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x000007a8                PWM_isr_StartEx
  .text.PWM_isr_Stop
-                0x00000850       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
-                0x00000850                PWM_isr_Stop
- .text.SW_Tx_UART_Start
-                0x00000864        0x4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x00000864                SW_Tx_UART_Start
- .text.SW_Tx_UART_PutString
-                0x00000868       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x00000868                SW_Tx_UART_PutString
- .text.SW_Tx_UART_PutHexByte
-                0x00000884       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x00000884                SW_Tx_UART_PutHexByte
- .text.SW_Tx_UART_PutHexInt
-                0x000008a4       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x000008a4                SW_Tx_UART_PutHexInt
- .text.SW_Tx_UART_PutCRLF
-                0x000008b8       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x000008b8                SW_Tx_UART_PutCRLF
+                0x000007c4       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+                0x000007c4                PWM_isr_Stop
  .text.Push_Button_isr_SetVector
-                0x000008c8        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
-                0x000008c8                Push_Button_isr_SetVector
+                0x000007d8        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x000007d8                Push_Button_isr_SetVector
  .text.Push_Button_isr_SetPriority
-                0x000008d4       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
-                0x000008d4                Push_Button_isr_SetPriority
+                0x000007e4       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x000007e4                Push_Button_isr_SetPriority
  .text.Push_Button_isr_Enable
-                0x000008f4        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
-                0x000008f4                Push_Button_isr_Enable
+                0x00000804        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x00000804                Push_Button_isr_Enable
  .text.Push_Button_isr_Disable
-                0x00000900        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
-                0x00000900                Push_Button_isr_Disable
+                0x00000810        0xc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x00000810                Push_Button_isr_Disable
  .text.Push_Button_isr_StartEx
-                0x0000090c       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
-                0x0000090c                Push_Button_isr_StartEx
+                0x0000081c       0x1c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x0000081c                Push_Button_isr_StartEx
  .text.Mode_Read
-                0x00000928       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
-                0x00000928                Mode_Read
- .text.B_Write  0x00000938       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
-                0x00000938                B_Write
- .text.G_Write  0x00000950       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
-                0x00000950                G_Write
- .text.R_Write  0x00000968       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
-                0x00000968                R_Write
+                0x00000838       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+                0x00000838                Mode_Read
+ .text.B_Write  0x00000848       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+                0x00000848                B_Write
+ .text.G_Write  0x00000860       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+                0x00000860                G_Write
+ .text.R_Write  0x00000878       0x18 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+                0x00000878                R_Write
  .text.Time_Bit_0_Read
-                0x00000980       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
-                0x00000980                Time_Bit_0_Read
+                0x00000890       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+                0x00000890                Time_Bit_0_Read
  .text.Time_Bit_1_Read
-                0x00000990       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
-                0x00000990                Time_Bit_1_Read
+                0x000008a0       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+                0x000008a0                Time_Bit_1_Read
  .text.Time_Bit_2_Read
-                0x000009a0       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
-                0x000009a0                Time_Bit_2_Read
+                0x000008b0       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+                0x000008b0                Time_Bit_2_Read
  .text.Time_Bit_3_Read
-                0x000009b0       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
-                0x000009b0                Time_Bit_3_Read
- .text          0x000009c0       0x28 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
-                0x000009c0                CyDelayCycles
-                0x000009d4                CyEnterCriticalSection
-                0x000009dc                CyExitCriticalSection
- .text.CyHalt   0x000009e8        0x4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
-                0x000009e8                CyHalt
+                0x000008c0       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+                0x000008c0                Time_Bit_3_Read
+ .text          0x000008d0       0x28 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+                0x000008d0                CyDelayCycles
+                0x000008e4                CyEnterCriticalSection
+                0x000008ec                CyExitCriticalSection
+ .text.CyHalt   0x000008f8        0x4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+                0x000008f8                CyHalt
  .text.CySysClkWriteImoFreq
-                0x000009ec       0xac .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
-                0x000009ec                CySysClkWriteImoFreq
+                0x000008fc       0xac .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+                0x000008fc                CySysClkWriteImoFreq
  .text.CySysWdtDisable
-                0x00000a98       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
-                0x00000a98                CySysWdtDisable
- *fill*         0x00000aa8       0x18 
- .text          0x00000ac0       0xe0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
-                0x00000ac0                SW_Tx_UART_PutChar
- .text          0x00000ba0      0x120 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
-                0x00000ba0                __aeabi_uidiv
-                0x00000ba0                __udivsi3
-                0x00000cac                __aeabi_uidivmod
- .text          0x00000cc0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x00000cc0                __aeabi_idiv0
-                0x00000cc0                __aeabi_ldiv0
- .text          0x00000cc4       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
-                0x00000cc4                __aeabi_d2uiz
-                0x00000cc4                __fixunsdfsi
- .text          0x00000d00      0x650 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
-                0x00000d00                __aeabi_dadd
- .text          0x00001350      0x6f4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
-                0x00001350                __aeabi_dsub
- .text          0x00001a44       0x6c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
-                0x00001a44                __aeabi_d2iz
- .text          0x00001ab0       0x78 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
-                0x00001ab0                __aeabi_i2d
- .text          0x00001b28       0x7c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
-                0x00001b28                __aeabi_cdrcmple
-                0x00001b38                __aeabi_cdcmple
-                0x00001b38                __aeabi_cdcmpeq
-                0x00001b48                __aeabi_dcmpeq
-                0x00001b54                __aeabi_dcmplt
-                0x00001b68                __aeabi_dcmple
-                0x00001b7c                __aeabi_dcmpgt
-                0x00001b90                __aeabi_dcmpge
- .text          0x00001ba4       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
-                0x00001ba4                __clzsi2
- .text          0x00001be0       0x88 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
-                0x00001be0                __nedf2
-                0x00001be0                __eqdf2
- .text          0x00001c68       0xe0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
-                0x00001c68                __gedf2
-                0x00001c68                __gtdf2
- .text          0x00001d48       0xcc c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
-                0x00001d48                __ledf2
-                0x00001d48                __ltdf2
+                0x000009a8       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+                0x000009a8                CySysWdtDisable
+ .text          0x000009b8      0x120 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                0x000009b8                __aeabi_uidiv
+                0x000009b8                __udivsi3
+                0x00000ac4                __aeabi_uidivmod
+ .text          0x00000ad8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x00000ad8                __aeabi_idiv0
+                0x00000ad8                __aeabi_ldiv0
+ .text          0x00000adc       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
+                0x00000adc                __aeabi_d2uiz
+                0x00000adc                __fixunsdfsi
+ .text          0x00000b18      0x650 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
+                0x00000b18                __aeabi_dadd
+ .text          0x00001168      0x6f4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
+                0x00001168                __aeabi_dsub
+ .text          0x0000185c       0x6c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
+                0x0000185c                __aeabi_d2iz
+ .text          0x000018c8       0x78 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+                0x000018c8                __aeabi_i2d
+ .text          0x00001940       0x7c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
+                0x00001940                __aeabi_cdrcmple
+                0x00001950                __aeabi_cdcmple
+                0x00001950                __aeabi_cdcmpeq
+                0x00001960                __aeabi_dcmpeq
+                0x0000196c                __aeabi_dcmplt
+                0x00001980                __aeabi_dcmple
+                0x00001994                __aeabi_dcmpgt
+                0x000019a8                __aeabi_dcmpge
+ .text          0x000019bc       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+                0x000019bc                __clzsi2
+ .text          0x000019f8       0x88 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
+                0x000019f8                __nedf2
+                0x000019f8                __eqdf2
+ .text          0x00001a80       0xe0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
+                0x00001a80                __gedf2
+                0x00001a80                __gtdf2
+ .text          0x00001b60       0xcc c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
+                0x00001b60                __ledf2
+                0x00001b60                __ltdf2
  .text.__libc_init_array
-                0x00001e14       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
-                0x00001e14                __libc_init_array
+                0x00001c2c       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00001c2c                __libc_init_array
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -797,80 +766,76 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x00001e60        0x0
+.v4_bx          0x00001c78        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00001e60        0x0
+.iplt           0x00001c78        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x00001e60        0x4
+.eh_frame       0x00001c78        0x4
  *(.eh_frame)
- .eh_frame      0x00001e60        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .eh_frame      0x00001e60        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
-                0x00001e64                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00001c78        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .eh_frame      0x00001c78        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
+                0x00001c7c                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00001e64                __exidx_end = .
+                0x00001c7c                __exidx_end = .
 
-.rodata         0x00001e64       0xcc
+.rodata         0x00001c7c       0x34
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata.str1.4
-                0x00001e64       0x80 .\CortexM0\ARM_GCC_493\Debug\main.o
- .rodata        0x00001ee4       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x00001ef8                . = ALIGN (0x4)
+                0x00001c7c                . = ALIGN (0x4)
  *(.init)
- .init          0x00001ef8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x00001ef8                _init
- .init          0x00001efc        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x00001f04                . = ALIGN (0x4)
-                0x00001f04                __preinit_array_start = .
+ .init          0x00001c7c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x00001c7c                _init
+ .init          0x00001c80        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00001c88                . = ALIGN (0x4)
+                0x00001c88                __preinit_array_start = .
  *(.preinit_array)
-                0x00001f04                __preinit_array_end = .
-                0x00001f04                . = ALIGN (0x4)
-                0x00001f04                __init_array_start = .
+                0x00001c88                __preinit_array_end = .
+                0x00001c88                . = ALIGN (0x4)
+                0x00001c88                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00001f04        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .init_array    0x00001f08        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
-                0x00001f0c                __init_array_end = .
-                0x00001f0c                . = ALIGN (0x4)
+ .init_array    0x00001c88        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .init_array    0x00001c8c        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+                0x00001c90                __init_array_end = .
+                0x00001c90                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00001f0c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
-                0x00001f0c                _fini
- .fini          0x00001f10        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
-                0x00001f18                . = ALIGN (0x4)
-                0x00001f18                __fini_array_start = .
+ .fini          0x00001c90        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crti.o
+                0x00001c90                _fini
+ .fini          0x00001c94        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x00001c9c                . = ALIGN (0x4)
+                0x00001c9c                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00001f18        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .fini_array    0x00001c9c        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00001f1c                __fini_array_end = .
-                0x00001f1c                . = ALIGN (0x4)
+                0x00001ca0                __fini_array_end = .
+                0x00001ca0                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00001f1c                . = ALIGN (0x4)
+                0x00001ca0                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00001f1c                . = ALIGN (0x4)
-                0x00001f1c                __cy_regions = .
-                0x00001f1c        0x4 LONG 0x1f30 __cy_region_init_ram
-                0x00001f20        0x4 LONG 0x20000070 __cy_region_start_data
-                0x00001f24        0x4 LONG 0x20 __cy_region_init_size_ram
-                0x00001f28        0x4 LONG 0xe0 __cy_region_zero_size_ram
-                0x00001f2c                __cy_regions_end = .
-                0x00001f30                . = ALIGN (0x8)
- *fill*         0x00001f2c        0x4 
-                0x00001f30                _etext = .
+                0x00001ca0                . = ALIGN (0x4)
+                0x00001ca0                __cy_regions = .
+                0x00001ca0        0x4 LONG 0x1cb0 __cy_region_init_ram
+                0x00001ca4        0x4 LONG 0x20000070 __cy_region_start_data
+                0x00001ca8        0x4 LONG 0x8 __cy_region_init_size_ram
+                0x00001cac        0x4 LONG 0xc0 __cy_region_zero_size_ram
+                0x00001cb0                __cy_regions_end = .
+                0x00001cb0                . = ALIGN (0x8)
+                0x00001cb0                _etext = .
 
 .cy_checksum_exclude
-                0x00001f30        0x0
+                0x00001cb0        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x20000000       0x64
@@ -883,7 +848,7 @@ END GROUP
  *(.noinit)
  .noinit        0x20000068        0x4 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
 
-.data           0x20000070       0x20 load address 0x00001f30
+.data           0x20000070        0x8 load address 0x00001cb0
                 0x20000070                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x20000070        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
@@ -892,62 +857,51 @@ END GROUP
  *(.got)
  *(.shdata)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x20000074        0x8 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x20000074                SW_Tx_UART_pinDrAdress
-                0x20000078                SW_Tx_UART_pinPortNumber
- .data          0x2000007c       0x10 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
-                0x2000007c                cydelay32kMs
-                0x20000080                cydelayFreqKhz
-                0x20000084                cydelayFreqMhz
-                0x20000088                cydelayFreqHz
-                0x20000090                . = ALIGN (0x8)
- *fill*         0x2000008c        0x4 
+                0x20000078                . = ALIGN (0x8)
+ *fill*         0x20000074        0x4 
  *(.ram)
-                0x20000090                _edata = .
+                0x20000078                _edata = .
 
-.igot.plt       0x20000090        0x0 load address 0x00001f50
+.igot.plt       0x20000078        0x0 load address 0x00001cb8
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
-.bss            0x20000090       0xe0 load address 0x00001f50
-                0x20000090                PROVIDE (__bss_start__, .)
+.bss            0x20000078       0xc0 load address 0x00001cb8
+                0x20000078                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x20000090       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
- .bss           0x200000ac        0x1 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
-                0x200000ac                PWM_initVar
- *fill*         0x200000ad        0x3 
- .bss           0x200000b0        0x4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                0x200000b0                SW_Tx_UART_pinNumber
+ .bss           0x20000078       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
+ .bss           0x20000094        0x1 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+                0x20000094                PWM_initVar
  *(COMMON)
- COMMON         0x200000b4       0xbc .\CortexM0\ARM_GCC_493\Debug\main.o
-                0x200000b4                DelayBeforeShutOff
-                0x200000b8                OFF_Time_Look_Up_Table
-                0x200000f8                Push_Button_State_Value
-                0x200000fc                ON_Time
-                0x20000100                Mode
-                0x20000104                UART_Buffer
-                0x20000124                UART_TX_Flag
-                0x20000128                ON_Time_Look_Up_Table
-                0x20000168                Push_Button_Interrupt_Flag
-                0x20000169                Second_Counter
-                0x2000016a                Second_in_Base_60
-                0x2000016b                UART_Tx_Size
-                0x2000016c                OFF_Time
-                0x20000170                . = ALIGN (0x8)
+ *fill*         0x20000095        0x3 
+ COMMON         0x20000098       0x9c .\CortexM0\ARM_GCC_493\Debug\main.o
+                0x20000098                DelayBeforeShutOff
+                0x2000009c                Output_Value
+                0x200000a0                OFF_Time_Look_Up_Table
+                0x200000e0                Push_Button_State_Value
+                0x200000e4                ON_Time
+                0x200000e8                Mode
+                0x200000ec                ON_Time_Look_Up_Table
+                0x2000012c                Push_Button_Interrupt_Flag
+                0x2000012d                Second_Counter
+                0x2000012e                Second_in_Base_60
+                0x20000130                OFF_Time
+                0x20000138                . = ALIGN (0x8)
+ *fill*         0x20000134        0x4 
  *(.ram.b)
-                0x20000170                _end = .
-                0x20000170                __end = .
-                0x20000170                PROVIDE (end, .)
-                0x20000170                PROVIDE (__bss_end__, .)
-                0x00001f30                __cy_region_init_ram = LOADADDR (.data)
-                0x00000020                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x000000e0                __cy_region_zero_size_ram = (_end - _edata)
+                0x20000138                _end = .
+                0x20000138                __end = .
+                0x20000138                PROVIDE (end, .)
+                0x20000138                PROVIDE (__bss_end__, .)
+                0x00001cb0                __cy_region_init_ram = LOADADDR (.data)
+                0x00000008                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x000000c0                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x20000170       0x80 load address 0x00001f50
-                0x20000170                . = _end
-                0x200001f0                . = (. + 0x80)
- *fill*         0x20000170       0x80 
-                0x200001f0                __cy_heap_limit = .
+.heap           0x20000138       0x80 load address 0x00001cb8
+                0x20000138                . = _end
+                0x200001b8                . = (. + 0x80)
+ *fill*         0x20000138       0x80 
+                0x200001b8                __cy_heap_limit = .
 
 .stack          0x20000600      0x200
                 0x20000600                __cy_stack_limit = .
@@ -983,7 +937,7 @@ END GROUP
                 0x90600000        0x4 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
                 0x90600000                cy_meta_chipprotect
 
-.rel.dyn        0x00001f50        0x0 load address 0x90600004
+.rel.dyn        0x00001cb8        0x0 load address 0x90600004
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtbegin.o
 
 .stab
@@ -1004,7 +958,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x888
+.debug_aranges  0x00000000      0x818
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x48 .\CortexM0\ARM_GCC_493\Debug\main.o
@@ -1025,116 +979,106 @@ END GROUP
  .debug_aranges
                 0x000002e8       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
  .debug_aranges
-                0x00000368       0x50 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
+                0x00000368       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
  .debug_aranges
-                0x000003b8       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x000003e8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
  .debug_aranges
-                0x00000438       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+                0x00000428       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
  .debug_aranges
-                0x00000478       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+                0x00000468       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
  .debug_aranges
-                0x000004b8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+                0x000004a8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
  .debug_aranges
-                0x000004f8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+                0x000004e8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
  .debug_aranges
-                0x00000538       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+                0x00000528       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
  .debug_aranges
-                0x00000578       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+                0x00000568       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
  .debug_aranges
-                0x000005b8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+                0x000005a8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
  .debug_aranges
-                0x000005f8       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+                0x000005e8       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000638       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+                0x00000608      0x160 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
  .debug_aranges
-                0x00000658      0x160 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_aranges
-                0x000007b8       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .debug_aranges
-                0x00000868       0x20 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
+                0x00000768       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3c88
+.debug_info     0x00000000     0x37ce
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x747 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_info    0x00000747       0xfe .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_info    0x00000845      0x39c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_info    0x00000be1       0xf6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
- .debug_info    0x00000cd7      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
- .debug_info    0x00000e29      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
- .debug_info    0x00000f7b      0x96c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
- .debug_info    0x000018e7      0x166 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
- .debug_info    0x00001a4d      0x300 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_info    0x00001d4d      0x2c6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_info    0x00002013      0x300 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_info    0x00002313      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_info    0x00002465      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_info    0x000025b7      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_info    0x00002709      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_info    0x0000285b      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_info    0x000029ad      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_info    0x00002aff      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_info    0x00002c51      0x150 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_info    0x00002da1       0xd6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
- .debug_info    0x00002e77      0xa0f .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_info    0x00003886      0x327 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .debug_info    0x00003bad       0xdb .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
+ .debug_info    0x00000000      0x62e .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_info    0x0000062e       0xfe .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_info    0x0000072c      0x39c .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_info    0x00000ac8       0xf6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
+ .debug_info    0x00000bbe      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
+ .debug_info    0x00000d10      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+ .debug_info    0x00000e62      0x96c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+ .debug_info    0x000017ce      0x166 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
+ .debug_info    0x00001934      0x300 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+ .debug_info    0x00001c34      0x300 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_info    0x00001f34      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_info    0x00002086      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_info    0x000021d8      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_info    0x0000232a      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_info    0x0000247c      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_info    0x000025ce      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_info    0x00002720      0x152 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_info    0x00002872      0x150 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_info    0x000029c2       0xd6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+ .debug_info    0x00002a98      0xa0f .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_info    0x000034a7      0x327 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
-.debug_abbrev   0x00000000     0x1559
+.debug_abbrev   0x00000000     0x142e
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x18c .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_abbrev  0x0000018c       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_abbrev  0x000001e9      0x1fe .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_abbrev  0x000003e7       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
- .debug_abbrev  0x00000491       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
- .debug_abbrev  0x0000053b       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
- .debug_abbrev  0x000005e5      0x14f .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
- .debug_abbrev  0x00000734       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
- .debug_abbrev  0x000007eb      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_abbrev  0x0000099f      0x110 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_abbrev  0x00000aaf      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_abbrev  0x00000c63       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_abbrev  0x00000d0d       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_abbrev  0x00000db7       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_abbrev  0x00000e61       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_abbrev  0x00000f0b       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_abbrev  0x00000fb5       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_abbrev  0x0000105f       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_abbrev  0x00001109       0xb9 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_abbrev  0x000011c2       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
- .debug_abbrev  0x000011d6      0x206 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_abbrev  0x000013dc      0x169 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .debug_abbrev  0x00001545       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
+ .debug_abbrev  0x00000000      0x185 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_abbrev  0x00000185       0x5d .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_abbrev  0x000001e2      0x1fe .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_abbrev  0x000003e0       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
+ .debug_abbrev  0x0000048a       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
+ .debug_abbrev  0x00000534       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+ .debug_abbrev  0x000005de      0x14f .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+ .debug_abbrev  0x0000072d       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
+ .debug_abbrev  0x000007e4      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+ .debug_abbrev  0x00000998      0x1b4 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_abbrev  0x00000b4c       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_abbrev  0x00000bf6       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_abbrev  0x00000ca0       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_abbrev  0x00000d4a       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_abbrev  0x00000df4       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_abbrev  0x00000e9e       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_abbrev  0x00000f48       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_abbrev  0x00000ff2       0xb9 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_abbrev  0x000010ab       0x14 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x000010bf      0x206 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_abbrev  0x000012c5      0x169 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
-.debug_line     0x00000000     0x1bb6
+.debug_line     0x00000000     0x19fa
  *(.debug_line)
- .debug_line    0x00000000      0x242 .\CortexM0\ARM_GCC_493\Debug\main.o
- .debug_line    0x00000242       0x53 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
- .debug_line    0x00000295      0x257 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
- .debug_line    0x000004ec       0x88 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
- .debug_line    0x00000574       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
- .debug_line    0x0000062b       0xb3 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
- .debug_line    0x000006de      0x3c6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
- .debug_line    0x00000aa4       0xd7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
- .debug_line    0x00000b7b      0x16c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_line    0x00000ce7       0xf8 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_line    0x00000ddf      0x170 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_line    0x00000f4f       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_line    0x00000ff9       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_line    0x000010a0       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_line    0x00001147       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_line    0x000011ee       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_line    0x0000129e       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_line    0x0000134e       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_line    0x000013fe       0xaf .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_line    0x000014ad       0x6b .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
- .debug_line    0x00001518      0x404 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_line    0x0000191c      0x1f5 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .debug_line    0x00001b11       0xa5 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
+ .debug_line    0x00000000      0x224 .\CortexM0\ARM_GCC_493\Debug\main.o
+ .debug_line    0x00000224       0x53 .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x00000277      0x257 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_line    0x000004ce       0x87 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
+ .debug_line    0x00000555       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
+ .debug_line    0x0000060c       0xb3 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+ .debug_line    0x000006bf      0x3c6 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+ .debug_line    0x00000a85       0xd7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
+ .debug_line    0x00000b5c      0x16c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+ .debug_line    0x00000cc8      0x170 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_line    0x00000e38       0xaa .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_line    0x00000ee2       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_line    0x00000f89       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_line    0x00001030       0xa7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_line    0x000010d7       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_line    0x00001187       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_line    0x00001237       0xb0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_line    0x000012e7       0xaf .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_line    0x00001396       0x6b .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+ .debug_line    0x00001401      0x404 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_line    0x00001805      0x1f5 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
-.debug_frame    0x00000000     0x139c
+.debug_frame    0x00000000     0x12d4
  *(.debug_frame)
  .debug_frame   0x00000000       0xbc .\CortexM0\ARM_GCC_493\Debug\main.o
  .debug_frame   0x000000bc       0xb0 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
@@ -1144,78 +1088,75 @@ END GROUP
  .debug_frame   0x00000274      0x390 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
  .debug_frame   0x00000604       0x6c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
  .debug_frame   0x00000670      0x110 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_frame   0x00000780       0xc8 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_frame   0x00000848      0x110 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_frame   0x00000958       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_frame   0x000009b8       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_frame   0x00000a18       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_frame   0x00000a78       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_frame   0x00000ad8       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_frame   0x00000b38       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_frame   0x00000b98       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_frame   0x00000bf8       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_frame   0x00000c58      0x394 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_frame   0x00000fec      0x15c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
- .debug_frame   0x00001148       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001168       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .debug_frame   0x00001194       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
- .debug_frame   0x000011cc       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
- .debug_frame   0x00001208       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
- .debug_frame   0x00001234       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
- .debug_frame   0x00001260       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
- .debug_frame   0x00001298       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
- .debug_frame   0x000012d0       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
- .debug_frame   0x00001308       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00001328       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00001350       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x0000137c       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00000780      0x110 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_frame   0x00000890       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_frame   0x000008f0       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_frame   0x00000950       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_frame   0x000009b0       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_frame   0x00000a10       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_frame   0x00000a70       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_frame   0x00000ad0       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_frame   0x00000b30       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_frame   0x00000b90      0x394 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_frame   0x00000f24      0x15c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+ .debug_frame   0x00001080       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x000010a0       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
+ .debug_frame   0x000010cc       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
+ .debug_frame   0x00001104       0x3c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
+ .debug_frame   0x00001140       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
+ .debug_frame   0x0000116c       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+ .debug_frame   0x00001198       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
+ .debug_frame   0x000011d0       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
+ .debug_frame   0x00001208       0x38 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
+ .debug_frame   0x00001240       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00001260       0x28 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001288       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x000012b4       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x1915
+.debug_str      0x00000000     0x179e
  *(.debug_str)
- .debug_str     0x00000000      0x456 .\CortexM0\ARM_GCC_493\Debug\main.o
-                                0x49b (size before relaxing)
- .debug_str     0x00000456       0x5b .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
+ .debug_str     0x00000000      0x3cf .\CortexM0\ARM_GCC_493\Debug\main.o
+                                0x414 (size before relaxing)
+ .debug_str     0x000003cf       0x5b .\CortexM0\ARM_GCC_493\Debug\cymetadata.o
                                 0x214 (size before relaxing)
- .debug_str     0x000004b1      0x15f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
+ .debug_str     0x0000042a      0x15f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
                                 0x34b (size before relaxing)
- .debug_str     0x00000610       0x48 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
+ .debug_str     0x00000589       0x48 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(cyfitter_cfg.o)
                                 0x215 (size before relaxing)
- .debug_str     0x00000658       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
+ .debug_str     0x000005d1       0xb7 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PUSH_BUTTON_INPUT.o)
                                 0x295 (size before relaxing)
- .debug_str     0x0000070f       0x7b .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
+ .debug_str     0x00000688       0x8e .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SUPPLY_ENABLE.o)
                                 0x27d (size before relaxing)
- .debug_str     0x0000078a      0x3ab .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
+ .debug_str     0x00000716      0x3ab .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
                                 0x5aa (size before relaxing)
- .debug_str     0x00000b35       0xcc .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
+ .debug_str     0x00000ac1       0xd3 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
                                 0x2a9 (size before relaxing)
- .debug_str     0x00000c01      0x10e .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
+ .debug_str     0x00000b94      0x10e .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
                                 0x340 (size before relaxing)
- .debug_str     0x00000d0f      0x10a .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
-                                0x32b (size before relaxing)
- .debug_str     0x00000e19      0x15c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_str     0x00000ca2      0x15c .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
                                 0x3b0 (size before relaxing)
- .debug_str     0x00000f75       0x62 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_str     0x00000dfe       0x62 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
                                 0x247 (size before relaxing)
- .debug_str     0x00000fd7       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_str     0x00000e60       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
                                 0x235 (size before relaxing)
- .debug_str     0x00001029       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_str     0x00000eb2       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
                                 0x235 (size before relaxing)
- .debug_str     0x0000107b       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_str     0x00000f04       0x52 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
                                 0x235 (size before relaxing)
- .debug_str     0x000010cd       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_str     0x00000f56       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
                                 0x26b (size before relaxing)
- .debug_str     0x0000114d       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_str     0x00000fd6       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
                                 0x26b (size before relaxing)
- .debug_str     0x000011cd       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_str     0x00001056       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
                                 0x26b (size before relaxing)
- .debug_str     0x0000124d       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_str     0x000010d6       0x80 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
                                 0x26b (size before relaxing)
- .debug_str     0x000012cd      0x3f5 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_str     0x00001156      0x3f5 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
                                 0x643 (size before relaxing)
- .debug_str     0x000016c2      0x253 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+ .debug_str     0x0000154b      0x253 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
                                 0x447 (size before relaxing)
 
-.debug_loc      0x00000000     0x165c
+.debug_loc      0x00000000     0x152f
  *(.debug_loc)
  .debug_loc     0x00000000       0x7e .\CortexM0\ARM_GCC_493\Debug\main.o
  .debug_loc     0x0000007e      0x14f .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
@@ -1224,23 +1165,22 @@ END GROUP
  .debug_loc     0x000002cf      0x5b3 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
  .debug_loc     0x00000882       0x76 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
  .debug_loc     0x000008f8       0x82 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_loc     0x0000097a      0x12d .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_loc     0x00000aa7       0x82 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_loc     0x00000b29       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_loc     0x00000baa       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_loc     0x00000c2b       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_loc     0x00000cac       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_loc     0x00000d2d       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_loc     0x00000dae       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_loc     0x00000e2f       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_loc     0x00000eb0       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_loc     0x00000f10      0x4ec .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_loc     0x000013fc      0x260 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+ .debug_loc     0x0000097a       0x82 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_loc     0x000009fc       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_loc     0x00000a7d       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_loc     0x00000afe       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_loc     0x00000b7f       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_loc     0x00000c00       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_loc     0x00000c81       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_loc     0x00000d02       0x81 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_loc     0x00000d83       0x60 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_loc     0x00000de3      0x4ec .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_loc     0x000012cf      0x260 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0x6f0
+.debug_ranges   0x00000000      0x6b0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x38 .\CortexM0\ARM_GCC_493\Debug\main.o
  .debug_ranges  0x00000038       0x38 .\CortexM0\ARM_GCC_493\Debug\Cm0Start.o
@@ -1250,18 +1190,17 @@ END GROUP
  .debug_ranges  0x000000e8      0x148 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
  .debug_ranges  0x00000230       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
  .debug_ranges  0x00000260       0x70 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .debug_ranges  0x000002d0       0x40 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
- .debug_ranges  0x00000310       0x70 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
- .debug_ranges  0x00000380       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
- .debug_ranges  0x000003b0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
- .debug_ranges  0x000003e0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
- .debug_ranges  0x00000410       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
- .debug_ranges  0x00000440       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
- .debug_ranges  0x00000470       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
- .debug_ranges  0x000004a0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
- .debug_ranges  0x000004d0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
- .debug_ranges  0x00000500      0x150 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
- .debug_ranges  0x00000650       0xa0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+ .debug_ranges  0x000002d0       0x70 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+ .debug_ranges  0x00000340       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+ .debug_ranges  0x00000370       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+ .debug_ranges  0x000003a0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+ .debug_ranges  0x000003d0       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+ .debug_ranges  0x00000400       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+ .debug_ranges  0x00000430       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+ .debug_ranges  0x00000460       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+ .debug_ranges  0x00000490       0x30 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+ .debug_ranges  0x000004c0      0x150 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+ .debug_ranges  0x00000610       0xa0 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 .\CortexM0\ARM_GCC_493\Debug\main.o
@@ -1274,7 +1213,6 @@ END GROUP
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM.o)
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_CLOCK.o)
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
- .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
  .comment       0x00000000       0x71 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
@@ -1330,71 +1268,67 @@ END GROUP
  .ARM.attributes
                 0x000001ed       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(PWM_isr.o)
  .ARM.attributes
-                0x0000021e       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART.o)
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
  .ARM.attributes
-                0x0000024f       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Push_Button_isr.o)
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
  .ARM.attributes
-                0x00000280       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Mode.o)
+                0x00000280       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
  .ARM.attributes
-                0x000002b1       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(B.o)
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
  .ARM.attributes
-                0x000002e2       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(G.o)
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
  .ARM.attributes
-                0x00000313       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(R.o)
+                0x00000313       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
  .ARM.attributes
-                0x00000344       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_0.o)
+                0x00000344       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
  .ARM.attributes
-                0x00000375       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_1.o)
+                0x00000375       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
  .ARM.attributes
-                0x000003a6       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_2.o)
+                0x000003a6       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
  .ARM.attributes
-                0x000003d7       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(Time_Bit_3.o)
+                0x000003d7       0x21 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
  .ARM.attributes
-                0x00000408       0x21 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyBootAsmGnu.o)
+                0x000003f8       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
  .ARM.attributes
-                0x00000429       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLib.o)
+                0x00000429       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
  .ARM.attributes
-                0x0000045a       0x31 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(CyLFClk.o)
+                0x0000045a       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x0000048b       0x21 .\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.a(SW_Tx_UART_AsmGnu.o)
+                0x00000478       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000004ac       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_udivsi3.o)
+                0x00000496       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
  .ARM.attributes
-                0x000004ca       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x000004c2       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
  .ARM.attributes
-                0x000004e8       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_fixunsdfsi.o)
+                0x000004ee       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
  .ARM.attributes
-                0x00000514       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(adddf3.o)
+                0x0000051a       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
  .ARM.attributes
-                0x00000540       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(subdf3.o)
+                0x00000546       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
  .ARM.attributes
-                0x0000056c       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(fixdfsi.o)
+                0x00000572       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000598       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(floatsidf.o)
+                0x00000590       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
  .ARM.attributes
-                0x000005c4       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
+                0x000005ae       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
  .ARM.attributes
-                0x000005e2       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(_clzsi2.o)
+                0x000005da       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
  .ARM.attributes
-                0x00000600       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(eqdf2.o)
+                0x00000606       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
  .ARM.attributes
-                0x0000062c       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(gedf2.o)
+                0x00000632       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000658       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m\libgcc.a(ledf2.o)
+                0x0000065e       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000684       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x0000068a       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x000006b0       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+                0x000006b6       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x000006dc       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x000006e2       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x00000708       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x0000070e       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
  .ARM.attributes
-                0x00000734       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
- .ARM.attributes
-                0x00000760       0x2c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtend.o
- .ARM.attributes
-                0x0000078c       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
+                0x0000073a       0x1e c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv6-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)

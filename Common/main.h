@@ -38,9 +38,9 @@
 /* Those defines must be commented/uncommented accordingly prior to building the project */
 /* The used communication layer */
 /* Uncomment the line according to the enabled layer in the schematic */
-#define COMMUNICATION_LAYER             (SERIAL_MODE)
+//#define COMMUNICATION_LAYER             (SERIAL_MODE)
 //#define COMMUNICATION_LAYER             (I2C_MODE)
-//#define COMMUNICATION_LAYER             (0x00u)
+#define COMMUNICATION_LAYER             (0x00u)
 
 /* The used IC Package */
 /* Uncomment the line according to the device selected in the device selector */
@@ -88,23 +88,26 @@ uint8   Second_Counter;                                     // The second counte
 uint8   Mode;                                               // The operating mode
 uint8   Second_in_Base_60;                                  // The second in base 60 for serial output
 uint8   Push_Button_Interrupt_Flag;                         // The push button interrupt occurance flag
+uint8   Output_Value;
 #if( IC_PACKAGE == SOIC_16 )
 uint32  ON_Time_Look_Up_Table[ 16 ];                        // The ON Time Look-Up Table for timer settings when using time bits inputs
 uint32  OFF_Time_Look_Up_Table[ 16 ];                       // The OFF Time Look-Up Table for timer settings when using time bits inputs
-
-#else
+//#else
 #endif
+
+#if( COMMUNICATION_LAYER == SERIAL_MODE )
+    uint8   UART_TX_Flag;
+    uint8   UART_Buffer[ 32 ];
+    uint8   UART_Tx_Size;
+#endif 
 
 #if( COMMUNICATION_LAYER == I2C_MODE )
 /* I2C slave read and write buffers */
     uint8 i2cReadBuffer [BUFFER_SIZE] = {PACKET_SOP, STS_CMD_FAIL, STS_CMD_FAIL, PACKET_EOP};
     uint8 i2cWriteBuffer[BUFFER_SIZE];
     uint8 I2C_Status;
-#else
-    uint8   UART_TX_Flag;
-    uint8   UART_Buffer[ 32 ];
-    uint8   UART_Tx_Size;
-#endif 
+//#else
+#endif
 
 /***************************************
 *        Functions Prototypes
@@ -113,14 +116,14 @@ CY_ISR_PROTO(PWM_isr);
 CY_ISR_PROTO(Push_Button_isr);
 #if( COMMUNICATION_LAYER == I2C_MODE )
     uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam );
-#else
+//#else
 #endif    
 
 #if( IC_PACKAGE == SOIC_16 )
 uint8 GetTimeBitsValue( void );
 void  SetLookUpTable( void );
 void  SetTimerSettings( void );
-#else
+//#else
 #endif
 
 /***************************************

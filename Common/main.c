@@ -30,7 +30,7 @@ int main()
         I2C_I2CSlaveInitWriteBuf(i2cWriteBuffer, BUFFER_SIZE);
         I2C_Start();
         I2C_Status = STS_CMD_FAIL;
-    #else
+    //#else
         SW_Tx_UART_Start();  
         UART_TX_Flag = 0;
     #endif
@@ -39,7 +39,7 @@ int main()
         R_Write( 1 );
         G_Write( 1 );
         B_Write( 1 );
-    #else
+    //#else
     #endif
     
     PWM_Start();
@@ -55,6 +55,12 @@ int main()
     Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
     Push_Button_Interrupt_Flag = 0;
     Second_Counter = 0;
+    Output_Value = HIGH;
+    
+    /* Managing LED states */
+    R_Write( LED_OFF );
+    G_Write( LED_ON );
+    B_Write( LED_OFF );
 
     for(;;)
     {
@@ -74,25 +80,33 @@ int main()
             else
             {
                 /* Toggling from ON to OFF */
-                if( SUPPLY_ENABLE_Read() == ASSERTED_HIGH )
+                if( Output_Value == HIGH )
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_LOW );
-                    DelayBeforeShutOff = OFF_Time;
+                    //DelayBeforeShutOff = OFF_Time;
                     /* Managing LED states */
                     R_Write( LED_ON );
                     G_Write( LED_OFF );
                     B_Write( LED_OFF );
+                    Output_Value = LOW;
                 }
                 /* Toggling from OFF to ON */
                 else
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_HIGH );
-                    DelayBeforeShutOff = ON_Time;
+                    //DelayBeforeShutOff = ON_Time;
                     /* Managing LED states */
                     R_Write( LED_OFF );
                     G_Write( LED_ON );
                     B_Write( LED_OFF );
+                    Output_Value = HIGH;
                 }
+                
+                SetTimerSettings();
+                Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+                Second_Counter = 0;
+                PWM_isr_StartEx(PWM_isr);
+                PWM_ClearInterrupt(PWM_INTR_MASK_TC);
             }
         }
         else
@@ -119,13 +133,17 @@ int main()
             
             /* Resetting the counter if timeout occured */
             SetTimerSettings();
-//            DelayBeforeShutOff = DEFAULT_TIMEOUT;
             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
             Second_Counter = 0;
   
             /* Restarting the interrupt if it has been stopped */
             PWM_isr_StartEx(PWM_isr);
             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
+            
+            /* Managing LED states */
+            R_Write( LED_OFF );
+            G_Write( LED_ON );
+            B_Write( LED_OFF );
         }
         else
         {
@@ -163,7 +181,10 @@ int main()
             {
                 /* Continue */
             }
-        #else
+        //#else
+        #endif
+        
+        #if( COMMUNICATION_LAYER == I2C_MODE )
             if (0u != (I2C_I2CSlaveStatus() & I2C_I2C_SSTAT_WR_CMPLT))
             {
                 /* Check packet length */
@@ -229,7 +250,7 @@ CY_ISR(PWM_isr)
         Second_in_Base_60--;
         #if( COMMUNICATION_LAYER == SERIAL_MODE )
             UART_TX_Flag = 1;
-        #else
+        //#else
         #endif
     }
     else
@@ -370,7 +391,7 @@ uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam )
 
     return (status);
 }
-#else
+//#else
 #endif
 
 /*******************************************************************************
@@ -438,7 +459,7 @@ uint8 GetTimeBitsValue( void )
     
     return lTime;
 }
-#else
+//#else
 #endif
 
 /*******************************************************************************
@@ -542,7 +563,7 @@ void  SetLookUpTable( void )
         break;
     }
 }
-#else
+//#else
 #endif
 
 /*******************************************************************************
@@ -582,13 +603,8 @@ void  SetTimerSettings( void )
         OFF_Time = OFF_Time_Look_Up_Table[ lAddress ] * OVERFLOW_PER_SECOND;
         DelayBeforeShutOff = ON_Time;
     }
-    
-    /* Managing LED states */
-    R_Write( LED_OFF );
-    G_Write( LED_ON );
-    B_Write( LED_OFF );
 }
-#else
+//#else
 #endif
 
 
