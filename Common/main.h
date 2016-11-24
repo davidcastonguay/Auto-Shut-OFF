@@ -17,6 +17,7 @@
 /***************************************
 *            Defines
 ****************************************/
+#define FIRMWARE_VERSION                (0x0001)            // The firmware version
 #define HIGH                            (1u)                // High value
 #define LOW                             (0u)                // Low Value
 #define ASSERTED_HIGH                   (0u)                // Asserted High value for P-Channel MOSFET
@@ -92,7 +93,7 @@ uint32  Toggle_Counter;                                     // The toggle counte
 uint8   Push_Button_State_Value;                            // The push button state value             
 uint8   Second_Counter;                                     // The second counter
 uint8   Mode;                                               // The operating mode
-uint8   Second_in_Base_60;                                  // The second in base 60 for serial output
+uint16  Second_in_Base_60;                                 // The second in base 60 for serial output
 uint8   Push_Button_Interrupt_Flag;                         // The push button interrupt occurance flag
 uint8   Output_Value;                                       // The supply enable output value
 uint8   Look_Up_Table_Address;                              // The look-up table address set by the time bits

@@ -36,6 +36,12 @@ int main()
     #if( COMMUNICATION_LAYER == SERIAL_MODE )    
         SW_Tx_UART_Start();  
         UART_TX_Flag = 0;
+        CyDelayUs( 2000 );
+        SW_Tx_UART_PutString("/// Power-up");
+        SW_Tx_UART_PutCRLF();
+        SW_Tx_UART_PutString("///Firmware version: ");
+        SW_Tx_UART_PutHexInt( FIRMWARE_VERSION );
+        SW_Tx_UART_PutCRLF();
     //#else
     #endif
     
@@ -49,20 +55,28 @@ int main()
     PWM_Start();
     
     /* Configure ISR */
-    PWM_isr_StartEx( PWM_isr );
+//    PWM_isr_StartEx( PWM_isr );
     Push_Button_isr_StartEx( Push_Button_isr );
 
     /* Variables default values */
-    SetTimerSettings();
-    Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+//    SetTimerSettings();
+//    Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
     Push_Button_Interrupt_Flag = 0;
+    DelayBeforeShutOff = -1;
     Second_Counter = 0;
     Toggle_Counter = 0;
-    Output_Value = HIGH;
-    SUPPLY_ENABLE_Write( ASSERTED_HIGH );
-    R_Write( LED_OFF );
+    Output_Value = LOW;
+    SUPPLY_ENABLE_Write( ASSERTED_LOW );
+    PWM_WriteCompare( 0 );
+    R_Write( LED_ON );
     G_Write( LED_ON );
     B_Write( LED_OFF );
+    
+    #if( COMMUNICATION_LAYER == SERIAL_MODE )    
+        SW_Tx_UART_PutString("/// Waiting for push button to be pressed");
+        SW_Tx_UART_PutCRLF();
+    //#else
+    #endif
 
     for(;;)
     {
@@ -74,18 +88,26 @@ int main()
                 SUPPLY_ENABLE_Write( ASSERTED_LOW ); 
                 PWM_WriteCompare( LOW_GLOW );
                 
+                #if( COMMUNICATION_LAYER == SERIAL_MODE )    
+                    SW_Tx_UART_PutString("---Countdown terminated");
+                    SW_Tx_UART_PutCRLF();
+                    //#else
+                #endif
+                
                 /* Managing LED states */
                 R_Write( LED_ON );
                 G_Write( LED_OFF );
                 B_Write( LED_OFF );
+                DelayBeforeShutOff = -1;
             }
             else
             {
+                SetTimerSettings();
                 /* Toggling from ON to OFF */
                 if( Output_Value == HIGH )
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_LOW );
-                    //DelayBeforeShutOff = OFF_Time;
+                    DelayBeforeShutOff = OFF_Time;
                     /* Managing LED states */
                     R_Write( LED_ON );
                     G_Write( LED_ON );
@@ -96,7 +118,7 @@ int main()
                 else
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_HIGH );
-                    //DelayBeforeShutOff = ON_Time;
+                    DelayBeforeShutOff = ON_Time;
                     /* Managing LED states */
                     R_Write( LED_OFF );
                     G_Write( LED_ON );
@@ -105,7 +127,7 @@ int main()
                     Toggle_Counter++;
                 }
                 
-                SetTimerSettings();
+//                SetTimerSettings();
                 Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
                 PWM_isr_StartEx(PWM_isr);
                 PWM_ClearInterrupt(PWM_INTR_MASK_TC);
@@ -113,14 +135,23 @@ int main()
         }
         else
         {
-            /* Toggling PWM Compare value depending on second counter value */
-            if( Second_Counter < ( SECOND_COUNT / 2 ) )
+            if( PWM_isr_GetState() == 1 )
             {
-                PWM_WriteCompare( MID_GLOW );
+                /* Toggling PWM Compare value depending on second counter value */
+                if( Second_Counter < ( SECOND_COUNT / 2 ) )
+                {
+//                    PWM_WriteCompare( MID_GLOW );
+                    B_Write( LED_OFF );
+                }
+                else
+                {
+//                    PWM_WriteCompare( HIGH_GLOW );
+                    B_Write( LED_ON );
+                }
             }
             else
             {
-                PWM_WriteCompare( HIGH_GLOW );
+                /* Continue */
             }
         }
         
@@ -130,32 +161,32 @@ int main()
             if( ( Push_Button_Event == BUTTON_HOLD_DOWN ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_RELEASED;
-                SW_Tx_UART_PutString("Push Button Event: Button Released");
+                SW_Tx_UART_PutString("+++Push Button Event: Released");
                 SW_Tx_UART_PutCRLF();
             }
             else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_CLICK_EVENT;
-                SW_Tx_UART_PutString("Push Button Event: Click");
+                SW_Tx_UART_PutString("+++Push Button Event: Click");
                 SW_Tx_UART_PutCRLF();
             }
             else if( ( Push_Button_Interrupt_Flag >= 2 ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_DOUBLE_CLICK_EVENT;
-                SW_Tx_UART_PutString("Push Button Event: Double Click");
+                SW_Tx_UART_PutString("+++Push Button Event: Double Click");
                 SW_Tx_UART_PutCRLF();
             }
             else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 0 ) )
             {
                 Push_Button_Event = BUTTON_HOLD_DOWN;
-                SW_Tx_UART_PutString("Push Button Event: Hold Down");
+                SW_Tx_UART_PutString("+++Push Button Event: Hold Down");
                 SW_Tx_UART_PutCRLF();
             }
             else
             {
                 /* Continue */
 //                Push_Button_Event = BUTTON_NO_EVENT;
-//                SW_Tx_UART_PutString("Push Button Event: Click");
+//                SW_Tx_UART_PutString("+++Push Button Event: Click");
 //                SW_Tx_UART_PutCRLF();
             }
             
@@ -170,6 +201,12 @@ int main()
         /* Check if push button has been toggled */
         if( ( Push_Button_Interrupt_Flag == 1 ) && ( PWM_isr_GetState() == 0 ) )
         {
+            #if( COMMUNICATION_LAYER == SERIAL_MODE )    
+                SW_Tx_UART_PutString("/// Countdown to extinction");
+                SW_Tx_UART_PutCRLF();
+                //#else
+            #endif
+            
             /* Activating the output */
             SUPPLY_ENABLE_Write( ASSERTED_HIGH ); 
             
@@ -181,6 +218,7 @@ int main()
             Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
             Second_Counter = 0;
             Toggle_Counter = 0;
+            Output_Value = HIGH;
   
             /* Restarting the interrupt if it has been stopped */
             PWM_isr_StartEx(PWM_isr);
@@ -200,37 +238,40 @@ int main()
         #if( COMMUNICATION_LAYER == SERIAL_MODE )
             if( UART_TX_Flag == 1 )
             {
-                SW_Tx_UART_PutString("--------------------------");
-                SW_Tx_UART_PutCRLF();
-                SW_Tx_UART_PutString("Operating Mode: ");
+//                SW_Tx_UART_PutString("--------------------------");
+//                SW_Tx_UART_PutCRLF();
+                SW_Tx_UART_PutString("---Operating Mode: ");
                 if( Mode == 0 )
                 {
-                    SW_Tx_UART_PutString("Shutt-off");
+                    SW_Tx_UART_PutString("Shutt-off;");
                 }
                 else
                 {
-                    SW_Tx_UART_PutString("Toggle");
-                    SW_Tx_UART_PutCRLF();
+                    SW_Tx_UART_PutString("Toggle;");
+//                    SW_Tx_UART_PutCRLF();
                     SW_Tx_UART_PutString("Toggle Count: ");
+                    SW_Tx_UART_PutHexInt( Toggle_Counter >> 16 );
                     SW_Tx_UART_PutHexInt( Toggle_Counter );
-//                    SW_Tx_UART_PutHexInt( Toggle_Counter << 16 );
+                    SW_Tx_UART_PutString(";");
                 }
-                SW_Tx_UART_PutCRLF();
+//                SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Look-Up Table Address: ");
                 SW_Tx_UART_PutHexInt( Look_Up_Table_Address );
-                SW_Tx_UART_PutCRLF();
+                SW_Tx_UART_PutString(";");
+//                SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Seconds remaning: ");
                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
-                SW_Tx_UART_PutCRLF();
+                SW_Tx_UART_PutString(";");
+//                SW_Tx_UART_PutCRLF();
                 
                 if( Output_Value == HIGH )
                 {
-                    SW_Tx_UART_PutString("Output = High ");
+                    SW_Tx_UART_PutString("Output = High;");
                     SW_Tx_UART_PutCRLF(); 
                 }
                 else
                 {
-                    SW_Tx_UART_PutString("Output = Low ");
+                    SW_Tx_UART_PutString("Output = Low;");
                     SW_Tx_UART_PutCRLF();
                 }
 
@@ -629,7 +670,7 @@ void  SetLookUpTable( void )
         
         OFF_Time_Look_Up_Table[ 0 ] =   0x00000001;
         OFF_Time_Look_Up_Table[ 1 ] =   0x0000000A;
-        OFF_Time_Look_Up_Table[ 0 ] =   0x0000012C;
+        OFF_Time_Look_Up_Table[ 2 ] =   0x0000012C;
         OFF_Time_Look_Up_Table[ 3 ] =   0x0000003C;
         OFF_Time_Look_Up_Table[ 4 ] =   0x00000708;
         OFF_Time_Look_Up_Table[ 5 ] =   0x00000E10;
@@ -680,12 +721,30 @@ void  SetTimerSettings( void )
     {
         DelayBeforeShutOff = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
         ON_Time = DelayBeforeShutOff;
+        #if( COMMUNICATION_LAYER == SERIAL_MODE )  
+        SW_Tx_UART_PutString("---Time to shut-OFF: ");
+//        SW_Tx_UART_PutHexInt( ON_Time >> 16 );
+        SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutCRLF();
+        //#else
+        #endif
     }
     else
     {
         ON_Time = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
         OFF_Time = OFF_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
-        DelayBeforeShutOff = ON_Time;;
+        DelayBeforeShutOff = ON_Time;
+        #if( COMMUNICATION_LAYER == SERIAL_MODE )
+        SW_Tx_UART_PutString("---Toggle On time: ");
+//        SW_Tx_UART_PutHexInt( ON_Time >> 16 );
+        SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutString(";");
+        SW_Tx_UART_PutString("Toggle OFF time: ");
+//        SW_Tx_UART_PutHexInt( OFF_Time >> 16 );
+        SW_Tx_UART_PutHexInt( ( OFF_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutCRLF();
+        //#else
+        #endif
     }
 }
 //#else
