@@ -315,11 +315,11 @@ int main()
                 if (PACKET_SIZE == I2C_I2CSlaveGetWriteBufSize())
                 {
                     /* Check start and end of packet markers */
-                    if ((i2cWriteBuffer[PACKET_SOP_POS] == PACKET_SOP) &&
-                        (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
-                    {
+//                    if ((i2cWriteBuffer[PACKET_SOP_POS] == PACKET_SOP) &&
+//                    (i2cWriteBuffer[PACKET_EOP_POS] == PACKET_EOP))
+//                    {
                         I2C_Status = ExecuteI2CCommand(i2cWriteBuffer[PACKET_CMD_POS], i2cWriteBuffer[PACKET_PARAM_POS] );
-                    }
+//                    }
                 }
             
                 /* Clear slave write buffer and status */
@@ -327,6 +327,7 @@ int main()
                 (void) I2C_I2CSlaveClearWriteStatus();
             
                 /* Update read buffer */
+                i2cReadBuffer[PACKET_CMD_POS] = i2cWriteBuffer[PACKET_CMD_POS];
                 i2cReadBuffer[PACKET_STS_POS] = I2C_Status;
                 I2C_Status = STS_CMD_FAIL;
             }

@@ -17,7 +17,7 @@
 /***************************************
 *            Defines
 ****************************************/
-#define FIRMWARE_VERSION                (0x0001)            // The firmware version
+#define FIRMWARE_VERSION                (0x0002)            // The firmware version
 #define HIGH                            (1u)                // High value
 #define LOW                             (0u)                // Low Value
 #define ASSERTED_HIGH                   (0u)                // Asserted High value for P-Channel MOSFET
@@ -39,8 +39,8 @@
 /* Those defines must be commented/uncommented accordingly prior to building the project */
 /* The used communication layer */
 /* Uncomment the line according to the enabled layer in the schematic */
-#define COMMUNICATION_LAYER             (SERIAL_MODE)
-//#define COMMUNICATION_LAYER             (I2C_MODE)
+//#define COMMUNICATION_LAYER             (SERIAL_MODE)
+#define COMMUNICATION_LAYER             (I2C_MODE)
 //#define COMMUNICATION_LAYER             (0x00u)
 
 /* The used IC Package */
@@ -49,15 +49,15 @@
 #define IC_PACKAGE                      (SOIC_16)
 
 /* I2C Defines */
-#define BUFFER_SIZE                     (0x04u)             // The packet buffer size
+#define BUFFER_SIZE                     (0x02u)             // The packet buffer size
 #define PACKET_SIZE                     (BUFFER_SIZE)       // The packet size
-#define PACKET_SOP_POS                  (0x00u)             // The Start of Packet position in the buffer
-#define PACKET_CMD_POS                  (0x01u)             // The Command position in the buffer
-#define PACKET_PARAM_POS                (0x02u)             // The command parameter position in the buffer
-#define PACKET_STS_POS                  (PACKET_CMD_POS)    // The status position in the buffer
-#define PACKET_EOP_POS                  (0x03u)             // The End of Packet in the buffer
-#define PACKET_SOP                      (0x01u)             // The Start of Packet Value
-#define PACKET_EOP                      (0x17u)             // The End of Packet Value
+//#define PACKET_SOP_POS                  (0x00u)             // The Start of Packet position in the buffer
+#define PACKET_CMD_POS                  (0x00u)             // The Command position in the buffer
+#define PACKET_PARAM_POS                (0x01u)             // The command parameter position in the buffer
+#define PACKET_STS_POS                  (PACKET_PARAM_POS)    // The status position in the buffer
+//#define PACKET_EOP_POS                  (0x03u)             // The End of Packet in the buffer
+//#define PACKET_SOP                      (0x01u)             // The Start of Packet Value
+//#define PACKET_EOP                      (0x17u)             // The End of Packet Value
 #define STS_CMD_DONE                    (0x00u)             // Status: Command Done
 #define STS_CMD_FAIL                    (0xFFu)             // Status: Command Failed
 #define STS_CMD_BUTTON_EVENT            (0x10u)             // Status: Push Button Event
@@ -113,7 +113,7 @@ uint32  OFF_Time_Look_Up_Table[ 16 ];                       // The OFF Time Look
 
 #if( COMMUNICATION_LAYER == I2C_MODE )
 /* I2C slave read and write buffers */
-    uint8 i2cReadBuffer [BUFFER_SIZE] = {PACKET_SOP, STS_CMD_FAIL, STS_CMD_FAIL, PACKET_EOP};
+    uint8 i2cReadBuffer [BUFFER_SIZE] = {STS_CMD_FAIL, STS_CMD_FAIL};
     uint8 i2cWriteBuffer[BUFFER_SIZE];
     uint8 I2C_Status;
 //#else
