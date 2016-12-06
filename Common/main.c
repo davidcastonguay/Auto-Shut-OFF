@@ -52,15 +52,9 @@ int main()
     //#else
     #endif
     
+    /* Configure initial state */
     PWM_Start();
-    
-    /* Configure ISR */
-//    PWM_isr_StartEx( PWM_isr );
     Push_Button_isr_StartEx( Push_Button_isr );
-
-    /* Variables default values */
-//    SetTimerSettings();
-//    Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
     Push_Button_Interrupt_Flag = 0;
     DelayBeforeShutOff = -1;
     Second_Counter = 0;
@@ -69,14 +63,25 @@ int main()
     SUPPLY_ENABLE_Write( ASSERTED_LOW );
     PWM_WriteCompare( 0 );
     R_Write( LED_ON );
-    G_Write( LED_ON );
+    G_Write( LED_OFF );
     B_Write( LED_OFF );
+//    R_Write( LED_OFF );
+//    G_Write( LED_OFF );
+//    B_Write( LED_OFF );
     
     #if( COMMUNICATION_LAYER == SERIAL_MODE )    
         SW_Tx_UART_PutString("/// Waiting for push button to be pressed");
         SW_Tx_UART_PutCRLF();
     //#else
     #endif
+    
+    #if( COMMUNICATION_LAYER == SERIAL_MODE )    
+        SW_Tx_UART_PutString("---Deep Sleep");
+        SW_Tx_UART_PutCRLF();
+        //#else
+    #endif
+        
+    CySysPmDeepSleep();
 
     for(;;)
     {
@@ -86,7 +91,6 @@ int main()
             if( Mode == 0 )
             {
                 SUPPLY_ENABLE_Write( ASSERTED_LOW ); 
-                PWM_WriteCompare( LOW_GLOW );
                 
                 #if( COMMUNICATION_LAYER == SERIAL_MODE )    
                     SW_Tx_UART_PutString("---Countdown terminated");
@@ -95,10 +99,21 @@ int main()
                 #endif
                 
                 /* Managing LED states */
+//                R_Write( LED_ON );
+//                G_Write( LED_OFF );
+//                B_Write( LED_OFF );
                 R_Write( LED_ON );
                 G_Write( LED_OFF );
                 B_Write( LED_OFF );
                 DelayBeforeShutOff = -1;
+                
+                #if( COMMUNICATION_LAYER == SERIAL_MODE )    
+                    SW_Tx_UART_PutString("---Deep Sleep");
+                    SW_Tx_UART_PutCRLF();
+                    //#else
+                #endif
+                
+                CySysPmDeepSleep();
             }
             else
             {
@@ -161,26 +176,34 @@ int main()
             if( ( Push_Button_Event == BUTTON_HOLD_DOWN ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_RELEASED;
-                SW_Tx_UART_PutString("+++Push Button Event: Released");
-                SW_Tx_UART_PutCRLF();
+                #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
+                    SW_Tx_UART_PutString("+++Push Button Event: Released");
+                    SW_Tx_UART_PutCRLF();
+                #endif
             }
             else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_CLICK_EVENT;
-                SW_Tx_UART_PutString("+++Push Button Event: Click");
-                SW_Tx_UART_PutCRLF();
+                #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
+                    SW_Tx_UART_PutString("+++Push Button Event: Click");
+                    SW_Tx_UART_PutCRLF();
+                #endif
             }
             else if( ( Push_Button_Interrupt_Flag >= 2 ) && ( Push_Button_State_Value == 1 ) )
             {
                 Push_Button_Event = BUTTON_DOUBLE_CLICK_EVENT;
-                SW_Tx_UART_PutString("+++Push Button Event: Double Click");
-                SW_Tx_UART_PutCRLF();
+                #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
+                    SW_Tx_UART_PutString("+++Push Button Event: Double Click");
+                    SW_Tx_UART_PutCRLF();
+                #endif
             }
             else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 0 ) )
             {
                 Push_Button_Event = BUTTON_HOLD_DOWN;
-                SW_Tx_UART_PutString("+++Push Button Event: Hold Down");
-                SW_Tx_UART_PutCRLF();
+                #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
+                    SW_Tx_UART_PutString("+++Push Button Event: Hold Down");
+                    SW_Tx_UART_PutCRLF();
+                #endif
             }
             else
             {
@@ -221,6 +244,7 @@ int main()
             Output_Value = HIGH;
   
             /* Restarting the interrupt if it has been stopped */
+            PWM_Start();
             PWM_isr_StartEx(PWM_isr);
             PWM_ClearInterrupt(PWM_INTR_MASK_TC);
             
@@ -262,7 +286,6 @@ int main()
                 SW_Tx_UART_PutString("Seconds remaning: ");
                 SW_Tx_UART_PutHexInt( Second_in_Base_60 );
                 SW_Tx_UART_PutString(";");
-//                SW_Tx_UART_PutCRLF();
                 
                 if( Output_Value == HIGH )
                 {
@@ -316,6 +339,7 @@ int main()
                 (void) I2C_I2CSlaveClearReadStatus();
             }
         #endif
+        
     }
 }
 
@@ -628,7 +652,7 @@ void  SetLookUpTable( void )
         ON_Time_Look_Up_Table[ 12 ] =   0x00005460;
         ON_Time_Look_Up_Table[ 13 ] =   0x00007080;
         ON_Time_Look_Up_Table[ 14 ] =   0x0000A8C0;
-        ON_Time_Look_Up_Table[ 15 ] =   0x0009C720;
+        ON_Time_Look_Up_Table[ 15 ] =   0x0000FD20;
         
         OFF_Time_Look_Up_Table[ 0 ] =   0x00000000;
         OFF_Time_Look_Up_Table[ 1 ] =   0x00000000;
