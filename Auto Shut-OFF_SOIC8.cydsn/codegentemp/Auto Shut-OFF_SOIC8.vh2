@@ -2,7 +2,7 @@
 --	Conversion of Auto Shut-OFF_SOIC8.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Nov 17 11:29:51 2016
+--	Thu Dec 22 15:30:13 2016
 --
 
 USE cypress.cypress.all;

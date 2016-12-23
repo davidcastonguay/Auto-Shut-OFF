@@ -55,19 +55,16 @@ int main()
     /* Configure initial state */
     PWM_Start();
     Push_Button_isr_StartEx( Push_Button_isr );
-    Push_Button_Interrupt_Flag = 0;
-    DelayBeforeShutOff = -1;
-    Second_Counter = 0;
-    Toggle_Counter = 0;
-    Output_Value = LOW;
+    Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 0;
+    Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = 0xFFFFFFFFu;
+    Parameters_Register[ SECOND_COUNTER_REG ] = 0;
+    Parameters_Register[ TOGGLE_COUNTER_REG ] = 0;
+    Parameters_Register[ SET_PEN_REG ] = LOW;
     SUPPLY_ENABLE_Write( ASSERTED_LOW );
     PWM_WriteCompare( 0 );
     R_Write( LED_ON );
     G_Write( LED_OFF );
     B_Write( LED_OFF );
-//    R_Write( LED_OFF );
-//    G_Write( LED_OFF );
-//    B_Write( LED_OFF );
     
     #if( COMMUNICATION_LAYER == SERIAL_MODE )    
         SW_Tx_UART_PutString("/// Waiting for push button to be pressed");
@@ -86,9 +83,9 @@ int main()
     for(;;)
     {
         /* Disabling the SUPPLY ENABLE if timeout has been reached */
-        if( DelayBeforeShutOff == 0 )
+        if( Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] == 0 )
         {
-            if( Mode == 0 )
+            if( Parameters_Register[ SET_MODE_REG ] == SHUT_OFF )
             {
                 SUPPLY_ENABLE_Write( ASSERTED_LOW ); 
                 
@@ -99,13 +96,10 @@ int main()
                 #endif
                 
                 /* Managing LED states */
-//                R_Write( LED_ON );
-//                G_Write( LED_OFF );
-//                B_Write( LED_OFF );
                 R_Write( LED_ON );
                 G_Write( LED_OFF );
                 B_Write( LED_OFF );
-                DelayBeforeShutOff = -1;
+                Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = 0xFFFFFFFFu;
                 
                 #if( COMMUNICATION_LAYER == SERIAL_MODE )    
                     SW_Tx_UART_PutString("---Deep Sleep");
@@ -119,31 +113,30 @@ int main()
             {
                 SetTimerSettings();
                 /* Toggling from ON to OFF */
-                if( Output_Value == HIGH )
+                if( Parameters_Register[ SET_PEN_REG ] == HIGH )
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_LOW );
-                    DelayBeforeShutOff = OFF_Time;
+                    Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = Parameters_Register[ SET_OFF_TIME_REG ];
                     /* Managing LED states */
                     R_Write( LED_ON );
                     G_Write( LED_ON );
                     B_Write( LED_OFF );
-                    Output_Value = LOW;
+                    Parameters_Register[ SET_PEN_REG ] = LOW;
                 }
                 /* Toggling from OFF to ON */
                 else
                 {
                     SUPPLY_ENABLE_Write( ASSERTED_HIGH );
-                    DelayBeforeShutOff = ON_Time;
+                    Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = Parameters_Register[ SET_ON_TIME_REG ];
                     /* Managing LED states */
                     R_Write( LED_OFF );
                     G_Write( LED_ON );
                     B_Write( LED_OFF );
-                    Output_Value = HIGH;
-                    Toggle_Counter++;
+                    Parameters_Register[ SET_PEN_REG ] = HIGH;
+                    Parameters_Register[ TOGGLE_COUNTER_REG ]++;
                 }
                 
-//                SetTimerSettings();
-                Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
+                Parameters_Register[ SECOND_IN_BASE_60_REG ] = ( Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] / OVERFLOW_PER_SECOND );
                 PWM_isr_StartEx(PWM_isr);
                 PWM_ClearInterrupt(PWM_INTR_MASK_TC);
             }
@@ -153,7 +146,7 @@ int main()
             if( PWM_isr_GetState() == 1 )
             {
                 /* Toggling PWM Compare value depending on second counter value */
-                if( Second_Counter < ( SECOND_COUNT / 2 ) )
+                if( Parameters_Register[ SECOND_COUNTER_REG ] < ( SECOND_COUNT / 2 ) )
                 {
 //                    PWM_WriteCompare( MID_GLOW );
                     B_Write( LED_OFF );
@@ -171,35 +164,35 @@ int main()
         }
         
         /* Processing push button events */
-        if( Overflow_Counter >= 200 )
+        if( Parameters_Register[ OVERFLOW_COUNTER_REG ] >= 200 )
         {
-            if( ( Push_Button_Event == BUTTON_HOLD_DOWN ) && ( Push_Button_State_Value == 1 ) )
+            if( ( Parameters_Register[ PUSH_BUTTON_EVENT_REG ] == BUTTON_HOLD_DOWN ) && ( Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] == 1 ) )
             {
-                Push_Button_Event = BUTTON_RELEASED;
+                Parameters_Register[ PUSH_BUTTON_EVENT_REG ] = BUTTON_RELEASED;
                 #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
                     SW_Tx_UART_PutString("+++Push Button Event: Released");
                     SW_Tx_UART_PutCRLF();
                 #endif
             }
-            else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 1 ) )
+            else if( ( Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] == 1 ) && ( Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] == 1 ) )
             {
-                Push_Button_Event = BUTTON_CLICK_EVENT;
+                Parameters_Register[ PUSH_BUTTON_EVENT_REG ] = BUTTON_CLICK_EVENT;
                 #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
                     SW_Tx_UART_PutString("+++Push Button Event: Click");
                     SW_Tx_UART_PutCRLF();
                 #endif
             }
-            else if( ( Push_Button_Interrupt_Flag >= 2 ) && ( Push_Button_State_Value == 1 ) )
+            else if( ( Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] >= 2 ) && ( Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] == 1 ) )
             {
-                Push_Button_Event = BUTTON_DOUBLE_CLICK_EVENT;
+                Parameters_Register[ PUSH_BUTTON_EVENT_REG ] = BUTTON_DOUBLE_CLICK_EVENT;
                 #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
                     SW_Tx_UART_PutString("+++Push Button Event: Double Click");
                     SW_Tx_UART_PutCRLF();
                 #endif
             }
-            else if( ( Push_Button_Interrupt_Flag == 1 ) && ( Push_Button_State_Value == 0 ) )
+            else if( ( Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] == 1 ) && ( Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] == 0 ) )
             {
-                Push_Button_Event = BUTTON_HOLD_DOWN;
+                Parameters_Register[ PUSH_BUTTON_EVENT_REG ] = BUTTON_HOLD_DOWN;
                 #if( COMMUNICATION_LAYER == SERIAL_MODE ) 
                     SW_Tx_UART_PutString("+++Push Button Event: Hold Down");
                     SW_Tx_UART_PutCRLF();
@@ -213,8 +206,8 @@ int main()
 //                SW_Tx_UART_PutCRLF();
             }
             
-            Overflow_Counter = 0;
-            Push_Button_Interrupt_Flag = 0;
+            Parameters_Register[ OVERFLOW_COUNTER_REG ] = 0;
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 0;
         }
         else
         {
@@ -222,7 +215,7 @@ int main()
         }
         
         /* Check if push button has been toggled */
-        if( ( Push_Button_Interrupt_Flag == 1 ) && ( PWM_isr_GetState() == 0 ) )
+        if( ( Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] == 1 ) && ( PWM_isr_GetState() == 0 ) )
         {
             #if( COMMUNICATION_LAYER == SERIAL_MODE )    
                 SW_Tx_UART_PutString("/// Countdown to extinction");
@@ -234,14 +227,14 @@ int main()
             SUPPLY_ENABLE_Write( ASSERTED_HIGH ); 
             
             /* Clearing the pushbutton interrupt flag */
-            Push_Button_Interrupt_Flag = 0;
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 0;
             
             /* Resetting the counter if timeout occured */
             SetTimerSettings();
-            Second_in_Base_60 = ( DelayBeforeShutOff / OVERFLOW_PER_SECOND );
-            Second_Counter = 0;
-            Toggle_Counter = 0;
-            Output_Value = HIGH;
+            Parameters_Register[ SECOND_IN_BASE_60_REG ] = ( Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] / OVERFLOW_PER_SECOND );
+            Parameters_Register[ SECOND_COUNTER_REG ] = 0;
+            Parameters_Register[ TOGGLE_COUNTER_REG ] = 0;
+            Parameters_Register[ SET_PEN_REG ] = HIGH;
   
             /* Restarting the interrupt if it has been stopped */
             PWM_Start();
@@ -265,7 +258,7 @@ int main()
 //                SW_Tx_UART_PutString("--------------------------");
 //                SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("---Operating Mode: ");
-                if( Mode == 0 )
+                if( Parameters_Register[ SET_MODE_REG ] == SHUT_OFF )
                 {
                     SW_Tx_UART_PutString("Shutt-off;");
                 }
@@ -274,20 +267,20 @@ int main()
                     SW_Tx_UART_PutString("Toggle;");
 //                    SW_Tx_UART_PutCRLF();
                     SW_Tx_UART_PutString("Toggle Count: ");
-                    SW_Tx_UART_PutHexInt( Toggle_Counter >> 16 );
-                    SW_Tx_UART_PutHexInt( Toggle_Counter );
+                    SW_Tx_UART_PutHexInt( Parameters_Register[ TOGGLE_COUNTER_REG ] >> 16 );
+                    SW_Tx_UART_PutHexInt( Parameters_Register[ TOGGLE_COUNTER_REG ] );
                     SW_Tx_UART_PutString(";");
                 }
 //                SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Look-Up Table Address: ");
-                SW_Tx_UART_PutHexInt( Look_Up_Table_Address );
+                SW_Tx_UART_PutHexInt( Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] );
                 SW_Tx_UART_PutString(";");
 //                SW_Tx_UART_PutCRLF();
                 SW_Tx_UART_PutString("Seconds remaning: ");
-                SW_Tx_UART_PutHexInt( Second_in_Base_60 );
+                SW_Tx_UART_PutHexInt( Parameters_Register[ SECOND_IN_BASE_60_REG ] );
                 SW_Tx_UART_PutString(";");
                 
-                if( Output_Value == HIGH )
+                if( Parameters_Register[ SET_PEN_REG ] == HIGH )
                 {
                     SW_Tx_UART_PutString("Output = High;");
                     SW_Tx_UART_PutCRLF(); 
@@ -327,9 +320,10 @@ int main()
                 (void) I2C_I2CSlaveClearWriteStatus();
             
                 /* Update read buffer */
+                /* Sending the echo to the Host */
                 i2cReadBuffer[PACKET_CMD_POS] = i2cWriteBuffer[PACKET_CMD_POS];
-                i2cReadBuffer[PACKET_STS_POS] = I2C_Status;
-                I2C_Status = STS_CMD_FAIL;
+                i2cReadBuffer[PACKET_STS_POS] = i2cWriteBuffer[PACKET_PARAM_POS];
+                //I2C_Status = STS_CMD_FAIL;
             }
 
             /* Read complete: expose buffer to master */
@@ -358,23 +352,23 @@ int main()
 CY_ISR(PWM_isr)
 {
     /* Decrementing the timer */
-    if( DelayBeforeShutOff <= 1 )
+    if( Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] <= 1 )
     {
-        DelayBeforeShutOff = 0;
-        Second_in_Base_60 = 0;
-        Push_Button_Interrupt_Flag = 0;
+        Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = 0;
+        Parameters_Register[ SECOND_IN_BASE_60_REG ] = 0;
+        Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 0;
         PWM_isr_Stop();
     }
     else
     {
-        DelayBeforeShutOff--;
+        Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ]--;
     }
     
     /* Second in base 60 timer */
-    if( Second_Counter == SECOND_COUNT )
+    if( Parameters_Register[ SECOND_COUNTER_REG ] == SECOND_COUNT )
     {
-        Second_Counter = 0;
-        Second_in_Base_60--;
+        Parameters_Register[ SECOND_COUNTER_REG ] = 0;
+        Parameters_Register[ SECOND_IN_BASE_60_REG ]--;
         #if( COMMUNICATION_LAYER == SERIAL_MODE )
             UART_TX_Flag = 1;
         //#else
@@ -382,17 +376,17 @@ CY_ISR(PWM_isr)
     }
     else
     {
-        Second_Counter++;
+        Parameters_Register[ SECOND_COUNTER_REG ]++;
     }
     
     /* Incrementing the overflow counter for button processor */
-    if( Overflow_Counter > 200 )
+    if( Parameters_Register[ OVERFLOW_COUNTER_REG ] > 200 )
     {
-        Overflow_Counter = 0;
+        Parameters_Register[ OVERFLOW_COUNTER_REG ] = 0;
     }
     else
     {
-        Overflow_Counter++;
+        Parameters_Register[ OVERFLOW_COUNTER_REG ]++;
     }
 
     /* Clear interrupt status in an interrupt controller */
@@ -419,12 +413,12 @@ CY_ISR_PROTO(Push_Button_isr)
     /* Reading the state */
     if( PUSH_BUTTON_INPUT_Read() == 0 )
     {
-        Push_Button_State_Value = 0;
-        Push_Button_Interrupt_Flag++;
+        Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] = 0;
+        Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ]++;
     }
     else
     {
-        Push_Button_State_Value = 1;
+        Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] = 1;
     }
     
     PUSH_BUTTON_INPUT_ClearInterrupt();
@@ -451,87 +445,124 @@ CY_ISR_PROTO(Push_Button_isr)
 uint8 ExecuteI2CCommand( uint32 cmd, uint8 cmdparam )
 {
     uint8 status;
+    uint32 lvalue = 0;
 
     status = STS_CMD_DONE;
 
     /* Execute received command */
     switch (cmd)
     {
-        case CMD_SET_OUPUT_ON:
-            SUPPLY_ENABLE_Write( HIGH ); 
+        case SET_PEN_REG:
+            Parameters_Register[ SET_PEN_REG ] = cmdparam;
+            SUPPLY_ENABLE_Write( Parameters_Register[ SET_PEN_REG ] ); 
             break;
 
-        case CMD_SET_OUTPUT_OFF:
-            SUPPLY_ENABLE_Write( LOW ); 
+        case SET_PWM_OUT_REG:
+            Parameters_Register[ SET_PWM_OUT_REG ] = cmdparam;
             break;
 
-        case CMD_SET_MODE:
-            Mode = i2cReadBuffer[ PACKET_CMD_POS ];
+        case SET_MODE_REG:
+            Parameters_Register[ SET_MODE_REG ] = cmdparam;
             break;
 
-        case CMD_SET_SHUT_OFF_DELAY_MSB:
-            DelayBeforeShutOff = cmdparam;
-            DelayBeforeShutOff = DelayBeforeShutOff << 24;
+        case SET_SHUT_OFF_DELAY_MSB_REG:
+            Parameters_Register[ SET_SHUT_OFF_DELAY_MSB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_SHUT_OFF_DELAY_MSB_REG ] << 24;
+            Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_SHUT_OFF_DELAY_THRDB:
-            DelayBeforeShutOff = cmdparam;
-            DelayBeforeShutOff = DelayBeforeShutOff << 16;
+        case SET_SHUT_OFF_DELAY_THRDB_REG:
+            Parameters_Register[ SET_SHUT_OFF_DELAY_THRDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_SHUT_OFF_DELAY_THRDB_REG ] << 16;
+            Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_SHUT_OFF_DELAY_SCNDB:
-            DelayBeforeShutOff = cmdparam;
-            DelayBeforeShutOff = DelayBeforeShutOff << 8;
+        case SET_SHUT_OFF_DELAY_SCNDB_REG:
+            Parameters_Register[ SET_SHUT_OFF_DELAY_SCNDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_SHUT_OFF_DELAY_SCNDB_REG ] << 8;
+            Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_SHUT_OFF_DELAY_LSB:
-            DelayBeforeShutOff += cmdparam;
+        case SET_SHUT_OFF_DELAY_LSB_REG:
+            Parameters_Register[ SET_SHUT_OFF_DELAY_LSB_REG ] = cmdparam;
+            Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] += Parameters_Register[ SET_SHUT_OFF_DELAY_LSB_REG ];
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_ON_TIME_DELAY_MSB:
-            ON_Time = cmdparam;
-            ON_Time = ON_Time << 24;
+        case SET_ON_TIME_DELAY_MSB_REG:
+            Parameters_Register[ SET_ON_TIME_DELAY_MSB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_ON_TIME_DELAY_MSB_REG ] << 24;
+            Parameters_Register[ SET_ON_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_ON_TIME_DELAY_THRDB:
-            ON_Time = cmdparam;
-            ON_Time = ON_Time << 16;
+        case SET_ON_TIME_DELAY_THRDB_REG:
+            Parameters_Register[ SET_ON_TIME_DELAY_THRDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_ON_TIME_DELAY_THRDB_REG ] << 16;
+            Parameters_Register[ SET_ON_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_ON_TIME_DELAY_SCNDB:
-            ON_Time = cmdparam;
-            ON_Time = ON_Time << 8;
+        case SET_ON_TIME_DELAY_SCNDB_REG:
+            Parameters_Register[ SET_ON_TIME_DELAY_SCNDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_ON_TIME_DELAY_SCNDB_REG ] << 8;
+            Parameters_Register[ SET_ON_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_ON_TIME_DELAY_LSB:
-            ON_Time += cmdparam;
+        case SET_ON_TIME_DELAY_LSB_REG:
+            Parameters_Register[ SET_ON_TIME_DELAY_LSB_REG ] = cmdparam;
+            Parameters_Register[ SET_ON_TIME_REG ] += Parameters_Register[ SET_ON_TIME_DELAY_LSB_REG ];
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_OFF_TIME_DELAY_MSB:
-            OFF_Time = cmdparam;
-            OFF_Time = OFF_Time << 24;
+        case SET_OFF_TIME_DELAY_MSB_REG:
+            Parameters_Register[ SET_OFF_TIME_DELAY_MSB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_OFF_TIME_DELAY_MSB_REG ] << 24;
+            Parameters_Register[ SET_OFF_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_OFF_TIME_DELAY_THRDB:
-            OFF_Time = cmdparam;
-            OFF_Time = OFF_Time << 16;
+        case SET_OFF_TIME_DELAY_THRDB_REG:
+            Parameters_Register[ SET_OFF_TIME_DELAY_THRDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_OFF_TIME_DELAY_MSB_REG ] << 16;
+            Parameters_Register[ SET_OFF_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
         
-        case CMD_SET_OFF_TIME_DELAY_SCNDB:
-            OFF_Time = cmdparam;
-            OFF_Time = OFF_Time << 8;
+        case SET_OFF_TIME_DELAY_SCNDB_REG:
+            Parameters_Register[ SET_OFF_TIME_DELAY_SCNDB_REG ] = cmdparam;
+            lvalue = Parameters_Register[ SET_OFF_TIME_DELAY_SCNDB_REG ] << 8;
+            Parameters_Register[ SET_OFF_TIME_REG ] += lvalue;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
             break;
+            
+        case SET_OFF_TIME_DELAY_LSB_REG:
+            Parameters_Register[ SET_OFF_TIME_DELAY_LSB_REG ] = cmdparam;
+            Parameters_Register[ SET_OFF_TIME_REG ] += cmdparam;
+            PWM_isr_Stop();
+            Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 1;
         
-        case CMD_SET_OFF_TIME_DELAY_LSB:
-            OFF_Time += cmdparam;
-            break;
-        
-        case CMD_SET_DEVICE_ADDRESS:
-            I2C_I2CSlaveSetAddress( cmdparam );
+        case SET_DEVICE_ADDRESS_REG:
+            Parameters_Register[ SET_DEVICE_ADDRESS_REG ] = cmdparam;
             break;
             
         case STS_CMD_BUTTON_EVENT:
-            /* To be added */
+            status = Parameters_Register[ STS_CMD_BUTTON_EVENT ];
             break;
 
         default:
@@ -671,7 +702,7 @@ void  SetLookUpTable( void )
         OFF_Time_Look_Up_Table[ 13 ] =  0x00000000;
         OFF_Time_Look_Up_Table[ 14 ] =  0x00000000;
         OFF_Time_Look_Up_Table[ 15 ] =  0x00000000;
-        Mode = 0;
+        Parameters_Register[ SET_MODE_REG ] = SHUT_OFF;
         break;
         
         /*  Mode bit is set so we're in Toggle Mode */
@@ -709,7 +740,7 @@ void  SetLookUpTable( void )
         OFF_Time_Look_Up_Table[ 13 ] =  0x0000A8C0;
         OFF_Time_Look_Up_Table[ 14 ] =  0x00000E10;
         OFF_Time_Look_Up_Table[ 15 ] =  0x00003840;
-        Mode = 1;
+        Parameters_Register[ SET_MODE_REG ] = TOGGLE;
         break;
     }
 }
@@ -735,38 +766,36 @@ void  SetTimerSettings( void )
     //uint8 lAddress = 0;
     
     /* Reading the time bits and masking the mode input */
-    Look_Up_Table_Address = GetTimeBitsValue();
-    Look_Up_Table_Address = Look_Up_Table_Address & 0x0F;
+    Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] = GetTimeBitsValue();
+    Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] = Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] & 0x0F;
     
     /* Setting the Look-Up Table properly */
     SetLookUpTable();
     
     /* Setting ON-time and OFF-time accordingly */
-    if( Mode == 0 )
+    if( Parameters_Register[ SET_MODE_REG ] == SHUT_OFF )
     {
-        DelayBeforeShutOff = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
-        ON_Time = DelayBeforeShutOff;
+        Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = ON_Time_Look_Up_Table[ Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] ] * OVERFLOW_PER_SECOND;
+        Parameters_Register[ SET_ON_TIME_REG ] = Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ];
         #if( COMMUNICATION_LAYER == SERIAL_MODE )  
         SW_Tx_UART_PutString("---Time to shut-OFF: ");
 //        SW_Tx_UART_PutHexInt( ON_Time >> 16 );
-        SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutHexInt( ( Parameters_Register[ SET_ON_TIME_REG ] / OVERFLOW_PER_SECOND ) );
         SW_Tx_UART_PutCRLF();
         //#else
         #endif
     }
     else
     {
-        ON_Time = ON_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
-        OFF_Time = OFF_Time_Look_Up_Table[ Look_Up_Table_Address ] * OVERFLOW_PER_SECOND;
-        DelayBeforeShutOff = ON_Time;
+        Parameters_Register[ SET_ON_TIME_REG ] = ON_Time_Look_Up_Table[ Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] ] * OVERFLOW_PER_SECOND;
+        Parameters_Register[ SET_OFF_TIME_REG ] = OFF_Time_Look_Up_Table[ Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] ] * OVERFLOW_PER_SECOND;
+        Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = Parameters_Register[ SET_ON_TIME_REG ];
         #if( COMMUNICATION_LAYER == SERIAL_MODE )
         SW_Tx_UART_PutString("---Toggle On time: ");
-//        SW_Tx_UART_PutHexInt( ON_Time >> 16 );
-        SW_Tx_UART_PutHexInt( ( ON_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutHexInt( ( Parameters_Register[ SET_ON_TIME_REG ] / OVERFLOW_PER_SECOND ) );
         SW_Tx_UART_PutString(";");
         SW_Tx_UART_PutString("Toggle OFF time: ");
-//        SW_Tx_UART_PutHexInt( OFF_Time >> 16 );
-        SW_Tx_UART_PutHexInt( ( OFF_Time / OVERFLOW_PER_SECOND ) );
+        SW_Tx_UART_PutHexInt( ( Parameters_Register[ SET_OFF_TIME_REG ] / OVERFLOW_PER_SECOND ) );
         SW_Tx_UART_PutCRLF();
         //#else
         #endif
@@ -774,6 +803,50 @@ void  SetTimerSettings( void )
 }
 //#else
 #endif
+
+/*******************************************************************************
+* Function Name: SetDefaultRegisterValues
+********************************************************************************
+* Summary:
+*  Sets the default values in the register table
+*
+* Parameters:
+*  None.
+*
+* Return:
+*  None.
+*
+*******************************************************************************/
+void SetDefaultRegisterValues( void )
+{
+    Parameters_Register[ SET_PEN_REG ] = ASSERTED_LOW;
+    Parameters_Register[ SET_PWM_OUT_REG ] = 0x00u;
+    Parameters_Register[ SET_MODE_REG ] = SHUT_OFF;
+    Parameters_Register[ SET_SHUT_OFF_DELAY_MSB_REG ] = 0x00u;
+    Parameters_Register[ SET_SHUT_OFF_DELAY_THRDB_REG ] = 0x00u;
+    Parameters_Register[ SET_SHUT_OFF_DELAY_SCNDB_REG ] = 0x00u;
+    Parameters_Register[ SET_SHUT_OFF_DELAY_LSB_REG ] = 0x00u;
+    Parameters_Register[ SET_ON_TIME_DELAY_MSB_REG ] = 0x00u;
+    Parameters_Register[ SET_ON_TIME_DELAY_THRDB_REG ] = 0x00u;
+    Parameters_Register[ SET_ON_TIME_DELAY_SCNDB_REG ] = 0x00u;
+    Parameters_Register[ SET_ON_TIME_DELAY_LSB_REG ] = 0x00u;
+    Parameters_Register[ SET_OFF_TIME_DELAY_MSB_REG ] = 0x00u;
+    Parameters_Register[ SET_OFF_TIME_DELAY_THRDB_REG ] = 0x00u;
+    Parameters_Register[ SET_OFF_TIME_DELAY_SCNDB_REG ] = 0x00u;
+    Parameters_Register[ SET_OFF_TIME_DELAY_LSB_REG ] = 0x00u;
+    Parameters_Register[ SET_DEVICE_ADDRESS_REG ] = 0x08u;
+    Parameters_Register[ SET_DELAY_BEFORE_SHUT_OFF_REG ] = 0xFFFFFFFFu;
+    Parameters_Register[ SET_ON_TIME_REG ] = 0x00u;
+    Parameters_Register[ SET_OFF_TIME_REG ] = 0x00u;
+    Parameters_Register[ TOGGLE_COUNTER_REG ] = 0x00u;
+    Parameters_Register[ PUSH_BUTTON_STATE_VALUE_REG ] = 0x00u;
+    Parameters_Register[ SECOND_IN_BASE_60_REG ] = 0x00u;
+    Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] = 0x00u;
+    Parameters_Register[ LOOK_UP_TABLE_ADDRESS_REG ] = 0x00u;
+    Parameters_Register[ OVERFLOW_COUNTER_REG ] = 0x00u;
+    Parameters_Register[ PUSH_BUTTON_EVENT_REG ] = BUTTON_NO_EVENT;
+    Parameters_Register[ FIRMWARE_VERSION_REG ] = FIRMWARE_VERSION;
+}
 
 
 /* [] END OF FILE */

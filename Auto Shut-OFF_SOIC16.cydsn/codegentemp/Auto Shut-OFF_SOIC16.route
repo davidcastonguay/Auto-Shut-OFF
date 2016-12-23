@@ -19,12 +19,12 @@ net Net_11
 	switch ":interrupt_idmux_8.interrupt_idmux_8__out==>:interrupt_8.interrupt"
 	term   ":interrupt_8.interrupt"
 end Net_11
-net Net_15
+net Net_19
 	term   ":m0s8tcpwmcell.line_out"
 	switch ":m0s8tcpwmcell.line_out==>:ioport1:hsiom_out1.fixed_ACT_1"
 	switch ":ioport1:hsiom_out1.hsiom1_out==>:ioport1:pin1.pin_input"
 	term   ":ioport1:pin1.pin_input"
-end Net_15
+end Net_19
 net Net_95
 	term   ":logicalport_0.interrupt"
 	switch ":logicalport_0.interrupt==>:interrupt_idmux_0.in_0"

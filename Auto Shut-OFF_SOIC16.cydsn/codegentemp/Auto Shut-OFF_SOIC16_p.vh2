@@ -1,5 +1,5 @@
 -- Project:   Auto Shut-OFF_SOIC16
--- Generated: 12/06/2016 04:53:06
+-- Generated: 12/23/2016 11:20:08
 -- PSoC Creator  3.3 CP3
 
 ENTITY \Auto Shut-OFF_SOIC16\ IS
@@ -38,10 +38,10 @@ ARCHITECTURE __DEFAULT__ OF \Auto Shut-OFF_SOIC16\ IS
     SIGNAL Net_12 : bit;
     SIGNAL Net_13 : bit;
     SIGNAL Net_14 : bit;
-    SIGNAL Net_15 : bit;
     SIGNAL Net_16 : bit;
     SIGNAL Net_17_ff3 : bit;
     ATTRIBUTE global_signal OF Net_17_ff3 : SIGNAL IS true;
+    SIGNAL Net_19 : bit;
     SIGNAL Net_3 : bit;
     SIGNAL Net_4 : bit;
     SIGNAL Net_95 : bit;
@@ -737,7 +737,7 @@ BEGIN
         PORT MAP(
             pa_out => PWM_OUTPUT(0)__PA,
             oe => open,
-            pin_input => Net_15,
+            pin_input => Net_19,
             pad_out => PWM_OUTPUT(0)_PAD,
             pad_in => PWM_OUTPUT(0)_PAD,
             in_clock => open,
@@ -1514,7 +1514,7 @@ BEGIN
             tr_underflow => Net_13,
             tr_overflow => Net_12,
             tr_compare_match => Net_14,
-            line_out => Net_15,
+            line_out => Net_19,
             line_out_compl => Net_16,
             interrupt => Net_11);
 

@@ -1,5 +1,5 @@
 # Auto Shut-OFF_SOIC8
-# 2016-11-17 16:29:51Z
+# 2016-12-22 20:30:13Z
 
 dont_use_location p4csdcell -1 -1 0
 dont_use_location p4csidac8cell -1 -1 0

@@ -2,7 +2,7 @@
 --	Conversion of Auto Shut-OFF_SOIC16.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Dec 06 04:53:06 2016
+--	Fri Dec 23 11:20:07 2016
 --
 
 USE cypress.cypress.all;
@@ -82,7 +82,7 @@ SIGNAL \PWM:Net_72\ : bit;
 SIGNAL Net_13 : bit;
 SIGNAL Net_12 : bit;
 SIGNAL Net_14 : bit;
-SIGNAL Net_15 : bit;
+SIGNAL Net_19 : bit;
 SIGNAL Net_16 : bit;
 SIGNAL Net_11 : bit;
 SIGNAL Net_17 : bit;
@@ -462,7 +462,7 @@ SUPPLY_ENABLE:cy_psoc3_pins_v1_10
 		underflow=>Net_13,
 		overflow=>Net_12,
 		compare_match=>Net_14,
-		line_out=>Net_15,
+		line_out=>Net_19,
 		line_out_compl=>Net_16,
 		interrupt=>Net_11);
 PWM_OUTPUT:cy_psoc3_pins_v1_10
@@ -522,7 +522,7 @@ PWM_OUTPUT:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
-		y=>Net_15,
+		y=>Net_19,
 		fb=>(tmpFB_0__PWM_OUTPUT_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__PWM_OUTPUT_net_0),

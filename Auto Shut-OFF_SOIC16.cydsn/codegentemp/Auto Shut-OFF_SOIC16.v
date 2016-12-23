@@ -1,6 +1,6 @@
 // ======================================================================
 // Auto Shut-OFF_SOIC16.v generated from TopDesign.cysch
-// 12/06/2016 at 04:53
+// 12/23/2016 at 11:20
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -504,7 +504,6 @@ module top ;
           wire  Net_18;
           wire  Net_17;
           wire  Net_16;
-          wire  Net_15;
           wire  Net_14;
           wire  Net_13;
           wire  Net_12;
@@ -519,6 +518,7 @@ module top ;
           wire  Net_3;
           wire  Net_2;
           wire  Net_1;
+          wire  Net_19;
           wire  Net_95;
 
     SCB_P4_v3_0_0 I2C (
@@ -681,7 +681,7 @@ module top ;
         .ov(Net_12),
         .un(Net_13),
         .cc(Net_14),
-        .line(Net_15),
+        .line(Net_19),
         .line_n(Net_16),
         .clock(Net_17));
 
@@ -744,7 +744,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		PWM_OUTPUT
 		 (.oe(tmpOE__PWM_OUTPUT_net),
-		  .y({Net_15}),
+		  .y({Net_19}),
 		  .fb({tmpFB_0__PWM_OUTPUT_net[0:0]}),
 		  .io({tmpIO_0__PWM_OUTPUT_net[0:0]}),
 		  .siovref(tmpSIOVREF__PWM_OUTPUT_net),

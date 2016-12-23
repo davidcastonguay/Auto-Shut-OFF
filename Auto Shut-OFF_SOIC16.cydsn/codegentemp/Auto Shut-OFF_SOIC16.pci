@@ -1,5 +1,5 @@
 # Auto Shut-OFF_SOIC16
-# 2016-12-06 09:53:06Z
+# 2016-12-23 16:20:08Z
 
 set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
 set_io "PUSH_BUTTON_INPUT(0)" iocell 0 2
