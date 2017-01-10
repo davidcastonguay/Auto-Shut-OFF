@@ -65,34 +65,6 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G_aliases.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_BOOT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_BOOT.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_BOOT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_INT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_PVT.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_SLAVE.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_PINS.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_PM.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_PVT.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCB_IRQ</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCB_IRQ\I2C_SCB_IRQ.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCB_IRQ\I2C_SCB_IRQ.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCBCLK</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCBCLK\I2C_SCBCLK.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_SCBCLK\I2C_SCBCLK.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_scl</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_scl\I2C_scl.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_scl\I2C_scl.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_scl\I2C_scl_aliases.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_sda</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_sda\I2C_sda.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_sda\I2C_sda.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C_sda\I2C_sda_aliases.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode\Mode.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode\Mode.h</v>
@@ -126,6 +98,13 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SUPPLY_ENABLE\SUPPLY_ENABLE.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SUPPLY_ENABLE\SUPPLY_ENABLE.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SUPPLY_ENABLE\SUPPLY_ENABLE_aliases.h</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART.c</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART.h</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART_AsmGnu.s</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART_AsmIar.s</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART_AsmRv.s</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\SW_Tx_UART\SW_Tx_UART_PVT.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Time_Bit_0</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Time_Bit_0\Time_Bit_0.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Time_Bit_0\Time_Bit_0.h</v>
@@ -243,6 +222,15 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\Generated_Source\PSoC4\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Auto Shut-OFF_SOIC16.cydwr</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Header Files</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Header Files\cyapicallbacks.h</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Header Files\main.h</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Source Files</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Source Files\main.c</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\B</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\B\B.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\B\B.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\B\B_aliases.h</v>
@@ -276,19 +264,10 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G.c</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G.h</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\G\G_aliases.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_BOOT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_BOOT.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_BOOT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_INT.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_PVT.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_I2C_SLAVE.c</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_PINS.h</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\I2C\I2C_PM.c</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode\Mode.c</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode\Mode.h</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Generated_Source\PSoC4\Mode\Mode_aliases.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -330,17 +309,6 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\G.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_BOOT.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_I2C.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_I2C_BOOT.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_I2C_INT.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_I2C_SLAVE.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_PM.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_SCB_IRQ.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_SCBCLK.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_scl.lst</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\I2C_sda.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Mode.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PUSH_BUTTON_INPUT.lst</v>
@@ -352,6 +320,8 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_PM.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\R.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SUPPLY_ENABLE.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SW_Tx_UART.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SW_Tx_UART_AsmGnu.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_0.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_1.lst</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_2.lst</v>
@@ -397,6 +367,50 @@
 <VisibleNodeIds>
 <v>Auto Shut-OFF</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\B.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLFClk.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\G.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\main.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Mode.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PUSH_BUTTON_INPUT.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Push_Button_isr.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_CLOCK.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_isr.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_OUTPUT.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\PWM_PM.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\R.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SUPPLY_ENABLE.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SW_Tx_UART.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\SW_Tx_UART_AsmGnu.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_0.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_1.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_2.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Listing Files\Time_Bit_3.lst</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.elf</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.hex</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\CortexM0\ARM_GCC_493\Debug\Auto Shut-OFF_SOIC16.map</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Auto Shut-OFF_SOIC16.gpdsc</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Auto Shut-OFF_SOIC16.rpt</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\Auto Shut-OFF_SOIC16_timing.html</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\CortexM0</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\CortexM0\ARM_GCC_493</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\CortexM0\ARM_GCC_493\Debug</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\CortexM0\ARM_GCC_493\Debug\Listing Files</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\CortexM0\ARM_GCC_493\Debug\Listing Files\Cm0Start.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -418,7 +432,7 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_pins_v2_10</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\SCB_P4_v3_0.pdf</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\SW_Tx_UART_v1_50.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\TCPWM_P4_v2_0.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC8</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\PSoC 4 Architecture TRM</v>
@@ -447,7 +461,7 @@
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_pins_v2_10</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\cy_pins_v2_10\cy_pins_v2_10.pdf</v>
-<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\SCB_P4_v3_0.pdf</v>
+<v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\SW_Tx_UART_v1_50.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC16\TCPWM_P4_v2_0.pdf</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC8</v>
 <v>Auto Shut-OFF\Auto Shut-OFF_SOIC8\PSoC 4 Architecture TRM</v>

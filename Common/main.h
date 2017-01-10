@@ -43,8 +43,8 @@
 /* Those defines must be commented/uncommented accordingly prior to building the project */
 /* The used communication layer */
 /* Uncomment the line according to the enabled layer in the schematic */
-//#define COMMUNICATION_LAYER             (SERIAL_MODE)
-#define COMMUNICATION_LAYER             (I2C_MODE)
+#define COMMUNICATION_LAYER             (SERIAL_MODE)
+//#define COMMUNICATION_LAYER             (I2C_MODE)
 //#define COMMUNICATION_LAYER             (0x00u)
 
 /* The used IC Package */
@@ -91,6 +91,7 @@
 #define OVERFLOW_COUNTER_REG            (0x1Au)             // Register: Overflow Counter
 #define PUSH_BUTTON_EVENT_REG           (0x1Bu)             // Register: Push button event
 #define FIRMWARE_VERSION_REG            (0x1Cu)             // Register: The firmware version
+#define SLEEP_FLAG_REG                  (0x1Du)             // Register: The sleep mode
 
 /* Push Button Events Defines */
 #define BUTTON_NO_EVENT                 (0x00u)             // Status; Push button no event
@@ -132,7 +133,7 @@ void SetDefaultRegisterValues( void );
 #endif    
 
 #if( IC_PACKAGE == SOIC_16 )
-void  SetSleepPinDriveMode( uint8 pMode );
+void  SetPinDriveMode( uint8 pMode );
 uint8 GetTimeBitsValue( void );
 void  SetLookUpTable( void );
 void  SetTimerSettings( void );

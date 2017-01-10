@@ -77,7 +77,14 @@ int main()
         SW_Tx_UART_PutCRLF();
         //#else
     #endif
-        
+    
+    /* Setting the sleep flag in parameters register */
+    Parameters_Register[ SLEEP_FLAG_REG ] = SLEEP_PIN_MODE;
+    
+    /* Setting the drive mode */
+    SetPinDriveMode( SLEEP_PIN_MODE );
+    
+    /* Deep sleep */
     CySysPmDeepSleep();
 
     for(;;)
@@ -107,6 +114,13 @@ int main()
                     //#else
                 #endif
                 
+                /* Setting the sleep flag in parameters register */
+                Parameters_Register[ SLEEP_FLAG_REG ] = SLEEP_PIN_MODE;
+                
+                /* Setting the drive mode */
+                SetPinDriveMode( SLEEP_PIN_MODE );
+                
+                /* Deep sleep */
                 CySysPmDeepSleep();
             }
             else
@@ -214,7 +228,7 @@ int main()
             /* Continue */
         }
         
-        /* Check if push button has been toggled */
+        /* Check if push button has been pushed */
         if( ( Parameters_Register[ PUSH_BUTTON_INTERRUPT_FLAG_REG ] == 1 ) && ( PWM_isr_GetState() == 0 ) )
         {
             #if( COMMUNICATION_LAYER == SERIAL_MODE )    
@@ -222,6 +236,21 @@ int main()
                 SW_Tx_UART_PutCRLF();
                 //#else
             #endif
+            
+            /* Check the sleep pin mode */
+            if( Parameters_Register[ SLEEP_FLAG_REG ] == SLEEP_PIN_MODE )
+            {
+                /* Setting the sleep flag in parameters register */
+                Parameters_Register[ SLEEP_FLAG_REG ] = AWAKEN_PIN_MODE;
+                
+                /* Setting the drive mode */
+                SetPinDriveMode( AWAKEN_PIN_MODE );
+            }
+            else
+            {
+                /* Continue */
+            }
+            
             
             /* Activating the output */
             SUPPLY_ENABLE_Write( ASSERTED_HIGH ); 
@@ -848,5 +877,58 @@ void SetDefaultRegisterValues( void )
     Parameters_Register[ FIRMWARE_VERSION_REG ] = FIRMWARE_VERSION;
 }
 
+
+/*******************************************************************************
+* Function Name: SetPinDriveMode
+********************************************************************************
+* Summary:
+*  Sets the I/O pins drive mode
+*
+* Parameters:
+*  1 - The drive mode. Two #define are included in the main.h
+*
+* Return:
+*  None.
+*
+*******************************************************************************/
+void  SetPinDriveMode( uint8 pMode )
+{
+
+    if( pMode == SLEEP_PIN_MODE )
+    {
+        SUPPLY_ENABLE_SetDriveMode( SUPPLY_ENABLE_DM_RES_DWN );
+        PWM_OUTPUT_SetDriveMode( PWM_OUTPUT_DM_RES_DWN );
+        R_SetDriveMode( R_DM_RES_UP );
+        G_SetDriveMode( G_DM_RES_UP );
+        B_SetDriveMode( B_DM_RES_UP );
+        Mode_SetDriveMode( Mode_DM_DIG_HIZ );
+        Time_Bit_0_SetDriveMode( Time_Bit_0_DM_DIG_HIZ );
+        Time_Bit_1_SetDriveMode( Time_Bit_1_DM_DIG_HIZ );
+        Time_Bit_2_SetDriveMode( Time_Bit_2_DM_DIG_HIZ );
+        Time_Bit_3_SetDriveMode( Time_Bit_3_DM_DIG_HIZ );
+    }
+    else
+    {
+        /* Continue */
+    }
+    
+    if( pMode == AWAKEN_PIN_MODE )
+    {
+        SUPPLY_ENABLE_SetDriveMode( SUPPLY_ENABLE_DM_STRONG );
+        PWM_OUTPUT_SetDriveMode( PWM_OUTPUT_DM_STRONG );
+        R_SetDriveMode( R_DM_STRONG );
+        G_SetDriveMode( G_DM_STRONG );
+        B_SetDriveMode( B_DM_STRONG );
+        Mode_SetDriveMode( Mode_DM_DIG_HIZ );
+        Time_Bit_0_SetDriveMode( Time_Bit_0_DM_RES_DWN );
+        Time_Bit_1_SetDriveMode( Time_Bit_1_DM_RES_DWN );
+        Time_Bit_2_SetDriveMode( Time_Bit_2_DM_RES_DWN );
+        Time_Bit_3_SetDriveMode( Time_Bit_3_DM_RES_DWN );
+    }
+    else
+    {
+        /* Continue */
+    }
+}
 
 /* [] END OF FILE */

@@ -1,6 +1,6 @@
 -- ======================================================================
 -- Auto Shut-OFF_SOIC16.ctl generated from Auto Shut-OFF_SOIC16
--- 12/23/2016 at 11:20
+-- 01/10/2017 at 05:22
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

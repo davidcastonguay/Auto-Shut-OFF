@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
   31:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     #ifndef CY_CFG_SECTION
   32:.\Generated_Source\PSoC4/cyfitter_cfg.c ****         #define CY_CFG_SECTION __attribute__ ((section(".psocinit")))
   33:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     #endif
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 2
 
 
   34:.\Generated_Source\PSoC4/cyfitter_cfg.c ****     
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
   88:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
   89:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: CyClockStartupError
   90:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 3
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 3
 
 
   91:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
  145:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void ClockSetup(void)
  146:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
   25              		.loc 1 146 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 4
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 4
 
 
   26              		.cfi_startproc
@@ -190,7 +190,7 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
  148:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Set Flash Cycles based on max possible frequency in case a glitch occurs during ClockSetup(). *
  149:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void CYXDATA *)(CYREG_CPUSS_FLASH_CTL), (0x0011u));
   31              		.loc 1 149 0
-  32 0002 0E4C     		ldr	r4, .L2
+  32 0002 0A4C     		ldr	r4, .L2
   33 0004 1123     		mov	r3, #17
   34 0006 2360     		str	r3, [r4]
  150:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Update IMO to new clock speed. */
@@ -204,700 +204,680 @@ ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 1
  154:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)CYREG_PERI_DIV_16_CTL0, 0x00000000u);
   39              		.loc 1 154 0
   40 000e 0023     		mov	r3, #0
-  41 0010 0B4A     		ldr	r2, .L2+4
+  41 0010 074A     		ldr	r2, .L2+4
   42 0012 1360     		str	r3, [r2]
  155:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)CYREG_PERI_DIV_CMD, 0x8000FF40u);
   43              		.loc 1 155 0
-  44 0014 0B4A     		ldr	r2, .L2+8
-  45 0016 0C49     		ldr	r1, .L2+12
+  44 0014 0749     		ldr	r1, .L2+8
+  45 0016 084A     		ldr	r2, .L2+12
   46 0018 1160     		str	r1, [r2]
- 156:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)CYREG_PERI_DIV_16_CTL1, 0x00000600u);
-  47              		.loc 1 156 0
-  48 001a C020     		mov	r0, #192
-  49 001c C000     		lsl	r0, r0, #3
-  50 001e 0B49     		ldr	r1, .L2+16
-  51 0020 0860     		str	r0, [r1]
- 157:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void *)CYREG_PERI_DIV_CMD, 0x8000FF41u);
-  52              		.loc 1 157 0
-  53 0022 0B49     		ldr	r1, .L2+20
+ 156:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 157:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* CYDEV_CLK_SELECT Starting address: CYDEV_CLK_SELECT */
+ 158:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_CLK_SELECT), 0x00000004u);
+  47              		.loc 1 158 0
+  48 001a 0421     		mov	r1, #4
+  49 001c 074A     		ldr	r2, .L2+16
+  50 001e 1160     		str	r1, [r2]
+ 159:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 160:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* CYDEV_PERI_PCLK_CTL3 Starting address: CYDEV_PERI_PCLK_CTL3 */
+ 161:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PERI_PCLK_CTL3), 0x00000040u);
+  51              		.loc 1 161 0
+  52 0020 3C31     		add	r1, r1, #60
+  53 0022 074A     		ldr	r2, .L2+20
   54 0024 1160     		str	r1, [r2]
- 158:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 159:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* CYDEV_CLK_SELECT Starting address: CYDEV_CLK_SELECT */
- 160:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_CLK_SELECT), 0x00000004u);
-  55              		.loc 1 160 0
-  56 0026 0421     		mov	r1, #4
-  57 0028 0A4A     		ldr	r2, .L2+24
-  58 002a 1160     		str	r1, [r2]
- 161:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 162:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* CYDEV_PERI_PCLK_CTL3 Starting address: CYDEV_PERI_PCLK_CTL3 */
- 163:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PERI_PCLK_CTL3), 0x00000040u);
-  59              		.loc 1 163 0
-  60 002c 3C31     		add	r1, r1, #60
-  61 002e 0A4A     		ldr	r2, .L2+28
-  62 0030 1160     		str	r1, [r2]
- 164:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 165:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* CYDEV_PERI_PCLK_CTL0 Starting address: CYDEV_PERI_PCLK_CTL0 */
- 166:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PERI_PCLK_CTL0), 0x00000041u);
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 5
+ 162:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 163:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Set Flash Cycles based on newly configured 12.00MHz HFCLK. */
+ 164:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void CYXDATA *)(CYREG_CPUSS_FLASH_CTL), (0x0000u));
+  55              		.loc 1 164 0
+  56 0026 2360     		str	r3, [r4]
+ 165:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
+  57              		.loc 1 165 0
+  58              		@ sp needed
+  59 0028 10BD     		pop	{r4, pc}
+  60              	.L3:
+  61 002a C046     		.align	2
+  62              	.L2:
+  63 002c 30001040 		.word	1074790448
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 5
 
 
-  63              		.loc 1 166 0
-  64 0032 0131     		add	r1, r1, #1
-  65 0034 094A     		ldr	r2, .L2+32
-  66 0036 1160     		str	r1, [r2]
+  64 0030 00030140 		.word	1073808128
+  65 0034 40FF0080 		.word	-2147418304
+  66 0038 00000140 		.word	1073807360
+  67 003c 28000340 		.word	1073938472
+  68 0040 0C010140 		.word	1073807628
+  69              		.cfi_endproc
+  70              	.LFE3:
+  71              		.size	ClockSetup, .-ClockSetup
+  72              		.align	2
+  73              		.global	cyfitter_cfg
+  74              		.code	16
+  75              		.thumb_func
+  76              		.type	cyfitter_cfg, %function
+  77              	cyfitter_cfg:
+  78              	.LFB5:
+ 166:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
  167:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 168:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Set Flash Cycles based on newly configured 12.00MHz HFCLK. */
- 169:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_REG32((void CYXDATA *)(CYREG_CPUSS_FLASH_CTL), (0x0000u));
-  67              		.loc 1 169 0
-  68 0038 2360     		str	r3, [r4]
- 170:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
-  69              		.loc 1 170 0
-  70              		@ sp needed
-  71 003a 10BD     		pop	{r4, pc}
-  72              	.L3:
-  73              		.align	2
-  74              	.L2:
-  75 003c 30001040 		.word	1074790448
-  76 0040 00030140 		.word	1073808128
-  77 0044 00000140 		.word	1073807360
-  78 0048 40FF0080 		.word	-2147418304
-  79 004c 04030140 		.word	1073808132
-  80 0050 41FF0080 		.word	-2147418303
-  81 0054 28000340 		.word	1073938472
-  82 0058 0C010140 		.word	1073807628
-  83 005c 00010140 		.word	1073807616
-  84              		.cfi_endproc
-  85              	.LFE3:
-  86              		.size	ClockSetup, .-ClockSetup
-  87              		.align	2
-  88              		.global	cyfitter_cfg
-  89              		.code	16
-  90              		.thumb_func
-  91              		.type	cyfitter_cfg, %function
-  92              	cyfitter_cfg:
-  93              	.LFB5:
- 171:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 172:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 173:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /* Analog API Functions */
- 174:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 175:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 176:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
- 177:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: AnalogSetDefault
- 178:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
- 179:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 180:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
- 181:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  Sets up the analog portions of the chip to default values based on chip
- 182:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  configuration options from the project.
- 183:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 184:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Parameters:
- 185:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  void
- 186:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 187:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
- 188:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  void
- 189:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 190:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *******************************************************************************/
- 191:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void AnalogSetDefault(void);
- 192:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void AnalogSetDefault(void)
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 6
+ 168:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /* Analog API Functions */
+ 169:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 170:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 171:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
+ 172:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: AnalogSetDefault
+ 173:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
+ 174:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 175:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
+ 176:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  Sets up the analog portions of the chip to default values based on chip
+ 177:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  configuration options from the project.
+ 178:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 179:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Parameters:
+ 180:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  void
+ 181:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 182:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
+ 183:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  void
+ 184:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 185:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *******************************************************************************/
+ 186:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void AnalogSetDefault(void);
+ 187:.\Generated_Source\PSoC4/cyfitter_cfg.c **** static void AnalogSetDefault(void)
+ 188:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
+ 189:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
+ 190:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 191:.\Generated_Source\PSoC4/cyfitter_cfg.c **** #define CY_AMUX_UNUSED CYREG_CM0_ROM_DWT
+ 192:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 193:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 194:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
+ 195:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: cyfitter_cfg
+ 196:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
+ 197:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
+ 198:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  This function is called by the start-up code for the selected device. It
+ 199:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  performs all of the necessary device configuration based on the design
+ 200:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  settings.  This includes settings from the Design Wide Resources (DWR) such
+ 201:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  as Clocks and Pins as well as any component configuration that is necessary.
+ 202:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 203:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Parameters:  
+ 204:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
+ 205:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 206:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
+ 207:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 6
 
 
- 193:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
- 194:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
- 195:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 196:.\Generated_Source\PSoC4/cyfitter_cfg.c **** #define CY_AMUX_UNUSED CYREG_CM0_ROM_DWT
- 197:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 198:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 199:.\Generated_Source\PSoC4/cyfitter_cfg.c **** /*******************************************************************************
- 200:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Function Name: cyfitter_cfg
- 201:.\Generated_Source\PSoC4/cyfitter_cfg.c **** ********************************************************************************
- 202:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Summary:
- 203:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  This function is called by the start-up code for the selected device. It
- 204:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  performs all of the necessary device configuration based on the design
- 205:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  settings.  This includes settings from the Design Wide Resources (DWR) such
- 206:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *  as Clocks and Pins as well as any component configuration that is necessary.
- 207:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 208:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Parameters:  
- 209:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
- 210:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 211:.\Generated_Source\PSoC4/cyfitter_cfg.c **** * Return:
- 212:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *   void
- 213:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
- 214:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *******************************************************************************/
- 215:.\Generated_Source\PSoC4/cyfitter_cfg.c **** CY_CFG_SECTION
- 216:.\Generated_Source\PSoC4/cyfitter_cfg.c **** void cyfitter_cfg(void)
- 217:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
-  94              		.loc 1 217 0
-  95              		.cfi_startproc
-  96 0060 08B5     		push	{r3, lr}
-  97              		.cfi_def_cfa_offset 8
-  98              		.cfi_offset 3, -8
-  99              		.cfi_offset 14, -4
- 218:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Disable interrupts by default. Let user enable if/when they want. */
- 219:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CyGlobalIntDisable;
- 100              		.loc 1 219 0
- 101              	@ 219 ".\Generated_Source\PSoC4\cyfitter_cfg.c" 1
- 102 0062 72B6     		CPSID   i
- 103              	@ 0 "" 2
- 220:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 221:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	{
- 222:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		/* HSIOM Starting address: CYDEV_HSIOM_BASE */
- 223:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		CY_SET_XTND_REG32((void CYFAR *)(CYREG_HSIOM_PORT_SEL1), 0x00000090u);
- 104              		.loc 1 223 0
- 105              		.code	16
- 106 0064 9022     		mov	r2, #144
- 107 0066 0F4B     		ldr	r3, .L5
- 108 0068 1A60     		str	r2, [r3]
- 224:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		CY_SET_XTND_REG32((void CYFAR *)(CYREG_HSIOM_PORT_SEL3), 0x000000EEu);
- 109              		.loc 1 224 0
- 110 006a 5E32     		add	r2, r2, #94
- 111 006c 0E4B     		ldr	r3, .L5+4
- 112 006e 1A60     		str	r2, [r3]
- 225:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 226:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	}
- 227:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 228:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Perform second pass device configuration. These items must be configured in specific order afte
- 229:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_0 Starting address: CYDEV_GPIO_PRT0_BASE */
- 230:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT0_BASE), 0x00000004u);
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 7
+ 208:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *
+ 209:.\Generated_Source\PSoC4/cyfitter_cfg.c **** *******************************************************************************/
+ 210:.\Generated_Source\PSoC4/cyfitter_cfg.c **** CY_CFG_SECTION
+ 211:.\Generated_Source\PSoC4/cyfitter_cfg.c **** void cyfitter_cfg(void)
+ 212:.\Generated_Source\PSoC4/cyfitter_cfg.c **** {
+  79              		.loc 1 212 0
+  80              		.cfi_startproc
+  81 0044 08B5     		push	{r3, lr}
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 3, -8
+  84              		.cfi_offset 14, -4
+ 213:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Disable interrupts by default. Let user enable if/when they want. */
+ 214:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CyGlobalIntDisable;
+  85              		.loc 1 214 0
+  86              	@ 214 ".\Generated_Source\PSoC4\cyfitter_cfg.c" 1
+  87 0046 72B6     		CPSID   i
+  88              	@ 0 "" 2
+ 215:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 216:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	{
+ 217:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		/* HSIOM Starting address: CYDEV_HSIOM_BASE */
+ 218:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		CY_SET_XTND_REG32((void CYFAR *)(CYREG_HSIOM_PORT_SEL1), 0x00000090u);
+  89              		.loc 1 218 0
+  90              		.code	16
+  91 0048 9022     		mov	r2, #144
+  92 004a 104B     		ldr	r3, .L5
+  93 004c 1A60     		str	r2, [r3]
+ 219:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 220:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		/* FORCED_HSIOM Starting address: CYDEV_HSIOM_PORT_SEL3 */
+ 221:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 		CY_SET_XTND_REG32((void CYFAR *)(CYREG_HSIOM_PORT_SEL3), 0x00000000u);
+  94              		.loc 1 221 0
+  95 004e 0022     		mov	r2, #0
+  96 0050 0F4B     		ldr	r3, .L5+4
+  97 0052 1A60     		str	r2, [r3]
+ 222:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 223:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	}
+ 224:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 225:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Perform second pass device configuration. These items must be configured in specific order afte
+ 226:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_0 Starting address: CYDEV_GPIO_PRT0_BASE */
+ 227:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT0_BASE), 0x00000004u);
+  98              		.loc 1 227 0
+  99 0054 0432     		add	r2, r2, #4
+ 100 0056 0F4B     		ldr	r3, .L5+8
+ 101 0058 1A60     		str	r2, [r3]
+ 228:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_PC), 0x0019E098u);
+ 102              		.loc 1 228 0
+ 103 005a 0F4A     		ldr	r2, .L5+12
+ 104 005c 0F4B     		ldr	r3, .L5+16
+ 105 005e 1A60     		str	r2, [r3]
+ 229:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_INTR_CFG), 0x00000030u);
+ 106              		.loc 1 229 0
+ 107 0060 3022     		mov	r2, #48
+ 108 0062 0F4B     		ldr	r3, .L5+20
+ 109 0064 1A60     		str	r2, [r3]
+ 230:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 231:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_1 Starting address: CYDEV_GPIO_PRT1_BASE */
+ 232:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT1_BASE), 0x00000002u);
+ 110              		.loc 1 232 0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 7
 
 
- 113              		.loc 1 230 0
- 114 0070 EA3A     		sub	r2, r2, #234
- 115 0072 0E4B     		ldr	r3, .L5+8
- 116 0074 1A60     		str	r2, [r3]
- 231:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_PC), 0x0019E098u);
- 117              		.loc 1 231 0
- 118 0076 0E4A     		ldr	r2, .L5+12
- 119 0078 0E4B     		ldr	r3, .L5+16
- 120 007a 1A60     		str	r2, [r3]
- 232:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT0_INTR_CFG), 0x00000030u);
- 121              		.loc 1 232 0
- 122 007c 3022     		mov	r2, #48
- 123 007e 0E4B     		ldr	r3, .L5+20
- 124 0080 1A60     		str	r2, [r3]
- 233:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 234:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_1 Starting address: CYDEV_GPIO_PRT1_BASE */
- 235:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT1_BASE), 0x00000002u);
- 125              		.loc 1 235 0
- 126 0082 2E3A     		sub	r2, r2, #46
- 127 0084 0D4B     		ldr	r3, .L5+24
- 128 0086 1A60     		str	r2, [r3]
- 236:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT1_PC), 0x006C0DB0u);
- 129              		.loc 1 236 0
- 130 0088 0D4A     		ldr	r2, .L5+28
- 131 008a 0E4B     		ldr	r3, .L5+32
- 132 008c 1A60     		str	r2, [r3]
+ 111 0066 2E3A     		sub	r2, r2, #46
+ 112 0068 0E4B     		ldr	r3, .L5+24
+ 113 006a 1A60     		str	r2, [r3]
+ 233:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT1_PC), 0x006C0DB0u);
+ 114              		.loc 1 233 0
+ 115 006c 0E4A     		ldr	r2, .L5+28
+ 116 006e 0F4B     		ldr	r3, .L5+32
+ 117 0070 1A60     		str	r2, [r3]
+ 234:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 235:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_2 Starting address: CYDEV_GPIO_PRT2_BASE */
+ 236:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT2_PC), 0x00000003u);
+ 118              		.loc 1 236 0
+ 119 0072 0322     		mov	r2, #3
+ 120 0074 0E4B     		ldr	r3, .L5+36
+ 121 0076 1A60     		str	r2, [r3]
  237:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 238:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_2 Starting address: CYDEV_GPIO_PRT2_BASE */
- 239:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT2_PC), 0x00000003u);
- 133              		.loc 1 239 0
- 134 008e 0323     		mov	r3, #3
- 135 0090 0D4A     		ldr	r2, .L5+36
- 136 0092 1360     		str	r3, [r2]
- 240:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 241:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_3 Starting address: CYDEV_GPIO_PRT3_BASE */
- 242:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT3_BASE), 0x00000003u);
- 137              		.loc 1 242 0
- 138 0094 0D4A     		ldr	r2, .L5+40
- 139 0096 1360     		str	r3, [r2]
- 243:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT3_PC), 0x00000024u);
- 140              		.loc 1 243 0
- 141 0098 2422     		mov	r2, #36
- 142 009a 0D4B     		ldr	r3, .L5+44
- 143 009c 1A60     		str	r2, [r3]
- 244:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 238:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* IOPINS0_3 Starting address: CYDEV_GPIO_PRT3_BASE */
+ 239:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYDEV_GPIO_PRT3_BASE), 0x00000001u);
+ 122              		.loc 1 239 0
+ 123 0078 023A     		sub	r2, r2, #2
+ 124 007a 0E4B     		ldr	r3, .L5+40
+ 125 007c 1A60     		str	r2, [r3]
+ 240:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_GPIO_PRT3_PC), 0x00000006u);
+ 126              		.loc 1 240 0
+ 127 007e 0532     		add	r2, r2, #5
+ 128 0080 0D4B     		ldr	r3, .L5+44
+ 129 0082 1A60     		str	r2, [r3]
+ 241:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 242:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
+ 243:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Setup clocks based on selections from Clock DWR */
+ 244:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	ClockSetup();
+ 130              		.loc 1 244 0
+ 131 0084 FFF7BCFF 		bl	ClockSetup
+ 132              	.LVL1:
  245:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 246:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Setup clocks based on selections from Clock DWR */
- 247:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	ClockSetup();
- 144              		.loc 1 247 0
- 145 009e FFF7AFFF 		bl	ClockSetup
- 146              	.LVL1:
+ 246:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Perform basic analog initialization to defaults */
+ 247:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	AnalogSetDefault();
  248:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 249:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	/* Perform basic analog initialization to defaults */
- 250:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 	AnalogSetDefault();
- 251:.\Generated_Source\PSoC4/cyfitter_cfg.c **** 
- 252:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
- 147              		.loc 1 252 0
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 8
+ 249:.\Generated_Source\PSoC4/cyfitter_cfg.c **** }
+ 133              		.loc 1 249 0
+ 134              		@ sp needed
+ 135 0088 08BD     		pop	{r3, pc}
+ 136              	.L6:
+ 137 008a C046     		.align	2
+ 138              	.L5:
+ 139 008c 00010240 		.word	1073873152
+ 140 0090 00030240 		.word	1073873664
+ 141 0094 00000440 		.word	1074003968
+ 142 0098 98E01900 		.word	1695896
+ 143 009c 08000440 		.word	1074003976
+ 144 00a0 0C000440 		.word	1074003980
+ 145 00a4 00010440 		.word	1074004224
+ 146 00a8 B00D6C00 		.word	7081392
+ 147 00ac 08010440 		.word	1074004232
+ 148 00b0 08020440 		.word	1074004488
+ 149 00b4 00030440 		.word	1074004736
+ 150 00b8 08030440 		.word	1074004744
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 8
 
 
- 148              		@ sp needed
- 149 00a2 08BD     		pop	{r3, pc}
- 150              	.L6:
- 151              		.align	2
- 152              	.L5:
- 153 00a4 00010240 		.word	1073873152
- 154 00a8 00030240 		.word	1073873664
- 155 00ac 00000440 		.word	1074003968
- 156 00b0 98E01900 		.word	1695896
- 157 00b4 08000440 		.word	1074003976
- 158 00b8 0C000440 		.word	1074003980
- 159 00bc 00010440 		.word	1074004224
- 160 00c0 B00D6C00 		.word	7081392
- 161 00c4 08010440 		.word	1074004232
- 162 00c8 08020440 		.word	1074004488
- 163 00cc 00030440 		.word	1074004736
- 164 00d0 08030440 		.word	1074004744
- 165              		.cfi_endproc
- 166              	.LFE5:
- 167              		.size	cyfitter_cfg, .-cyfitter_cfg
- 168              		.text
- 169              	.Letext0:
- 170              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
- 171              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
- 172              		.section	.debug_info,"",%progbits
- 173              	.Ldebug_info0:
- 174 0000 F2000000 		.4byte	0xf2
- 175 0004 0400     		.2byte	0x4
- 176 0006 00000000 		.4byte	.Ldebug_abbrev0
- 177 000a 04       		.byte	0x4
- 178 000b 01       		.uleb128 0x1
- 179 000c 74010000 		.4byte	.LASF15
- 180 0010 01       		.byte	0x1
- 181 0011 07010000 		.4byte	.LASF16
- 182 0015 73000000 		.4byte	.LASF17
- 183 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 184 001d 00000000 		.4byte	0
- 185 0021 00000000 		.4byte	.Ldebug_line0
- 186 0025 02       		.uleb128 0x2
- 187 0026 04       		.byte	0x4
- 188 0027 05       		.byte	0x5
- 189 0028 696E7400 		.ascii	"int\000"
- 190 002c 03       		.uleb128 0x3
- 191 002d 04       		.byte	0x4
- 192 002e 07       		.byte	0x7
- 193 002f 15000000 		.4byte	.LASF0
- 194 0033 03       		.uleb128 0x3
- 195 0034 01       		.byte	0x1
- 196 0035 06       		.byte	0x6
- 197 0036 68010000 		.4byte	.LASF1
- 198 003a 03       		.uleb128 0x3
- 199 003b 01       		.byte	0x1
- 200 003c 08       		.byte	0x8
- 201 003d F9000000 		.4byte	.LASF2
- 202 0041 03       		.uleb128 0x3
- 203 0042 02       		.byte	0x2
- 204 0043 05       		.byte	0x5
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 9
+ 151              		.cfi_endproc
+ 152              	.LFE5:
+ 153              		.size	cyfitter_cfg, .-cyfitter_cfg
+ 154              		.text
+ 155              	.Letext0:
+ 156              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 157              		.file 3 ".\\Generated_Source\\PSoC4\\CyLib.h"
+ 158              		.section	.debug_info,"",%progbits
+ 159              	.Ldebug_info0:
+ 160 0000 F2000000 		.4byte	0xf2
+ 161 0004 0400     		.2byte	0x4
+ 162 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 163 000a 04       		.byte	0x4
+ 164 000b 01       		.uleb128 0x1
+ 165 000c 74010000 		.4byte	.LASF15
+ 166 0010 01       		.byte	0x1
+ 167 0011 07010000 		.4byte	.LASF16
+ 168 0015 73000000 		.4byte	.LASF17
+ 169 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 170 001d 00000000 		.4byte	0
+ 171 0021 00000000 		.4byte	.Ldebug_line0
+ 172 0025 02       		.uleb128 0x2
+ 173 0026 04       		.byte	0x4
+ 174 0027 05       		.byte	0x5
+ 175 0028 696E7400 		.ascii	"int\000"
+ 176 002c 03       		.uleb128 0x3
+ 177 002d 04       		.byte	0x4
+ 178 002e 07       		.byte	0x7
+ 179 002f 15000000 		.4byte	.LASF0
+ 180 0033 03       		.uleb128 0x3
+ 181 0034 01       		.byte	0x1
+ 182 0035 06       		.byte	0x6
+ 183 0036 68010000 		.4byte	.LASF1
+ 184 003a 03       		.uleb128 0x3
+ 185 003b 01       		.byte	0x1
+ 186 003c 08       		.byte	0x8
+ 187 003d F9000000 		.4byte	.LASF2
+ 188 0041 03       		.uleb128 0x3
+ 189 0042 02       		.byte	0x2
+ 190 0043 05       		.byte	0x5
+ 191 0044 02020000 		.4byte	.LASF3
+ 192 0048 03       		.uleb128 0x3
+ 193 0049 02       		.byte	0x2
+ 194 004a 07       		.byte	0x7
+ 195 004b 55010000 		.4byte	.LASF4
+ 196 004f 03       		.uleb128 0x3
+ 197 0050 04       		.byte	0x4
+ 198 0051 05       		.byte	0x5
+ 199 0052 34010000 		.4byte	.LASF5
+ 200 0056 03       		.uleb128 0x3
+ 201 0057 04       		.byte	0x4
+ 202 0058 07       		.byte	0x7
+ 203 0059 37000000 		.4byte	.LASF6
+ 204 005d 03       		.uleb128 0x3
+ 205 005e 08       		.byte	0x8
+ 206 005f 05       		.byte	0x5
+ 207 0060 00000000 		.4byte	.LASF7
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 9
 
 
- 205 0044 02020000 		.4byte	.LASF3
- 206 0048 03       		.uleb128 0x3
- 207 0049 02       		.byte	0x2
- 208 004a 07       		.byte	0x7
- 209 004b 55010000 		.4byte	.LASF4
- 210 004f 03       		.uleb128 0x3
- 211 0050 04       		.byte	0x4
- 212 0051 05       		.byte	0x5
- 213 0052 34010000 		.4byte	.LASF5
- 214 0056 03       		.uleb128 0x3
- 215 0057 04       		.byte	0x4
- 216 0058 07       		.byte	0x7
- 217 0059 37000000 		.4byte	.LASF6
- 218 005d 03       		.uleb128 0x3
- 219 005e 08       		.byte	0x8
- 220 005f 05       		.byte	0x5
- 221 0060 00000000 		.4byte	.LASF7
- 222 0064 03       		.uleb128 0x3
- 223 0065 08       		.byte	0x8
- 224 0066 07       		.byte	0x7
- 225 0067 56000000 		.4byte	.LASF8
- 226 006b 03       		.uleb128 0x3
- 227 006c 04       		.byte	0x4
- 228 006d 07       		.byte	0x7
- 229 006e 0C020000 		.4byte	.LASF9
- 230 0072 03       		.uleb128 0x3
- 231 0073 01       		.byte	0x1
- 232 0074 08       		.byte	0x8
- 233 0075 2F010000 		.4byte	.LASF10
- 234 0079 04       		.uleb128 0x4
- 235 007a 0E000000 		.4byte	.LASF13
- 236 007e 02       		.byte	0x2
- 237 007f 9A01     		.2byte	0x19a
- 238 0081 56000000 		.4byte	0x56
- 239 0085 03       		.uleb128 0x3
- 240 0086 04       		.byte	0x4
- 241 0087 04       		.byte	0x4
- 242 0088 6D000000 		.4byte	.LASF11
- 243 008c 03       		.uleb128 0x3
- 244 008d 08       		.byte	0x8
- 245 008e 04       		.byte	0x4
- 246 008f 48010000 		.4byte	.LASF12
- 247 0093 04       		.uleb128 0x4
- 248 0094 4F010000 		.4byte	.LASF14
- 249 0098 02       		.byte	0x2
- 250 0099 4402     		.2byte	0x244
- 251 009b 9F000000 		.4byte	0x9f
- 252 009f 05       		.uleb128 0x5
- 253 00a0 79000000 		.4byte	0x79
- 254 00a4 06       		.uleb128 0x6
- 255 00a5 3D010000 		.4byte	.LASF18
- 256 00a9 01       		.byte	0x1
- 257 00aa 91       		.byte	0x91
- 258 00ab 00000000 		.4byte	.LFB3
- 259 00af 60000000 		.4byte	.LFE3-.LFB3
- 260 00b3 01       		.uleb128 0x1
- 261 00b4 9C       		.byte	0x9c
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 10
+ 208 0064 03       		.uleb128 0x3
+ 209 0065 08       		.byte	0x8
+ 210 0066 07       		.byte	0x7
+ 211 0067 56000000 		.4byte	.LASF8
+ 212 006b 03       		.uleb128 0x3
+ 213 006c 04       		.byte	0x4
+ 214 006d 07       		.byte	0x7
+ 215 006e 0C020000 		.4byte	.LASF9
+ 216 0072 03       		.uleb128 0x3
+ 217 0073 01       		.byte	0x1
+ 218 0074 08       		.byte	0x8
+ 219 0075 2F010000 		.4byte	.LASF10
+ 220 0079 04       		.uleb128 0x4
+ 221 007a 0E000000 		.4byte	.LASF13
+ 222 007e 02       		.byte	0x2
+ 223 007f 9A01     		.2byte	0x19a
+ 224 0081 56000000 		.4byte	0x56
+ 225 0085 03       		.uleb128 0x3
+ 226 0086 04       		.byte	0x4
+ 227 0087 04       		.byte	0x4
+ 228 0088 6D000000 		.4byte	.LASF11
+ 229 008c 03       		.uleb128 0x3
+ 230 008d 08       		.byte	0x8
+ 231 008e 04       		.byte	0x4
+ 232 008f 48010000 		.4byte	.LASF12
+ 233 0093 04       		.uleb128 0x4
+ 234 0094 4F010000 		.4byte	.LASF14
+ 235 0098 02       		.byte	0x2
+ 236 0099 4402     		.2byte	0x244
+ 237 009b 9F000000 		.4byte	0x9f
+ 238 009f 05       		.uleb128 0x5
+ 239 00a0 79000000 		.4byte	0x79
+ 240 00a4 06       		.uleb128 0x6
+ 241 00a5 3D010000 		.4byte	.LASF18
+ 242 00a9 01       		.byte	0x1
+ 243 00aa 91       		.byte	0x91
+ 244 00ab 00000000 		.4byte	.LFB3
+ 245 00af 44000000 		.4byte	.LFE3-.LFB3
+ 246 00b3 01       		.uleb128 0x1
+ 247 00b4 9C       		.byte	0x9c
+ 248 00b5 C9000000 		.4byte	0xc9
+ 249 00b9 07       		.uleb128 0x7
+ 250 00ba 0E000000 		.4byte	.LVL0
+ 251 00be E8000000 		.4byte	0xe8
+ 252 00c2 08       		.uleb128 0x8
+ 253 00c3 01       		.uleb128 0x1
+ 254 00c4 50       		.byte	0x50
+ 255 00c5 01       		.uleb128 0x1
+ 256 00c6 48       		.byte	0x48
+ 257 00c7 00       		.byte	0
+ 258 00c8 00       		.byte	0
+ 259 00c9 09       		.uleb128 0x9
+ 260 00ca 49000000 		.4byte	.LASF19
+ 261 00ce 01       		.byte	0x1
+ 262 00cf D3       		.byte	0xd3
+ 263 00d0 44000000 		.4byte	.LFB5
+ 264 00d4 78000000 		.4byte	.LFE5-.LFB5
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 10
 
 
- 262 00b5 C9000000 		.4byte	0xc9
- 263 00b9 07       		.uleb128 0x7
- 264 00ba 0E000000 		.4byte	.LVL0
- 265 00be E8000000 		.4byte	0xe8
- 266 00c2 08       		.uleb128 0x8
- 267 00c3 01       		.uleb128 0x1
- 268 00c4 50       		.byte	0x50
- 269 00c5 01       		.uleb128 0x1
- 270 00c6 48       		.byte	0x48
- 271 00c7 00       		.byte	0
- 272 00c8 00       		.byte	0
- 273 00c9 09       		.uleb128 0x9
- 274 00ca 49000000 		.4byte	.LASF19
- 275 00ce 01       		.byte	0x1
- 276 00cf D8       		.byte	0xd8
- 277 00d0 60000000 		.4byte	.LFB5
- 278 00d4 74000000 		.4byte	.LFE5-.LFB5
- 279 00d8 01       		.uleb128 0x1
- 280 00d9 9C       		.byte	0x9c
- 281 00da E8000000 		.4byte	0xe8
- 282 00de 0A       		.uleb128 0xa
- 283 00df A2000000 		.4byte	.LVL1
- 284 00e3 A4000000 		.4byte	0xa4
- 285 00e7 00       		.byte	0
- 286 00e8 0B       		.uleb128 0xb
- 287 00e9 22000000 		.4byte	.LASF20
- 288 00ed 03       		.byte	0x3
- 289 00ee 6C       		.byte	0x6c
- 290 00ef 0C       		.uleb128 0xc
- 291 00f0 79000000 		.4byte	0x79
- 292 00f4 00       		.byte	0
- 293 00f5 00       		.byte	0
- 294              		.section	.debug_abbrev,"",%progbits
- 295              	.Ldebug_abbrev0:
- 296 0000 01       		.uleb128 0x1
- 297 0001 11       		.uleb128 0x11
- 298 0002 01       		.byte	0x1
- 299 0003 25       		.uleb128 0x25
- 300 0004 0E       		.uleb128 0xe
- 301 0005 13       		.uleb128 0x13
- 302 0006 0B       		.uleb128 0xb
- 303 0007 03       		.uleb128 0x3
- 304 0008 0E       		.uleb128 0xe
- 305 0009 1B       		.uleb128 0x1b
- 306 000a 0E       		.uleb128 0xe
- 307 000b 55       		.uleb128 0x55
- 308 000c 17       		.uleb128 0x17
- 309 000d 11       		.uleb128 0x11
- 310 000e 01       		.uleb128 0x1
- 311 000f 10       		.uleb128 0x10
- 312 0010 17       		.uleb128 0x17
- 313 0011 00       		.byte	0
- 314 0012 00       		.byte	0
- 315 0013 02       		.uleb128 0x2
- 316 0014 24       		.uleb128 0x24
- 317 0015 00       		.byte	0
- 318 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 11
+ 265 00d8 01       		.uleb128 0x1
+ 266 00d9 9C       		.byte	0x9c
+ 267 00da E8000000 		.4byte	0xe8
+ 268 00de 0A       		.uleb128 0xa
+ 269 00df 88000000 		.4byte	.LVL1
+ 270 00e3 A4000000 		.4byte	0xa4
+ 271 00e7 00       		.byte	0
+ 272 00e8 0B       		.uleb128 0xb
+ 273 00e9 22000000 		.4byte	.LASF20
+ 274 00ed 03       		.byte	0x3
+ 275 00ee 6C       		.byte	0x6c
+ 276 00ef 0C       		.uleb128 0xc
+ 277 00f0 79000000 		.4byte	0x79
+ 278 00f4 00       		.byte	0
+ 279 00f5 00       		.byte	0
+ 280              		.section	.debug_abbrev,"",%progbits
+ 281              	.Ldebug_abbrev0:
+ 282 0000 01       		.uleb128 0x1
+ 283 0001 11       		.uleb128 0x11
+ 284 0002 01       		.byte	0x1
+ 285 0003 25       		.uleb128 0x25
+ 286 0004 0E       		.uleb128 0xe
+ 287 0005 13       		.uleb128 0x13
+ 288 0006 0B       		.uleb128 0xb
+ 289 0007 03       		.uleb128 0x3
+ 290 0008 0E       		.uleb128 0xe
+ 291 0009 1B       		.uleb128 0x1b
+ 292 000a 0E       		.uleb128 0xe
+ 293 000b 55       		.uleb128 0x55
+ 294 000c 17       		.uleb128 0x17
+ 295 000d 11       		.uleb128 0x11
+ 296 000e 01       		.uleb128 0x1
+ 297 000f 10       		.uleb128 0x10
+ 298 0010 17       		.uleb128 0x17
+ 299 0011 00       		.byte	0
+ 300 0012 00       		.byte	0
+ 301 0013 02       		.uleb128 0x2
+ 302 0014 24       		.uleb128 0x24
+ 303 0015 00       		.byte	0
+ 304 0016 0B       		.uleb128 0xb
+ 305 0017 0B       		.uleb128 0xb
+ 306 0018 3E       		.uleb128 0x3e
+ 307 0019 0B       		.uleb128 0xb
+ 308 001a 03       		.uleb128 0x3
+ 309 001b 08       		.uleb128 0x8
+ 310 001c 00       		.byte	0
+ 311 001d 00       		.byte	0
+ 312 001e 03       		.uleb128 0x3
+ 313 001f 24       		.uleb128 0x24
+ 314 0020 00       		.byte	0
+ 315 0021 0B       		.uleb128 0xb
+ 316 0022 0B       		.uleb128 0xb
+ 317 0023 3E       		.uleb128 0x3e
+ 318 0024 0B       		.uleb128 0xb
+ 319 0025 03       		.uleb128 0x3
+ 320 0026 0E       		.uleb128 0xe
+ 321 0027 00       		.byte	0
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 11
 
 
- 319 0017 0B       		.uleb128 0xb
- 320 0018 3E       		.uleb128 0x3e
- 321 0019 0B       		.uleb128 0xb
- 322 001a 03       		.uleb128 0x3
- 323 001b 08       		.uleb128 0x8
- 324 001c 00       		.byte	0
- 325 001d 00       		.byte	0
- 326 001e 03       		.uleb128 0x3
- 327 001f 24       		.uleb128 0x24
- 328 0020 00       		.byte	0
- 329 0021 0B       		.uleb128 0xb
- 330 0022 0B       		.uleb128 0xb
- 331 0023 3E       		.uleb128 0x3e
- 332 0024 0B       		.uleb128 0xb
- 333 0025 03       		.uleb128 0x3
- 334 0026 0E       		.uleb128 0xe
- 335 0027 00       		.byte	0
- 336 0028 00       		.byte	0
- 337 0029 04       		.uleb128 0x4
- 338 002a 16       		.uleb128 0x16
- 339 002b 00       		.byte	0
- 340 002c 03       		.uleb128 0x3
- 341 002d 0E       		.uleb128 0xe
- 342 002e 3A       		.uleb128 0x3a
- 343 002f 0B       		.uleb128 0xb
- 344 0030 3B       		.uleb128 0x3b
- 345 0031 05       		.uleb128 0x5
- 346 0032 49       		.uleb128 0x49
- 347 0033 13       		.uleb128 0x13
- 348 0034 00       		.byte	0
- 349 0035 00       		.byte	0
- 350 0036 05       		.uleb128 0x5
- 351 0037 35       		.uleb128 0x35
- 352 0038 00       		.byte	0
- 353 0039 49       		.uleb128 0x49
- 354 003a 13       		.uleb128 0x13
- 355 003b 00       		.byte	0
- 356 003c 00       		.byte	0
- 357 003d 06       		.uleb128 0x6
- 358 003e 2E       		.uleb128 0x2e
- 359 003f 01       		.byte	0x1
- 360 0040 03       		.uleb128 0x3
- 361 0041 0E       		.uleb128 0xe
- 362 0042 3A       		.uleb128 0x3a
- 363 0043 0B       		.uleb128 0xb
- 364 0044 3B       		.uleb128 0x3b
- 365 0045 0B       		.uleb128 0xb
- 366 0046 27       		.uleb128 0x27
- 367 0047 19       		.uleb128 0x19
- 368 0048 11       		.uleb128 0x11
- 369 0049 01       		.uleb128 0x1
- 370 004a 12       		.uleb128 0x12
- 371 004b 06       		.uleb128 0x6
- 372 004c 40       		.uleb128 0x40
- 373 004d 18       		.uleb128 0x18
- 374 004e 9742     		.uleb128 0x2117
- 375 0050 19       		.uleb128 0x19
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 12
+ 322 0028 00       		.byte	0
+ 323 0029 04       		.uleb128 0x4
+ 324 002a 16       		.uleb128 0x16
+ 325 002b 00       		.byte	0
+ 326 002c 03       		.uleb128 0x3
+ 327 002d 0E       		.uleb128 0xe
+ 328 002e 3A       		.uleb128 0x3a
+ 329 002f 0B       		.uleb128 0xb
+ 330 0030 3B       		.uleb128 0x3b
+ 331 0031 05       		.uleb128 0x5
+ 332 0032 49       		.uleb128 0x49
+ 333 0033 13       		.uleb128 0x13
+ 334 0034 00       		.byte	0
+ 335 0035 00       		.byte	0
+ 336 0036 05       		.uleb128 0x5
+ 337 0037 35       		.uleb128 0x35
+ 338 0038 00       		.byte	0
+ 339 0039 49       		.uleb128 0x49
+ 340 003a 13       		.uleb128 0x13
+ 341 003b 00       		.byte	0
+ 342 003c 00       		.byte	0
+ 343 003d 06       		.uleb128 0x6
+ 344 003e 2E       		.uleb128 0x2e
+ 345 003f 01       		.byte	0x1
+ 346 0040 03       		.uleb128 0x3
+ 347 0041 0E       		.uleb128 0xe
+ 348 0042 3A       		.uleb128 0x3a
+ 349 0043 0B       		.uleb128 0xb
+ 350 0044 3B       		.uleb128 0x3b
+ 351 0045 0B       		.uleb128 0xb
+ 352 0046 27       		.uleb128 0x27
+ 353 0047 19       		.uleb128 0x19
+ 354 0048 11       		.uleb128 0x11
+ 355 0049 01       		.uleb128 0x1
+ 356 004a 12       		.uleb128 0x12
+ 357 004b 06       		.uleb128 0x6
+ 358 004c 40       		.uleb128 0x40
+ 359 004d 18       		.uleb128 0x18
+ 360 004e 9742     		.uleb128 0x2117
+ 361 0050 19       		.uleb128 0x19
+ 362 0051 01       		.uleb128 0x1
+ 363 0052 13       		.uleb128 0x13
+ 364 0053 00       		.byte	0
+ 365 0054 00       		.byte	0
+ 366 0055 07       		.uleb128 0x7
+ 367 0056 898201   		.uleb128 0x4109
+ 368 0059 01       		.byte	0x1
+ 369 005a 11       		.uleb128 0x11
+ 370 005b 01       		.uleb128 0x1
+ 371 005c 31       		.uleb128 0x31
+ 372 005d 13       		.uleb128 0x13
+ 373 005e 00       		.byte	0
+ 374 005f 00       		.byte	0
+ 375 0060 08       		.uleb128 0x8
+ 376 0061 8A8201   		.uleb128 0x410a
+ 377 0064 00       		.byte	0
+ 378 0065 02       		.uleb128 0x2
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 12
 
 
- 376 0051 01       		.uleb128 0x1
- 377 0052 13       		.uleb128 0x13
- 378 0053 00       		.byte	0
- 379 0054 00       		.byte	0
- 380 0055 07       		.uleb128 0x7
- 381 0056 898201   		.uleb128 0x4109
- 382 0059 01       		.byte	0x1
- 383 005a 11       		.uleb128 0x11
- 384 005b 01       		.uleb128 0x1
- 385 005c 31       		.uleb128 0x31
- 386 005d 13       		.uleb128 0x13
- 387 005e 00       		.byte	0
- 388 005f 00       		.byte	0
- 389 0060 08       		.uleb128 0x8
- 390 0061 8A8201   		.uleb128 0x410a
- 391 0064 00       		.byte	0
- 392 0065 02       		.uleb128 0x2
- 393 0066 18       		.uleb128 0x18
- 394 0067 9142     		.uleb128 0x2111
- 395 0069 18       		.uleb128 0x18
- 396 006a 00       		.byte	0
- 397 006b 00       		.byte	0
- 398 006c 09       		.uleb128 0x9
- 399 006d 2E       		.uleb128 0x2e
- 400 006e 01       		.byte	0x1
- 401 006f 3F       		.uleb128 0x3f
- 402 0070 19       		.uleb128 0x19
- 403 0071 03       		.uleb128 0x3
- 404 0072 0E       		.uleb128 0xe
- 405 0073 3A       		.uleb128 0x3a
- 406 0074 0B       		.uleb128 0xb
- 407 0075 3B       		.uleb128 0x3b
- 408 0076 0B       		.uleb128 0xb
- 409 0077 27       		.uleb128 0x27
- 410 0078 19       		.uleb128 0x19
- 411 0079 11       		.uleb128 0x11
- 412 007a 01       		.uleb128 0x1
- 413 007b 12       		.uleb128 0x12
- 414 007c 06       		.uleb128 0x6
- 415 007d 40       		.uleb128 0x40
- 416 007e 18       		.uleb128 0x18
- 417 007f 9742     		.uleb128 0x2117
- 418 0081 19       		.uleb128 0x19
- 419 0082 01       		.uleb128 0x1
- 420 0083 13       		.uleb128 0x13
- 421 0084 00       		.byte	0
- 422 0085 00       		.byte	0
- 423 0086 0A       		.uleb128 0xa
- 424 0087 898201   		.uleb128 0x4109
- 425 008a 00       		.byte	0
- 426 008b 11       		.uleb128 0x11
- 427 008c 01       		.uleb128 0x1
- 428 008d 31       		.uleb128 0x31
- 429 008e 13       		.uleb128 0x13
- 430 008f 00       		.byte	0
- 431 0090 00       		.byte	0
- 432 0091 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 13
+ 379 0066 18       		.uleb128 0x18
+ 380 0067 9142     		.uleb128 0x2111
+ 381 0069 18       		.uleb128 0x18
+ 382 006a 00       		.byte	0
+ 383 006b 00       		.byte	0
+ 384 006c 09       		.uleb128 0x9
+ 385 006d 2E       		.uleb128 0x2e
+ 386 006e 01       		.byte	0x1
+ 387 006f 3F       		.uleb128 0x3f
+ 388 0070 19       		.uleb128 0x19
+ 389 0071 03       		.uleb128 0x3
+ 390 0072 0E       		.uleb128 0xe
+ 391 0073 3A       		.uleb128 0x3a
+ 392 0074 0B       		.uleb128 0xb
+ 393 0075 3B       		.uleb128 0x3b
+ 394 0076 0B       		.uleb128 0xb
+ 395 0077 27       		.uleb128 0x27
+ 396 0078 19       		.uleb128 0x19
+ 397 0079 11       		.uleb128 0x11
+ 398 007a 01       		.uleb128 0x1
+ 399 007b 12       		.uleb128 0x12
+ 400 007c 06       		.uleb128 0x6
+ 401 007d 40       		.uleb128 0x40
+ 402 007e 18       		.uleb128 0x18
+ 403 007f 9742     		.uleb128 0x2117
+ 404 0081 19       		.uleb128 0x19
+ 405 0082 01       		.uleb128 0x1
+ 406 0083 13       		.uleb128 0x13
+ 407 0084 00       		.byte	0
+ 408 0085 00       		.byte	0
+ 409 0086 0A       		.uleb128 0xa
+ 410 0087 898201   		.uleb128 0x4109
+ 411 008a 00       		.byte	0
+ 412 008b 11       		.uleb128 0x11
+ 413 008c 01       		.uleb128 0x1
+ 414 008d 31       		.uleb128 0x31
+ 415 008e 13       		.uleb128 0x13
+ 416 008f 00       		.byte	0
+ 417 0090 00       		.byte	0
+ 418 0091 0B       		.uleb128 0xb
+ 419 0092 2E       		.uleb128 0x2e
+ 420 0093 01       		.byte	0x1
+ 421 0094 3F       		.uleb128 0x3f
+ 422 0095 19       		.uleb128 0x19
+ 423 0096 03       		.uleb128 0x3
+ 424 0097 0E       		.uleb128 0xe
+ 425 0098 3A       		.uleb128 0x3a
+ 426 0099 0B       		.uleb128 0xb
+ 427 009a 3B       		.uleb128 0x3b
+ 428 009b 0B       		.uleb128 0xb
+ 429 009c 27       		.uleb128 0x27
+ 430 009d 19       		.uleb128 0x19
+ 431 009e 3C       		.uleb128 0x3c
+ 432 009f 19       		.uleb128 0x19
+ 433 00a0 00       		.byte	0
+ 434 00a1 00       		.byte	0
+ 435 00a2 0C       		.uleb128 0xc
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 13
 
 
- 433 0092 2E       		.uleb128 0x2e
- 434 0093 01       		.byte	0x1
- 435 0094 3F       		.uleb128 0x3f
- 436 0095 19       		.uleb128 0x19
- 437 0096 03       		.uleb128 0x3
- 438 0097 0E       		.uleb128 0xe
- 439 0098 3A       		.uleb128 0x3a
- 440 0099 0B       		.uleb128 0xb
- 441 009a 3B       		.uleb128 0x3b
- 442 009b 0B       		.uleb128 0xb
- 443 009c 27       		.uleb128 0x27
- 444 009d 19       		.uleb128 0x19
- 445 009e 3C       		.uleb128 0x3c
- 446 009f 19       		.uleb128 0x19
- 447 00a0 00       		.byte	0
- 448 00a1 00       		.byte	0
- 449 00a2 0C       		.uleb128 0xc
- 450 00a3 05       		.uleb128 0x5
- 451 00a4 00       		.byte	0
- 452 00a5 49       		.uleb128 0x49
- 453 00a6 13       		.uleb128 0x13
- 454 00a7 00       		.byte	0
- 455 00a8 00       		.byte	0
- 456 00a9 00       		.byte	0
- 457              		.section	.debug_aranges,"",%progbits
- 458 0000 24000000 		.4byte	0x24
- 459 0004 0200     		.2byte	0x2
- 460 0006 00000000 		.4byte	.Ldebug_info0
- 461 000a 04       		.byte	0x4
- 462 000b 00       		.byte	0
- 463 000c 0000     		.2byte	0
- 464 000e 0000     		.2byte	0
- 465 0010 00000000 		.4byte	.LFB3
- 466 0014 60000000 		.4byte	.LFE3-.LFB3
- 467 0018 60000000 		.4byte	.LFB5
- 468 001c 74000000 		.4byte	.LFE5-.LFB5
- 469 0020 00000000 		.4byte	0
- 470 0024 00000000 		.4byte	0
- 471              		.section	.debug_ranges,"",%progbits
- 472              	.Ldebug_ranges0:
- 473 0000 00000000 		.4byte	.LFB3
- 474 0004 60000000 		.4byte	.LFE3
- 475 0008 60000000 		.4byte	.LFB5
- 476 000c D4000000 		.4byte	.LFE5
- 477 0010 00000000 		.4byte	0
- 478 0014 00000000 		.4byte	0
- 479              		.section	.debug_line,"",%progbits
- 480              	.Ldebug_line0:
- 481 0000 88000000 		.section	.debug_str,"MS",%progbits,1
- 481      02005600 
- 481      00000201 
- 481      FB0E0D00 
- 481      01010101 
- 482              	.LASF7:
- 483 0000 6C6F6E67 		.ascii	"long long int\000"
- 483      206C6F6E 
- 483      6720696E 
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 14
+ 436 00a3 05       		.uleb128 0x5
+ 437 00a4 00       		.byte	0
+ 438 00a5 49       		.uleb128 0x49
+ 439 00a6 13       		.uleb128 0x13
+ 440 00a7 00       		.byte	0
+ 441 00a8 00       		.byte	0
+ 442 00a9 00       		.byte	0
+ 443              		.section	.debug_aranges,"",%progbits
+ 444 0000 24000000 		.4byte	0x24
+ 445 0004 0200     		.2byte	0x2
+ 446 0006 00000000 		.4byte	.Ldebug_info0
+ 447 000a 04       		.byte	0x4
+ 448 000b 00       		.byte	0
+ 449 000c 0000     		.2byte	0
+ 450 000e 0000     		.2byte	0
+ 451 0010 00000000 		.4byte	.LFB3
+ 452 0014 44000000 		.4byte	.LFE3-.LFB3
+ 453 0018 44000000 		.4byte	.LFB5
+ 454 001c 78000000 		.4byte	.LFE5-.LFB5
+ 455 0020 00000000 		.4byte	0
+ 456 0024 00000000 		.4byte	0
+ 457              		.section	.debug_ranges,"",%progbits
+ 458              	.Ldebug_ranges0:
+ 459 0000 00000000 		.4byte	.LFB3
+ 460 0004 44000000 		.4byte	.LFE3
+ 461 0008 44000000 		.4byte	.LFB5
+ 462 000c BC000000 		.4byte	.LFE5
+ 463 0010 00000000 		.4byte	0
+ 464 0014 00000000 		.4byte	0
+ 465              		.section	.debug_line,"",%progbits
+ 466              	.Ldebug_line0:
+ 467 0000 84000000 		.section	.debug_str,"MS",%progbits,1
+ 467      02005600 
+ 467      00000201 
+ 467      FB0E0D00 
+ 467      01010101 
+ 468              	.LASF7:
+ 469 0000 6C6F6E67 		.ascii	"long long int\000"
+ 469      206C6F6E 
+ 469      6720696E 
+ 469      7400
+ 470              	.LASF13:
+ 471 000e 75696E74 		.ascii	"uint32\000"
+ 471      333200
+ 472              	.LASF0:
+ 473 0015 756E7369 		.ascii	"unsigned int\000"
+ 473      676E6564 
+ 473      20696E74 
+ 473      00
+ 474              	.LASF20:
+ 475 0022 43795379 		.ascii	"CySysClkWriteImoFreq\000"
+ 475      73436C6B 
+ 475      57726974 
+ 475      65496D6F 
+ 475      46726571 
+ 476              	.LASF6:
+ 477 0037 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 14
 
 
+ 477      20756E73 
+ 477      69676E65 
+ 477      6420696E 
+ 477      7400
+ 478              	.LASF19:
+ 479 0049 63796669 		.ascii	"cyfitter_cfg\000"
+ 479      74746572 
+ 479      5F636667 
+ 479      00
+ 480              	.LASF8:
+ 481 0056 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 481      206C6F6E 
+ 481      6720756E 
+ 481      7369676E 
+ 481      65642069 
+ 482              	.LASF11:
+ 483 006d 666C6F61 		.ascii	"float\000"
  483      7400
- 484              	.LASF13:
- 485 000e 75696E74 		.ascii	"uint32\000"
- 485      333200
- 486              	.LASF0:
- 487 0015 756E7369 		.ascii	"unsigned int\000"
- 487      676E6564 
- 487      20696E74 
- 487      00
- 488              	.LASF20:
- 489 0022 43795379 		.ascii	"CySysClkWriteImoFreq\000"
- 489      73436C6B 
- 489      57726974 
- 489      65496D6F 
- 489      46726571 
- 490              	.LASF6:
- 491 0037 6C6F6E67 		.ascii	"long unsigned int\000"
- 491      20756E73 
- 491      69676E65 
- 491      6420696E 
- 491      7400
- 492              	.LASF19:
- 493 0049 63796669 		.ascii	"cyfitter_cfg\000"
- 493      74746572 
- 493      5F636667 
+ 484              	.LASF17:
+ 485 0073 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
+ 485      73657273 
+ 485      5C537069 
+ 485      74666972 
+ 485      65353434 
+ 486 00a1 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
+ 486      54656368 
+ 486      6E6F6C6F 
+ 486      67696573 
+ 486      20496E63 
+ 487 00d0 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC16.cydsn\000"
+ 487      2D536875 
+ 487      742D4F46 
+ 487      465C4175 
+ 487      746F2053 
+ 488              	.LASF2:
+ 489 00f9 756E7369 		.ascii	"unsigned char\000"
+ 489      676E6564 
+ 489      20636861 
+ 489      7200
+ 490              	.LASF16:
+ 491 0107 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\cyfitter_cfg.c\000"
+ 491      6E657261 
+ 491      7465645F 
+ 491      536F7572 
+ 491      63655C50 
+ 492              	.LASF10:
+ 493 012f 63686172 		.ascii	"char\000"
  493      00
- 494              	.LASF8:
- 495 0056 6C6F6E67 		.ascii	"long long unsigned int\000"
- 495      206C6F6E 
- 495      6720756E 
- 495      7369676E 
- 495      65642069 
- 496              	.LASF11:
- 497 006d 666C6F61 		.ascii	"float\000"
- 497      7400
- 498              	.LASF17:
- 499 0073 433A5C55 		.ascii	"C:\\Users\\Spitfire54444444\\Dropbox\\Projets\\Wave"
- 499      73657273 
- 499      5C537069 
- 499      74666972 
- 499      65353434 
- 500 00a1 6C616220 		.ascii	"lab Technologies Inc\\RnD\\Projets\\Auto Shut-OFF\\"
- 500      54656368 
- 500      6E6F6C6F 
- 500      67696573 
- 500      20496E63 
- 501 00d0 4175746F 		.ascii	"Auto-Shut-OFF\\Auto Shut-OFF_SOIC16.cydsn\000"
- 501      2D536875 
- 501      742D4F46 
- 501      465C4175 
- 501      746F2053 
- 502              	.LASF2:
- 503 00f9 756E7369 		.ascii	"unsigned char\000"
- 503      676E6564 
- 503      20636861 
- 503      7200
- 504              	.LASF16:
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 15
+ 494              	.LASF5:
+ 495 0134 6C6F6E67 		.ascii	"long int\000"
+ 495      20696E74 
+ 495      00
+ 496              	.LASF18:
+ 497 013d 436C6F63 		.ascii	"ClockSetup\000"
+ 497      6B536574 
+ 497      757000
+ 498              	.LASF12:
+ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccRf9uKf.s 			page 15
 
 
- 505 0107 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\cyfitter_cfg.c\000"
- 505      6E657261 
- 505      7465645F 
- 505      536F7572 
- 505      63655C50 
- 506              	.LASF10:
- 507 012f 63686172 		.ascii	"char\000"
- 507      00
- 508              	.LASF5:
- 509 0134 6C6F6E67 		.ascii	"long int\000"
- 509      20696E74 
- 509      00
- 510              	.LASF18:
- 511 013d 436C6F63 		.ascii	"ClockSetup\000"
- 511      6B536574 
- 511      757000
- 512              	.LASF12:
- 513 0148 646F7562 		.ascii	"double\000"
- 513      6C6500
- 514              	.LASF14:
- 515 014f 72656733 		.ascii	"reg32\000"
- 515      3200
- 516              	.LASF4:
- 517 0155 73686F72 		.ascii	"short unsigned int\000"
- 517      7420756E 
- 517      7369676E 
- 517      65642069 
- 517      6E7400
- 518              	.LASF1:
- 519 0168 7369676E 		.ascii	"signed char\000"
- 519      65642063 
- 519      68617200 
- 520              	.LASF15:
- 521 0174 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 521      4320342E 
- 521      392E3320 
- 521      32303135 
- 521      30333033 
- 522 01a7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
- 522      20726576 
- 522      6973696F 
- 522      6E203232 
- 522      31323230 
- 523 01da 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 523      66756E63 
- 523      74696F6E 
- 523      2D736563 
- 523      74696F6E 
- 524              	.LASF3:
- 525 0202 73686F72 		.ascii	"short int\000"
- 525      7420696E 
- 525      7400
- 526              	.LASF9:
- 527 020c 73697A65 		.ascii	"sizetype\000"
- 527      74797065 
- 527      00
- 528              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
-ARM GAS  C:\Users\SPITFI~1\AppData\Local\Temp\ccxe6b3T.s 			page 16
-
-
+ 499 0148 646F7562 		.ascii	"double\000"
+ 499      6C6500
+ 500              	.LASF14:
+ 501 014f 72656733 		.ascii	"reg32\000"
+ 501      3200
+ 502              	.LASF4:
+ 503 0155 73686F72 		.ascii	"short unsigned int\000"
+ 503      7420756E 
+ 503      7369676E 
+ 503      65642069 
+ 503      6E7400
+ 504              	.LASF1:
+ 505 0168 7369676E 		.ascii	"signed char\000"
+ 505      65642063 
+ 505      68617200 
+ 506              	.LASF15:
+ 507 0174 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 507      4320342E 
+ 507      392E3320 
+ 507      32303135 
+ 507      30333033 
+ 508 01a7 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m0 -mthumb -g -O"
+ 508      20726576 
+ 508      6973696F 
+ 508      6E203232 
+ 508      31323230 
+ 509 01da 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 509      66756E63 
+ 509      74696F6E 
+ 509      2D736563 
+ 509      74696F6E 
+ 510              	.LASF3:
+ 511 0202 73686F72 		.ascii	"short int\000"
+ 511      7420696E 
+ 511      7400
+ 512              	.LASF9:
+ 513 020c 73697A65 		.ascii	"sizetype\000"
+ 513      74797065 
+ 513      00
+ 514              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
